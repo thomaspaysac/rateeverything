@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;700&display=swap');
+
+// Variables
+$dark-theme: (
+  header-background: #152238,
+  header-hover: #202C3F,
+  font-light: #DBE0E9,
+);
+
+
+// General styling
+* {
+  font-family: "Figtree", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+// Components styling
+header {
+  background-color: map-get($dark-theme, header-background);
+  color: map-get($dark-theme, font-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+
+  .header_shortcuts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  div {
+    height: 40px;
+  }
+
+  a {
+    text-decoration: none;
+    color: map-get($dark-theme, font-light);
+    height: 40px;
+
+    &:hover {
+      background-color: map-get($dark-theme, header-hover);
+    }
+  }
+}
+
+.header_divider {
+  width: 2px;
+  height: 100%;
+  background-color: #D7D7D7;
+}
