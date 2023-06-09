@@ -31,8 +31,8 @@ const Header = (props) => {
 
       <div className="header_shortcuts">
         <div className="header_divider"></div>
-        <Link to="/release">new music</Link>
-        <Link>genres</Link>
+        <Link to="/release">RELEASE PAGE</Link>
+        <Link to="/artist">ARTIST PAGE</Link>
         <Link>charts</Link>
         <Link>lists</Link>
         <Link>community</Link>

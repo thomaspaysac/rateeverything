@@ -15,9 +15,11 @@ import {
   getDoc,
   serverTimestamp,
 } from 'firebase/firestore';
+import { submitArtist, submitRelease } from "./functions";
 
 import Header from "./components/Header";
 import ReleasePage from "./components/Release";
+import ArtistPage from "./components/Artist";
 import SignInPage from "./components/SignIn";
 import ProfilePage from "./components/Profile";
 
@@ -75,12 +77,13 @@ const App = () => {
       <Header userStatus={isSignedIn} user={userName} />
       <Routes>
         <Route path="/release" element={<ReleasePage />} />
+        <Route path="/artist" element={<ArtistPage />} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/profile" 
           element={<ProfilePage 
             username={userName} 
-            sendPrivateData={sendPrivateData}
-            addRelease={addRelease}
+            addRelease={() => submitRelease('Metallica', 'Kill \'em All', '1983', ['Hit the Lights', 'The Four Horsemen'])}
+            addArtist={() => submitArtist('Metallica', '1981', 'United States', ['Thrash Metal', 'Heavy Metal', 'Hard Rock'])}
             />}
         />
       </Routes>

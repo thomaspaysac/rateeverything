@@ -93,18 +93,21 @@ header {
   background-color: #D7D7D7;
 }
 
-// Release page
-.release-page {
+// Artist et Release page
+.release-page,
+.artist-page {
   display: grid;
   grid-template-columns: 1fr 2fr;
   background-color: #272A37;
 }
 
-.release_left-col {
+.release_left-col,
+.artist_left-col {
   background-color: #272A37;
 }
 
-.release_right-col {
+.release_right-col,
+.artist_right-col {
   background-color: #0B0E19;
 }
 

@@ -4,12 +4,12 @@ const ProfilePage = (props) => {
   return (
     <div>
       <div>Hello {props.username}</div>
-      <button onClick={props.sendPrivateData}>
-        Send info to server: private
-      </button>
       <button onClick={props.addRelease}>
-        Send release
+        Submit album
       </button>
+        <button onClick={props.addArtist}>
+        Submit artist
+        </button>
     </div>
   )
 }

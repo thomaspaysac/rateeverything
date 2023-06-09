@@ -1,7 +1,12 @@
 import React from "react";
 import ReleaseInfo from "./release_page/ReleaseInfo";
 import Rating from "./release_page/Rating";
+
+import { getReleases } from "../functions";
+
 import "../App.css"
+
+
 
 const ReleasePage = (props) => {
   return (
@@ -21,6 +26,7 @@ const ReleasePage = (props) => {
         />
         <Rating />
       </div>
+      <button onClick={() => getReleases('Metallica')}>Test</button>
     </div>
   )
 }
