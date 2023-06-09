@@ -1,17 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import "../App.css"
 
-const Header = () => {
+const Header = (props) => {
+  const UserContainer = () => {
+    if (props.userStatus === false) {
+      return (
+        <Link to="/signin">sign in</Link>
+      )
+    } else {
+      return (
+        <div>
+          <Link to="/profile">
+            {props.user}
+          </Link>
+          <div onClick={() => signOut(getAuth())}>
+            Sign out
+          </div>
+        </div>
+      )
+    }
+  }
+
   return (
-    <header>
-      <div>
-        <Link to="/">RateEverything</Link>
+    <header id="main-header">
+      <div className="header_title">
+        <Link><div className="header_logo"></div> RYS</Link>
       </div>
 
       <div className="header_shortcuts">
         <div className="header_divider"></div>
-        <Link>new music</Link>
+        <Link to="/release">new music</Link>
         <Link>genres</Link>
         <Link>charts</Link>
         <Link>lists</Link>
@@ -20,11 +40,11 @@ const Header = () => {
       </div>
 
       <div className="header_searchbar">
-        Searchbar
+        <input type="text" placeholder="Search..." />
       </div>
 
       <div className="header_user-container">
-        Sign in
+        <UserContainer/>
       </div>
     </header>
   )
