@@ -23,6 +23,10 @@ body {
   background-color: map-get($dark-theme, background);
 }
 
+button {
+  color: #000000;
+}
+
 // Components styling
 header {
   background-color: map-get($dark-theme, header-background);
