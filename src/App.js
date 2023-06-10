@@ -57,21 +57,6 @@ const App = () => {
     }
   }
 
-  const addRelease = async () => {
-    try {
-      await setDoc(doc(getFirestore(), 'releases', 'artists'), {
-        Condor44: {
-          name: 'Condor44',
-          country: 'Japan',
-        }
-      })
-    }
-    catch(error) {
-      console.error('Error writing new task to Firebase Database', error);
-    }
-  }
-  
-
   return (
     <BrowserRouter>
       <Header userStatus={isSignedIn} user={userName} />
@@ -82,7 +67,7 @@ const App = () => {
         <Route path="/profile" 
           element={<ProfilePage 
             username={userName} 
-            addRelease={() => submitRelease('Metallica', 'Kill \'em All', '1983', ['Hit the Lights', 'The Four Horsemen'])}
+            addRelease={() => submitRelease('Metallica', 'Kill \'em All', '1983', ['Hit the Lights', 'The Four Horsemen'], [5, 4.5, 3.5, 4, 3, 4, 4], ['', '', ''])}
             addArtist={() => submitArtist('Metallica', '1981', 'United States', ['Thrash Metal', 'Heavy Metal', 'Hard Rock'])}
             />}
         />

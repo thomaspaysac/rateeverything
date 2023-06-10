@@ -1,6 +1,6 @@
 import React from "react";
-import ArtistInfo from "./release_page/ArtistInfo";
-
+import ArtistInfo from "./artist_page/ArtistInfo";
+import ReleasesList from "./artist_page/ReleasesList";
 
 
 const ArtistPage = () => {
@@ -11,6 +11,7 @@ const ArtistPage = () => {
       </div>
       <div className="artist_right-col">
         <ArtistInfo />
+        <ReleasesList />
       </div>
     </div>
   )

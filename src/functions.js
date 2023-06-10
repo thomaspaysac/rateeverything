@@ -30,7 +30,7 @@ const submitArtist = async (artist, formed, country, genres) => {
   }
 }
 
-const submitRelease = async (artist, release, year, tracks) => {
+const submitRelease = async (artist, release, year, tracks, ratings, reviews, id) => {
   const artistRef = doc(db, 'artists', artist);
   await updateDoc(artistRef, {
     releases: arrayUnion({
@@ -38,6 +38,11 @@ const submitRelease = async (artist, release, year, tracks) => {
       release: release,
       year: year,
       tracks: tracks,
+      ratings: ratings,
+      reviews: reviews,
+      get average(){
+        return this.ratings.reduce((acc, curr) => acc + curr, 0) / this.ratings.length;
+      },
     })
   })
 }
@@ -53,11 +58,8 @@ const getArtist = async (artist) => {
 }
 
 const getReleases = async (artist) => {
-  const docRef = doc(db, 'artists', artist);
-  const docSnap = await getDoc(docRef);
-  for (const release of docSnap.data().releases) {
-    console.log(release.year);
-  }
+  const data = await getArtist('Metallica');
+  return data.releases;
 }
 
 export { submitArtist, submitRelease, getArtist, getReleases };
