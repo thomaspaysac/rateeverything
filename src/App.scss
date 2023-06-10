@@ -167,6 +167,32 @@ header {
   margin-bottom: 5px;
 }
 
+.releases-list_table {
+  width: 100%;
+  .th-title {
+    text-align: left;
+  }
+
+  .td-fixed {
+    width: 100px;
+    text-align: center;
+
+    &:nth-child(2) {
+      text-align: left;
+    }
+  }
+}
+
+.releases-list_thead {
+  border: 1px solid #ffffff;
+  padding-bottom: 8px;
+
+  th {
+    font-size: 0.8rem;
+    color: #757575;
+  }
+}
+
   // Release
 .release_right-col {
   background-color: #0B0E19;

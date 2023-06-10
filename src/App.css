@@ -120,6 +120,23 @@ header {
   color: #9da3af;
   margin-bottom: 5px; }
 
+.releases-list_table {
+  width: 100%; }
+  .releases-list_table .th-title {
+    text-align: left; }
+  .releases-list_table .td-fixed {
+    width: 100px;
+    text-align: center; }
+    .releases-list_table .td-fixed:nth-child(2) {
+      text-align: left; }
+
+.releases-list_thead {
+  border: 1px solid #ffffff;
+  padding-bottom: 8px; }
+  .releases-list_thead th {
+    font-size: 0.8rem;
+    color: #757575; }
+
 .release_right-col {
   background-color: #0B0E19; }
 
