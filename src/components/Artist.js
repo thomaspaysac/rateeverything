@@ -6,13 +6,14 @@ import { getArtist } from "../functions";
 
 const ArtistPage = () => {
   const [artist, setArtist] = useState([]);
-
-  const fetchData = async (artist) => {
-    const data = await getArtist(artist);
-    setArtist(data);
-  };
+  const [releases, setReleases] = useState([]);
 
   useEffect(() => {
+    const fetchData = async (artist) => {
+      const data = await getArtist(artist);
+      setArtist(data);
+      setReleases(data.releases);
+    };
     fetchData('Metallica');
   }, []);
 
@@ -28,7 +29,9 @@ const ArtistPage = () => {
           country={artist.country}
           genres={artist.genres}
           artistID={artist.artistID} />
-        <ReleasesList />
+        <ReleasesList
+          artist={artist.artist} 
+          />
       </div>
     </div>
   )

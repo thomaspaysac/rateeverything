@@ -1,15 +1,18 @@
 import { React, useState, useEffect } from 'react';
 import { getArtist } from '../../functions';
 
-const data = await getArtist('Metallica');
+/*const data = await getArtist('Metallica');*/
 
 const ArtistInfo = (props) => {
-  const genreList = data.genres.map(el => {
-      return (
-        <div>{el}</div>
-      )
-    })
-  
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async (artist) => {
+      const data = await getArtist(artist);
+      setGenres(data.genres);
+    };
+    fetchData('Metallica');
+  }, [])  
 
   return (
     <div>
@@ -29,7 +32,10 @@ const ArtistInfo = (props) => {
             <td className="artist-table_label">Genres</td>
           </tr>
           <tr>
-            <td className="artist-table_data genres-list">{genreList}</td>
+            <td className="artist-table_data genres-list">{genres.map((el, i) => {
+              return <span key={el}>{el}</span>
+              })
+              }</td>
           </tr>
         </tbody>
       </table>

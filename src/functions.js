@@ -58,7 +58,7 @@ const getArtist = async (artist) => {
 }
 
 const getReleases = async (artist) => {
-  const data = await getArtist('Metallica');
+  const data = await getArtist(artist);
   return data.releases;
 }
 
