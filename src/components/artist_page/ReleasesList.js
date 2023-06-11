@@ -1,4 +1,5 @@
 import { React } from 'react';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { getReleases, getArtist } from '../../functions';
 
 const data = await getReleases('Metallica');
@@ -6,11 +7,11 @@ const data = await getReleases('Metallica');
 const AlbumList = data.map((el) => {
   return (
   <tr key={el.artist + '_' + el.release} className='release-list_release'>
-    <td>
+    <td key = 'release_image'>
       O
     </td>
     <td>
-      <div key='release_title' className='release-table_title'>{el.release}</div>
+      <div key='release_title' className='release-table_title'><Link to="/">{el.release}</Link></div>
       <div key='release_year' className='release-table_year'>{el.year}</div>
     </td>
     <td key='release_reviews' className='td-fixed release-table_reviews'>{el.reviews.length}</td>
@@ -30,7 +31,7 @@ const ReleasesList = () => {
         <div className='release-type'>Album</div>
         <table className='releases-list_table'>
           <thead className='releases-list_thead'>
-            <tr>
+            <tr className='release-list_labels'>
               <th> </th>
               <th className='th-title'>Title / Release Date</th>
               <th className='th-fixed'>Reviews</th>

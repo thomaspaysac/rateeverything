@@ -62,4 +62,9 @@ const getReleases = async (artist) => {
   return data.releases;
 }
 
-export { submitArtist, submitRelease, getArtist, getReleases };
+const getUniqueRelease = async (artist) => {
+  const data = await getArtist('Metallica');
+  return data.releases[0];
+}
+
+export { submitArtist, submitRelease, getArtist, getReleases, getUniqueRelease };

@@ -169,6 +169,7 @@ header {
 
 .releases-list_table {
   width: 100%;
+  
   .th-title {
     text-align: left;
   }
@@ -190,6 +191,8 @@ header {
   th {
     font-size: 0.8rem;
     color: #757575;
+    font-weight: 400;
+    border-bottom: 1px solid #75757573;
   }
 }
 
