@@ -41,7 +41,7 @@ const submitRelease = async (artist, release, year, tracks, ratings, reviews, id
       ratings: ratings,
       reviews: reviews,
       get average(){
-        return this.ratings.reduce((acc, curr) => acc + curr, 0) / this.ratings.length;
+        return (this.ratings.reduce((acc, curr) => acc + curr, 0) / this.ratings.length).toFixed(2);
       },
     })
   })

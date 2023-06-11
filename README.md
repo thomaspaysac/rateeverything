@@ -7,8 +7,9 @@
 ## Priorités :
 
 ### Fonctionnalités
-- Générer page artiste
-- Générer pages albums
+- Générer page artiste -> LIEN DYNAMIQUE
+- Générer pages albums -> LIENS DYNAMIQUES
+
 - Ajouter artiste puis album par formulaire
 
 ### Comptes

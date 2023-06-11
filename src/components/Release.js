@@ -11,13 +11,13 @@ import "../App.css"
 const ReleasePage = (props) => {
   const [release, setRelease] = useState([]);
 
-  const fetchData = async() => {
-    const data = await getUniqueRelease();
+  const fetchData = async (artist) => {
+    const data = await getUniqueRelease(artist);
     setRelease(data);
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData('Metallica');
   }, []);
 
   return (
@@ -32,7 +32,7 @@ const ReleasePage = (props) => {
           artist={release.artist}
           type="Album"
           date={release.year}
-          generalRating={release.average.toFixed(2)}
+          generalRating={release.average}
           genres="Thrash Metal"
         />
         <Rating />
