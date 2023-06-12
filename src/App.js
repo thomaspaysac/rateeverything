@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import {
   getFirestore,
@@ -25,9 +25,12 @@ import ProfilePage from "./components/Profile";
 
 import './App.css';
 
+
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
   const [userName, setUserName] = useState(undefined);
+
+  const { handle } = useParams();
 
   // Firebase authentication
   initFirebaseAuth();
@@ -57,12 +60,17 @@ const App = () => {
     }
   }
 
+  useEffect(() => {
+    console.log(handle)
+  }, [])
+  
+
   return (
     <BrowserRouter>
       <Header userStatus={isSignedIn} user={userName} />
       <Routes>
         <Route path="/release" element={<ReleasePage />} />
-        <Route path="/artist/" element={<ArtistPage 
+        <Route path="/artist/:artist" element={<ArtistPage 
           artist='Condor44'
         />} />
         <Route path="/signin" element={<SignInPage />} />

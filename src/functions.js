@@ -1,4 +1,4 @@
-import { doc, collection, getCountFromServer, getFirestore, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, collection, getCountFromServer, getFirestore, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "./firebase";
 
 
@@ -47,6 +47,15 @@ const submitRelease = async (artist, release, year, tracks, ratings, reviews, id
   })
 }
 
+const getArtistsList = async () => {
+  const querySnapshot = await getDocs(collection(db, 'artists'));
+  const list = [];
+  querySnapshot.forEach((doc) => {
+    list.push(doc.id);
+  });
+  return list;
+}
+
 const getArtist = async (artist) => {
   const docRef = doc(db, 'artists', artist);
   try {
@@ -67,4 +76,4 @@ const getUniqueRelease = async (artist) => {
   return data.releases[0];
 }
 
-export { submitArtist, submitRelease, getArtist, getReleases, getUniqueRelease };
+export { submitArtist, submitRelease, getArtistsList, getArtist, getReleases, getUniqueRelease };

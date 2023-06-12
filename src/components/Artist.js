@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import ArtistInfo from "./artist_page/ArtistInfo";
 import ReleasesList from "./artist_page/ReleasesList";
 import { getArtist } from "../functions";
+import { useParams } from "react-router-dom";
 
 
 const ArtistPage = (props) => {
@@ -9,6 +10,7 @@ const ArtistPage = (props) => {
   const [releases, setReleases] = useState([]);
   const [genres, setGenres] = useState([]);
 
+  const urlParams = useParams().artist;
   const fetchData = async (artist) => {
     const data = await getArtist(artist);
     setArtist(data);
@@ -17,7 +19,7 @@ const ArtistPage = (props) => {
   };
 
   useEffect(() => {
-    fetchData(props.artist);
+    fetchData(urlParams);
   }, []);
 
   return (
