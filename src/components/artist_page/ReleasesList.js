@@ -1,18 +1,8 @@
 import { React, useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { getReleases, getArtist } from '../../functions';
+import { Link } from "react-router-dom";
+
 
 const ReleasesList = (props) => {
-  const [releases, setReleases] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async (artist) => {
-      const data = await getArtist(artist);
-      setReleases(data.releases);
-    };
-    fetchData('Metallica');
-  }, [])  
-
   return (
     <div className='releases-type_container'>
       <h2>Discography</h2>
@@ -29,7 +19,7 @@ const ReleasesList = (props) => {
             </tr>
           </thead>
           <tbody>
-            {releases.map(el => {
+            {props.releases.map(el => {
               return (
                 <tr key={el.artist + '_' + el.release} className='release-list_release'>
                   <td key = 'release_image'>
@@ -41,7 +31,7 @@ const ReleasesList = (props) => {
                   </td>
                   <td key='release_reviews' className='td-fixed release-table_reviews'>{el.reviews.length}</td>
                   <td key='release_ratings' className='td-fixed release-table_ratings'>{el.ratings.length}</td>
-                  <td key='release_average' className='td-fixed release-table_average'>{el.average.toFixed(2)}</td>
+                  <td key='release_average' className='td-fixed release-table_average'>{el.average}</td>
                 </tr>
               )
             })}

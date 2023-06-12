@@ -62,13 +62,15 @@ const App = () => {
       <Header userStatus={isSignedIn} user={userName} />
       <Routes>
         <Route path="/release" element={<ReleasePage />} />
-        <Route path="/artist" element={<ArtistPage />} />
+        <Route path="/artist/" element={<ArtistPage 
+          artist='Condor44'
+        />} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/profile" 
           element={<ProfilePage 
             username={userName} 
-            addRelease={() => submitRelease('Metallica', 'Kill \'em All', '1983', ['Hit the Lights', 'The Four Horsemen'], [5, 4.5, 3.5, 4, 3, 4, 4], ['', '', ''])}
-            addArtist={() => submitArtist('Metallica', '1981', 'United States', ['Thrash Metal', 'Heavy Metal', 'Hard Rock'])}
+            addRelease={() => submitRelease('Condor44', 'Good Bye 44th Music', '2007', ['Ru\'s Rock', "He Goes on Rocking 'End Roll'"], [5, 4.5, 3.5, 4, 3, 4, 4], ['', '', ''])}
+            addArtist={() => submitArtist('Condor44', '1998', 'Japan', ['Indie Rock'])}
             />}
         />
       </Routes>
