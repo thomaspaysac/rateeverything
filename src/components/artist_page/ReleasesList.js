@@ -26,7 +26,7 @@ const ReleasesList = (props) => {
                     O
                   </td>
                   <td>
-                    <div key='release_title' className='release-table_title'><Link to="/">{el.release}</Link></div>
+                    <div key='release_title' className='release-table_title'><Link to={`/release/${el.artist}/${el.release}`}>{el.release}</Link></div>
                     <div key='release_year' className='release-table_year'>{el.year}</div>
                   </td>
                   <td key='release_reviews' className='td-fixed release-table_reviews'>{el.reviews.length}</td>

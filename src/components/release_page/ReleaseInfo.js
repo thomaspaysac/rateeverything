@@ -29,7 +29,10 @@ const ReleaseInfo = (props) => {
           </tr>
           <tr>
             <td className="table-label">Genres</td>
-            <td>{props.genres}</td>
+            <td className="artist-table_data genres-list">{props.genres.map((el, i) => {
+              return <span key={el}>{el}</span>
+              })
+              }</td>
           </tr>
         </tbody>
       </table>

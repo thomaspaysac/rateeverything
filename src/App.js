@@ -59,26 +59,19 @@ const App = () => {
       console.error('Error writing new task to Firebase Database', error);
     }
   }
-
-  useEffect(() => {
-    console.log(handle)
-  }, [])
   
-
   return (
     <BrowserRouter>
       <Header userStatus={isSignedIn} user={userName} />
       <Routes>
-        <Route path="/release" element={<ReleasePage />} />
-        <Route path="/artist/:artist" element={<ArtistPage 
-          artist='Condor44'
-        />} />
+        <Route path="/release/:artist/:release" element={<ReleasePage />} />
+        <Route path="/artist/:artist" element={<ArtistPage />} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/profile" 
           element={<ProfilePage 
             username={userName} 
-            addRelease={() => submitRelease('Condor44', 'Good Bye 44th Music', '2007', ['Ru\'s Rock', "He Goes on Rocking 'End Roll'"], [5, 4.5, 3.5, 4, 3, 4, 4], ['', '', ''])}
-            addArtist={() => submitArtist('Condor44', '1998', 'Japan', ['Indie Rock'])}
+            addRelease={() => submitRelease('Metallica', 'The Astrud Gilberto Album', '1965', ['Once I Loved', 'Agua de beber2'], ['Bossa Nova', 'Vocal Jazz'], [5, 4.5, 3.5, 4, 3, 4, 4], ['', '', ''])}
+            addArtist={() => submitArtist('Immortal', '1990', 'Norway', ['Black Metal'])}
             />}
         />
       </Routes>

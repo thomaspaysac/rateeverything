@@ -1,9 +1,15 @@
 import { React, useState, useEffect } from "react";
-import { getArtistsList } from "../functions";
+import { getArtistsList, getAllReleases, getAllReleasesLength } from "../functions";
 import { Link } from "react-router-dom";
 
 const ProfilePage = (props) => {
-  const [ artistsList, setArtistsList ] = useState([]);
+  const [artistsList, setArtistsList] = useState([]);
+  const [releasesList, setReleasesList] = useState([]);
+
+  const getReleases = async () => {
+    const data = await getAllReleases();
+    setReleasesList(data);
+  }
 
   const getList = async () => {
     const data = await getArtistsList();
@@ -11,6 +17,7 @@ const ProfilePage = (props) => {
   }
 
   useEffect(() => {
+    getReleases()
     getList()
   }, [])
 
@@ -23,13 +30,18 @@ const ProfilePage = (props) => {
         <button onClick={props.addArtist}>
         Submit artist
         </button>
-        <div>{artistsList.map((item) => {
+      <button onClick={() => getAllReleasesLength()}>
+        Log
+      </button>
+
+        <div>{artistsList.map((el) => {
       return (
-        <Link to={`/artist/${item}`} key={item}>
-            {item}
+        <Link to={`/artist/${el}`} key={el}>
+            {el}
         </Link>
       );
     })}</div>
+
     </div>
   )
 }

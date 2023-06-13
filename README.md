@@ -6,11 +6,18 @@
 
 ## Priorités :
 
-### Fonctionnalités
-- Générer page artiste -> LIEN DYNAMIQUE
-- Générer pages albums -> LIENS DYNAMIQUES
+### Core Fonctionnalités
+O ajouter les genres et un id aux albums, corriger affichage du genre
+X Générer page artiste -> LIEN DYNAMIQUE
+X Générer pages albums -> LIENS DYNAMIQUES
+O Arranger albums par dates
 
-- Ajouter artiste puis album par formulaire
+O Ajouter artiste puis album par formulaire
+
+
+## Second temps
+### UI
+O Ajouter tri des albums selon critères sur page de groupe
 
 ### Comptes
-- Vérification validité / disponibilité infos avant création de compte
+O Vérification validité / disponibilité infos avant création de compte
