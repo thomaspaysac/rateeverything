@@ -15,7 +15,7 @@ const ReleasePage = (props) => {
 
   const fetchData = async (artist, releaseName) => {
     const data = await getUniqueRelease(artist, releaseName);
-    setGenres(data.genres)
+    setGenres(data.genres.join(', '));
     setRelease(data);
   };
 

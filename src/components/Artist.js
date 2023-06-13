@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import ArtistInfo from "./artist_page/ArtistInfo";
 import ReleasesList from "./artist_page/ReleasesList";
 import { getArtist } from "../functions";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const ArtistPage = (props) => {
@@ -15,7 +15,7 @@ const ArtistPage = (props) => {
     const data = await getArtist(artist);
     setArtist(data);
     setReleases(data.releases);
-    setGenres(data.genres);
+    setGenres(data.genres.join(', '));
   };
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const ArtistPage = (props) => {
           artist={artist.artist} 
           releases={releases}
           />
+        <Link to={`/artist/${urlParams}/add_release`}>Add new release</Link>
       </div>
     </div>
   )

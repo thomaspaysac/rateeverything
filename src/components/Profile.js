@@ -42,6 +42,10 @@ const ProfilePage = (props) => {
       );
     })}</div>
 
+    <div>
+      <Link to='/artist/add_artist'>Add new artist</Link>
+    </div>
+
     </div>
   )
 }

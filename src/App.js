@@ -22,6 +22,8 @@ import ReleasePage from "./components/Release";
 import ArtistPage from "./components/Artist";
 import SignInPage from "./components/SignIn";
 import ProfilePage from "./components/Profile";
+import NewArtistPage from "./components/NewArtist";
+import NewReleasePage from "./components/NewRelease";
 
 import './App.css';
 
@@ -74,6 +76,8 @@ const App = () => {
             addArtist={() => submitArtist('Immortal', '1990', 'Norway', ['Black Metal'])}
             />}
         />
+        <Route path="/artist/add_artist" element={<NewArtistPage />} />
+        <Route path="/artist/:artist/add_release" element={<NewReleasePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -19,10 +19,7 @@ const ArtistInfo = (props) => {
             <td className="artist-table_label">Genres</td>
           </tr>
           <tr>
-            <td className="artist-table_data genres-list">{props.genres.map((el, i) => {
-              return <span key={el}>{el}</span>
-              })
-              }</td>
+            <td className="artist-table_data genres-list">{props.genres}</td>
           </tr>
         </tbody>
       </table>
