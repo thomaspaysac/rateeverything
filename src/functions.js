@@ -135,21 +135,27 @@ const updateReleaseRating = async (release, user, rating) => {
   // Get the artistRef from the album ID
   const artistRef = doc(db, 'artists', release.artist);
   // Get album index from the "release" array
-  const releasesArray = await getReleases(release.artist);
-  let targetIndex = 0;
-  for (const item of releasesArray) {
-    if (item.albumID !== release.albumID) {
-      ++targetIndex;
+  const docSnap = await getDoc(artistRef);
+  const data = docSnap.data();
+  let index = 0;
+  let targetIndex = undefined;
+  for (const item of data.releases) {
+    if (release.albumID !== item.albumID) {
+      index++;
+    } else {
+      targetIndex = index;
     }
   }
-  await updateDoc(artistRef, {
-    releases: arrayUnion({
-      ratings: {
-        user: user,
-        rating: rating
-      },
-    })
+  // Use local copy before sending the data back to modify nested ratings array
+  const localCopy = data;
+  const localRatings = localCopy.releases[targetIndex].ratings;
+  // if user has already rated the release, replace the rating
+
+  localRatings.push({
+    user: user,
+    rating: rating,
   })
+  await updateDoc(artistRef, localCopy)
 }
 
 export { submitArtist, 
