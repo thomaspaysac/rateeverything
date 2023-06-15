@@ -11,6 +11,7 @@ const UserRatingsPage = (props) => {
 
   return (
     <div className='release_user-ratings-list'>
+      <div className="rating-component_title">Catalog</div>
       {
         props.ratings.map(el => {
           return (

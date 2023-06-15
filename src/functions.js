@@ -1,5 +1,6 @@
 import { doc, collection, getCountFromServer, getFirestore, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "./firebase";
+import format from "date-fns/format";
 
 
 const getCollLength = async () => {
@@ -149,8 +150,9 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
   // Use local copy before sending the data back to modify nested ratings array
   const localCopy = data;
   const localRatings = localCopy.releases[targetIndex].ratings;
-  const date = new Date()
-  const ratingDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  const date = new Date();
+  const ratingDate = format(new Date(), 'dd MMM yy')
+  //const ratingDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
   // if user has already rated the release, replace the rating
   const userRatingObject = localRatings.find((obj) => obj.userID === userID);
   if (!userRatingObject) {
