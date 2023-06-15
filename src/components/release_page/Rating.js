@@ -8,11 +8,11 @@ const Rating = (props) => {
 
   const updateRating = async (e) => {
     e.preventDefault();
-    const user = getAuth().currentUser.uid;
+    const user = getAuth().currentUser.displayName;
     const release = await getReleaseByID(props.releaseID);
     let rating = document.getElementById('rating').value;
     //console.log(rating, release, user);
-    updateReleaseRating(release, user, rating);
+    updateReleaseRating(release, getAuth().currentUser.displayName, getAuth().currentUser.uid, rating);
   }
 
   return (

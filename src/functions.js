@@ -131,7 +131,7 @@ const getReleaseByID = async (targetID) => {
  return allReleases[targetIndex];
 }
 
-const updateReleaseRating = async (release, user, rating) => {
+const updateReleaseRating = async (release, username, userID, rating) => {
   // Get the artistRef from the album ID
   const artistRef = doc(db, 'artists', release.artist);
   // Get album index from the "release" array
@@ -149,12 +149,21 @@ const updateReleaseRating = async (release, user, rating) => {
   // Use local copy before sending the data back to modify nested ratings array
   const localCopy = data;
   const localRatings = localCopy.releases[targetIndex].ratings;
+  const date = new Date()
+  const ratingDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
   // if user has already rated the release, replace the rating
-
-  localRatings.push({
-    user: user,
-    rating: rating,
-  })
+  const userRatingObject = localRatings.find((obj) => obj.userID === userID);
+  if (!userRatingObject) {
+    localRatings.push({
+      username: username,
+      userID: userID,
+      rating: rating,
+      date: ratingDate,
+    })
+  } else {
+    userRatingObject.rating = rating;
+    userRatingObject.date = ratingDate;
+  }
   await updateDoc(artistRef, localCopy)
 }
 
