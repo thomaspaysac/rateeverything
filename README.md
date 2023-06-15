@@ -10,7 +10,7 @@
 X ajouter les genres et un id aux albums, corriger affichage du genre
 X Générer page artiste -> LIEN DYNAMIQUE
 X Générer pages albums -> LIENS DYNAMIQUES
-O Ajouter notes aux pages albums
+X Ajouter notes aux pages albums
 O Ajouter notes au profil utilisateur
 O Ajouter reviews aux pages albums
 O Ajouter reviews aux pages utilisateur
