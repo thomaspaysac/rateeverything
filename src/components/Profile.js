@@ -24,15 +24,12 @@ const ProfilePage = (props) => {
   return (
     <div>
       <div>Hello {props.username}</div>
-      <button onClick={props.addRelease}>
-        Submit album
+      <button onClick={props.sendData}>
+        Send Data
       </button>
-        <button onClick={props.addArtist}>
-        Submit artist
-        </button>
-      <button onClick={() => getAllReleasesLength()}>
+        <button onClick={() => console.log(releasesList)}>
         Log
-      </button>
+        </button>
 
         <div>{artistsList.map((el) => {
       return (

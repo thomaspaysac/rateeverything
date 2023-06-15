@@ -32,8 +32,6 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
   const [userName, setUserName] = useState(undefined);
 
-  const { handle } = useParams();
-
   // Firebase authentication
   initFirebaseAuth();
 
@@ -53,8 +51,8 @@ const App = () => {
   // Send data to firestore
   const sendPrivateData = async () => {
     try {
-      await setDoc(doc(getFirestore(), getAuth().currentUser.uid, 'test'), {
-        test: 'data',
+      await setDoc(doc(getFirestore(), getAuth().currentUser.uid, 'ratings'), {
+        displayName: getAuth().currentUser.displayName,
       });    
     }
     catch(error) {
@@ -72,8 +70,7 @@ const App = () => {
         <Route path="/profile" 
           element={<ProfilePage 
             username={userName} 
-            addRelease={() => submitRelease('Metallica', 'The Astrud Gilberto Album', '1965', ['Once I Loved', 'Agua de beber2'], ['Bossa Nova', 'Vocal Jazz'], [5, 4.5, 3.5, 4, 3, 4, 4], ['', '', ''])}
-            addArtist={() => submitArtist('Immortal', '1990', 'Norway', ['Black Metal'])}
+            sendData={() => sendPrivateData()}
             />}
         />
         <Route path="/artist/add_artist" element={<NewArtistPage />} />

@@ -23,7 +23,7 @@ body {
   background-color: map-get($dark-theme, background);
 }
 
-button {
+button, input {
   color: #000000;
 }
 
@@ -273,9 +273,5 @@ header {
   .input-group {
     display: flex;
     flex-direction: column;
-  }
-
-  input {
-    color: #000000;
   }
 }

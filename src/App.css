@@ -9,7 +9,7 @@
 body {
   background-color: #0B1528; }
 
-button {
+button, input {
   color: #000000; }
 
 header {
@@ -202,8 +202,5 @@ header {
   #signin-form .input-group {
     display: flex;
     flex-direction: column; }
-  #signup-form input,
-  #signin-form input {
-    color: #000000; }
 
 /*# sourceMappingURL=App.css.map */

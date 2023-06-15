@@ -1,6 +1,5 @@
 import { doc, collection, getCountFromServer, getFirestore, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "./firebase";
-import { all } from "axios";
 
 
 const getCollLength = async () => {
@@ -86,12 +85,18 @@ const getReleases = async (artist) => {
 }
 
 const getAllReleases = async () => {
-  const releasesList = [];
+  const releasesListByArtist = [];
+  const allReleasesList = [];
   const allArtists = await getAllArtistsData();
   for (const artist of allArtists) {
-    releasesList.push(artist.releases)
+    releasesListByArtist.push(artist.releases)
   }
-  return releasesList;
+  for (const item of releasesListByArtist) {
+    item.forEach(release => {
+      allReleasesList.push(release)
+    })
+  }
+  return allReleasesList;
 }
 
 const getAllReleasesLength = async () => {
@@ -115,4 +120,47 @@ const getUniqueRelease = async (artist, releaseName) => {
   return data.releases[targetIndex];
 }
 
-export { submitArtist, submitRelease, getArtistsList, getAllArtistsData, getArtist, getReleases, getAllReleases, getAllReleasesLength, getUniqueRelease };
+const getReleaseByID = async (targetID) => {
+ const allReleases = await getAllReleases();
+ let targetIndex = undefined;
+ allReleases.map((el, i) => {
+  if (el.albumID === targetID) {
+    targetIndex = i;
+  }
+ })
+ return allReleases[targetIndex];
+}
+
+const updateReleaseRating = async (release, user, rating) => {
+  // Get the artistRef from the album ID
+  const artistRef = doc(db, 'artists', release.artist);
+  // Get album index from the "release" array
+  const releasesArray = await getReleases(release.artist);
+  let targetIndex = 0;
+  for (const item of releasesArray) {
+    if (item.albumID !== release.albumID) {
+      ++targetIndex;
+    }
+  }
+  await updateDoc(artistRef, {
+    releases: arrayUnion({
+      ratings: {
+        user: user,
+        rating: rating
+      },
+    })
+  })
+}
+
+export { submitArtist, 
+  submitRelease, 
+  getArtistsList, 
+  getAllArtistsData, 
+  getArtist, 
+  getReleases, 
+  getAllReleases, 
+  getAllReleasesLength, 
+  getUniqueRelease, 
+  getReleaseByID,
+  updateReleaseRating 
+};
