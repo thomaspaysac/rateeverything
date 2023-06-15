@@ -185,6 +185,26 @@ header {
   display: flex;
   gap: 5px; }
 
+.release_user-ratings-list {
+  padding: 25px 30px; }
+
+.release_user-ratings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0;
+  gap: 8px;
+  background-color: #161A25; }
+
+.release-ratings_info {
+  display: flex;
+  width: 100%;
+  padding: 4px 32px 4px 4px;
+  background-color: #292D39; }
+
+.release-ratings_username {
+  flex-grow: 1; }
+
 .signup-container,
 .signin-container {
   border: 2px solid #DBE0E9;

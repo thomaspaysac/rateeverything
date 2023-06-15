@@ -131,16 +131,16 @@ const getReleaseByID = async (targetID) => {
  return allReleases[targetIndex];
 }
 
-const updateReleaseRating = async (release, username, userID, rating) => {
+const updateReleaseRating = async (releaseID, username, userID, rating) => {
   // Get the artistRef from the album ID
-  const artistRef = doc(db, 'artists', release.artist);
+  const artistRef = doc(db, 'artists', releaseID.artist);
   // Get album index from the "release" array
   const docSnap = await getDoc(artistRef);
   const data = docSnap.data();
   let index = 0;
   let targetIndex = undefined;
   for (const item of data.releases) {
-    if (release.albumID !== item.albumID) {
+    if (releaseID.albumID !== item.albumID) {
       index++;
     } else {
       targetIndex = index;
@@ -167,6 +167,29 @@ const updateReleaseRating = async (release, username, userID, rating) => {
   await updateDoc(artistRef, localCopy)
 }
 
+const getRatingsByRelease = async (release) => {
+  // Get the artistRef from the album ID
+  const artistRef = doc(db, 'artists', release.artist);
+  // Get album index from the "release" array
+  const docSnap = await getDoc(artistRef);
+  const data = docSnap.data();
+  let index = 0;
+  let targetIndex = undefined;
+  for (const item of data.releases) {
+    if (release.albumID !== item.albumID) {
+      index++;
+    } else {
+      targetIndex = index;
+    }
+  }
+  const ratings = data.releases[targetIndex].ratings;
+  const userRatingsData = []
+  ratings.map((el) => userRatingsData.push([el.username, el.rating]))
+  // Trier les notes par date
+  console.log(userRatingsData);
+  return userRatingsData;
+}
+
 export { submitArtist, 
   submitRelease, 
   getArtistsList, 
@@ -177,5 +200,6 @@ export { submitArtist,
   getAllReleasesLength, 
   getUniqueRelease, 
   getReleaseByID,
-  updateReleaseRating 
+  updateReleaseRating, 
+  getRatingsByRelease
 };

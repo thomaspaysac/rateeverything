@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getAuth } from "firebase/auth";
 import ReleaseInfo from "./release_page/ReleaseInfo";
 import Rating from "./release_page/Rating";
+import UserRatingsPage from "./release_page/UserRatings";
 
-import { getReleases, getUniqueRelease } from "../functions";
+import { getUniqueRelease } from "../functions";
 
 import "../App.css"
 
@@ -12,6 +12,7 @@ const ReleasePage = (props) => {
   const [release, setRelease] = useState([]);
   const [genres, setGenres] = useState([]);
   const [releaseID, setReleaseID] = useState(undefined);
+  const [ratings, setRatings] = useState([])
 
   const urlParams = useParams();
 
@@ -19,7 +20,8 @@ const ReleasePage = (props) => {
     const data = await getUniqueRelease(artist, releaseName);
     setGenres(data.genres.join(', '));
     setRelease(data);
-    setReleaseID(data.albumID)
+    setRatings(data.ratings);
+    setReleaseID(data.albumID);
   };
 
   useEffect(() => {
@@ -44,8 +46,10 @@ const ReleasePage = (props) => {
         <Rating
           releaseID={releaseID}
         />
+        <UserRatingsPage
+          ratings={ratings} />
       </div>
-      <button onClick={() => console.log(release)}>Test</button>
+
     </div>
   )
 }
