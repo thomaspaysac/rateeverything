@@ -1,6 +1,14 @@
 import { doc, collection, getCountFromServer, getFirestore, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "./firebase";
 import format from "date-fns/format";
+
+const userFirestoreSetup = async (userID, username) => {
+  await setDoc(doc(db, 'users', userID), {
+    username: username,
+    ratings: [],
+  });
+}
 
 
 const getCollLength = async () => {
@@ -150,9 +158,7 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
   // Use local copy before sending the data back to modify nested ratings array
   const localCopy = data;
   const localRatings = localCopy.releases[targetIndex].ratings;
-  const date = new Date();
   const ratingDate = format(new Date(), 'dd MMM yy')
-  //const ratingDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
   // if user has already rated the release, replace the rating
   const userRatingObject = localRatings.find((obj) => obj.userID === userID);
   if (!userRatingObject) {
@@ -166,7 +172,29 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
     userRatingObject.rating = rating;
     userRatingObject.date = ratingDate;
   }
-  await updateDoc(artistRef, localCopy)
+  await updateDoc(artistRef, localCopy);
+  linkRatingToUser(userID, releaseID, rating, ratingDate);
+}
+
+const linkRatingToUser = async (userID, release, rating, date) => {
+  const userRef = doc(db, 'users', userID);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const localCopy = data;
+  const localRatings = data.ratings;
+  const existingRating = localRatings.find((obj) => obj.release.albumID === release.albumID);
+  console.log(existingRating);
+  if (existingRating === undefined) {
+    localRatings.push({
+      release: release,
+      rating: rating,
+      date: date,
+    })
+  } else {
+    existingRating.rating = rating;
+    existingRating.date = date;
+  }
+  await updateDoc(userRef, localCopy);
 }
 
 const getRatingsByRelease = async (release) => {
@@ -192,7 +220,13 @@ const getRatingsByRelease = async (release) => {
   return userRatingsData;
 }
 
-export { submitArtist, 
+const getPersonalRatings = (user) => {
+
+}
+
+export { 
+  userFirestoreSetup,
+  submitArtist, 
   submitRelease, 
   getArtistsList, 
   getAllArtistsData, 

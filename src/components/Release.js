@@ -18,9 +18,10 @@ const ReleasePage = (props) => {
 
   const fetchData = async (artist, releaseName) => {
     const data = await getUniqueRelease(artist, releaseName);
+    const sortedRatings = data.ratings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     setGenres(data.genres.join(', '));
     setRelease(data);
-    setRatings(data.ratings);
+    setRatings(sortedRatings);
     setReleaseID(data.albumID);
   };
 

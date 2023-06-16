@@ -13,8 +13,9 @@ const ArtistPage = (props) => {
   const urlParams = useParams().artist;
   const fetchData = async (artist) => {
     const data = await getArtist(artist);
+    const sortedReleases = data.releases.sort((a, b) => (a.year > b.year) ? 1 : (a.year < b.year) ? -1 : 0);
     setArtist(data);
-    setReleases(data.releases);
+    setReleases(sortedReleases);
     setGenres(data.genres.join(', '));
   };
 

@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import { userFirestoreSetup } from "../functions";
 
 import "../App.css"
 
@@ -30,6 +31,7 @@ const SignInPage = () => {
       // Signed in 
       const user = userCredential.user;
       updateProfile(auth.currentUser, { displayName: displayName })
+      .then(userFirestoreSetup(auth.currentUser.uid, displayName))
       .catch((error) => console.log(error));
     })
     .catch((error) => {

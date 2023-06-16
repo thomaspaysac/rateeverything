@@ -14,8 +14,8 @@ X Ajouter notes aux pages albums
 O Ajouter notes au profil utilisateur
 O Ajouter reviews aux pages albums
 O Ajouter reviews aux pages utilisateur
-O Arranger albums par dates
-O Arranger notes par dates
+X Arranger albums par dates
+X Arranger notes par dates
 
 
 ~ Ajouter artiste puis album par formulaire (affiner tracklist et données artiste)
