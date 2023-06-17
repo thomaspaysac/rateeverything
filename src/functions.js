@@ -4,12 +4,19 @@ import { db } from "./firebase";
 import format from "date-fns/format";
 
 const userFirestoreSetup = async (userID, username) => {
-  await setDoc(doc(db, 'users', userID), {
+    await setDoc(doc(db, 'users', userID), {
     username: username,
     ratings: [],
+    date: format(new Date(), 'dd MMM yy'),
   });
 }
 
+const getUserInfo = async (userID) => {
+  const userRef = doc(db, 'users', userID);
+  const docSnap = await getDoc(userRef);
+  const accountDate = docSnap.data().date;
+  return accountDate;
+}
 
 const getCollLength = async () => {
   const coll = collection(db, 'artists');
@@ -52,9 +59,7 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
       reviews: reviews,
       genres: genres,
       albumID: albumID,
-      get average(){
-        return (this.ratings.reduce((acc, curr) => acc + curr, 0) / this.ratings.length).toFixed(2);
-      },
+      average: '',
     })
   })
 }
@@ -158,20 +163,24 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
   // Use local copy before sending the data back to modify nested ratings array
   const localCopy = data;
   const localRatings = localCopy.releases[targetIndex].ratings;
-  const ratingDate = format(new Date(), 'dd MMM yy')
+  const ratingDate = format(new Date(), 'dd MMM yy');
   // if user has already rated the release, replace the rating
   const userRatingObject = localRatings.find((obj) => obj.userID === userID);
   if (!userRatingObject) {
     localRatings.push({
       username: username,
       userID: userID,
-      rating: rating,
+      rating: +rating,
       date: ratingDate,
     })
   } else {
-    userRatingObject.rating = rating;
+    userRatingObject.rating = +rating;
     userRatingObject.date = ratingDate;
   }
+  // Update average rating
+  const ratingsSum = localRatings.reduce((acc, el) => {return acc + el.rating;}, 0);
+  const averageRating = +(ratingsSum / localRatings.length).toFixed(2);
+  localCopy.releases[targetIndex].average = averageRating;
   await updateDoc(artistRef, localCopy);
   linkRatingToUser(userID, releaseID, rating, ratingDate);
 }
@@ -183,7 +192,6 @@ const linkRatingToUser = async (userID, release, rating, date) => {
   const localCopy = data;
   const localRatings = data.ratings;
   const existingRating = localRatings.find((obj) => obj.release.albumID === release.albumID);
-  console.log(existingRating);
   if (existingRating === undefined) {
     localRatings.push({
       release: release,
@@ -220,12 +228,17 @@ const getRatingsByRelease = async (release) => {
   return userRatingsData;
 }
 
-const getPersonalRatings = (user) => {
-
+const getPersonalRatings = async (userID) => {
+  const userRef = doc(db, 'users', userID);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const ratings = data.ratings;
+  return ratings;
 }
 
 export { 
   userFirestoreSetup,
+  getUserInfo,
   submitArtist, 
   submitRelease, 
   getArtistsList, 
@@ -237,5 +250,6 @@ export {
   getUniqueRelease, 
   getReleaseByID,
   updateReleaseRating, 
-  getRatingsByRelease
+  getRatingsByRelease,
+  getPersonalRatings,
 };

@@ -12,6 +12,14 @@ body {
 button, input {
   color: #000000; }
 
+.content-page a {
+  color: #84C5FB;
+  text-decoration: none; }
+  .content-page a:hover {
+    color: #C7E2FF; }
+.content-page .bolded {
+  font-weight: 700; }
+
 header {
   background-color: #152238;
   color: #DBE0E9;
@@ -83,7 +91,7 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
+  font-size: 2.34rem;
   padding: 15px 22px 7px 22px;
   margin-bottom: 9px; }
   .artist_name .artist-id {
@@ -93,6 +101,8 @@ header {
 .artist-info_table {
   width: 100%;
   padding: 0 22px; }
+  .artist-info_table .datagroup {
+    margin-bottom: 16px; }
 
 .artist-table_data {
   display: inline; }
@@ -129,6 +139,8 @@ header {
     text-align: center; }
     .releases-list_table .td-fixed:nth-child(2) {
       text-align: left; }
+  .releases-list_table .release-table_average {
+    color: #84C5FB; }
 
 .releases-list_thead {
   border: 1px solid #ffffff;
@@ -157,7 +169,7 @@ header {
   justify-content: space-between;
   font-size: 1.8rem;
   padding: 0 9px;
-  margin-bottom: 3px; }
+  margin-bottom: 5px; }
   .release-title .release-id {
     font-size: 0.9rem;
     color: #9DA3AF; }
@@ -170,6 +182,13 @@ header {
   color: #9DA3AF;
   padding: 5px;
   width: 125px; }
+
+.release-info_average {
+  font-size: 1.23rem; }
+
+.release-info_average_secondary {
+  font-size: 0.9rem;
+  color: #9DA3AF; }
 
 .rating-component {
   padding: 25px 30px;
@@ -210,6 +229,25 @@ header {
 
 .release-ratings_username {
   flex-grow: 1; }
+
+.content-wrapper {
+  padding: 45px; }
+
+.profile-header {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: #DBE0E9;
+  text-align: right;
+  background-color: #242834; }
+
+.profile-username {
+  font-size: 2.25rem;
+  margin-left: 18px; }
+
+.personal-rating_container {
+  display: grid;
+  grid-template-rows: 100px;
+  grid-template-columns: 50px 29px 112px 1fr 163px; }
 
 .signup-container,
 .signin-container {

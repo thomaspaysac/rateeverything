@@ -24,7 +24,7 @@ const ArtistPage = (props) => {
   }, []);
 
   return (
-    <div className="artist-page">
+    <div className="artist-page content-page">
       <div className="artist_left-col">
       <button onClick={() => console.log(artist)}>Test</button>
       </div>

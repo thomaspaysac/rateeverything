@@ -1,10 +1,14 @@
 import { React, useState, useEffect } from "react";
-import { getArtistsList, getAllReleases, getAllReleasesLength } from "../functions";
+import { getUserInfo, getArtistsList, getAllReleases, getAllReleasesLength, getPersonalRatings } from "../functions";
 import { Link } from "react-router-dom";
+import PersonalRatings from "./profile_page/PersonalRatings";
 
 const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
   const [releasesList, setReleasesList] = useState([]);
+  const [userRatings, setUserRatings] = useState([]);
+  const [userDate, setUserDate] = useState();
+  
 
   const getReleases = async () => {
     const data = await getAllReleases();
@@ -16,33 +20,53 @@ const ProfilePage = (props) => {
     setArtistsList(data);
   }
 
+  const getUserRatings = async () => {
+    const data = await getPersonalRatings(props.userID);
+    setUserRatings(data);
+  }
+
+  const userInfo = async () => {
+    const data = await getUserInfo(props.userID);
+    setUserDate(data);
+  }
+
   useEffect(() => {
-    getReleases()
-    getList()
+    getReleases();
+    getList();
+    if (props.userID) {
+      getUserRatings();
+      userInfo();
+    }
   }, [])
 
   return (
-    <div>
-      <div>Hello {props.username}</div>
-      <button onClick={props.sendData}>
-        Send Data
-      </button>
-        <button onClick={() => console.log(releasesList)}>
-        Log
+    <div className="content-page">
+    <div className="content-wrapper">
+      <div className="profile-header">
+        member since {userDate} <span className="profile-username">{props.username}</span>
+      </div>
+        <button onClick={props.sendData}>
+          Send Data
         </button>
+          <button onClick={() => console.log(props.userID)}>
+          Log
+          </button>
 
-        <div>{artistsList.map((el) => {
-      return (
-        <Link to={`/artist/${el}`} key={el}>
-            {el}
-        </Link>
-      );
-    })}</div>
+          <div>{artistsList.map((el) => {
+        return (
+          <Link to={`/artist/${el}`} key={el}>
+              {el}
+          </Link>
+        );
+      })}</div>
+      <div>
+        <Link to='/artist/add_artist'>Add new artist</Link>
+      </div>
 
-    <div>
-      <Link to='/artist/add_artist'>Add new artist</Link>
+      <PersonalRatings 
+        userRatings={userRatings}
+      />
     </div>
-
     </div>
   )
 }

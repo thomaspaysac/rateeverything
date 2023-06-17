@@ -30,7 +30,7 @@ const ReleasePage = (props) => {
   }, []);
 
   return (
-    <div className="release-page">
+    <div className="release-page content-page">
       <div className="release_left-col">
 
       </div>
@@ -42,6 +42,7 @@ const ReleasePage = (props) => {
           type="Album"
           date={release.year}
           generalRating={release.average}
+          ratingsNumber={ratings.length}
           genres={genres}
         />
         <Rating

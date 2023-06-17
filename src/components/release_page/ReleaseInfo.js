@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "C:/Users/paysa/Documents/GitHub/rateeverything/src/App.css";
+import { Link } from "react-router-dom";
 
 const ReleaseInfo = (props) => {
   return (
@@ -13,7 +13,7 @@ const ReleaseInfo = (props) => {
         <tbody>
           <tr>
             <td className="table-label">Artist</td>
-            <td>{props.artist}</td>
+            <td><Link to={`/artist/${props.artist}`} className="bolded">{props.artist}</Link></td>
           </tr>
           <tr>
             <td className="table-label">Type</td>
@@ -25,7 +25,7 @@ const ReleaseInfo = (props) => {
           </tr>
           <tr>
             <td className="table-label">RYS Rating</td>
-            <td>{props.generalRating}</td>
+            <td><span className="release-info_average bolded">{props.generalRating}</span> <span className="release-info_average_secondary">/ 5.0 from <span className="bolded release-info_average_secondary">{props.ratingsNumber}</span> ratings</span></td>
           </tr>
           <tr>
             <td className="table-label">Genres</td>

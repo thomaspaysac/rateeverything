@@ -15,7 +15,7 @@ import {
   getDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import { submitArtist, submitRelease } from "./functions";
+import { getUserInfo, submitArtist, submitRelease } from "./functions";
 
 import Header from "./components/Header";
 import ReleasePage from "./components/Release";
@@ -31,6 +31,9 @@ import './App.css';
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
   const [userName, setUserName] = useState(undefined);
+  const [userID, setUserID] = useState(undefined);
+  const [userDate, setUserDate] = useState(undefined);
+
 
   // Firebase authentication
   initFirebaseAuth();
@@ -43,6 +46,7 @@ const App = () => {
     if (user) { // User is signed in!
       setIsSignedIn(true);
       setUserName(getAuth().currentUser.displayName)
+      setUserID(getAuth().currentUser.uid)
     } else {
       setIsSignedIn(false);
     }
@@ -70,6 +74,7 @@ const App = () => {
         <Route path="/profile" 
           element={<ProfilePage 
             username={userName} 
+            userID={userID}
             sendData={() => sendPrivateData()}
             />}
         />

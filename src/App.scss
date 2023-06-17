@@ -7,6 +7,8 @@ $dark-theme: (
   font-light: #DBE0E9,
   searchbar: #1C2B45,
   background: #0B1528,
+  links: #84C5FB,
+  links-hover: #C7E2FF,
 );
 
 
@@ -25,6 +27,21 @@ body {
 
 button, input {
   color: #000000;
+}
+
+.content-page {
+  a {
+    color: map-get($dark-theme, links);
+    text-decoration: none;
+
+    &:hover {
+      color: map-get($dark-theme, links-hover);
+    }
+  }
+
+  .bolded {
+    font-weight: 700;
+  }
 }
 
 // Components styling
@@ -119,7 +136,7 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
+  font-size: 2.34rem;
   padding: 15px 22px 7px 22px;
   margin-bottom: 9px;
 
@@ -132,6 +149,10 @@ header {
 .artist-info_table {
   width: 100%;
   padding: 0 22px;
+
+  .datagroup {
+    margin-bottom: 16px;
+  }
 }
 
 .artist-table_data {
@@ -182,6 +203,10 @@ header {
       text-align: left;
     }
   }
+
+  .release-table_average {
+    color: map-get($dark-theme, links)
+  }
 }
 
 .releases-list_thead {
@@ -218,7 +243,7 @@ header {
   justify-content: space-between;
   font-size: 1.8rem;
   padding: 0 9px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 
   .release-id {
     font-size: 0.9rem;
@@ -235,6 +260,15 @@ header {
   color: #9DA3AF;
   padding: 5px;
   width: 125px;
+}
+
+.release-info_average {
+  font-size: 1.23rem;
+}
+
+.release-info_average_secondary {
+  font-size: 0.9rem;
+  color: #9DA3AF;
 }
 
 .rating-component {
@@ -284,6 +318,30 @@ header {
 
 .release-ratings_username {
   flex-grow: 1;
+}
+
+// User profile
+.content-wrapper {
+  padding: 45px;
+}
+
+.profile-header {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: map-get($dark-theme, font-light);
+  text-align: right;
+  background-color: #242834;
+}
+
+.profile-username {
+  font-size: 2.25rem;
+  margin-left: 18px;
+}
+
+.personal-rating_container {
+  display: grid;
+  grid-template-rows: 100px;
+  grid-template-columns: 50px 29px 112px 1fr 163px;
 }
 
 // Signin page

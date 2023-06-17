@@ -26,12 +26,12 @@ const ReleasesList = (props) => {
                     O
                   </td>
                   <td>
-                    <div key='release_title' className='release-table_title'><Link to={`/release/${el.artist}/${el.release}`}>{el.release}</Link></div>
+                    <div key='release_title' className={`release-table_title ${el.average > 3.70 ? "bolded" : ""}`}><Link to={`/release/${el.artist}/${el.release}`}>{el.release}</Link></div>
                     <div key='release_year' className='release-table_year'>{el.year}</div>
                   </td>
                   <td key='release_reviews' className='td-fixed release-table_reviews'>{el.reviews.length}</td>
                   <td key='release_ratings' className='td-fixed release-table_ratings'>{el.ratings.length}</td>
-                  <td key='release_average' className='td-fixed release-table_average'>{el.average}</td>
+                  <td key='release_average' className='td-fixed release-table_average bolded'>{el.average}</td>
                 </tr>
               )
             })}
