@@ -22,7 +22,7 @@ O Rechercher dans la base de données
 O Ajouter images albums et profil
 
 
-~ Ajouter artiste puis album par formulaire (affiner tracklist et données artiste)
+~ Affiner données artistes on submit
 
 
 ## Second temps

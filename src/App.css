@@ -21,6 +21,11 @@ button, input {
 .bolded {
   font-weight: 700; }
 
+.warning {
+  background-color: #463C07;
+  padding: 15px 30px;
+  font-size: 0.94rem; }
+
 .content-section {
   background-color: #20232F;
   padding: 10px;
@@ -235,6 +240,99 @@ header {
 
 .release-ratings_username {
   flex-grow: 1; }
+
+.add-release_page .section-header {
+  padding: 7px 20px; }
+.add-release_page label {
+  display: block; }
+.add-release_page input {
+  background-color: #152238;
+  width: 496px;
+  font-size: medium;
+  color: #DBE0E9;
+  padding: 2px;
+  border: 1px solid #656C80;
+  border-radius: 5px; }
+.add-release_page .submit-tracklist-table_track .tracklist-th {
+  font-size: 1rem; }
+.add-release_page .submit-tracklist-table_track td {
+  height: 30px; }
+.add-release_page .submit-tracklist-table_track input {
+  border: none;
+  margin: 4px; }
+.add-release_page .submit-tracklist-table_track:nth-of-type(odd) {
+  background-color: #4E5465; }
+  .add-release_page .submit-tracklist-table_track:nth-of-type(odd) input {
+    background-color: #4E5465; }
+.add-release_page .submit-tracklist-table_track:nth-of-type(even) {
+  background-color: #0B0E19; }
+  .add-release_page .submit-tracklist-table_track:nth-of-type(even) input {
+    background-color: #0B0E19; }
+.add-release_page .tracklist-td_number {
+  width: 44px; }
+.add-release_page .tracklist-td_title {
+  width: 494px; }
+.add-release_page .tracklist-td_time {
+  width: 66px; }
+.add-release_page input[type='button'] {
+  background-color: #006ED1 !important;
+  width: fit-content;
+  padding: 3px 10px;
+  border: none; }
+  .add-release_page input[type='button']:hover, .add-release_page input[type='button']:active {
+    cursor: pointer;
+    background-color: #005DBF; }
+.add-release_page .separator {
+  width: 100%;
+  height: 1px;
+  background-color: #DBE0E9; }
+
+.tracklist-td_remove input {
+  width: 29px; }
+
+.note {
+  font-size: medium; }
+
+.warning-note {
+  font-size: medium;
+  color: #F1696B; }
+
+.add-release_step-header {
+  font-size: 1.36rem;
+  margin: 40px 5px 5px 5px; }
+
+.add-release_step-number {
+  color: #7B818F; }
+
+.add-release_step-box {
+  background-color: #20232F;
+  padding: 10px 10px;
+  border: 1px solid #323643;
+  border-radius: 4px; }
+
+.add-release_step-label {
+  margin-top: 20px; }
+
+.add-release_input-group {
+  padding: 5px; }
+  .add-release_input-group div {
+    padding: 5px; }
+
+.tracklist_actions {
+  background-color: #1B1E2A;
+  border: 1px solid #2B2F3C;
+  width: fit-content; }
+  .tracklist_actions input {
+    margin: 13px; }
+
+#add-release_submit-button {
+  background-color: #006ED1;
+  font-size: 1.2rem;
+  padding: 12px;
+  border: none;
+  margin-top: 10px; }
+  #add-release_submit-button:hover, #add-release_submit-button:active {
+    background-color: #005DBF; }
 
 .content-wrapper {
   padding: 45px; }
