@@ -9,7 +9,7 @@ const ArtistInfo = (props) => {
       </div>
       <table className="artist-info_table">
         <tbody>
-          <div class="datagroup">
+          <div className="datagroup">
             <tr>
               <td className="artist-table_label">Formed</td>
             </tr>
@@ -17,7 +17,7 @@ const ArtistInfo = (props) => {
               <td className="artist-table_data">{props.formed}, {props.country}</td>
             </tr>
           </div>
-          <div class="datagroup">
+          <div className="datagroup">
             <tr>
               <td className="artist-table_label">Genres</td>
             </tr>

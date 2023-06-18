@@ -18,6 +18,12 @@ const NewReleasePage = () => {
     setTrackList([...temp]);
   }
 
+  const clearTracklist = () => {
+    if (window.confirm('Are you sure?')) {
+      setTrackList([]);
+    }
+  }
+
   const updateTrackNumber = (e, n) => {
     const temp = trackList.slice();
     temp[n].number = e.target.value;
@@ -38,21 +44,30 @@ const NewReleasePage = () => {
 
   const trackForm = (n) => {
     return (
-      <div key={`track-input-${n}`} className="input-group">
-        <input type='button' onClick={() => removeTrack(n)} value='-' />
-        <input type='text' 
-          name={`track${n}_number`} 
-          onChange={(e) => updateTrackNumber(e, n)} 
-          value={trackList[n].number} />
-        <input type='text' 
-          name={`track${n}_title`} 
-          onChange={(e) => updateTrackTitle(e, n)} 
-          value={trackList[n].title} />
+      <tr key={`track-input-${n}`} className="submit-tracklist-table_track">
+        <td>
+          <input type='button' onClick={() => removeTrack(n)} value='-' />
+        </td>
+        <td>
+          <input type='text' 
+            name={`track${n}_number`} 
+            onChange={(e) => updateTrackNumber(e, n)} 
+            value={trackList[n].number} />
+          </td>
+        <td>
+          <input type='text' 
+            name={`track${n}_title`} 
+            onChange={(e) => updateTrackTitle(e, n)} 
+            value={trackList[n].title} />
+        </td>
+        <td>
         <input type='text'
           name={`track${n}_time`}
           onChange={(e) => updateTrackTime(e, n)}
           value={trackList[n].time} />
-      </div>
+        </td>
+        
+      </tr>
     )
   }
 
@@ -60,14 +75,12 @@ const NewReleasePage = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
-    const tracklist = data.tracklist.split(',');
     const genres = data.genres.split(',');
     submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [])
   }
 
   return (
-    <div>
+    <div className='content-wrapper'>
       <div>
         <form method='post' id='new-release-form' onSubmit={sendForm}>
           <label htmlFor='title'>Title:</label>
@@ -76,11 +89,20 @@ const NewReleasePage = () => {
           <input type='text' name='year' />
           <label htmlFor='genres'>Genres:</label>
           <input type='text' name='genres' />
-          <label htmlFor='tracklist'>Tracklist:</label>
-          <input type='text' name='tracklist'/>
           <input type='submit' value='Submit' />
-          <div>Tracklist :
-          <input type='button' onClick={() => addTrack()} value='Add track' />
+          <div className='content-section'>Track listing
+          <input type='button' onClick={() => addTrack()} value='add track' />
+          <input type='button' onClick={() => clearTracklist()} value='clear all' />
+          <table className='submit-tracklist-table'>
+            <thead className='submit-tracklist-table_header'>
+              <tr>
+                <th> </th>
+                <th>#</th>
+                <th>Track Name</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
             {
               trackList.map((el, i) => {
                 return (
@@ -88,6 +110,10 @@ const NewReleasePage = () => {
                 )
               })
             }
+            </tbody>
+
+          </table>
+            
             <button onClick={() => console.log(trackList)}>Log</button>
           </div>
         </form>

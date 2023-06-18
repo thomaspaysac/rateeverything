@@ -17,8 +17,14 @@ button, input {
   text-decoration: none; }
   .content-page a:hover {
     color: #C7E2FF; }
-.content-page .bolded {
+
+.bolded {
   font-weight: 700; }
+
+.content-section {
+  background-color: #20232F;
+  padding: 10px;
+  border: 1px solid #323643; }
 
 header {
   background-color: #152238;

@@ -9,6 +9,7 @@ $dark-theme: (
   background: #0B1528,
   links: #84C5FB,
   links-hover: #C7E2FF,
+  section-background: #20232F,
 );
 
 
@@ -38,10 +39,16 @@ button, input {
       color: map-get($dark-theme, links-hover);
     }
   }
+}
 
-  .bolded {
-    font-weight: 700;
-  }
+.bolded {
+  font-weight: 700;
+}
+
+.content-section {
+  background-color: map-get($dark-theme, section-background);
+  padding: 10px;
+  border: 1px solid #323643;
 }
 
 // Components styling
