@@ -333,6 +333,43 @@ header {
   flex-grow: 1;
 }
 
+// Release page: reviews component
+.release-page_reviews-component {
+  padding: 25px 30px 15px 30px;
+}
+
+.review-info {
+  display: flex;
+  background-color: #272A37;
+
+  .review_user-avatar {
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+    border:1px solid #ffffff;
+  }
+
+  .review_data {
+    display: flex;
+    gap: 16px;
+    flex-grow: 1;
+  }
+  
+  .review-actions {
+    display: flex;
+    margin-right: 20px;
+  
+    div {
+      height: 35px;
+      width: 35px;
+    }
+  }
+}
+
+.review-content {
+  padding: 12px 38px;
+}
+
 // Add release page
 .add-release_page {
   .section-header {

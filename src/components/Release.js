@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ReleaseInfo from "./release_page/ReleaseInfo";
 import Rating from "./release_page/Rating";
 import UserRatingsPage from "./release_page/UserRatings";
+import Review from "./release_page/Review";
 
 import { getUniqueRelease } from "../functions";
 
@@ -50,6 +51,7 @@ const ReleasePage = (props) => {
         />
         <UserRatingsPage
           ratings={ratings} />
+        <Review />
       </div>
 
     </div>
