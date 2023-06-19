@@ -166,13 +166,25 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
   const ratingDate = format(new Date(), 'dd MMM yy');
   // if user has already rated the release, replace the rating
   const userRatingObject = localRatings.find((obj) => obj.userID === userID);
-  if (!userRatingObject) {
+  if (!userRatingObject && +rating !== 0) {
     localRatings.push({
       username: username,
       userID: userID,
       rating: +rating,
       date: ratingDate,
     })
+  } else if (+rating === 0) {
+    // if the rating is 0, find the rating and remove it from the array
+    let index = 0;
+    let targetIndex = undefined;
+    for (const rating of localRatings) {
+      if (rating.userID !== userID) {
+        index++;
+      } else {
+        targetIndex = index;
+      }
+    }
+    localRatings.splice(targetIndex, 1);
   } else {
     userRatingObject.rating = +rating;
     userRatingObject.date = ratingDate;
@@ -192,12 +204,23 @@ const linkRatingToUser = async (userID, release, rating, date) => {
   const localCopy = data;
   const localRatings = data.ratings;
   const existingRating = localRatings.find((obj) => obj.release.albumID === release.albumID);
-  if (existingRating === undefined) {
+  if (existingRating === undefined && +rating !== 0) {
     localRatings.push({
       release: release,
       rating: rating,
       date: date,
     })
+  } else if (+rating === 0) {
+    let index = 0;
+    let targetIndex = undefined;
+    for (const rating of localRatings) {
+      if (rating.release !== release) {
+        index++;
+      } else {
+        targetIndex = index;
+      }
+    }
+    localRatings.splice(targetIndex, 1);
   } else {
     existingRating.rating = rating;
     existingRating.date = date;
