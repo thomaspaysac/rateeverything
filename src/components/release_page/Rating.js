@@ -11,7 +11,6 @@ const Rating = (props) => {
     const user = getAuth().currentUser.displayName;
     const release = await getReleaseByID(props.releaseID);
     let rating = document.getElementById('rating').value;
-    //console.log(rating, release, user);
     updateReleaseRating(release, getAuth().currentUser.displayName, getAuth().currentUser.uid, rating);
   }
 
@@ -30,7 +29,7 @@ const Rating = (props) => {
         <div className="catalog-container">
           Catalog
         </div>
-        <button className="catalog-review">
+        <button className="catalog-review" onClick={props.onClick}>
           Review
         </button>
       </div>

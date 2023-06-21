@@ -206,10 +206,12 @@ header {
   border-top: 1px solid #272A37;
   border-bottom: 1px solid #272A37; }
 
-.rating-component_title {
+.rating-component_title,
+.reviews-component_title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #A8AEBA; }
+  color: #A8AEBA;
+  margin-bottom: 5px; }
 
 .rating-actions {
   display: flex;
@@ -244,9 +246,15 @@ header {
 .release-page_reviews-component {
   padding: 25px 30px 15px 30px; }
 
+.review-container {
+  border-bottom: 1px solid #242834;
+  margin-bottom: 10px; }
+
 .review-info {
   display: flex;
-  background-color: #272A37; }
+  align-items: center;
+  background-color: #272A37;
+  padding-right: 24px; }
   .review-info .review_user-avatar {
     height: 35px;
     width: 35px;
@@ -258,13 +266,15 @@ header {
     flex-grow: 1; }
   .review-info .review-actions {
     display: flex;
-    margin-right: 20px; }
-    .review-info .review-actions div {
-      height: 35px;
-      width: 35px; }
+    margin-right: 20px;
+    align-items: center;
+    gap: 24px;
+    margin-right: 24px; }
 
 .review-content {
-  padding: 12px 38px; }
+  padding: 12px 38px;
+  color: #A8AEBA;
+  white-space: pre-wrap; }
 
 .add-release_page .section-header {
   padding: 7px 20px; }

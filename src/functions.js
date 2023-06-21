@@ -7,6 +7,7 @@ const userFirestoreSetup = async (userID, username) => {
     await setDoc(doc(db, 'users', userID), {
     username: username,
     ratings: [],
+    reviews: [],
     date: format(new Date(), 'dd MMM yy'),
   });
 }
@@ -259,6 +260,60 @@ const getPersonalRatings = async (userID) => {
   return ratings;
 }
 
+const sendReview = async (releaseID, username, userID, review) => {
+  const artistRef = doc(db, 'artists', releaseID.artist);
+  const docSnap = await getDoc(artistRef);
+  const data = docSnap.data();
+  let index = 0;
+  let targetIndex = undefined;
+  for (const item of data.releases) {
+    if (releaseID.albumID !== item.albumID) {
+      index++;
+    } else {
+      targetIndex = index;
+    }
+  }
+  const localCopy = data;
+  const localReviews = localCopy.releases[targetIndex].reviews;
+  const reviewDate = format(new Date(), 'dd MMM yy');
+  // if user has already rated the release, replace the rating
+  const userReviewObject = localReviews.find((obj) => obj.userID === userID);
+  if (!userReviewObject) {
+    localReviews.push({
+      username: username,
+      userID: userID,
+      review: review,
+      date: reviewDate,
+      reviewsScore: 0,
+    })
+  } else {
+    userReviewObject.review = review;
+    userReviewObject.date = reviewDate;
+  }
+  await updateDoc(artistRef, localCopy);
+  linkReviewToUser(userID, releaseID, review, reviewDate);
+}
+
+const linkReviewToUser = async (userID, release, review, date) => {
+  const userRef = doc(db, 'users', userID);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const localCopy = data;
+  const localReviews = data.reviews;
+  const existingReview = localReviews.find((obj) => obj.release.albumID === release.albumID);
+  if (!existingReview) {
+    localReviews.push({
+      release: release,
+      reviewDate: date,
+      review: review,
+    })
+  } else {
+    existingReview.review = review;
+    existingReview.date = date;
+  }
+  await updateDoc(userRef, localCopy);
+}
+
 export { 
   userFirestoreSetup,
   getUserInfo,
@@ -275,4 +330,5 @@ export {
   updateReleaseRating, 
   getRatingsByRelease,
   getPersonalRatings,
+  sendReview,
 };
