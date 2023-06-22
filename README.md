@@ -14,8 +14,9 @@ X Ajouter notes aux pages albums
 X Ajouter notes au profil utilisateur
 X Ajouter liens vers artistes et albums depuis les notes de la page profil
 X Ajouter lien de retour à la page artiste depuis la page release
-O Ajouter reviews aux pages albums
+X Ajouter reviews aux pages albums
 O Ajouter reviews aux pages utilisateur
+O Faire UI d'écriture de review
 X Arranger albums par dates
 X Arranger notes par dates
 O Rechercher dans la base de données

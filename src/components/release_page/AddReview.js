@@ -8,7 +8,6 @@ const AddReview = (props) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const release = await getReleaseByID(props.releaseID);
-    let review = 'Lorem ipsum';
     sendReview(release, getAuth().currentUser.displayName, getAuth().currentUser.uid, data.reviewText);
   }
 

@@ -1,13 +1,14 @@
 import { React, useState, useEffect } from "react";
 import { getUserInfo, getArtistsList, getAllReleases, getAllReleasesLength, getPersonalRatings } from "../functions";
 import { Link } from "react-router-dom";
-import PersonalRatings from "./profile_page/PersonalRatings";
+import ContentContainer from "./profile_page/ContentDisplay";
 
 const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
   const [releasesList, setReleasesList] = useState([]);
   const [userRatings, setUserRatings] = useState([]);
   const [userDate, setUserDate] = useState();
+  
   
 
   const getReleases = async () => {
@@ -48,7 +49,7 @@ const ProfilePage = (props) => {
         <button onClick={props.sendData}>
           Send Data
         </button>
-          <button onClick={() => console.log(props.userID)}>
+          <button onClick={() => console.log()}>
           Log
           </button>
 
@@ -63,8 +64,9 @@ const ProfilePage = (props) => {
         <Link to='/artist/add_artist'>Add new artist</Link>
       </div>
 
-      <PersonalRatings 
+      <ContentContainer
         userRatings={userRatings}
+
       />
     </div>
     </div>
