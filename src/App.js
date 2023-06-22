@@ -24,6 +24,7 @@ import SignInPage from "./components/SignIn";
 import ProfilePage from "./components/Profile";
 import NewArtistPage from "./components/NewArtist";
 import NewReleasePage from "./components/NewRelease";
+import SearchResult from "./components/SearchResult";
 
 import './App.css';
 
@@ -80,6 +81,7 @@ const App = () => {
         />
         <Route path="/artist/add_artist" element={<NewArtistPage />} />
         <Route path="/artist/:artist/add_release" element={<NewReleasePage />} />
+        <Route path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
       </Routes>
     </BrowserRouter>
   );

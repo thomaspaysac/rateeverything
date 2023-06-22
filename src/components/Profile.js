@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { getUserInfo, getArtistsList, getAllReleases, getAllReleasesLength, getPersonalRatings } from "../functions";
+import { getUserInfo, getArtistsList, getAllReleases, getAllReleasesLength, getPersonalRatings, getPersonalReviews } from "../functions";
 import { Link } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 
@@ -7,6 +7,8 @@ const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
   const [releasesList, setReleasesList] = useState([]);
   const [userRatings, setUserRatings] = useState([]);
+  const [lastRatings, setLastRatings] = useState([]);
+  const [userReviews, setUserReviews] = useState([]);
   const [userDate, setUserDate] = useState();
   
   
@@ -23,7 +25,14 @@ const ProfilePage = (props) => {
 
   const getUserRatings = async () => {
     const data = await getPersonalRatings(props.userID);
+    const recent= data.slice(0,1);
     setUserRatings(data);
+    setLastRatings(recent);
+  }
+
+  const getUserReviews = async () => {
+    const data = await getPersonalReviews(props.userID);
+    setUserReviews(data);
   }
 
   const userInfo = async () => {
@@ -36,6 +45,7 @@ const ProfilePage = (props) => {
     getList();
     if (props.userID) {
       getUserRatings();
+      getUserReviews();
       userInfo();
     }
   }, [])
@@ -49,7 +59,7 @@ const ProfilePage = (props) => {
         <button onClick={props.sendData}>
           Send Data
         </button>
-          <button onClick={() => console.log()}>
+          <button onClick={() => console.log(lastRatings)}>
           Log
           </button>
 
@@ -66,7 +76,8 @@ const ProfilePage = (props) => {
 
       <ContentContainer
         userRatings={userRatings}
-
+        lastRatings={lastRatings}
+        userReviews={userReviews}
       />
     </div>
     </div>

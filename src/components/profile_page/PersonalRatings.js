@@ -1,22 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const PersonalRatings = (props) => {
   return (
-    <div>User ratings:
-    {props.userRatings.map((el) => {
-      return (
-        <div className="personal-rating_container">
-          <div>(O)</div>
-          <div>{el.date}</div>
-          <div>{el.rating}</div>
-          <div><Link to={`/artist/${el.release.artist}`}>{el.release.artist}</Link>
-             - 
-           <Link to={`/release/${el.release.artist}/${el.release.release}`}>{el.release.release}</Link></div>
-          <div>(personal tags)</div>
+    <div className='personalRatings-component'>
+      Ratings: 0000
+      <div className='ratings-listing'>
+        <div className='ratings-listing_score'>
+          5.0
         </div>
-      )
-    } )}
+        <div className='ratings-listing_score'>
+          4.5
+        </div>
+        <div className='ratings-listing_score'>
+          4.0
+        </div>
+        <div className='ratings-listing_score'>
+          3.5
+        </div>
+        <div className='ratings-listing_score'>
+          3.0
+        </div>
+        <div className='ratings-listing_score'>
+          2.5
+        </div>
+        <div className='ratings-listing_score'>
+          2.0
+        </div>
+        <div className='ratings-listing_score'>
+          1.5
+        </div>
+        <div className='ratings-listing_score'>
+          1.0
+        </div>
+        <div className='ratings-listing_score'>
+          0.5
+        </div>
+      </div>
     </div>
   );
 }

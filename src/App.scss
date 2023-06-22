@@ -550,6 +550,11 @@ header {
   grid-template-columns: 50px 29px 112px 1fr 163px;
 }
 
+// Search engine
+.search-engine_category {
+  display: none;
+}
+
 // Signin page
 .signup-container,
 .signin-container {

@@ -314,6 +314,14 @@ const linkReviewToUser = async (userID, release, review, date) => {
   await updateDoc(userRef, localCopy);
 }
 
+const getPersonalReviews = async (userID) => {
+  const userRef = doc(db, 'users', userID);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const reviews = data.reviews;
+  return reviews;
+}
+
 export { 
   userFirestoreSetup,
   getUserInfo,
@@ -331,4 +339,5 @@ export {
   getRatingsByRelease,
   getPersonalRatings,
   sendReview,
+  getPersonalReviews,
 };

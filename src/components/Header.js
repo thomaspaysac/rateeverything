@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import SearchEngine from "./SearchEngine";
 import "../App.css"
 
 const Header = (props) => {
+
   const UserContainer = () => {
     if (props.userStatus === false) {
       return (
@@ -23,6 +25,8 @@ const Header = (props) => {
     }
   }
 
+  
+
   return (
     <header id="main-header">
       <div className="header_title">
@@ -31,17 +35,15 @@ const Header = (props) => {
 
       <div className="header_shortcuts">
         <div className="header_divider"></div>
-        <Link to="/release">RELEASE PAGE</Link>
-        <Link to="/artist">ARTIST PAGE</Link>
+        <Link>new music</Link>
+        <Link>genres</Link>
         <Link>charts</Link>
         <Link>lists</Link>
         <Link>community</Link>
         <div className="header_divider"></div>
       </div>
 
-      <div className="header_searchbar">
-        <input type="text" placeholder="Search..." />
-      </div>
+      <SearchEngine />
 
       <div className="header_user-container">
         <UserContainer/>
