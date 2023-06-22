@@ -80,7 +80,7 @@ const NewReleasePage = () => {
   }
 
   return (
-    <div className='content-wrapper add-release_page'>
+    <div className='content-wrapper add-release_page content-page'>
       <div className='section-header bolded'>Add Release</div>
       <div className='warning'>
         <div className='bolded'>Please Note:</div>

@@ -31,6 +31,7 @@ button, input {
 }
 
 .content-page {
+  padding-top: 45px;
   a {
     color: map-get($dark-theme, links);
     text-decoration: none;
@@ -60,6 +61,7 @@ button, input {
 #backdrop {
   display: none;
   position: fixed;
+  z-index: 2;
   width: 100vw;
   height: 100vh;
   background-color: #0000004f;
@@ -67,6 +69,9 @@ button, input {
 
 // Components styling
 header {
+  position: fixed;
+  width: 100vw;
+  z-index: 3;
   background-color: map-get($dark-theme, header-background);
   color: map-get($dark-theme, font-light);
   display: flex;
@@ -562,7 +567,35 @@ header {
 .search-engine_category {
   display: none;
   position: absolute;
+  transform: translateY(20%);
+  align-items: center;
+  gap: 8px;
   z-index: 3;
+  padding: 7px 15px;
+  color: #959CAF;
+  background-color: #152238;
+  border-bottom: 1px solid #394255;
+
+  input[type="radio"]{
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+
+  label {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    color: #959CAF;
+    padding: 5px;
+  }
+
+  input[type="radio"]:checked + label{
+    color: #207BBF;
+    font-weight: 700;
+    border-bottom: 2px solid #207BBF;
+  }
 }
 
 // Signin page

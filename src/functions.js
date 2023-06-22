@@ -322,6 +322,27 @@ const getPersonalReviews = async (userID) => {
   return reviews;
 }
 
+const searchArtistByName = async (prompt) => {
+  // Set up prompt and artist list for search
+  const list = await getArtistsList();
+  const cleanPrompt = prompt.trim().replace(/\s+/g, '').toLowerCase();
+  const cleanList = list.map(el => {
+    return el.trim().replace(/\s+/g, '').toLowerCase();
+  })
+  // When a match is found, retrieve the artist from the list by index
+  let index = 0;
+  let targetIndex = undefined;
+  cleanList.map(el => {
+    if (el === cleanPrompt) {
+      targetIndex = index;
+    } else {
+      index++
+    }
+  })
+  const targetArtist = await getArtist(list[targetIndex]);
+  console.log(targetArtist);
+}
+
 export { 
   userFirestoreSetup,
   getUserInfo,
@@ -340,4 +361,5 @@ export {
   getPersonalRatings,
   sendReview,
   getPersonalReviews,
+  searchArtistByName,
 };

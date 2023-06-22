@@ -62,7 +62,7 @@ const SignInPage = () => {
 
 
   return (
-    <div>
+    <div className="content-page">
       <div className="signup-container">
         Sign up
         <form method="post" id="signup-form" onSubmit={sendForm}>

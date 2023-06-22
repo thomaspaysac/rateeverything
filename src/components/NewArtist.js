@@ -11,7 +11,7 @@ const NewArtistPage = () => {
   }
 
   return (
-    <div>
+    <div className='content-page'>
       <div>
         <form method='post' id='new-artist-form' onSubmit={sendForm}>
           <label htmlFor='name'>Artist name:</label>
