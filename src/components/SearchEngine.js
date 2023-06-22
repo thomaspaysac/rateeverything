@@ -30,7 +30,7 @@ const SearchEngine = () => {
   return (
     <div className="header_searchbar">
         <form onSubmit={submitSearch}>
-          <input onFocus={displayChoices} type="text" name="searchterm" placeholder="Search..." />
+          <input onFocus={displayChoices} type="text" name="searchterm" placeholder="Search..." autoComplete='off'/>
           <div className='search-engine_category'>
             Search:
             <input type="radio" name="searchcategory" id="artists" value="artists" defaultChecked />

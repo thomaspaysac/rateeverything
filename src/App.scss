@@ -252,6 +252,12 @@ header {
   background-color: #0B0E19;
 }
 
+.release_left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .release-info_main {
   width: 100%;
   padding: 30px 11px;
@@ -304,7 +310,8 @@ header {
 }
 
 .rating-component_title,
-.reviews-component_title {
+.reviews-component_title,
+.component-title {
   font-size: 1.1rem;
   font-weight: 700;
   color: #A8AEBA;
@@ -314,6 +321,77 @@ header {
 .rating-actions {
   display: flex;
   gap: 5px;
+}
+
+.release-page_image-frame {
+  width: 100%;
+  height: fit-content;
+  padding: 18px;
+}
+
+.release-page_image {
+  background-color: #777777;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+// Release page: track listing
+.release_tracklist {
+  width: 100%;
+  padding: 24px;
+
+  table {
+    width: 100%;
+  }
+
+  table, th, td {
+    border: none;
+    border-collapse: collapse;
+  }
+}
+
+.release_tracklist-table {
+  width: 100%;
+  margin: 12px 0;
+
+  td {
+    padding: 8px;
+  }
+}
+
+.tracklist-row {
+  border: 1px solid #303441;
+
+  &:nth-of-type(odd) {
+    background-color: #0B0E19;
+  }
+
+  &:nth-of-type(even) {
+    background-color: #161A25;
+  }
+
+  .tracklist-number {
+    text-align: center;
+    font-size: 0.844rem;
+    font-weight: 700;
+    color: #a8aeba;
+    width: 40px;
+  }
+
+  .tracklist_track-title {
+    font-size: 0.93rem;
+  }
+
+  .tracklist_track-time {
+    font-size: 0.844rem;
+    color: #a8aeba;
+  }
+}
+
+#release_total-time {
+  text-align: right;
+  font-size: 0.844rem;
+  color: #a8aeba;
 }
 
 // Release page: users ratings component
