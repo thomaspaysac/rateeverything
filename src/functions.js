@@ -325,9 +325,9 @@ const getPersonalReviews = async (userID) => {
 const searchArtistByName = async (prompt) => {
   // Set up prompt and artist list for search
   const list = await getArtistsList();
-  const cleanPrompt = prompt.trim().replace(/\s+/g, '').toLowerCase();
+  const cleanPrompt = prompt.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/the/g, '');
   const cleanList = list.map(el => {
-    return el.trim().replace(/\s+/g, '').toLowerCase();
+    return el.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/the/g, '');
   })
   // When a match is found, retrieve the artist from the list by index
   let index = 0;
@@ -352,9 +352,9 @@ const searchRelease = async (prompt) => {
   const namesList = list.map(el => {
     return el.release
   })
-  const cleanPrompt = prompt.trim().replace(/\s+/g, '').toLowerCase();
+  const cleanPrompt = prompt.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/the/g, '');
   const cleanList = namesList.map(el => {
-    return el.trim().replace(/\s+/g, '').toLowerCase();
+    return el.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/the/g, '');
   })
   let index = 0;
   const targetIndexes = [];

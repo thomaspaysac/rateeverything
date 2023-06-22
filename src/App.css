@@ -428,6 +428,53 @@ header {
     font-weight: 700;
     border-bottom: 2px solid #207BBF; }
 
+.search-prompt {
+  color: #7B818F;
+  font-size: 1.2rem;
+  margin: 20px 0; }
+  .search-prompt .bolded {
+    color: #7B818F; }
+
+.search-results_container h3 {
+  font-size: 1.78rem;
+  font-weight: 400; }
+
+.search-result_card {
+  background-color: #1B1E2A;
+  width: 80%;
+  height: 140px;
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  margin-bottom: 24px; }
+
+.search-result_card-image {
+  align-self: center;
+  flex-shrink: 0;
+  background-color: #dddddd;
+  width: 90px;
+  height: 90px; }
+
+.search-result_card-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; }
+  .search-result_card-info .artist-data {
+    display: flex;
+    justify-content: space-between; }
+    .search-result_card-info .artist-data .artist-name {
+      font-size: 1.12rem; }
+    .search-result_card-info .artist-data .artist-id {
+      font-size: 0.84rem;
+      color: #A8AEBA; }
+  .search-result_card-info .genres {
+    font-size: 0.75rem;
+    color: #84C5FB; }
+  .search-result_card-info .artist-country {
+    font-size: 0.84rem;
+    color: #A8AEBA; }
+
 .signup-container,
 .signin-container {
   border: 2px solid #DBE0E9;
