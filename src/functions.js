@@ -347,6 +347,33 @@ const searchArtistByName = async (prompt) => {
   return searchResult;
 }
 
+const searchRelease = async (prompt) => {
+  const list = await getAllReleases();
+  const namesList = list.map(el => {
+    return el.release
+  })
+  const cleanPrompt = prompt.trim().replace(/\s+/g, '').toLowerCase();
+  const cleanList = namesList.map(el => {
+    return el.trim().replace(/\s+/g, '').toLowerCase();
+  })
+  let index = 0;
+  const targetIndexes = [];
+  cleanList.map(el => {
+    if (el === cleanPrompt) {
+      targetIndexes.push(index);
+    } else {
+      index++
+    }
+  })
+  const searchResult = []
+  for (const index of targetIndexes) {
+    const targetRelease = list[index];
+    searchResult.push(targetRelease);
+  }
+  console.log(searchResult);
+  return searchResult;
+}
+
 export { 
   userFirestoreSetup,
   getUserInfo,
@@ -366,4 +393,5 @@ export {
   sendReview,
   getPersonalReviews,
   searchArtistByName,
+  searchRelease,
 };

@@ -17,7 +17,7 @@ const SearchEngine = () => {
   }
 
   const submitSearch = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const searchterm = data.searchterm;

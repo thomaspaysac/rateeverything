@@ -1,32 +1,13 @@
 import {React, useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getArtist, searchArtistByName } from '../functions';
+import { getArtist, searchArtistByName, getAllReleases, searchRelease } from '../functions';
 
-const SearchResult = (props) => {
-  const [artist, setArtist] = useState([]);
-
-  const urlParams = useParams();
-
-
-  const findArtist = async (artistName) => {
-    const result = await searchArtistByName(artistName);
-    if (result.length === 0) {
-      setArtist([]);
-      console.log('No artist with this name')
-    } else {
-      setArtist(result);
-    }
-  }
-
-  useEffect(() => {
-    findArtist(urlParams.searchterm);
-  }, [urlParams])
-
+const ArtistsList = (props) => {
   return (
-    <div className='content-page'>
-      <div>
+    <div>
+      <div>Artists</div>
         {
-          artist.map((el) => {
+          props.artists.map((el) => {
             return (
               <div>
                 <Link to={`/artist/${el.artist}`}>{el.artist}</Link>
@@ -34,9 +15,67 @@ const SearchResult = (props) => {
             )
           })
         }
-      </div>
-      <div>
-        If the artist you're looking for isn't listed, go here: <Link to='/artist/add_artist'>Add artist</Link>
+    </div>
+  ) 
+}
+
+const ReleasesList = (props) => {
+  return (
+    <div>
+      <div>Releases</div>
+      {
+        props.releases.map((el) => {
+          return (
+            <div>
+              <Link to={`/release/${el.artist}/${el.release}`}>{el.release}</Link> - <Link to={`/artist/${el.artist}`}>{el.artist}</Link>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
+
+const SearchResult = (props) => {
+  const [artists, setArtists] = useState([]);
+  const [releases, setReleases] = useState([]);
+
+  const urlParams = useParams();
+
+
+  const searchResult = async (prompt) => {
+    if (urlParams.searchcategory === 'artists') {
+      const result = await searchArtistByName(prompt);
+      if (result.length === 0) {
+        setArtists([]);
+        console.log('No artist with this name.')
+      } else {
+        setArtists(result);
+      }
+    } else if (urlParams.searchcategory === 'releases') {
+      const result = await searchRelease(prompt);
+      if (result.length === 0) {
+        setReleases([]);
+        console.log('No release with this title.')
+      } else {
+        setReleases(result);
+      }
+    }
+  }
+
+  useEffect(() => {
+    searchResult(urlParams.searchterm);
+  }, [urlParams])
+
+  return (
+    <div className='content-page'>
+      <div className='content-wrapper'>
+        <ArtistsList artists={artists} />
+        <ReleasesList releases={releases} />
+        <div>
+          If the artist you're looking for isn't listed, go here: <Link to='/artist/add_artist'>Add artist</Link>
+        </div>
       </div>
     </div>
   );
