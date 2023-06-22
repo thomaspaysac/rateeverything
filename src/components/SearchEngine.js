@@ -4,17 +4,16 @@ import { useNavigate } from 'react-router-dom';
 const SearchEngine = () => {
   const navigateTo = useNavigate();
 
-  const displayChoices = () => {
-    const backdrop = document.getElementById('backdrop');
-    const choices = document.querySelector('.search-engine_category');
+  const backdrop = document.getElementById('backdrop');
+  const choices = document.querySelector('.search-engine_category');
+
+  const displayChoices = () => {  
       choices.style.display = 'flex';
       backdrop.style.display = 'block';
       backdrop.addEventListener('click', () => {
         choices.style.display = 'none';
         backdrop.style.display = 'none';
       })
-
-    
   }
 
   const submitSearch = (e) => {
@@ -23,7 +22,8 @@ const SearchEngine = () => {
     const data = Object.fromEntries(formData.entries());
     const searchterm = data.searchterm;
     const searchcategory = data.searchcategory;
-    console.log(data);
+    backdrop.style.display = 'none';
+    choices.style.display = 'none';
     navigateTo(`/search/${searchcategory}/${searchterm}`);
   }
 

@@ -331,16 +331,20 @@ const searchArtistByName = async (prompt) => {
   })
   // When a match is found, retrieve the artist from the list by index
   let index = 0;
-  let targetIndex = undefined;
+  const targetIndexes = [];
   cleanList.map(el => {
     if (el === cleanPrompt) {
-      targetIndex = index;
+      targetIndexes.push(index);
     } else {
       index++
     }
   })
-  const targetArtist = await getArtist(list[targetIndex]);
-  console.log(targetArtist);
+  const searchResult = [];
+  for (const index of targetIndexes) {
+    const targetArtist = await getArtist(list[index]);
+    searchResult.push(targetArtist);
+  }
+  return searchResult;
 }
 
 export { 
