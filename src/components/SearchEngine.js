@@ -5,13 +5,16 @@ const SearchEngine = () => {
   const [searchCategory, setSearchCategory] = useState('artist');
   const navigateTo = useNavigate();
 
-  const displayChoices = (value) => {
+  const displayChoices = () => {
+    const backdrop = document.getElementById('backdrop');
     const choices = document.querySelector('.search-engine_category');
-    if (value === true) {
-      choices.style.display = 'block';
-    } else if (value === false) {
-      choices.style.display = 'none';
-    }
+      choices.style.display = 'flex';
+      backdrop.style.display = 'block';
+      backdrop.addEventListener('click', () => {
+        choices.style.display = 'none';
+        backdrop.style.display = 'none';
+      })
+
     
   }
 
@@ -21,13 +24,13 @@ const SearchEngine = () => {
     const data = Object.fromEntries(formData.entries());
     const searchterm = data.searchterm;
     console.log(data)
-    //navigateTo(`/search/${searchCategory}/${searchterm}`);
+    navigateTo(`/search/${searchCategory}/${searchterm}`);
   }
 
   return (
     <div className="header_searchbar">
         <form onSubmit={submitSearch}>
-          <input onFocus={() => displayChoices(true)} onBlur={() => displayChoices(false)} type="text" name="searchterm" placeholder="Search..." />
+          <input onFocus={displayChoices} type="text" name="searchterm" placeholder="Search..." />
           <div className='search-engine_category'>
             <label htmlFor='artists'>Artists</label>
             <input type="radio" name="searchcategory" id="artists" value="artists" defaultChecked />

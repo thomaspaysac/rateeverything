@@ -57,6 +57,14 @@ button, input {
   border: 1px solid #323643;
 }
 
+#backdrop {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000004f;
+}
+
 // Components styling
 header {
   background-color: map-get($dark-theme, header-background);
@@ -553,6 +561,8 @@ header {
 // Search engine
 .search-engine_category {
   display: none;
+  position: absolute;
+  z-index: 3;
 }
 
 // Signin page

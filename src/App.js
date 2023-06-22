@@ -64,10 +64,19 @@ const App = () => {
       console.error('Error writing new task to Firebase Database', error);
     }
   }
+
+  const Backdrop = () => {
+    return (
+      <div id='backdrop'>
+
+      </div>
+    )
+  }
   
   return (
     <BrowserRouter>
       <Header userStatus={isSignedIn} user={userName} />
+      <Backdrop />
       <Routes>
         <Route path="/release/:artist/:release" element={<ReleasePage />} />
         <Route path="/artist/:artist" element={<ArtistPage />} />

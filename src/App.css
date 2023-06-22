@@ -31,6 +31,13 @@ button, input {
   padding: 10px;
   border: 1px solid #323643; }
 
+#backdrop {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000004f; }
+
 header {
   background-color: #152238;
   color: #DBE0E9;
@@ -389,7 +396,9 @@ header {
   grid-template-columns: 50px 29px 112px 1fr 163px; }
 
 .search-engine_category {
-  display: none; }
+  display: none;
+  position: absolute;
+  z-index: 3; }
 
 .signup-container,
 .signin-container {
