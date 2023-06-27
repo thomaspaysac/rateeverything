@@ -75,14 +75,17 @@ const NewReleasePage = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
+    const genres = data.genres.split(',');
+    if (data.coverart.size === 0) {
+      const defaultPath = 'https://firebasestorage.googleapis.com/v0/b/rym-clone.appspot.com/o/empty-art.png?alt=media&token=6c4c0612-7a8b-4a9b-a1ae-7552cdf286f7';
+      submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], defaultPath);
+    } else if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
       document.getElementById('upload-error_filetype').style.display = 'block';
       document.getElementById('upload-error_size').style.display = 'none';
     } else if (data.coverart.size > 2097152) {
       document.getElementById('upload-error_size').style.display = 'block';
       document.getElementById('upload-error_filetype').style.display = 'none';
     } else {
-      const genres = data.genres.split(',');
       const imageName = (urlParams.artist + '_' + data.title).toLowerCase();
       const imagePath = await uploadImage(`releases_art/${urlParams.artist}/${imageName}`, data.coverart);
       submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], imagePath);
