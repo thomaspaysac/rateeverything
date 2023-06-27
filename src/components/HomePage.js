@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { getCollLength, getAllReleasesLength } from '../functions';
+import DataCounter from './homepage/DataCounter';
 
 import linkedinLogo from '../img/linkedin.png';
 import githubLogo from '../img/github.png';
@@ -7,23 +7,9 @@ import twitterLogo from '../img/twitter.png';
 import spotifyLogo from '../img/spotify.png';
 import emailLogo from '../img/mail.png';
 
+
+
 const HomePage = () => {
-  const [dataCounter, setDataCounter] = useState();
-
-  const loadDataCounter = async () => {
-    const artists = await getCollLength();
-    const releases = await getAllReleasesLength();
-    const data = {
-      artists: artists,
-      releases: releases,
-    }
-    setDataCounter(data);
-  }
-
-  useEffect(() => {
-    loadDataCounter();
-  }, [])
-
   return (
     <div className='content-page'>
       <div className='content-wrapper'>
@@ -45,13 +31,7 @@ const HomePage = () => {
             <img src={emailLogo} alt='email' />
           </div>
         </div>
-        <div className='data-counter_container' onClick={() => console.log(dataCounter)}>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.artists}</span> Artists</div>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.releases}</span> Releases</div>
-          <div className='bolded'><span className='greyed-text'>X</span> Ratings</div>
-          <div className='bolded'><span className='greyed-text'>X</span> Reviews</div>
-          <div className='bolded'><span className='greyed-text'>X</span> Lists</div>
-        </div>
+        <DataCounter />
       </div>
     </div>
   );

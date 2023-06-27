@@ -117,6 +117,11 @@ header {
   margin: 4px 8px;
   background-color: #D7D7D7; }
 
+.header_user-container {
+  display: flex;
+  flex-shrink: 0;
+  width: 250px; }
+
 .logo-image {
   background: url("../public/img/logo_big.png");
   background-size: cover;

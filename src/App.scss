@@ -163,6 +163,12 @@ header {
   background-color: #D7D7D7;
 }
 
+.header_user-container {
+  display: flex;
+  flex-shrink: 0;
+  width: 250px;
+}
+
 // HOMEPAGE
 .logo-image {
   background: url('../public/img/logo_big.png');
