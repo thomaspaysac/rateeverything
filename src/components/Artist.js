@@ -8,14 +8,18 @@ import { Link, useParams } from "react-router-dom";
 const ArtistPage = (props) => {
   const [artist, setArtist] = useState([]);
   const [releases, setReleases] = useState([]);
+  const [artistImage, setArtistImage] = useState();
   const [genres, setGenres] = useState([]);
 
   const urlParams = useParams().artist;
   const fetchData = async (artist) => {
     const data = await getArtist(artist);
+    const releasesCopy = data.releases.slice();
     const sortedReleases = data.releases.sort((a, b) => (a.year > b.year) ? 1 : (a.year < b.year) ? -1 : 0);
+    const bestRelease = releasesCopy.sort((a , b) => (a.average < b.average) ? 1 : (a.average > b.average) ? -1 : 0);
     setArtist(data);
     setReleases(sortedReleases);
+    setArtistImage(bestRelease[0].imagePath);
     setGenres(data.genres.join(', '));
   };
 
@@ -26,7 +30,9 @@ const ArtistPage = (props) => {
   return (
     <div className="artist-page content-page">
       <div className="artist_left-col">
-      <button onClick={() => console.log(artist)}>Test</button>
+      <div className="artist-page_image-frame">
+          <img src={artistImage} alt="recommended release cover art" className="artist-page_image" />
+        </div>
       </div>
       <div className="artist_right-col">
         <ArtistInfo
@@ -34,7 +40,8 @@ const ArtistPage = (props) => {
           formed={artist.formed}
           country={artist.country}
           genres={genres}
-          artistID={artist.artistID} />
+          artistID={artist.artistID}
+         />
         <ReleasesList
           artist={artist.artist} 
           releases={releases}

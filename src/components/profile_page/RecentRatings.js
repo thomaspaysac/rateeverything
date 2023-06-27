@@ -6,8 +6,10 @@ const RecentRatings = (props) => {
     <div>
     {props.userRatings.slice(-5).map((el) => {
       return (
-        <div className="personal-rating_container">
-          <div>(O)</div>
+        <div className="recent-rating_container">
+          <div className='art_thumbnail_container'>
+            <img className='art_thumbnail' src={el.release.imagePath} alt="cover art" />
+          </div>
           <div>{el.date}</div>
           <div>{el.rating}</div>
           <div><Link to={`/artist/${el.release.artist}`}>{el.release.artist}</Link>

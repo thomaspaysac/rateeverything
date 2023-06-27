@@ -32,6 +32,7 @@ const ReleasePage = (props) => {
   const [reviewUI, setReviewUI] = useState(false);
   const [trackList, setTracklist] = useState([]);
   const [totalTime, setTotalTime] = useState();
+  const [imagePath, setImagePath] = useState();
 
   const urlParams = useParams();
 
@@ -56,6 +57,7 @@ const ReleasePage = (props) => {
   const fetchData = async (artist, releaseName) => {
     const data = await getUniqueRelease(artist, releaseName);
     const sortedRatings = data.ratings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    setImagePath(data.imagePath);
     setGenres(data.genres.join(', '));
     setRelease(data);
     setRatings(sortedRatings);
@@ -81,7 +83,7 @@ const ReleasePage = (props) => {
     <div className="release-page content-page">
       <div className="release_left-col">
         <div className="release-page_image-frame">
-          <div className="release-page_image"></div>
+          <img src={imagePath} alt="cover art" className="release-page_image" />
         </div>
         <Tracklist 
           tracks={trackList}

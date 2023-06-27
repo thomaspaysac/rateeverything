@@ -18,6 +18,7 @@ import {
 import { getUserInfo, submitArtist, submitRelease } from "./functions";
 
 import Header from "./components/Header";
+import HomePage from "./components/HomePage";
 import ReleasePage from "./components/Release";
 import ArtistPage from "./components/Artist";
 import SignInPage from "./components/SignIn";
@@ -78,19 +79,20 @@ const App = () => {
       <Header userStatus={isSignedIn} user={userName} />
       <Backdrop />
       <Routes>
-        <Route path="/release/:artist/:release" element={<ReleasePage />} />
-        <Route path="/artist/:artist" element={<ArtistPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/profile" 
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/release/:artist/:release" element={<ReleasePage />} />
+        <Route exact path="/artist/:artist" element={<ArtistPage />} />
+        <Route exact path="/signin" element={<SignInPage />} />
+        <Route exact path="/profile" 
           element={<ProfilePage 
             username={userName} 
             userID={userID}
             sendData={() => sendPrivateData()}
             />}
         />
-        <Route path="/artist/add_artist" element={<NewArtistPage />} />
-        <Route path="/artist/:artist/add_release" element={<NewReleasePage />} />
-        <Route path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
+        <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
+        <Route exact path="/artist/:artist/add_release" element={<NewReleasePage />} />
+        <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
       </Routes>
     </BrowserRouter>
   );

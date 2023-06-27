@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { submitRelease } from '../functions';
+import { submitRelease, uploadImage } from '../functions';
 import { useParams } from 'react-router-dom';
 
 const NewReleasePage = () => {
@@ -71,12 +71,22 @@ const NewReleasePage = () => {
     )
   }
 
-   const sendForm = (e) => {
+  const sendForm = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    const genres = data.genres.split(',');
-    submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [])
+    if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
+      document.getElementById('upload-error_filetype').style.display = 'block';
+      document.getElementById('upload-error_size').style.display = 'none';
+    } else if (data.coverart.size > 2097152) {
+      document.getElementById('upload-error_size').style.display = 'block';
+      document.getElementById('upload-error_filetype').style.display = 'none';
+    } else {
+      const genres = data.genres.split(',');
+      const imageName = (urlParams.artist + '_' + data.title).toLowerCase();
+      const imagePath = await uploadImage(`releases_art/${urlParams.artist}/${imageName}`, data.coverart);
+      submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], imagePath);
+    }
   }
 
   return (
@@ -111,6 +121,7 @@ const NewReleasePage = () => {
             <input type='text' name='genres' />
           </div>
         </div>
+
         <div className='add-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 2:</span> Track listing</span></div>
           <div className='content-section'>
             <div className='warning-note'><span className='bolded'>Note:</span> Please read the Standards for track listing guide before entering tracks for the first time!</div>
@@ -139,6 +150,16 @@ const NewReleasePage = () => {
             </tbody>
           </table>
           </div>        
+
+          <div className='add-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 3:</span> Cover art</span></div>
+          <div className='content-section'>
+            <input type='file' name='coverart' id='covertart-upload' accept='.png, .jpg'></input>
+            <div className='warning-note'><span className='bolded'>Note:</span> The file must be in .jpg or .png format and be smaller than 2MB.</div>
+            <div id='upload-error_size' className='upload-error warning-note'>ERROR! Your file is too big.</div>
+            <div id='upload-error_filetype' className='upload-error warning-note'>ERROR! Your file must be in .jpg or .png format.</div>
+          </div>
+
+
           <input id='add-release_submit-button' className='bolded' type='submit' value='Submit release' />
         </form>
       </div>

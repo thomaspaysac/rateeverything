@@ -7,8 +7,11 @@
 ## Priorités :
 
 ### Core Fonctionnalités
-O Améliorer recherche en utilisant .includes()
 O Ajouter images albums et profil
+O Améliorer recherche en utilisant .includes()
+O Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur + historique
+O Implémenter listes
+O Page profil
 X Rechercher dans la base de données
 X ajouter les genres et un id aux albums, corriger affichage du genre
 X Générer page artiste -> LIEN DYNAMIQUE
@@ -31,6 +34,7 @@ O Ajouter tri des albums selon critères sur page de groupe
 O Ajouter liste de toutes les notes, triées par note
 O Faire UI d'écriture de review
 O Affiner données artistes on submit
+O Page profil
 X Corriger calcul de l'average (recalculer à partir de la valeur rating de chaque object Rating)
 
 

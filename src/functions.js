@@ -1,8 +1,11 @@
 import { doc, collection, getCountFromServer, getFirestore, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import { db } from "./firebase";
 import format from "date-fns/format";
 
+
+// Firestore
 const userFirestoreSetup = async (userID, username) => {
     await setDoc(doc(db, 'users', userID), {
     username: username,
@@ -19,6 +22,29 @@ const getUserInfo = async (userID) => {
   return accountDate;
 }
 
+
+// Firebase Storage
+const storage = getStorage();
+
+const uploadImage = async (path, file) => {
+  const storageRef = ref(storage, path);
+  const snapshot = await uploadBytes(storageRef, file)
+  const url = await getDownloadURL(ref(storage, path))
+  console.log(url);
+  return url;
+}
+
+const getImageUrl = async (path) => {
+  const url = await getDownloadURL(ref(storage, path))
+  return url;
+}
+
+const addImageToRelease = async (path, file) => {
+  const upload = await uploadImage(path, file);
+  getImageUrl(path);
+}
+
+// Website features
 const getCollLength = async () => {
   const coll = collection(db, 'artists');
   const snapshot = await getCountFromServer(coll);
@@ -47,7 +73,7 @@ const submitArtist = async (artist, formed, country, genres) => {
   }
 }
 
-const submitRelease = async (artist, release, year, tracks, genres, ratings, reviews) => {
+const submitRelease = async (artist, release, year, tracks, genres, ratings, reviews, imagePath) => {
   const albumID = await getAllReleasesLength();
   const artistRef = doc(db, 'artists', artist);
   await updateDoc(artistRef, {
@@ -61,6 +87,7 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
       genres: genres,
       albumID: albumID,
       average: '',
+      imagePath: imagePath,
     })
   })
 }
@@ -377,6 +404,10 @@ const searchRelease = async (prompt) => {
 export { 
   userFirestoreSetup,
   getUserInfo,
+  uploadImage,
+  getImageUrl,
+  getCollLength,
+  addImageToRelease,
   submitArtist, 
   submitRelease, 
   getArtistsList, 
