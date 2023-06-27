@@ -117,11 +117,41 @@ header {
   margin: 4px 8px;
   background-color: #D7D7D7; }
 
+.header_user-info {
+  display: flex;
+  gap: 8px;
+  align-items: center; }
+
+.header_avatar {
+  border: 1px solid #ffffff;
+  width: 24px;
+  height: 24px; }
+
 .header_user-container {
   display: flex;
+  align-items: center;
   gap: 24px; }
   .header_user-container img {
     height: 16px; }
+
+#hamburger-menu {
+  cursor: pointer; }
+
+.menu-opened {
+  display: none;
+  position: absolute;
+  transform: translateY(155px);
+  background-color: #152238;
+  border-top: 2px solid #45474C;
+  width: 220px;
+  z-index: 3; }
+  .menu-opened div {
+    font-size: 1.05rem;
+    border-top: 1px solid #45474C;
+    padding: 8px 14px; }
+  .menu-opened .header_logout-button {
+    font-size: 1.15rem;
+    text-align: center; }
 
 .logo-image {
   background: url("../public/img/logo_big.png");
@@ -141,7 +171,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8px; }
+    gap: 16px; }
   .welcome_container .welcome_message-title {
     font-size: 2.15rem;
     color: #A8AEBA; }

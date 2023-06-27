@@ -4,7 +4,7 @@ import { getCollLength, getAllReleasesLength, getRatingsCounter, getReviewsCount
 const DataCounter = () => {
   const [dataCounter, setDataCounter] = useState();
 
-  const loadDataCounter = async () => {
+  /*const loadDataCounter = async () => {
     const artists = await getCollLength();
     const releases = await getAllReleasesLength();
     const ratings = await getRatingsCounter();
@@ -22,17 +22,17 @@ const DataCounter = () => {
 
   useEffect(() => {
     loadDataCounter();
-  }, [dataCounter])
+  }, [dataCounter])*/
 
 
   if (dataCounter) {
     return (
       <div className='data-counter_container'>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.artists}</span> Artists</div>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.releases}</span> Releases</div>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.ratings}</span> Ratings</div>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.reviews}</span> Reviews</div>
-          <div className='bolded'><span className='greyed-text'>{dataCounter.lists}</span> Lists</div>
+          <div className='bolded'><span className='greyed-text'>X</span> Artists</div>
+          <div className='bolded'><span className='greyed-text'>X</span> Releases</div>
+          <div className='bolded'><span className='greyed-text'>X</span> Ratings</div>
+          <div className='bolded'><span className='greyed-text'>X</span> Reviews</div>
+          <div className='bolded'><span className='greyed-text'>X</span> Lists</div>
       </div>
   );
   } else {
