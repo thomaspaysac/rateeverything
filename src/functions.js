@@ -22,6 +22,25 @@ const getUserInfo = async (userID) => {
   return accountDate;
 }
 
+const getRatingsCounter = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  let counter = 0;
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    counter += data.ratings.length;
+  });
+  return counter;
+}
+
+const getReviewsCounter = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  let counter = 0;
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    counter += data.reviews.length;
+  });
+  return counter;
+}
 
 // Firebase Storage
 const storage = getStorage();
@@ -397,13 +416,14 @@ const searchRelease = async (prompt) => {
     const targetRelease = list[index];
     searchResult.push(targetRelease);
   }
-  console.log(searchResult);
   return searchResult;
 }
 
 export { 
   userFirestoreSetup,
   getUserInfo,
+  getRatingsCounter,
+  getReviewsCounter,
   uploadImage,
   getImageUrl,
   getCollLength,

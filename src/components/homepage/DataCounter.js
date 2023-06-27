@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { getCollLength, getAllReleasesLength } from '../../functions';
+import { getCollLength, getAllReleasesLength, getRatingsCounter, getReviewsCounter } from '../../functions';
 
 const DataCounter = () => {
   const [dataCounter, setDataCounter] = useState();
@@ -7,9 +7,13 @@ const DataCounter = () => {
   const loadDataCounter = async () => {
     const artists = await getCollLength();
     const releases = await getAllReleasesLength();
+    const ratings = await getRatingsCounter();
+    const reviews = await getReviewsCounter();
     const data = {
       artists: artists,
       releases: releases,
+      ratings: ratings,
+      reviews: reviews,
     }
     setDataCounter(data);
   }
@@ -24,8 +28,8 @@ const DataCounter = () => {
       <div className='data-counter_container'>
           <div className='bolded'><span className='greyed-text'>{dataCounter.artists}</span> Artists</div>
           <div className='bolded'><span className='greyed-text'>{dataCounter.releases}</span> Releases</div>
-          <div className='bolded'><span className='greyed-text'>X</span> Ratings</div>
-          <div className='bolded'><span className='greyed-text'>X</span> Reviews</div>
+          <div className='bolded'><span className='greyed-text'>{dataCounter.ratings}</span> Ratings</div>
+          <div className='bolded'><span className='greyed-text'>{dataCounter.reviews}</span> Reviews</div>
           <div className='bolded'><span className='greyed-text'>X</span> Lists</div>
       </div>
   );

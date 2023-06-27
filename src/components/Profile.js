@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { getUserInfo, getArtistsList, getAllReleases, getAllReleasesLength, getPersonalRatings, getPersonalReviews } from "../functions";
+import { getUserInfo, getArtistsList, getAllReleases, getRatingsCounter, getPersonalRatings, getPersonalReviews } from "../functions";
 import { Link } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 
@@ -59,7 +59,7 @@ const ProfilePage = (props) => {
         <button onClick={props.sendData}>
           Send Data
         </button>
-          <button onClick={() => console.log(lastRatings)}>
+          <button onClick={() => getRatingsCounter()}>
           Log
           </button>
 
