@@ -2,7 +2,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import SearchEngine from "./SearchEngine";
-import "../App.css"
+
+import mailIcon from '../img/mail-white.png';
+import stickyNoteImage from '../img/sticky-note.png';
+import menuIcon from '../img/menu.png';
 
 const Header = (props) => {
 
@@ -13,10 +16,13 @@ const Header = (props) => {
       )
     } else {
       return (
-        <div>
-          <Link to="/profile">
+        <div className="header_user-container">
+          <Link className='bolded' to="/profile">
             {props.user}
           </Link>
+          <img src={mailIcon} alt='messages' />
+          <img src={stickyNoteImage} alt='note' />
+          <img src={menuIcon} alt='menu' />
           <div onClick={() => signOut(getAuth())}>
             Sign out
           </div>
@@ -45,7 +51,7 @@ const Header = (props) => {
 
       <SearchEngine />
 
-      <div className="header_user-container">
+      <div>
         <UserContainer/>
       </div>
     </header>

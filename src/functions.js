@@ -11,6 +11,7 @@ const userFirestoreSetup = async (userID, username) => {
     username: username,
     ratings: [],
     reviews: [],
+    lists: [],
     date: format(new Date(), 'dd MMM yy'),
   });
 }
@@ -38,6 +39,16 @@ const getReviewsCounter = async () => {
   querySnapshot.forEach((doc) => {
     const data = doc.data();
     counter += data.reviews.length;
+  });
+  return counter;
+}
+
+const getListsCounter = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  let counter = 0;
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    counter += data.lists.length;
   });
   return counter;
 }
@@ -424,6 +435,7 @@ export {
   getUserInfo,
   getRatingsCounter,
   getReviewsCounter,
+  getListsCounter,
   uploadImage,
   getImageUrl,
   getCollLength,

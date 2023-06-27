@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { getCollLength, getAllReleasesLength, getRatingsCounter, getReviewsCounter } from '../../functions';
+import { getCollLength, getAllReleasesLength, getRatingsCounter, getReviewsCounter, getListsCounter } from '../../functions';
 
 const DataCounter = () => {
   const [dataCounter, setDataCounter] = useState();
@@ -9,11 +9,13 @@ const DataCounter = () => {
     const releases = await getAllReleasesLength();
     const ratings = await getRatingsCounter();
     const reviews = await getReviewsCounter();
+    const lists = await getListsCounter();
     const data = {
       artists: artists,
       releases: releases,
       ratings: ratings,
       reviews: reviews,
+      lists: lists,
     }
     setDataCounter(data);
   }
@@ -30,7 +32,7 @@ const DataCounter = () => {
           <div className='bolded'><span className='greyed-text'>{dataCounter.releases}</span> Releases</div>
           <div className='bolded'><span className='greyed-text'>{dataCounter.ratings}</span> Ratings</div>
           <div className='bolded'><span className='greyed-text'>{dataCounter.reviews}</span> Reviews</div>
-          <div className='bolded'><span className='greyed-text'>X</span> Lists</div>
+          <div className='bolded'><span className='greyed-text'>{dataCounter.lists}</span> Lists</div>
       </div>
   );
   } else {

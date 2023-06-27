@@ -119,8 +119,9 @@ header {
 
 .header_user-container {
   display: flex;
-  flex-shrink: 0;
-  width: 250px; }
+  gap: 24px; }
+  .header_user-container img {
+    height: 16px; }
 
 .logo-image {
   background: url("../public/img/logo_big.png");

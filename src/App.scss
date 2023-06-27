@@ -165,8 +165,11 @@ header {
 
 .header_user-container {
   display: flex;
-  flex-shrink: 0;
-  width: 250px;
+  gap: 24px;
+
+  img {
+    height: 16px;
+  }
 }
 
 // HOMEPAGE
