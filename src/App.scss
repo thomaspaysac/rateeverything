@@ -954,15 +954,71 @@ footer {
 }
 
 // Signin page
-.signup-container,
-.signin-container {
+
+.login-section {
+  margin: 0 100px;
+  max-width: 320px;
+
+  p {
+    margin-bottom: 15px;
+    font-size: 0.94rem;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background-color: #323643;
+    color: map-get($dark-theme, font-light);
+    border: 1px solid #272A37;
+    border-radius: 3px;
+  }
+}
+
+.login-page_title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.login-container {
+  background-color: #161A25;
+  border: 1px solid #272A37;
+  padding: 22px;
+  margin-bottom: 7px;
+}
+
+#signin-form {
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-size: 0.94rem;
+    font-weight: 700;
+  }
+
+  input {
+    width: 80%;
+    padding: 5px;
+    font-size: 1.1rem;
+    background-color: #152238;
+    color: map-get($dark-theme, font-light);
+    border: 1px solid #272A37;
+    border-radius: 3px;
+  }
+}
+
+.signup-container {
   border: 2px solid map-get($dark-theme, font-light);
   width: fit-content;
   padding: 16px;
 }
 
-#signup-form,
-#signin-form {
+#signup-form {
   gap: 16px;
   width: 200px;
   display: flex;

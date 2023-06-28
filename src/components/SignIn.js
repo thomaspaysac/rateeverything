@@ -68,6 +68,27 @@ const SignInPage = () => {
 
   return (
     <div className="content-page">
+      <div className="content-wrapper">
+        <div className="login-section">
+          <h2 className="login-page_title">Log in</h2>
+          <p>If you are already registered, then please log in.</p>
+          <div className="login-container">
+            <form method="post" id="signin-form" onSubmit={signIn}>
+              <div className="input-group">
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email"/>
+              </div>
+              <div className="input-group">
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password"/>
+              </div>
+            </form>
+          </div>
+          <input type="submit" form="signin-form" value="Log in >>" />
+        </div>
+        
+      </div>
+
       <div className="signup-container">
         Sign up
         <form method="post" id="signup-form" onSubmit={sendForm}>
@@ -87,20 +108,7 @@ const SignInPage = () => {
         </form>
       </div>
 
-      <div className="signin-container">
-        Sign in
-        <form method="post" id="signin-form" onSubmit={signIn}>
-        <div className="input-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" name="email"/>
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password:</label>
-            <input type="password" name="password"/>
-          </div>
-          <input type="submit" value="Sign in" />
-        </form>
-      </div>
+      
       <button onClick={() => signOut(getAuth())}>Sign Out</button>
       <button onClick={() => testfunc()}>Test</button>
     </div>
