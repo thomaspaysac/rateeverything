@@ -18,6 +18,7 @@ import {
 import { getUserInfo, submitArtist, submitRelease } from "./functions";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import ReleasePage from "./components/Release";
 import ArtistPage from "./components/Artist";
@@ -94,6 +95,7 @@ const App = () => {
         <Route exact path="/artist/:artist/add_release" element={<NewReleasePage />} />
         <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

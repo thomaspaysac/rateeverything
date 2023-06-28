@@ -6,19 +6,32 @@
   box-sizing: border-box;
   color: #DBE0E9; }
 
-body {
+#root {
+  display: flex;
+  flex-direction: column; }
+
+html, body {
+  min-height: 100%;
   background-color: #0B1528; }
 
 button, input {
   color: #000000; }
 
 .content-page {
+  flex: 1 0 auto;
+  min-height: 100vh;
   padding-top: 45px; }
   .content-page a {
     color: #84C5FB;
     text-decoration: none; }
     .content-page a:hover {
       color: #C7E2FF; }
+
+footer {
+  width: 100%;
+  flex-shrink: 0;
+  border-top: 3px solid #999999;
+  background-color: #152238; }
 
 .accent-text {
   color: #4CC0E7; }
@@ -145,13 +158,20 @@ header {
   border-top: 2px solid #45474C;
   width: 220px;
   z-index: 3; }
-  .menu-opened div {
+  .menu-opened div, .menu-opened button {
     font-size: 1.05rem;
     border-top: 1px solid #45474C;
-    padding: 8px 14px; }
-  .menu-opened .header_logout-button {
+    padding: 8px 14px;
+    cursor: pointer; }
+    .menu-opened div:hover, .menu-opened div:active, .menu-opened button:hover, .menu-opened button:active {
+      background-color: #171A23; }
+  .menu-opened button {
+    background-color: #152238;
+    border: none;
+    border-top: 2px solid #45474C;
+    color: #DBE0E9;
     font-size: 1.15rem;
-    text-align: center; }
+    width: 100%; }
 
 .logo-image {
   background: url("../public/img/logo_big.png");

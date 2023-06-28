@@ -22,7 +22,13 @@ $dark-theme: (
   color: map-get($dark-theme, font-light),
 }
 
-body {
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+html, body {
+  min-height: 100%;
   background-color: map-get($dark-theme, background);
 }
 
@@ -31,6 +37,8 @@ button, input {
 }
 
 .content-page {
+  flex: 1 0 auto;
+  min-height: 100vh;
   padding-top: 45px;
   a {
     color: map-get($dark-theme, links);
@@ -40,6 +48,16 @@ button, input {
       color: map-get($dark-theme, links-hover);
     }
   }
+}
+
+footer {
+  width: 100%;
+  flex-shrink: 0;
+  border-top : 3px solid #999999;
+  background-color: #152238;
+}
+
+.footer-inner {
 }
 
 .accent-text {
@@ -198,15 +216,25 @@ header {
   width: 220px;
   z-index: 3;
 
-  div {
+  div, button {
     font-size: 1.05rem;
     border-top: 1px solid #45474C;
     padding: 8px 14px;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background-color: #171A23;
+    }
   }
 
-  .header_logout-button {
+  button {
+    background-color: #152238;
+    border: none;
+    border-top: 2px solid #45474C;
+    color: map-get($dark-theme, font-light);
     font-size: 1.15rem;
-    text-align: center;
+    width: 100%;
   }
 }
 

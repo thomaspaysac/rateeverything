@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
@@ -7,21 +7,41 @@ import stickyNoteImage from '../../img/sticky-note.png';
 import menuIcon from '../../img/menu.png';
 
 const UserContainer = (props) => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
   const backdrop = document.getElementById('backdrop');
   const menu = document.querySelector('.menu-opened');
   const menuButton = document.getElementById('hamburger-menu');
 
-  const displayMenu = () => {
-    backdrop.style.display = 'block';
-    menu.style.display = 'block';
-    backdrop.addEventListener('click', () => {
+  const logOutPrompt = () => {
+    if(window.confirm('Are you sure you want to log out?')) {
+      signOut(getAuth());
+    }
+  }
+
+  const toggleMenu = () => {
+    const backdropClick = () => {
       backdrop.style.display = 'none';
       menu.style.display = 'none';
-    });
-    menuButton.addEventListener('click', () => {
+      setMenuIsOpen(false);
+    }
+    const menuClick = () => {
       backdrop.style.display = 'none';
       menu.style.display = 'none';
-    })
+      setMenuIsOpen(false);
+    }
+    if (!menuIsOpen) {
+      backdrop.style.display = 'block';
+      menu.style.display = 'block';
+      menu.addEventListener('click', menuClick);
+      backdrop.addEventListener('click', backdropClick);
+      setMenuIsOpen(true);
+    } else {
+      backdrop.style.display = 'none';
+      menu.style.display = 'none';
+      backdrop.removeEventListener('click', backdropClick);
+      setMenuIsOpen(false);
+    }
   }
 
 
@@ -40,15 +60,16 @@ const UserContainer = (props) => {
         <img src={stickyNoteImage} alt='note' />
         <img src={menuIcon} alt='menu'
           id='hamburger-menu' 
-          onClick={displayMenu} />
+          onClick={toggleMenu}
+           />
         <div className="menu-opened">
-          <div>Profile</div>
+          <Link to="/profile"><div>Profile</div></Link>
           <div>Music collection</div>
           <div>Lists</div>
           <div>Messaging</div>
           <div>Settings</div>
           <div>Submissions</div>
-          <div className="header_logout-button" onClick={() => signOut(getAuth())}>Log out</div>
+          <button className="header_logout-button" onClick={() => signOut(getAuth())}>Log out</button>
         </div>
       </div>
     )
