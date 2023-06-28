@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { firebaseConfig } from "../firebase";
 import {
@@ -17,11 +18,14 @@ import "../App.css"
 const SignInPage = () => {
   firebase.initializeApp(firebaseConfig);
 
+  const navigateTo = useNavigate();
+
   const sendForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     createUser(formJson.email, formJson.password, formJson.username);
+    navigateTo('/');
   }
 
   const createUser = (email, password, displayName) => {
@@ -48,6 +52,7 @@ const SignInPage = () => {
     signInWithEmailAndPassword(auth, formJson.email, formJson.password)
     .then((userCredential) => {
     const user = userCredential.user;
+    navigateTo('/');
   })
   .catch((error) => {
     const errorCode = error.code;

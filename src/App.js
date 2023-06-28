@@ -27,6 +27,7 @@ import ProfilePage from "./components/Profile";
 import NewArtistPage from "./components/NewArtist";
 import NewReleasePage from "./components/NewRelease";
 import SearchResult from "./components/SearchResult";
+import About from "./components/About";
 
 import './App.css';
 
@@ -94,6 +95,7 @@ const App = () => {
         <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
         <Route exact path="/artist/:artist/add_release" element={<NewReleasePage />} />
         <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
+        <Route exact path="/about" element={<About />} />
       </Routes>
       <Footer />
     </BrowserRouter>

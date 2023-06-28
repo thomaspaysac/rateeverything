@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
 import mailIcon from '../../img/mail-white.png';
@@ -9,17 +9,19 @@ import menuIcon from '../../img/menu.png';
 const UserContainer = (props) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  const backdrop = document.getElementById('backdrop');
-  const menu = document.querySelector('.menu-opened');
-  const menuButton = document.getElementById('hamburger-menu');
+  const navigateTo = useNavigate();
 
   const logOutPrompt = () => {
     if(window.confirm('Are you sure you want to log out?')) {
       signOut(getAuth());
+      navigateTo('/');
     }
   }
 
   const toggleMenu = () => {
+    const backdrop = document.getElementById('backdrop');
+    const menu = document.querySelector('.menu-opened');
+    const menuButton = document.getElementById('hamburger-menu');
     const backdropClick = () => {
       backdrop.style.display = 'none';
       menu.style.display = 'none';
@@ -69,7 +71,7 @@ const UserContainer = (props) => {
           <div>Messaging</div>
           <div>Settings</div>
           <div>Submissions</div>
-          <button className="header_logout-button" onClick={() => signOut(getAuth())}>Log out</button>
+          <button className="header_logout-button" onClick={() => logOutPrompt()}>Log out</button>
         </div>
       </div>
     )

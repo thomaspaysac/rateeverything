@@ -27,12 +27,6 @@ button, input {
     .content-page a:hover {
       color: #C7E2FF; }
 
-footer {
-  width: 100%;
-  flex-shrink: 0;
-  border-top: 3px solid #999999;
-  background-color: #152238; }
-
 .accent-text {
   color: #4CC0E7; }
 
@@ -84,7 +78,7 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  padding: 4px 24px; }
+  padding: 4px 42px; }
   header a {
     text-decoration: none;
     color: #DBE0E9; }
@@ -114,7 +108,8 @@ header {
   gap: 12px; }
 
 .header_searchbar {
-  flex-grow: 1; }
+  flex-grow: 1;
+  padding-right: 12px; }
   .header_searchbar input {
     width: 100%;
     background-color: #1C2B45;
@@ -172,6 +167,37 @@ header {
     color: #DBE0E9;
     font-size: 1.15rem;
     width: 100%; }
+
+footer {
+  width: 100%;
+  flex-shrink: 0;
+  border-top: 3px solid #999999;
+  background-color: #152238;
+  padding-bottom: 130px;
+  font-size: 0.94rem; }
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  margin: 24px 24px;
+  gap: 42px; }
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px; }
+  .footer-section a {
+    text-decoration: none;
+    margin-bottom: 4px;
+    color: #DDDDDD; }
+    .footer-section a:hover, .footer-section a:active {
+      color: #ffffff; }
+
+.footer-title {
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 1rem; }
 
 .logo-image {
   background: url("../public/img/logo_big.png");
