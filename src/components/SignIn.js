@@ -92,12 +92,12 @@ const SignInPage = () => {
           <h3 className="login-page_signup-prompt">Don't have an account?</h3>
           <p>With an Evaluate Your Sounds account, you can:</p>
           <ul>
-            <li><span class="bolded">rate, review, catalog, and tag</span> your music</li>
-            <li>create and publish <span class="bolded">lists</span> of your favorite things</li>
-            <li><span class="bolded">research</span> music, cross-referenced by artist, and genre.</li>
-            <li><span class="bolded">contribute</span> to an always-growing public music database</li>
+            <li><span className="bolded">rate, review, catalog, and tag</span> your music</li>
+            <li>create and publish <span className="bolded">lists</span> of your favorite things</li>
+            <li><span className="bolded">research</span> music, cross-referenced by artist, and genre.</li>
+            <li><span className="bolded">contribute</span> to an always-growing public music database</li>
           </ul>
-          <Link to='/account/signup'><div class="login-page_signup-button">
+          <Link to='/account/signup'><div className="login-page_signup-button">
             Sign up now!
           </div></Link>
         </div>

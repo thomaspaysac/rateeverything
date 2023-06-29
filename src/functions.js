@@ -16,6 +16,13 @@ const userFirestoreSetup = async (userID, username) => {
   });
 }
 
+const getAllUsernames = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  const usernamesList = [];
+  querySnapshot.forEach(user => usernamesList.push(user.data().username))
+  return usernamesList;
+}
+
 const getUserInfo = async (userID) => {
   const userRef = doc(db, 'users', userID);
   const docSnap = await getDoc(userRef);
@@ -432,6 +439,7 @@ const searchRelease = async (prompt) => {
 
 export { 
   userFirestoreSetup,
+  getAllUsernames,
   getUserInfo,
   getRatingsCounter,
   getReviewsCounter,

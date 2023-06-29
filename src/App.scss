@@ -989,6 +989,28 @@ footer {
       background-color: #242834;
     }
   }
+
+  .separator {
+    width: 100%;
+    height: 1px;
+    background-color: #4E5465;
+    margin: 24px 0 64px 0;
+  }
+
+  .forgot-password-button {
+    width: 100%;
+    text-align: center;
+    color: #9DA3AF;
+    background-color: #323643;
+    font-weight: 700;
+    padding: 7px;
+    border-radius: 3px;
+
+    &:hover,
+    &:active {
+      background-color: #e5e5f4;
+    }
+  }
 }
 
 .login-page_title {
@@ -1138,6 +1160,7 @@ footer {
 }
 
 .signup-warning {
+  display: none;
   background-color: #1C2B45;
   border-left: 15px solid #FF6B6B;
   padding: 15px 30px;
