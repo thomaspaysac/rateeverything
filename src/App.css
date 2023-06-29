@@ -68,6 +68,9 @@ button, input {
     max-width: 100%;
     object-fit: contain; }
 
+[data-lastpass-icon-root] {
+  display: none; }
+
 header {
   position: fixed;
   width: 100vw;
@@ -690,6 +693,11 @@ footer {
     font-size: 0.84rem;
     color: #A8AEBA; }
 
+.login-page {
+  margin: 45px;
+  display: flex;
+  justify-content: space-between; }
+
 .login-section {
   margin: 0 100px;
   max-width: 320px; }
@@ -703,8 +711,11 @@ footer {
     font-weight: 700;
     background-color: #323643;
     color: #DBE0E9;
-    border: 1px solid #272A37;
+    border: none;
     border-radius: 3px; }
+    .login-section input[type="submit"]:hover, .login-section input[type="submit"]:active {
+      cursor: pointer;
+      background-color: #242834; }
 
 .login-page_title {
   font-size: 2rem;
@@ -733,19 +744,94 @@ footer {
   border: 1px solid #272A37;
   border-radius: 3px; }
 
+.signup-section {
+  width: 50%;
+  height: fit-content;
+  font-size: 0.94rem;
+  padding: 30px;
+  background-color: #242834;
+  border: 1px solid #4E5465;
+  border-radius: 5px; }
+  .signup-section p {
+    margin-bottom: 15px; }
+  .signup-section ul {
+    list-style-type: none; }
+
+.login-page_signup-prompt {
+  font-size: 1.78rem;
+  font-weight: 400;
+  margin-bottom: 7px; }
+
+.login-page_signup-button {
+  background-color: #323643;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 9px;
+  border-radius: 3px;
+  margin-top: 16px; }
+  .login-page_signup-button:hover, .login-page_signup-button:active {
+    cursor: pointer;
+    background-color: #161A25; }
+
+.signup-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px; }
+
 .signup-container {
-  border: 2px solid #DBE0E9;
+  border: 1px solid #4E5465;
+  background-color: #141723;
   width: fit-content;
-  padding: 16px; }
+  padding: 16px;
+  width: 675px; }
+  .signup-container p {
+    margin-bottom: 24px; }
 
 #signup-form {
-  gap: 16px;
-  width: 200px;
+  width: 70%;
   display: flex;
   flex-direction: column;
-  gap: 12px; }
+  gap: 4px; }
   #signup-form .input-group {
+    width: 100%;
     display: flex;
-    flex-direction: column; }
+    justify-content: space-between; }
+    #signup-form .input-group label {
+      font-weight: 700;
+      font-size: 0.95rem; }
+    #signup-form .input-group input {
+      width: 256px;
+      background-color: #152238;
+      border: 1px solid #656C80;
+      border-radius: 3px;
+      padding: 2px;
+      color: #DBE0E9;
+      font-size: 1rem; }
+  #signup-form textarea {
+    background-color: #152238;
+    border: 1px solid #656C80;
+    color: #DBE0E9;
+    font-size: 1rem; }
+  #signup-form input[type='checkbox'] {
+    margin-right: 4px; }
+  #signup-form input[type='submit'] {
+    width: 195px;
+    background-color: #283A58;
+    border: 1px solid #656C80;
+    border-radius: 3px;
+    color: #DBE0E9;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    margin-top: 24px; }
+
+.signup-warning {
+  background-color: #1C2B45;
+  border-left: 15px solid #FF6B6B;
+  padding: 15px 30px;
+  margin: 8px;
+  box-shadow: 1px 1px 3px #ffffff3e;
+  color: #959CAF; }
 
 /*# sourceMappingURL=App.css.map */

@@ -23,6 +23,7 @@ import HomePage from "./components/HomePage";
 import ReleasePage from "./components/Release";
 import ArtistPage from "./components/Artist";
 import SignInPage from "./components/SignIn";
+import SignUpPage from "./components/SignUp";
 import ProfilePage from "./components/Profile";
 import NewArtistPage from "./components/NewArtist";
 import NewReleasePage from "./components/NewRelease";
@@ -84,7 +85,8 @@ const App = () => {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/release/:artist/:release" element={<ReleasePage />} />
         <Route exact path="/artist/:artist" element={<ArtistPage />} />
-        <Route exact path="/signin" element={<SignInPage />} />
+        <Route exact path="/account/signin" element={<SignInPage />} />
+        <Route exact path='/account/signup' element={<SignUpPage />} />
         <Route exact path="/profile" 
           element={<ProfilePage 
             username={userName} 

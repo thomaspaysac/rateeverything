@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { firebaseConfig } from "../firebase";
 import {
@@ -68,7 +68,7 @@ const SignInPage = () => {
 
   return (
     <div className="content-page">
-      <div className="content-wrapper">
+      <div className="login-page">
         <div className="login-section">
           <h2 className="login-page_title">Log in</h2>
           <p>If you are already registered, then please log in.</p>
@@ -87,30 +87,21 @@ const SignInPage = () => {
           <input type="submit" form="signin-form" value="Log in >>" />
         </div>
         
-      </div>
 
-      <div className="signup-container">
-        Sign up
-        <form method="post" id="signup-form" onSubmit={sendForm}>
-          <div className="input-group">
-            <label htmlFor="username">Username:</label>
-            <input type="text" name="username"/>
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password:</label>
-            <input type="password" name="password"/>
-          </div>
-          <div className="input-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" name="email"/>
-          </div>
-          <input type="submit" value="Sign up" />
-        </form>
+        <div className="signup-section">
+          <h3 className="login-page_signup-prompt">Don't have an account?</h3>
+          <p>With an Evaluate Your Sounds account, you can:</p>
+          <ul>
+            <li><span class="bolded">rate, review, catalog, and tag</span> your music</li>
+            <li>create and publish <span class="bolded">lists</span> of your favorite things</li>
+            <li><span class="bolded">research</span> music, cross-referenced by artist, and genre.</li>
+            <li><span class="bolded">contribute</span> to an always-growing public music database</li>
+          </ul>
+          <Link to='/account/signup'><div class="login-page_signup-button">
+            Sign up now!
+          </div></Link>
+        </div>
       </div>
-
-      
-      <button onClick={() => signOut(getAuth())}>Sign Out</button>
-      <button onClick={() => testfunc()}>Test</button>
     </div>
   )
 }
