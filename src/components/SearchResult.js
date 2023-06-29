@@ -12,7 +12,6 @@ const Results = (props) => {
           props.artists.map((el) => {
             return (
               <div className='search-result_card'>
-                <div className='search-result_card-image'>O</div>
                 <div className='search-result_card-info'>
                   <div className='artist-data'>
                     <Link to={`/artist/${el.artist}`} className='artist-name bolded'>{el.artist}</Link>
@@ -39,8 +38,21 @@ const Results = (props) => {
         {
           props.releases.map((el) => {
             return (
-              <div>
-                <Link to={`/release/${el.artist}/${el.release}`}>{el.release}</Link> - <Link to={`/artist/${el.artist}`}>{el.artist}</Link>
+              <div className='search-result_card'>
+                <div className='search-result_card-image'><img src={el.imagePath} alt='cover art' /></div>
+                <div>
+                  <div>
+                    <Link to={`/artist/${el.artist}`} className='bolded'>{el.artist}</Link> - <Link to={`/release/${el.artist}/${el.release}`} className='bolded search_release-title'>{el.release}</Link> <span class="search_release-date">({el.year})</span>
+                  </div>
+                  <div className='search-result_tracklist'>
+                    <span class="bolded">Tracks:</span> {
+                      el.tracks.map(el => {
+                        return el.title + ', ';
+                      })
+                      }
+                  </div>
+
+                </div>
               </div>
             )
           })

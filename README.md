@@ -7,9 +7,7 @@
 ## Priorités :
 
 ### Core Fonctionnalités
-O ajouter prompt de déconnexion
 O Ajouter images albums et profil
-O Améliorer recherche en utilisant .includes()
 O Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur + historique
 O Implémenter listes
 O Page profil

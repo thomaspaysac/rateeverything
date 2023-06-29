@@ -397,7 +397,7 @@ const searchArtistByName = async (prompt) => {
   let index = 0;
   const targetIndexes = [];
   cleanList.map(el => {
-    if (el === cleanPrompt) {
+    if (el.includes(cleanPrompt)) {
       targetIndexes.push(index);
     } else {
       index++
@@ -423,7 +423,7 @@ const searchRelease = async (prompt) => {
   let index = 0;
   const targetIndexes = [];
   cleanList.map(el => {
-    if (el === cleanPrompt) {
+    if (el.includes(cleanPrompt)) {
       targetIndexes.push(index);
     } else {
       index++
