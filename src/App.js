@@ -83,7 +83,7 @@ const App = () => {
       <Backdrop />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/release/:artist/:release" element={<ReleasePage />} />
+        <Route exact path="/release/:artist/:release" element={<ReleasePage userStatus={isSignedIn} />} />
         <Route exact path="/artist/:artist" element={<ArtistPage />} />
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />

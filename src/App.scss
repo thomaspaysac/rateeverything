@@ -332,6 +332,7 @@ footer {
 .artist-page {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr fit-content;
   background-color: #272A37;
 }
 
@@ -540,6 +541,45 @@ footer {
   background-color: #777777;
   width: 100%;
   aspect-ratio: 1 / 1;
+}
+
+.release-page_contributions {
+  width: 100%;
+  border-top: 1px solid #4E5465;
+  background-color: #0B1528;
+  padding: 15px 50px 20px 50px;
+  grid-column: span 2;
+
+  h2 {
+    font-size: 1.125rem;
+    color: #A8AEBA;
+    margin-bottom: 18px;
+  }
+}
+
+.contribution {
+  display: flex;
+  gap: 16px;
+}
+
+.contribution-group {
+  display: flex;
+  gap: 8px;
+}
+
+.contribution-button {
+  background-color: #006ED1;
+  color: map-get($dark-theme, font-light);
+  font-weight: 700;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: #005DBF;
+  }
 }
 
 // Release page: track listing

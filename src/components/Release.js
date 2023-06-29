@@ -6,6 +6,7 @@ import UserRatingsPage from "./release_page/UserRatings";
 import Reviews from "./release_page/Reviews";
 import AddReview from "./release_page/AddReview";
 import Tracklist from "./release_page/Tracklist";
+import EditContainer from "./release_page/EditContainer";
 
 import { getUniqueRelease } from "../functions";
 
@@ -117,6 +118,7 @@ const ReleasePage = (props) => {
           ratings={ratings} />
       </div>
 
+      <EditContainer userStatus={props.userStatus} />
     </div>
   )
 }
