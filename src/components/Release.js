@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ReleaseInfo from "./release_page/ReleaseInfo";
 import Rating from "./release_page/Rating";
 import UserRatingsPage from "./release_page/UserRatings";
 import Reviews from "./release_page/Reviews";
 import AddReview from "./release_page/AddReview";
 import Tracklist from "./release_page/Tracklist";
-import EditContainer from "./release_page/EditContainer";
 
 import { getUniqueRelease } from "../functions";
 
@@ -80,6 +79,21 @@ const ReleasePage = (props) => {
     fetchData(urlParams.artist, urlParams.release);
   }, []);
 
+  const ContributionsContainer = (props) => {
+    if (!props.userStatus) {
+      return (
+        <div><Link to='/account/signin'>Log in</Link> to submit a correction or upload art for this release</div>
+      )
+    } else return (
+      <div className='contribution'>
+        <div className='contribution-group'>
+          <Link to={`/releases/edit/${releaseID}`}><button className='contribution-button'>Correct entry</button></Link>
+          <button className='contribution-button'>History</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="release-page content-page">
       <div className="release_left-col">
@@ -118,7 +132,10 @@ const ReleasePage = (props) => {
           ratings={ratings} />
       </div>
 
-      <EditContainer userStatus={props.userStatus} />
+      <div className='release-page_contributions'>
+        <h2>Contributions</h2>
+        <ContributionsContainer userStatus={props.userStatus} />
+      </div>
     </div>
   )
 }

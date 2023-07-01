@@ -27,6 +27,9 @@ button, input {
     .content-page a:hover {
       color: #C7E2FF; }
 
+.section-header {
+  padding: 7px 20px; }
+
 .accent-text {
   color: #4CC0E7; }
 
@@ -119,7 +122,7 @@ header {
     font-size: 1rem;
     border: none;
     border-radius: 50px;
-    padding: 4px 16px;
+    padding: 4px 16px 4px 36px;
     color: #DBE0E9; }
 
 .header_divider {
@@ -532,11 +535,11 @@ footer {
   color: #A8AEBA;
   white-space: pre-wrap; }
 
-.add-release_page .section-header {
-  padding: 7px 20px; }
-.add-release_page label {
+.add-release_page label,
+.edit-release_page label {
   display: block; }
-.add-release_page input {
+.add-release_page input,
+.edit-release_page input {
   background-color: #152238;
   width: 496px;
   font-size: medium;
@@ -544,36 +547,50 @@ footer {
   padding: 2px;
   border: 1px solid #656C80;
   border-radius: 5px; }
-.add-release_page .submit-tracklist-table_track .tracklist-th {
+.add-release_page .submit-tracklist-table_track .tracklist-th,
+.edit-release_page .submit-tracklist-table_track .tracklist-th {
   font-size: 1rem; }
-.add-release_page .submit-tracklist-table_track td {
+.add-release_page .submit-tracklist-table_track td,
+.edit-release_page .submit-tracklist-table_track td {
   height: 30px; }
-.add-release_page .submit-tracklist-table_track input {
+.add-release_page .submit-tracklist-table_track input,
+.edit-release_page .submit-tracklist-table_track input {
   border: none;
   margin: 4px; }
-.add-release_page .submit-tracklist-table_track:nth-of-type(odd) {
+.add-release_page .submit-tracklist-table_track:nth-of-type(odd),
+.edit-release_page .submit-tracklist-table_track:nth-of-type(odd) {
   background-color: #4E5465; }
-  .add-release_page .submit-tracklist-table_track:nth-of-type(odd) input {
+  .add-release_page .submit-tracklist-table_track:nth-of-type(odd) input,
+  .edit-release_page .submit-tracklist-table_track:nth-of-type(odd) input {
     background-color: #4E5465; }
-.add-release_page .submit-tracklist-table_track:nth-of-type(even) {
+.add-release_page .submit-tracklist-table_track:nth-of-type(even),
+.edit-release_page .submit-tracklist-table_track:nth-of-type(even) {
   background-color: #0B0E19; }
-  .add-release_page .submit-tracklist-table_track:nth-of-type(even) input {
+  .add-release_page .submit-tracklist-table_track:nth-of-type(even) input,
+  .edit-release_page .submit-tracklist-table_track:nth-of-type(even) input {
     background-color: #0B0E19; }
-.add-release_page .tracklist-td_number {
+.add-release_page .tracklist-td_number,
+.edit-release_page .tracklist-td_number {
   width: 44px; }
-.add-release_page .tracklist-td_title {
+.add-release_page .tracklist-td_title,
+.edit-release_page .tracklist-td_title {
   width: 494px; }
-.add-release_page .tracklist-td_time {
+.add-release_page .tracklist-td_time,
+.edit-release_page .tracklist-td_time {
   width: 66px; }
-.add-release_page input[type='button'] {
+.add-release_page input[type='button'],
+.edit-release_page input[type='button'] {
   background-color: #006ED1 !important;
   width: fit-content;
   padding: 3px 10px;
   border: none; }
-  .add-release_page input[type='button']:hover, .add-release_page input[type='button']:active {
+  .add-release_page input[type='button']:hover, .add-release_page input[type='button']:active,
+  .edit-release_page input[type='button']:hover,
+  .edit-release_page input[type='button']:active {
     cursor: pointer;
     background-color: #005DBF; }
-.add-release_page .separator {
+.add-release_page .separator,
+.edit-release_page .separator {
   width: 100%;
   height: 1px;
   background-color: #DBE0E9; }
@@ -649,6 +666,12 @@ footer {
   display: grid;
   grid-template-rows: 100px;
   grid-template-columns: 50px 29px 112px 1fr 163px; }
+
+#searchbar-icon {
+  height: 16px;
+  position: absolute;
+  top: 15px;
+  left: 523px; }
 
 .search-engine_category {
   display: none;

@@ -4,11 +4,8 @@ import firebase from "firebase/compat/app";
 import { firebaseConfig } from "../firebase";
 import {
   getAuth,
-  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
   updateProfile,
 } from 'firebase/auth';
 import { userFirestoreSetup } from "../functions";

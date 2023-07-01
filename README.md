@@ -8,8 +8,7 @@
 
 ### Core Fonctionnalités
 O Ajouter images albums et profil
-O Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur + historique
-O Implémenter listes
+O Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
 O Page profil
 X Rechercher dans la base de données
 X ajouter les genres et un id aux albums, corriger affichage du genre
@@ -25,6 +24,10 @@ X Arranger albums par dates
 X Arranger notes par dates
 
 ## Second temps
+### Fonctionnalités
+O Implémenter listes
+O Ajouter historique d'édition
+
 ### UI
 O Favicon et nom de page dynamique
 O Afficher notes et reviews par page de 10 à la fois

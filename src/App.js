@@ -1,21 +1,11 @@
-import { React, useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { React, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import {
   getFirestore,
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  limit,
-  onSnapshot,
   setDoc,
-  updateDoc,
   doc,
-  getDoc,
-  serverTimestamp,
 } from 'firebase/firestore';
-import { getUserInfo, submitArtist, submitRelease } from "./functions";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -29,6 +19,7 @@ import NewArtistPage from "./components/NewArtist";
 import NewReleasePage from "./components/NewRelease";
 import SearchResult from "./components/SearchResult";
 import About from "./components/About";
+import EditRelease from "./components/EditRelease";
 
 import './App.css';
 
@@ -37,7 +28,6 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
   const [userName, setUserName] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
-  const [userDate, setUserDate] = useState(undefined);
 
 
   // Firebase authentication
@@ -97,6 +87,7 @@ const App = () => {
         <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
         <Route exact path="/artist/:artist/add_release" element={<NewReleasePage />} />
         <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
+        <Route exact path="/releases/edit/:id" element={<EditRelease />} />
         <Route exact path="/about" element={<About />} />
       </Routes>
       <Footer />

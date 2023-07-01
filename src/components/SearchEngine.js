@@ -1,5 +1,6 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 import { useNavigate } from 'react-router-dom';
+import searchIcon from '../img/search.png';
 
 const SearchEngine = () => {
   const navigateTo = useNavigate();
@@ -30,6 +31,7 @@ const SearchEngine = () => {
   return (
     <div className="header_searchbar">
         <form onSubmit={submitSearch}>
+          <img src={searchIcon} alt='search' id='searchbar-icon' />
           <input onFocus={displayChoices} type="text" name="searchterm" placeholder="Search..." autoComplete='off'/>
           <div className='search-engine_category'>
             Search:

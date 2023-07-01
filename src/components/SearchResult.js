@@ -1,6 +1,6 @@
 import {React, useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getArtist, searchArtistByName, getAllReleases, searchRelease } from '../functions';
+import { searchArtistByName, searchRelease } from '../functions';
 
 const Results = (props) => {
   const urlParams = useParams();
@@ -42,10 +42,10 @@ const Results = (props) => {
                 <div className='search-result_card-image'><img src={el.imagePath} alt='cover art' /></div>
                 <div>
                   <div>
-                    <Link to={`/artist/${el.artist}`} className='bolded'>{el.artist}</Link> - <Link to={`/release/${el.artist}/${el.release}`} className='bolded search_release-title'>{el.release}</Link> <span class="search_release-date">({el.year})</span>
+                    <Link to={`/artist/${el.artist}`} className='bolded'>{el.artist}</Link> - <Link to={`/release/${el.artist}/${el.release}`} className='bolded search_release-title'>{el.release}</Link> <span className="search_release-date">({el.year})</span>
                   </div>
                   <div className='search-result_tracklist'>
-                    <span class="bolded">Tracks:</span> {
+                    <span className="bolded">Tracks:</span> {
                       el.tracks.map(el => {
                         return el.title + ', ';
                       })

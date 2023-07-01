@@ -1,8 +1,10 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { submitRelease, uploadImage } from '../functions';
 import { useParams } from 'react-router-dom';
+import { getReleaseByID, getUniqueRelease } from '../functions';
 
-const NewReleasePage = () => {
+const EditRelease = () => {
+  const [releaseInfo, setReleaseInfo] = useState();
   const [trackList, setTrackList] = useState([]);
   
   const urlParams = useParams();
@@ -92,16 +94,24 @@ const NewReleasePage = () => {
     }
   }
 
+  const getReleaseInfo = async () => {
+    const data = await getReleaseByID(+urlParams.id);
+    setReleaseInfo(data);
+  }
+
+  useEffect(() => {
+    getReleaseInfo();
+  }, [])
+
   return (
-    <div className='add-release_page content-page'>
-      <div class="content-wrapper">
-        <div className='section-header bolded'>Add Release</div>
+    <div className='content-page edit-release_page'>
+      <div className='content-wrapper'>
+        <div className="section-header bolded" onClick={() => console.log(releaseInfo)}>Edit release</div>
         <div className='warning'>
-          <div className='bolded'>Please Note:</div>
+          <div className="bolded">Please Note:</div>
           <ol>
             <li>Read the Add a release and Add release information pages for the rules/standards that must be followed when submitting a release.</li>
             <li>Mind the Capitalization rules when entering the release title and track listing.</li>
-            <li>For classical music releases please see Classical music and Add a work</li>
           </ol>
         </div>
         <div>
@@ -168,4 +178,4 @@ const NewReleasePage = () => {
   );
 }
 
-export default NewReleasePage;
+export default EditRelease;

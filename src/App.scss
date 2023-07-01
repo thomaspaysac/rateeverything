@@ -50,6 +50,10 @@ button, input {
   }
 }
 
+.section-header {
+  padding: 7px 20px;
+}
+
 .accent-text {
   color:#4CC0E7;
 }
@@ -164,7 +168,7 @@ header {
     font-size: 1rem;
     border: none;
     border-radius: 50px;
-    padding: 4px 16px;
+    padding: 4px 16px 4px 36px;
     color: map-get($dark-theme, font-light);
   }
 }
@@ -717,12 +721,9 @@ footer {
   white-space: pre-wrap;
 }
 
-// Add release page
-.add-release_page {
-  .section-header {
-    padding: 7px 20px;
-  }
-
+// Add & Edit release page
+.add-release_page,
+.edit-release_page {
   label {
     display: block;
   }
@@ -896,6 +897,13 @@ footer {
 }
 
 // Search engine
+#searchbar-icon {
+  height: 16px;
+  position: absolute;
+  top: 15px;
+  left: 523px;
+}
+
 .search-engine_category {
   display: none;
   position: absolute;
