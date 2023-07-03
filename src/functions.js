@@ -1,6 +1,6 @@
-import { doc, collection, getCountFromServer, getFirestore, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, collection, getCountFromServer, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getAuth } from "firebase/auth";
+import { query, where } from "firebase/firestore";
 import { db } from "./firebase";
 import format from "date-fns/format";
 
@@ -65,9 +65,8 @@ const storage = getStorage();
 
 const uploadImage = async (path, file) => {
   const storageRef = ref(storage, path);
-  const snapshot = await uploadBytes(storageRef, file)
+  await uploadBytes(storageRef, file)
   const url = await getDownloadURL(ref(storage, path))
-  console.log(url);
   return url;
 }
 
@@ -77,7 +76,7 @@ const getImageUrl = async (path) => {
 }
 
 const addImageToRelease = async (path, file) => {
-  const upload = await uploadImage(path, file);
+  await uploadImage(path, file);
   getImageUrl(path);
 }
 
@@ -127,6 +126,41 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
       imagePath: imagePath,
     })
   })
+}
+
+const updateRelease = async (artist, albumID, release, year, tracks, genres, ratings, reviews, imagePath) => {
+  // Get artist document
+  const artistRef = doc(db, 'artists', artist);
+  const docSnap = await getDoc(artistRef);
+  const data = docSnap.data();
+  const updatedReleases = data.releases;
+  // Create new release object for replacing old one => KEEP REVIEWS AND RATINGS
+  const newObject = {
+    artist: artist, 
+    release: release,
+    year: year,
+    tracks: tracks,
+    ratings: ratings,
+    reviews: reviews,
+    genres: genres,
+    albumID: albumID,
+    //average: updateRelease[0].average,
+    imagePath: imagePath,
+  }
+  console.log(updatedReleases[0], newObject);
+
+  /*await updateDoc(artistRef, 
+    {
+      releases: updatedReleases,
+    });*/
+
+  // Modify the object to change the release data
+  
+  // Send the new document to overwrite the previous one
+  /*await setDoc(artistRef, {
+    test: 'bla',
+    test2 : 'bla2',
+  })*/
 }
 
 const getArtistsList = async () => {
@@ -191,7 +225,7 @@ const getAllReleasesLength = async () => {
 const getUniqueRelease = async (artist, releaseName) => {
   const data = await getArtist(artist);
   let targetIndex = undefined
-  data.releases.map((el, i) => {
+  data.releases.forEach((el, i) => {
     if (el.release === releaseName) {
       targetIndex = i;
     }
@@ -202,7 +236,7 @@ const getUniqueRelease = async (artist, releaseName) => {
 const getReleaseByID = async (targetID) => {
  const allReleases = await getAllReleases();
  let targetIndex = undefined;
- allReleases.map((el, i) => {
+ allReleases.forEach((el, i) => {
   if (el.albumID === targetID) {
     targetIndex = i;
   }
@@ -396,7 +430,7 @@ const searchArtistByName = async (prompt) => {
   // When a match is found, retrieve the artist from the list by index
   let index = 0;
   const targetIndexes = [];
-  cleanList.map(el => {
+  cleanList.forEach(el => {
     if (el.includes(cleanPrompt)) {
       targetIndexes.push(index);
     } else {
@@ -422,7 +456,7 @@ const searchRelease = async (prompt) => {
   })
   let index = 0;
   const targetIndexes = [];
-  cleanList.map(el => {
+  cleanList.forEach(el => {
     if (el.includes(cleanPrompt)) {
       targetIndexes.push(index);
     } else {
@@ -449,7 +483,8 @@ export {
   getCollLength,
   addImageToRelease,
   submitArtist, 
-  submitRelease, 
+  submitRelease,
+  updateRelease,
   getArtistsList, 
   getAllArtistsData, 
   getArtist, 

@@ -94,7 +94,7 @@ const NewReleasePage = () => {
 
   return (
     <div className='add-release_page content-page'>
-      <div class="content-wrapper">
+      <div className="content-wrapper">
         <div className='section-header bolded'>Add Release</div>
         <div className='warning'>
           <div className='bolded'>Please Note:</div>
