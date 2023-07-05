@@ -128,11 +128,12 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
   })
 }
 
-const updateRelease = async (artist, albumID, release, year, tracks, genres, imagePath) => {
+const updateRelease = async (artist, albumID, release, year, tracks, genres, username, imagePath) => {
   // Get artist document
   const artistRef = doc(db, 'artists', artist);
   const docSnap = await getDoc(artistRef);
   const data = docSnap.data();
+  
   // Get releases array and find the targeted release for editing
   const copyReleases = data.releases;
   let targetIndex = undefined;
@@ -141,15 +142,40 @@ const updateRelease = async (artist, albumID, release, year, tracks, genres, ima
       targetIndex = i;
     }
   });
-  const keepAverage = data.releases[targetIndex].average;
-  const keepRatings = data.releases[targetIndex].ratings;
-  const keepReviews = data.releases[targetIndex].reviews;
+  const targetRelease = data.releases[targetIndex];
+  // History variables setup
+  const history = targetRelease.editHistory;
+  const changes = [];
+  // Copy fixed data
+  const keepAverage = targetRelease.average;
+  const keepRatings = targetRelease.ratings;
+  const keepReviews = targetRelease.reviews;
   let newCover;
   if (imagePath === undefined) {
-    newCover = data.releases[targetIndex].imagePath;
+    newCover = targetRelease.imagePath;
   } else {
     newCover = imagePath;
+    changes.push('Cover art');
   }
+  // Update history
+  if (release !== targetRelease.release) {
+    changes.push(`Release title (from "${targetRelease.release}" to "${release}")`);
+  }
+  if (year !== targetRelease.year) {
+    changes.push(`Release date (from "${targetRelease.year}" to "${year}")`);
+  }
+  if (JSON.stringify(genres) !== JSON.stringify(targetRelease.genres)) {
+    changes.push(`Genres (from "${targetRelease.genres}" to "${genres}")`);
+  }
+  if (JSON.stringify(tracks) !== JSON.stringify(targetRelease.tracks)) {
+    changes.push('Tracklist');
+  }
+  const historyData = {
+    author: username,
+    date: format(new Date(), 'dd/LL/yyyy HH:mm'),
+    changes : changes,
+  }
+  history.push(historyData);
   // Create new release object for replacing old one => KEEP REVIEWS AND RATINGS
   const newObject = {
     artist: artist, 
@@ -162,9 +188,10 @@ const updateRelease = async (artist, albumID, release, year, tracks, genres, ima
     albumID: albumID,
     average: keepAverage,
     imagePath: newCover,
+    editHistory: history,
   }
   copyReleases[targetIndex] = newObject;
-  console.log(newObject);
+  console.log(targetRelease, tracks);
   // Update doc with new data
   await updateDoc(artistRef, 
     {

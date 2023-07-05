@@ -88,7 +88,7 @@ const ReleasePage = (props) => {
       <div className='contribution'>
         <div className='contribution-group'>
           <Link to={`/releases/edit/${releaseID}`}><button className='contribution-button'>Correct entry</button></Link>
-          <button className='contribution-button'>History</button>
+          <Link to={`/releases/history/${releaseID}`}><button className='contribution-button'>History</button></Link>
         </div>
       </div>
     );

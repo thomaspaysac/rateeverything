@@ -3,7 +3,7 @@ import { updateRelease, uploadImage } from '../functions';
 import { useParams } from 'react-router-dom';
 import { getReleaseByID, getUniqueRelease } from '../functions';
 
-const EditRelease = () => {
+const EditRelease = (props) => {
   const [releaseInfo, setReleaseInfo] = useState();
   const [trackList, setTrackList] = useState([]);
   
@@ -79,7 +79,7 @@ const EditRelease = () => {
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');
     if (data.coverart.size === 0) {
-      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres);
+      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, props.username);
     } else if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
       document.getElementById('upload-error_filetype').style.display = 'block';
       document.getElementById('upload-error_size').style.display = 'none';
@@ -89,7 +89,7 @@ const EditRelease = () => {
     } else {
       const imageName = (urlParams.artist + '_' + data.title).toLowerCase();
       const imagePath = await uploadImage(`releases_art/${urlParams.artist}/${imageName}`, data.coverart);
-      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, imagePath);
+      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, props.username, imagePath);
     }
   }
 
@@ -179,7 +179,7 @@ const EditRelease = () => {
         </div>
         <div>
           <form method='post' id='new-release-form' onSubmit={sendForm}>
-          <div className='add-release_step-header bolded'><span className='add-release_step-number'>Step 1:</span> Release</div>
+          <div className='edit-release_step-header bolded'><span className='add-release_step-number'>Step 1:</span> Release</div>
           <ReleaseStep />
           <div className='edit-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 2:</span> Track listing</span></div>
             {tracklistStep()}

@@ -20,6 +20,7 @@ import NewReleasePage from "./components/NewRelease";
 import SearchResult from "./components/SearchResult";
 import About from "./components/About";
 import EditRelease from "./components/EditRelease";
+import EditHistory from "./components/release_page/EditHistory";
 
 import './App.css';
 
@@ -87,7 +88,10 @@ const App = () => {
         <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
         <Route exact path="/artist/:artist/add_release" element={<NewReleasePage />} />
         <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
-        <Route exact path="/releases/edit/:id" element={<EditRelease />} />
+        <Route exact path="/releases/edit/:id" 
+          element={<EditRelease
+            username={userName} />} />
+        <Route exact path="/releases/history/:id" element={<EditHistory />} />
         <Route exact path="/about" element={<About />} />
       </Routes>
       <Footer />
