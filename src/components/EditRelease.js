@@ -78,7 +78,7 @@ const EditRelease = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');
-    console.log(data);
+    //console.log(data);
     if (data.coverart.size === 0) {
       const defaultPath = 'https://firebasestorage.googleapis.com/v0/b/rym-clone.appspot.com/o/empty-art.png?alt=media&token=6c4c0612-7a8b-4a9b-a1ae-7552cdf286f7';
       updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, [], [], defaultPath);

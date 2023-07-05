@@ -133,34 +133,37 @@ const updateRelease = async (artist, albumID, release, year, tracks, genres, rat
   const artistRef = doc(db, 'artists', artist);
   const docSnap = await getDoc(artistRef);
   const data = docSnap.data();
-  const updatedReleases = data.releases;
+  // Get releases array and find the targeted release for editing
+  const copyReleases = data.releases;
+  let targetIndex = undefined;
+  copyReleases.forEach((el, i) => {
+    if (el.albumID === albumID) {
+      targetIndex = i;
+    }
+  });
+  const keepAverage = data.releases[targetIndex].average;
+  const keepRatings = data.releases[targetIndex].ratings;
+  const keepReviews = data.releases[targetIndex].reviews;
   // Create new release object for replacing old one => KEEP REVIEWS AND RATINGS
   const newObject = {
     artist: artist, 
     release: release,
     year: year,
     tracks: tracks,
-    ratings: ratings,
-    reviews: reviews,
+    ratings: keepRatings,
+    reviews: keepReviews,
     genres: genres,
     albumID: albumID,
-    //average: updateRelease[0].average,
+    average: keepAverage,
     imagePath: imagePath,
   }
-  console.log(updatedReleases[0], newObject);
-
-  /*await updateDoc(artistRef, 
+  copyReleases[targetIndex] = newObject;
+  console.log(keepAverage, keepRatings, keepReviews);
+  // Update doc with new data
+  await updateDoc(artistRef, 
     {
-      releases: updatedReleases,
-    });*/
-
-  // Modify the object to change the release data
-  
-  // Send the new document to overwrite the previous one
-  /*await setDoc(artistRef, {
-    test: 'bla',
-    test2 : 'bla2',
-  })*/
+      releases: copyReleases,
+    });
 }
 
 const getArtistsList = async () => {
