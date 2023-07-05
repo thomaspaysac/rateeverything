@@ -128,7 +128,7 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
   })
 }
 
-const updateRelease = async (artist, albumID, release, year, tracks, genres, ratings, reviews, imagePath) => {
+const updateRelease = async (artist, albumID, release, year, tracks, genres, imagePath) => {
   // Get artist document
   const artistRef = doc(db, 'artists', artist);
   const docSnap = await getDoc(artistRef);
@@ -144,6 +144,12 @@ const updateRelease = async (artist, albumID, release, year, tracks, genres, rat
   const keepAverage = data.releases[targetIndex].average;
   const keepRatings = data.releases[targetIndex].ratings;
   const keepReviews = data.releases[targetIndex].reviews;
+  let newCover;
+  if (imagePath === undefined) {
+    newCover = data.releases[targetIndex].imagePath;
+  } else {
+    newCover = imagePath;
+  }
   // Create new release object for replacing old one => KEEP REVIEWS AND RATINGS
   const newObject = {
     artist: artist, 
@@ -155,10 +161,10 @@ const updateRelease = async (artist, albumID, release, year, tracks, genres, rat
     genres: genres,
     albumID: albumID,
     average: keepAverage,
-    imagePath: imagePath,
+    imagePath: newCover,
   }
   copyReleases[targetIndex] = newObject;
-  console.log(keepAverage, keepRatings, keepReviews);
+  console.log(newObject);
   // Update doc with new data
   await updateDoc(artistRef, 
     {

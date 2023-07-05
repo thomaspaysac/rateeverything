@@ -814,27 +814,32 @@ footer {
   color: #F1696B;
 }
 
-.add-release_step-header {
+.add-release_step-header,
+.edit-release_step-header {
   font-size: 1.36rem;
   margin: 40px 5px 5px 5px;
 }
 
-.add-release_step-number {
+.add-release_step-number,
+.edit-release_step-number {
   color: #7B818F;
 }
 
-.add-release_step-box {
+.add-release_step-box,
+.edit-release_step-box {
   background-color: #20232F;
   padding: 10px 10px;
   border: 1px solid #323643;
   border-radius: 4px;
 }
 
-.add-release_step-label {
+.add-release_step-label,
+.edit-release_step-label {
   margin-top: 20px;
 }
 
-.add-release_input-group {
+.add-release_input-group,
+.edit-release_input-group {
   padding: 5px;
 
   div {
@@ -852,7 +857,9 @@ footer {
   }
 }
 
-#add-release_submit-button {
+#add-release_submit-button,
+#edit-release_submit-button {
+  cursor: pointer;
   background-color: #006ED1;
   font-size: 1.2rem;
   padding: 12px;

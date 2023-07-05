@@ -9,6 +9,7 @@
 ### Core Fonctionnalités
 O Ajouter images albums et profil
 O Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
+O Ajouter redirection automatique après submit
 O Page profil
 X Rechercher dans la base de données
 X ajouter les genres et un id aux albums, corriger affichage du genre

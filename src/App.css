@@ -605,25 +605,31 @@ footer {
   font-size: medium;
   color: #F1696B; }
 
-.add-release_step-header {
+.add-release_step-header,
+.edit-release_step-header {
   font-size: 1.36rem;
   margin: 40px 5px 5px 5px; }
 
-.add-release_step-number {
+.add-release_step-number,
+.edit-release_step-number {
   color: #7B818F; }
 
-.add-release_step-box {
+.add-release_step-box,
+.edit-release_step-box {
   background-color: #20232F;
   padding: 10px 10px;
   border: 1px solid #323643;
   border-radius: 4px; }
 
-.add-release_step-label {
+.add-release_step-label,
+.edit-release_step-label {
   margin-top: 20px; }
 
-.add-release_input-group {
+.add-release_input-group,
+.edit-release_input-group {
   padding: 5px; }
-  .add-release_input-group div {
+  .add-release_input-group div,
+  .edit-release_input-group div {
     padding: 5px; }
 
 .tracklist_actions {
@@ -633,13 +639,17 @@ footer {
   .tracklist_actions input {
     margin: 13px; }
 
-#add-release_submit-button {
+#add-release_submit-button,
+#edit-release_submit-button {
+  cursor: pointer;
   background-color: #006ED1;
   font-size: 1.2rem;
   padding: 12px;
   border: none;
   margin-top: 10px; }
-  #add-release_submit-button:hover, #add-release_submit-button:active {
+  #add-release_submit-button:hover, #add-release_submit-button:active,
+  #edit-release_submit-button:hover,
+  #edit-release_submit-button:active {
     background-color: #005DBF; }
 
 .upload-error {

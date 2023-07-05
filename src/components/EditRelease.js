@@ -78,10 +78,8 @@ const EditRelease = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');
-    //console.log(data);
     if (data.coverart.size === 0) {
-      const defaultPath = 'https://firebasestorage.googleapis.com/v0/b/rym-clone.appspot.com/o/empty-art.png?alt=media&token=6c4c0612-7a8b-4a9b-a1ae-7552cdf286f7';
-      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, [], [], defaultPath);
+      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres);
     } else if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
       document.getElementById('upload-error_filetype').style.display = 'block';
       document.getElementById('upload-error_size').style.display = 'none';
@@ -91,7 +89,7 @@ const EditRelease = () => {
     } else {
       const imageName = (urlParams.artist + '_' + data.title).toLowerCase();
       const imagePath = await uploadImage(`releases_art/${urlParams.artist}/${imageName}`, data.coverart);
-      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, [], [], imagePath);
+      updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, imagePath);
     }
   }
 
@@ -128,7 +126,7 @@ const EditRelease = () => {
     }
   }
 
-  const TracklistStep = () => {
+  const tracklistStep = () => {
     if (!releaseInfo) {
       return null
     } else {
@@ -183,16 +181,16 @@ const EditRelease = () => {
           <form method='post' id='new-release-form' onSubmit={sendForm}>
           <div className='add-release_step-header bolded'><span className='add-release_step-number'>Step 1:</span> Release</div>
           <ReleaseStep />
-          <div className='add-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 2:</span> Track listing</span></div>
-            <TracklistStep />
-            <div className='add-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 3:</span> Cover art</span></div>
+          <div className='edit-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 2:</span> Track listing</span></div>
+            {tracklistStep()}
+            <div className='edit-release_step-header'><span className="bolded"><span className='add-release_step-number'>Step 3:</span> Cover art</span></div>
             <div className='content-section'>
               <input type='file' name='coverart' id='covertart-upload' accept='.png, .jpg'></input>
               <div className='warning-note'><span className='bolded'>Note:</span> The file must be in .jpg or .png format and be smaller than 2MB.</div>
               <div id='upload-error_size' className='upload-error warning-note'>ERROR! Your file is too big.</div>
               <div id='upload-error_filetype' className='upload-error warning-note'>ERROR! Your file must be in .jpg or .png format.</div>
             </div>
-            <input id='add-release_submit-button' className='bolded' type='submit' value='Submit release' />
+            <input id='edit-release_submit-button' className='bolded' type='submit' value='Submit release' />
           </form>
         </div>
       </div>
