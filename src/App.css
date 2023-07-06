@@ -667,7 +667,8 @@ footer {
     margin: 13px; }
 
 #add-release_submit-button,
-#edit-release_submit-button {
+#edit-release_submit-button,
+#edit-artist_submit-button {
   cursor: pointer;
   background-color: #006ED1;
   font-size: 1.2rem;
@@ -676,7 +677,9 @@ footer {
   margin-top: 10px; }
   #add-release_submit-button:hover, #add-release_submit-button:active,
   #edit-release_submit-button:hover,
-  #edit-release_submit-button:active {
+  #edit-release_submit-button:active,
+  #edit-artist_submit-button:hover,
+  #edit-artist_submit-button:active {
     background-color: #005DBF; }
 
 .upload-error {

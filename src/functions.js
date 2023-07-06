@@ -109,6 +109,55 @@ const submitArtist = async (artist, formed, country, genres) => {
   }
 }
 
+const updateArtist = async (artist, formed, country, genres, username) => {
+  // Get artist document
+  const artistRef = doc(db, 'artists', artist);
+  const docSnap = await getDoc(artistRef);
+  const data = docSnap.data();
+  const copyData = data;
+  // History variables setup
+  const history = copyData.editHistory;
+  const changes = [];
+  // Copy fixed data
+  const keepName = copyData.artist;
+  const keepReleases = copyData.releases;
+  const keepID = copyData.artistID;
+  // Update history
+  if (formed !== copyData.formed) {
+    changes.push(`Formed (from "${copyData.formed}" to "${formed}")`);
+  }
+  if (JSON.stringify(genres) !== JSON.stringify(copyData.genres)) {
+    changes.push(`Genres (from "${copyData.genres}" to "${genres}")`);
+  }
+  if (country !== copyData.country) {
+    changes.push(`Country (from "${copyData.country}" to "${country}")`);
+  }
+  const historyData = {
+    author: username,
+    date: format(new Date(), 'dd/LL/yyyy HH:mm'),
+    changes : changes,
+  }
+  history.push(historyData);
+  // Create new release object for replacing old one => KEEP REVIEWS AND RATINGS
+  const newObject = {
+    artist: keepName, 
+    artistID: keepID,
+    releases: keepReleases,
+    country: country,
+    formed: formed,
+    genres: genres,
+    editHistory: history,
+  }
+  // Update doc with new data
+  await updateDoc(artistRef, 
+    {
+      country: country,
+      formed: formed,
+      genres: genres,
+      editHistory: history,
+    });
+}
+
 const submitRelease = async (artist, release, year, tracks, genres, ratings, reviews, imagePath, username) => {
   const albumID = await getAllReleasesLength();
   const artistRef = doc(db, 'artists', artist);
@@ -537,7 +586,8 @@ export {
   getImageUrl,
   getCollLength,
   addImageToRelease,
-  submitArtist, 
+  submitArtist,
+  updateArtist,
   submitRelease,
   updateRelease,
   getArtistsList, 

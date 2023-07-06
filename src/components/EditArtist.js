@@ -1,8 +1,8 @@
 import {React, useState, useEffect} from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getArtistByID } from '../functions';
+import { getArtistByID, updateArtist } from '../functions';
 
-const EditArtist = () => {
+const EditArtist = (props) => {
   const [artistInfo, setArtistInfo] = useState();
 
   const urlParams = useParams();
@@ -10,7 +10,6 @@ const EditArtist = () => {
 
   const getArtistInfo = async () => {
     const data = await getArtistByID(+urlParams.id);
-    console.log(data);
     setArtistInfo(data);
   }
 
@@ -36,7 +35,7 @@ const EditArtist = () => {
         <div>
           <div className="submission_input-group">
             <label htmlFor='artistName' className='bolded form-label'>Artist name:</label>
-            <input className='submission_input-group' name='artistName' id='artistName' defaultValue={artistInfo.artist} />
+            <input className='submission_input-group' name='artistName' id='artistName' value={artistInfo.artist} readOnly />
           </div>
           <div className='submission_input-group'>
             <label htmlFor='artistFormed' className='bolded form-label'>Formed:</label>
@@ -55,8 +54,14 @@ const EditArtist = () => {
     }
   }
 
-  const sendForm = () => {
-
+  const sendForm = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    const genres = data.artistGenres.split(',');
+    const genresList = genres.map(el => {return el.trim()});
+    updateArtist(artistInfo.artist, data.artistFormed, data.artistCountry, genresList, props.username);
+    navigateTo('/submitted');
   }
 
   return (
@@ -74,6 +79,7 @@ const EditArtist = () => {
 
         <form method='post' id='edit-artist-form' onSubmit={sendForm}>
           {formContainer()}
+          <input id='edit-artist_submit-button' className='bolded' type='submit' value='Submit update' />
         </form>
       </div>
     </div>
