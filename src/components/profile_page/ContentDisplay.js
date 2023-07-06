@@ -4,7 +4,7 @@ import PersonalReviews from './PersonalReviews';
 import PersonalRatings from './PersonalRatings';
 import { getByDisplayValue } from '@testing-library/react';
 
-const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, userReviews}) => {
+const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview}) => {
   switch (contentDisplayed) {
     case 'recent':
       return (
@@ -20,7 +20,7 @@ const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, userReviews
     case 'reviews':
       return (
         <PersonalReviews
-          userReviews={userReviews}
+          lastReview={lastReview}
         />
       )
     default:
@@ -44,7 +44,7 @@ const ContentContainer = (props) => {
         <ContentDisplay 
           contentDisplayed={contentDisplayed}
           userRatings={props.userRatings}
-          userReviews={props.userReviews}
+          lastReview={props.lastReview}
         />
       </div>
     </div>

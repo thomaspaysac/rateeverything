@@ -118,10 +118,6 @@ const updateArtist = async (artist, formed, country, genres, username) => {
   // History variables setup
   const history = copyData.editHistory;
   const changes = [];
-  // Copy fixed data
-  const keepName = copyData.artist;
-  const keepReleases = copyData.releases;
-  const keepID = copyData.artistID;
   // Update history
   if (formed !== copyData.formed) {
     changes.push(`Formed (from "${copyData.formed}" to "${formed}")`);
@@ -138,16 +134,6 @@ const updateArtist = async (artist, formed, country, genres, username) => {
     changes : changes,
   }
   history.push(historyData);
-  // Create new release object for replacing old one => KEEP REVIEWS AND RATINGS
-  const newObject = {
-    artist: keepName, 
-    artistID: keepID,
-    releases: keepReleases,
-    country: country,
-    formed: formed,
-    genres: genres,
-    editHistory: history,
-  }
   // Update doc with new data
   await updateDoc(artistRef, 
     {
@@ -286,7 +272,7 @@ const getArtist = async (artist) => {
 const getArtistByID = async (artistID) => {
   const allArtists = await getAllArtistsData();
   let target;
-  allArtists.map((el) => {
+  allArtists.forEach((el) => {
     if (el.artistID === artistID) {
       target = el;
     } else {
@@ -406,10 +392,16 @@ const linkRatingToUser = async (userID, release, rating, date) => {
   const data = docSnap.data();
   const localCopy = data;
   const localRatings = data.ratings;
-  const existingRating = localRatings.find((obj) => obj.release.albumID === release.albumID);
+  console.log(localRatings, release);
+  const existingRating = localRatings.find((obj) => obj.release.releaseID === release.albumID);
   if (existingRating === undefined && +rating !== 0) {
     localRatings.push({
-      release: release,
+      release: {
+        releaseID: release.albumID,
+        artist: release.artist,
+        title: release.release,
+        imagePath: release.imagePath,
+      },
       rating: rating,
       date: date,
     })
@@ -493,21 +485,28 @@ const sendReview = async (releaseID, username, userID, review) => {
     userReviewObject.date = reviewDate;
   }
   await updateDoc(artistRef, localCopy);
-  linkReviewToUser(userID, releaseID, review, reviewDate);
+  linkReviewToUser(userID, username, releaseID, review, reviewDate);
 }
 
-const linkReviewToUser = async (userID, release, review, date) => {
+const linkReviewToUser = async (userID, username, release, review, date) => {
   const userRef = doc(db, 'users', userID);
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
   const localCopy = data;
   const localReviews = data.reviews;
+  console.log(release);
   const existingReview = localReviews.find((obj) => obj.release.albumID === release.albumID);
   if (!existingReview) {
     localReviews.push({
-      release: release,
       reviewDate: date,
       review: review,
+      author: username,
+      release: {
+        releaseID: release.albumID,
+        artist: release.artist,
+        title: release.release,
+        imagePath: release.imagePath,
+      },
     })
   } else {
     existingReview.review = review;

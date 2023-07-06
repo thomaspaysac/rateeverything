@@ -28,7 +28,7 @@ const ReleasesList = (props) => {
                     </div>
                   </td>
                   <td>
-                    <div key='release_title' className={`release-table_title ${el.average > 3.70 ? "bolded" : ""}`}><Link to={`/release/${el.artist}/${el.release}`}>{el.release}</Link></div>
+                    <div key='release_title' className={`release-table_title ${el.average > 3.70 ? "bolded" : ""}`}><Link to={`/release/${el.artist}/${el.albumID}`}>{el.release}</Link></div>
                     <div key='release_year' className='release-table_year greyed-info'>{el.year}</div>
                   </td>
                   <td key='release_reviews' className='td-fixed release-table_reviews greyed-info'>{el.reviews.length}</td>

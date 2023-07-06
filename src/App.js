@@ -77,7 +77,7 @@ const App = () => {
       <Backdrop />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/release/:artist/:release" 
+        <Route exact path="/release/:artist/:releaseID" 
           element={<ReleasePage 
             userStatus={isSignedIn} />} />
         <Route exact path="/artist/:artist" 

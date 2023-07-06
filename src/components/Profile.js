@@ -9,6 +9,7 @@ const ProfilePage = (props) => {
   const [userRatings, setUserRatings] = useState([]);
   const [lastRatings, setLastRatings] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
+  const [lastReview, setLastReview] = useState();
   const [userDate, setUserDate] = useState();
   
   
@@ -25,14 +26,16 @@ const ProfilePage = (props) => {
 
   const getUserRatings = async () => {
     const data = await getPersonalRatings(props.userID);
-    const recent= data.slice(0,1);
+    const recent = data.slice(0,1);
     setUserRatings(data);
     setLastRatings(recent);
   }
 
   const getUserReviews = async () => {
     const data = await getPersonalReviews(props.userID);
+    const lastReview = data.slice(-1);
     setUserReviews(data);
+    setLastReview(lastReview);
   }
 
   const userInfo = async () => {
@@ -56,7 +59,7 @@ const ProfilePage = (props) => {
       <div className="profile-header">
         member since {userDate} <span className="profile-username">{props.username}</span>
       </div>
-        <button onClick={props.sendData}>
+        <button onClick={() => {console.log(lastReview)}}>
           Send Data
         </button>
           <button onClick={() => getRatingsCounter()}>
@@ -77,7 +80,7 @@ const ProfilePage = (props) => {
       <ContentContainer
         userRatings={userRatings}
         lastRatings={lastRatings}
-        userReviews={userReviews}
+        lastReview={lastReview}
       />
     </div>
     </div>

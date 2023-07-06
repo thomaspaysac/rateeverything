@@ -21,7 +21,7 @@ const Rating = (props) => {
         <div className="rating-container">
           <form onSubmit={updateRating}>
             <label htmlFor="rating">Rate:</label>
-            <input type="number" step="0.5" name="rating" id="rating" />
+            <input type="number" min="0" max="5" step="0.5" name="rating" id="rating" />
             <input type="submit" />
           </form>
           

@@ -69,7 +69,15 @@ const ReleasePage = (props) => {
 
   const fetchDataByID = async (albumID) => {
     const data = await getReleaseByID(albumID);
-    console.log(data);
+    const sortedRatings = data.ratings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    setImagePath(data.imagePath);
+    setGenres(data.genres.join(', '));
+    setRelease(data);
+    setRatings(sortedRatings);
+    setReleaseID(data.albumID);
+    setReviews(data.reviews);
+    setTracklist(data.tracks)
+    calculateTotalTime(data);
   }
 
   const toggleReviewUI = () => {
@@ -81,8 +89,8 @@ const ReleasePage = (props) => {
   }
 
   useEffect(() => {
-    fetchData(urlParams.artist, urlParams.release);
-    fetchDataByID(2);
+    //fetchData(urlParams.artist, urlParams.release);
+    fetchDataByID(+urlParams.releaseID);
   }, []);
 
   const ContributionsContainer = (props) => {
@@ -139,7 +147,7 @@ const ReleasePage = (props) => {
       </div>
 
       <div className='release-page_contributions'>
-        <h2>Contributions</h2>
+        <h2 onClick={() => {console.log(release)}}>Contributions</h2>
         <ContributionsContainer userStatus={props.userStatus} />
       </div>
     </div>

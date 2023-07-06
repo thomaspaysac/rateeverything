@@ -13,9 +13,9 @@ const RecentRatings = (props) => {
           <div>{el.date}</div>
           <div>{el.rating}</div>
           <div><Link to={`/artist/${el.release.artist}`}>{el.release.artist}</Link>
-             - 
-           <Link to={`/release/${el.release.artist}/${el.release.release}`}>{el.release.release}</Link></div>
-          <div>(personal tags)</div>
+            &nbsp; - &nbsp; 
+           <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link></div>
+          <div onClick={() => console.log(el)}>(personal tags)</div>
         </div>
       )
     } )}

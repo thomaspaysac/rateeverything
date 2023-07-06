@@ -916,6 +916,43 @@ footer {
   grid-template-columns: 50px 29px 112px 1fr 163px;
 }
 
+// Personal reviews display
+.last-review_container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  background-color: #191C28;
+  border: 1px solid #323643;
+  padding: 36px;
+}
+
+.last-review_art {
+  img {
+    max-width: 100%;
+    min-width: 44px;
+  }
+}
+
+.last-review_right-col {
+  padding-left: 32px;
+}
+
+.last-review_release-title {
+  font-size: 1.85rem;
+}
+
+.last-review_release-artist {
+  font-size: 1.55rem;
+}
+
+.last-review_user-info {
+  margin: 16px 0;
+  font-size: 0.85rem;
+}
+
+.last-review_review {
+  color: #9DA2AE;
+}
+
 // Search engine
 #searchbar-icon {
   height: 16px;
