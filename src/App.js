@@ -22,6 +22,7 @@ import About from "./components/About";
 import EditRelease from "./components/EditRelease";
 import EditHistory from "./components/release_page/EditHistory";
 import EditArtist from "./components/EditArtist";
+import EditHistoryArtist from "./components/artist_page/EditHistory";
 import ThanksPage from "./components/ThanksPage";
 
 import './App.css';
@@ -103,6 +104,7 @@ const App = () => {
         <Route exact path="/artist/edit/:id" 
           element={<EditArtist
             username={userName} />} />
+        <Route exact path="/artist/history/:id" element={<EditHistoryArtist />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/submitted" element={<ThanksPage />} />
       </Routes>

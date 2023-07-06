@@ -36,7 +36,7 @@ const ArtistPage = (props) => {
       <div className='contribution'>
         <div className='contribution-group'>
           <Link to={`/artist/edit/${artist.artistID}`}><button className='contribution-button'>Update profile</button></Link>
-          <Link><button className='contribution-button'>History</button></Link>
+          <Link to={`/artist/history/${artist.artistID}`}><button className='contribution-button'>History</button></Link>
           <Link to={`/artist/${urlParams}/add_release`}><button className="contribution-button">Add release</button></Link>
         </div>
       </div>
@@ -62,7 +62,6 @@ const ArtistPage = (props) => {
           artist={artist.artist} 
           releases={releases}
           />
-        <Link to={`/artist/${urlParams}/add_release`}>Add new release</Link>
       </div>
       <div className='artist-page_contributions'>
           <h2>Contributions</h2>
