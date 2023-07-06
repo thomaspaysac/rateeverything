@@ -1,13 +1,11 @@
 import React from 'react';
 
 const Reviews = (props) => {
-  // if reviewUserID === ratingUserID -> lier les deux
-
   return (
     <div className='release-page_reviews-component'>
       <div className="reviews-component_title">{props.reviews.length} Reviews</div>
     {
-      props.reviews.map(el => {
+      props.reviews.map((el, i) => {
         // Obtenir l'ID de la release et de l'auteur de la review, pour retrouver le rating
         const userID = el.userID;
         let userRating;
@@ -19,7 +17,7 @@ const Reviews = (props) => {
         }
 
         return (
-          <div className='review-container'>
+          <div key={`review-${i}`} className='review-container'>
             <div className='review-info'>
               <div className='review_user-avatar'></div>
               <div className='review_data'>

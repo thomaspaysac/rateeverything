@@ -8,8 +8,8 @@
 
 ### Core Fonctionnalités
 O Ajouter images albums et profil
-O Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
-O Ajouter redirection automatique après submit
+X Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
+X Ajouter redirection automatique après submit
 O Page profil
 O Page album : charger les données à partir de l'ID plutôt qu'à partir du nom de l'album
 O Données utilisateur : utiliser les ID d'albums pour lier reviews et ratings (adaptable si changement de nom de release)

@@ -7,7 +7,7 @@ import Reviews from "./release_page/Reviews";
 import AddReview from "./release_page/AddReview";
 import Tracklist from "./release_page/Tracklist";
 
-import { getUniqueRelease } from "../functions";
+import { getReleaseByID, getUniqueRelease } from "../functions";
 
 import "../App.css"
 
@@ -67,6 +67,11 @@ const ReleasePage = (props) => {
     calculateTotalTime(data);
   };
 
+  const fetchDataByID = async (albumID) => {
+    const data = await getReleaseByID(albumID);
+    console.log(data);
+  }
+
   const toggleReviewUI = () => {
     if (reviewUI) {
       setReviewUI(false)
@@ -77,6 +82,7 @@ const ReleasePage = (props) => {
 
   useEffect(() => {
     fetchData(urlParams.artist, urlParams.release);
+    fetchDataByID(2);
   }, []);
 
   const ContributionsContainer = (props) => {
