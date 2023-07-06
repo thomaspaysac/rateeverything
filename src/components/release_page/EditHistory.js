@@ -19,17 +19,20 @@ const EditHistory = () => {
       return (
         <div>
           {
-            releaseHistory.map((el) => {
+            releaseHistory.toReversed().map((el, i) => {
               return (
-                <div>
-                  <div>{el.author}</div>
+                <div className='edit-history_item' key={`history-item-${i}`}>
+                  <div>Edit by: <span className="bolded">{el.author}</span></div>
                   <div>{el.date}</div>
                   <div>
-                    {
-                      el.changes.map((el) => {
-                        return <div>{el}</div>
-                      })
-                    }
+                    <ul><span className="bolded">Changes:</span>
+                      {
+                        el.changes.map((el, i) => {
+                          return <li key={`change-${i}`}>{el}</li>
+                        })
+                      }
+                    </ul>
+                    
                     </div>
                 </div>
               )
@@ -47,7 +50,7 @@ const EditHistory = () => {
   return (
     <div className='content-page'>
       <div className='content-wrapper'>
-        <div className="section-header bolded" onClick={() => console.log(releaseHistory)}>History</div>
+        <div className="section-header bolded" onClick={() => console.log(releaseHistory)}>Release edit history</div>
         {displayHistory()}
       </div>
     </div>

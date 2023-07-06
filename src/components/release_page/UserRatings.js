@@ -26,7 +26,7 @@ const UserRatingsPage = (props) => {
         })
       }
     </div>
-  );
+  )
 }
 
 export default UserRatingsPage;

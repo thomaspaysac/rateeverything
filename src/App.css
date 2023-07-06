@@ -710,6 +710,17 @@ footer {
     font-weight: 700;
     border-bottom: 2px solid #207BBF; }
 
+.edit-history_item {
+  background-color: #20232F;
+  border: 1px solid #323643;
+  border-radius: 4px;
+  margin: 16px 0;
+  padding: 10px; }
+  .edit-history_item div {
+    margin: 4px 0; }
+  .edit-history_item li {
+    margin-left: 16px; }
+
 .search-prompt {
   color: #7B818F;
   font-size: 1.2rem;

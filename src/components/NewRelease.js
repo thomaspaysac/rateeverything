@@ -1,11 +1,12 @@
 import { React, useState } from 'react';
 import { submitRelease, uploadImage } from '../functions';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const NewReleasePage = () => {
+const NewReleasePage = (props) => {
   const [trackList, setTrackList] = useState([]);
   
   const urlParams = useParams();
+  const navigateTo = useNavigate();
 
   const addTrack = () => {
     const temp = trackList.slice();
@@ -78,7 +79,8 @@ const NewReleasePage = () => {
     const genres = data.genres.split(',');
     if (data.coverart.size === 0) {
       const defaultPath = 'https://firebasestorage.googleapis.com/v0/b/rym-clone.appspot.com/o/empty-art.png?alt=media&token=6c4c0612-7a8b-4a9b-a1ae-7552cdf286f7';
-      submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], defaultPath);
+      submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], defaultPath, props.username);
+      navigateTo(`/submitted`);
     } else if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
       document.getElementById('upload-error_filetype').style.display = 'block';
       document.getElementById('upload-error_size').style.display = 'none';
@@ -88,7 +90,8 @@ const NewReleasePage = () => {
     } else {
       const imageName = (urlParams.artist + '_' + data.title).toLowerCase();
       const imagePath = await uploadImage(`releases_art/${urlParams.artist}/${imageName}`, data.coverart);
-      submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], imagePath);
+      submitRelease(urlParams.artist, data.title, data.year, trackList, genres, [], [], imagePath, props.username);
+      navigateTo(`/submitted`);
     }
   }
 

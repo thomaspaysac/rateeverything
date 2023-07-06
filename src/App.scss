@@ -945,6 +945,23 @@ footer {
   }
 }
 
+// Edit history page
+.edit-history_item {
+  background-color: #20232F;
+  border: 1px solid #323643;
+  border-radius: 4px;
+  margin: 16px 0;
+  padding: 10px;
+
+  div {
+    margin: 4px 0;
+  }
+
+  li {
+    margin-left: 16px;
+  }
+}
+
 // Search page
 .search-prompt {
   color: #7B818F;

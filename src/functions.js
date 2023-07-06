@@ -109,9 +109,14 @@ const submitArtist = async (artist, formed, country, genres) => {
   }
 }
 
-const submitRelease = async (artist, release, year, tracks, genres, ratings, reviews, imagePath) => {
+const submitRelease = async (artist, release, year, tracks, genres, ratings, reviews, imagePath, username) => {
   const albumID = await getAllReleasesLength();
   const artistRef = doc(db, 'artists', artist);
+  const originalHistory = {
+    author: username,
+    date: format(new Date(), 'dd/LL/yyyy at HH:mm'),
+    changes: ['Original submission']
+  }
   await updateDoc(artistRef, {
     releases: arrayUnion({
       artist: artist, 
@@ -124,6 +129,7 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
       albumID: albumID,
       average: '',
       imagePath: imagePath,
+      editHistory: [originalHistory],
     })
   })
 }

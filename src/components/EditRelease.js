@@ -1,13 +1,14 @@
 import { React, useState, useEffect } from 'react';
 import { updateRelease, uploadImage } from '../functions';
-import { useParams } from 'react-router-dom';
-import { getReleaseByID, getUniqueRelease } from '../functions';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getReleaseByID } from '../functions';
 
 const EditRelease = (props) => {
   const [releaseInfo, setReleaseInfo] = useState();
   const [trackList, setTrackList] = useState([]);
   
   const urlParams = useParams();
+  const navigateTo = useNavigate();
 
   const addTrack = () => {
     const temp = trackList.slice();
@@ -68,7 +69,6 @@ const EditRelease = (props) => {
           onChange={(e) => updateTrackTime(e, n)}
           defaultValue={trackList[n].time} />
         </td>
-        
       </tr>
     )
   }
@@ -80,6 +80,7 @@ const EditRelease = (props) => {
     const genres = data.genres.split(',');
     if (data.coverart.size === 0) {
       updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, props.username);
+      navigateTo(`/submitted`);
     } else if (data.coverart.type !== 'image/jpeg' && data.coverart.type !== 'image/png') {
       document.getElementById('upload-error_filetype').style.display = 'block';
       document.getElementById('upload-error_size').style.display = 'none';
@@ -90,6 +91,7 @@ const EditRelease = (props) => {
       const imageName = (urlParams.artist + '_' + data.title).toLowerCase();
       const imagePath = await uploadImage(`releases_art/${urlParams.artist}/${imageName}`, data.coverart);
       updateRelease(releaseInfo.artist, +urlParams.id, data.title, data.year, trackList, genres, props.username, imagePath);
+      navigateTo(`/submitted`);
     }
   }
 

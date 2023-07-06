@@ -1,13 +1,17 @@
 import { React } from 'react';
 import { submitArtist } from '../functions';
+import { useNavigate } from 'react-router-dom';
 
 const NewArtistPage = () => {
+  const navigateTo = useNavigate()
+
   const sendForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');
-    submitArtist(data.name, data.formed, data.country, genres)
+    submitArtist(data.name, data.formed, data.country, genres);
+    navigateTo(`/submitted`);
   }
 
   return (
