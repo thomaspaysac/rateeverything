@@ -27,6 +27,22 @@ const ArtistPage = (props) => {
     fetchData(urlParams);
   }, []);
 
+  const ContributionsContainer = (props) => {
+    if (!props.userStatus) {
+      return (
+        <div><Link to='/account/signin'>Log in</Link> to submit a correction or upload art for this release</div>
+      )
+    } else return (
+      <div className='contribution'>
+        <div className='contribution-group'>
+          <Link to={`/artist/edit/${artist.artistID}`}><button className='contribution-button'>Update profile</button></Link>
+          <Link><button className='contribution-button'>History</button></Link>
+          <Link to={`/artist/${urlParams}/add_release`}><button className="contribution-button">Add release</button></Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="artist-page content-page">
       <div className="artist_left-col">
@@ -48,6 +64,10 @@ const ArtistPage = (props) => {
           />
         <Link to={`/artist/${urlParams}/add_release`}>Add new release</Link>
       </div>
+      <div className='artist-page_contributions'>
+          <h2>Contributions</h2>
+          <ContributionsContainer userStatus={props.userStatus} />
+        </div>
     </div>
   )
 }

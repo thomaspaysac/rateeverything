@@ -21,6 +21,7 @@ import SearchResult from "./components/SearchResult";
 import About from "./components/About";
 import EditRelease from "./components/EditRelease";
 import EditHistory from "./components/release_page/EditHistory";
+import EditArtist from "./components/EditArtist";
 import ThanksPage from "./components/ThanksPage";
 
 import './App.css';
@@ -75,8 +76,12 @@ const App = () => {
       <Backdrop />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/release/:artist/:release" element={<ReleasePage userStatus={isSignedIn} />} />
-        <Route exact path="/artist/:artist" element={<ArtistPage />} />
+        <Route exact path="/release/:artist/:release" 
+          element={<ReleasePage 
+            userStatus={isSignedIn} />} />
+        <Route exact path="/artist/:artist" 
+          element={<ArtistPage
+            userStatus={isSignedIn} />} />
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />
         <Route exact path="/profile" 
@@ -95,6 +100,9 @@ const App = () => {
           element={<EditRelease
             username={userName} />} />
         <Route exact path="/releases/history/:id" element={<EditHistory />} />
+        <Route exact path="/artist/edit/:id" 
+          element={<EditArtist
+            username={userName} />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/submitted" element={<ThanksPage />} />
       </Routes>

@@ -43,6 +43,8 @@ button, input {
   background-color: #463C07;
   padding: 15px 30px;
   font-size: 0.94rem; }
+  .warning li {
+    margin: 8px 0; }
 
 .content-section {
   background-color: #20232F;
@@ -408,13 +410,15 @@ footer {
   width: 100%;
   aspect-ratio: 1 / 1; }
 
-.release-page_contributions {
+.release-page_contributions,
+.artist-page_contributions {
   width: 100%;
   border-top: 1px solid #4E5465;
   background-color: #0B1528;
   padding: 15px 50px 20px 50px;
   grid-column: span 2; }
-  .release-page_contributions h2 {
+  .release-page_contributions h2,
+  .artist-page_contributions h2 {
     font-size: 1.125rem;
     color: #A8AEBA;
     margin-bottom: 18px; }
@@ -535,11 +539,17 @@ footer {
   color: #A8AEBA;
   white-space: pre-wrap; }
 
+.add-release_page h2,
+.edit-release_page h2,
+.edit-artist_page h2 {
+  margin-bottom: 20px; }
 .add-release_page label,
-.edit-release_page label {
+.edit-release_page label,
+.edit-artist_page label {
   display: block; }
 .add-release_page input,
-.edit-release_page input {
+.edit-release_page input,
+.edit-artist_page input {
   background-color: #152238;
   width: 496px;
   font-size: medium;
@@ -548,49 +558,63 @@ footer {
   border: 1px solid #656C80;
   border-radius: 5px; }
 .add-release_page .submit-tracklist-table_track .tracklist-th,
-.edit-release_page .submit-tracklist-table_track .tracklist-th {
+.edit-release_page .submit-tracklist-table_track .tracklist-th,
+.edit-artist_page .submit-tracklist-table_track .tracklist-th {
   font-size: 1rem; }
 .add-release_page .submit-tracklist-table_track td,
-.edit-release_page .submit-tracklist-table_track td {
+.edit-release_page .submit-tracklist-table_track td,
+.edit-artist_page .submit-tracklist-table_track td {
   height: 30px; }
 .add-release_page .submit-tracklist-table_track input,
-.edit-release_page .submit-tracklist-table_track input {
+.edit-release_page .submit-tracklist-table_track input,
+.edit-artist_page .submit-tracklist-table_track input {
   border: none;
   margin: 4px; }
 .add-release_page .submit-tracklist-table_track:nth-of-type(odd),
-.edit-release_page .submit-tracklist-table_track:nth-of-type(odd) {
+.edit-release_page .submit-tracklist-table_track:nth-of-type(odd),
+.edit-artist_page .submit-tracklist-table_track:nth-of-type(odd) {
   background-color: #4E5465; }
   .add-release_page .submit-tracklist-table_track:nth-of-type(odd) input,
-  .edit-release_page .submit-tracklist-table_track:nth-of-type(odd) input {
+  .edit-release_page .submit-tracklist-table_track:nth-of-type(odd) input,
+  .edit-artist_page .submit-tracklist-table_track:nth-of-type(odd) input {
     background-color: #4E5465; }
 .add-release_page .submit-tracklist-table_track:nth-of-type(even),
-.edit-release_page .submit-tracklist-table_track:nth-of-type(even) {
+.edit-release_page .submit-tracklist-table_track:nth-of-type(even),
+.edit-artist_page .submit-tracklist-table_track:nth-of-type(even) {
   background-color: #0B0E19; }
   .add-release_page .submit-tracklist-table_track:nth-of-type(even) input,
-  .edit-release_page .submit-tracklist-table_track:nth-of-type(even) input {
+  .edit-release_page .submit-tracklist-table_track:nth-of-type(even) input,
+  .edit-artist_page .submit-tracklist-table_track:nth-of-type(even) input {
     background-color: #0B0E19; }
 .add-release_page .tracklist-td_number,
-.edit-release_page .tracklist-td_number {
+.edit-release_page .tracklist-td_number,
+.edit-artist_page .tracklist-td_number {
   width: 44px; }
 .add-release_page .tracklist-td_title,
-.edit-release_page .tracklist-td_title {
+.edit-release_page .tracklist-td_title,
+.edit-artist_page .tracklist-td_title {
   width: 494px; }
 .add-release_page .tracklist-td_time,
-.edit-release_page .tracklist-td_time {
+.edit-release_page .tracklist-td_time,
+.edit-artist_page .tracklist-td_time {
   width: 66px; }
 .add-release_page input[type='button'],
-.edit-release_page input[type='button'] {
+.edit-release_page input[type='button'],
+.edit-artist_page input[type='button'] {
   background-color: #006ED1 !important;
   width: fit-content;
   padding: 3px 10px;
   border: none; }
   .add-release_page input[type='button']:hover, .add-release_page input[type='button']:active,
   .edit-release_page input[type='button']:hover,
-  .edit-release_page input[type='button']:active {
+  .edit-release_page input[type='button']:active,
+  .edit-artist_page input[type='button']:hover,
+  .edit-artist_page input[type='button']:active {
     cursor: pointer;
     background-color: #005DBF; }
 .add-release_page .separator,
-.edit-release_page .separator {
+.edit-release_page .separator,
+.edit-artist_page .separator {
   width: 100%;
   height: 1px;
   background-color: #DBE0E9; }
@@ -622,14 +646,17 @@ footer {
   border-radius: 4px; }
 
 .add-release_step-label,
-.edit-release_step-label {
+.edit-release_step-label,
+.form-label {
   margin-top: 20px; }
 
 .add-release_input-group,
-.edit-release_input-group {
+.edit-release_input-group,
+.submission_input-group {
   padding: 5px; }
   .add-release_input-group div,
-  .edit-release_input-group div {
+  .edit-release_input-group div,
+  .submission_input-group div {
     padding: 5px; }
 
 .tracklist_actions {

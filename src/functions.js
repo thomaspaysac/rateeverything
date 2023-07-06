@@ -234,6 +234,19 @@ const getArtist = async (artist) => {
   }
 }
 
+const getArtistByID = async (artistID) => {
+  const allArtists = await getAllArtistsData();
+  let target;
+  allArtists.map((el) => {
+    if (el.artistID === artistID) {
+      target = el;
+    } else {
+      return null;
+    }
+  })
+  return target;
+}
+
 const getReleases = async (artist) => {
   const data = await getArtist(artist);
   return data.releases;
@@ -529,7 +542,8 @@ export {
   updateRelease,
   getArtistsList, 
   getAllArtistsData, 
-  getArtist, 
+  getArtist,
+  getArtistByID,
   getReleases, 
   getAllReleases, 
   getAllReleasesLength, 

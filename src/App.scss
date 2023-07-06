@@ -70,6 +70,10 @@ button, input {
   background-color: #463C07;
   padding: 15px 30px;
   font-size: 0.94rem;
+  
+  li {
+    margin: 8px 0;
+  }
 }
 
 .content-section {
@@ -547,7 +551,8 @@ footer {
   aspect-ratio: 1 / 1;
 }
 
-.release-page_contributions {
+.release-page_contributions,
+.artist-page_contributions {
   width: 100%;
   border-top: 1px solid #4E5465;
   background-color: #0B1528;
@@ -723,7 +728,12 @@ footer {
 
 // Add & Edit release page
 .add-release_page,
-.edit-release_page {
+.edit-release_page,
+.edit-artist_page {
+  h2 {
+    margin-bottom: 20px;
+  }
+
   label {
     display: block;
   }
@@ -834,12 +844,14 @@ footer {
 }
 
 .add-release_step-label,
-.edit-release_step-label {
+.edit-release_step-label,
+.form-label {
   margin-top: 20px;
 }
 
 .add-release_input-group,
-.edit-release_input-group {
+.edit-release_input-group,
+.submission_input-group {
   padding: 5px;
 
   div {
