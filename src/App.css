@@ -988,6 +988,9 @@ footer {
     font-weight: 700;
     padding: 4px 12px;
     margin-top: 24px; }
+    #signup-form input[type='submit']:hover, #signup-form input[type='submit']:active {
+      background-color: #4E5465;
+      cursor: pointer; }
 
 .signup-warning {
   display: none;

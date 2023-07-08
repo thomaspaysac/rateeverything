@@ -31,6 +31,8 @@ O Implémenter listes
 X Ajouter historique d'édition
 
 ### UI
+O Ajouter liens vers profils des autres utilisateurs (cliquer sur les reviews et les ratings)
+O Reviews de la page perso : ne prennent pas en compte les sauts de lignes
 O Favicon et nom de page dynamique
 O Afficher notes et reviews par page de 10 à la fois
 O Afficher notes sous forme d'étoiles/demi-étoiles

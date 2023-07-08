@@ -6,8 +6,8 @@ import format from "date-fns/format";
 
 
 // Firestore
-const userFirestoreSetup = async (userID, username) => {
-    await setDoc(doc(db, 'users', userID), {
+const userFirestoreSetup = async (userID, username) => {  
+  await setDoc(doc(db, 'users', userID), {
     username: username,
     ratings: [],
     reviews: [],
