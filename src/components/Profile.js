@@ -11,6 +11,8 @@ const ProfilePage = (props) => {
   const [userReviews, setUserReviews] = useState([]);
   const [lastReview, setLastReview] = useState();
   const [userDate, setUserDate] = useState();
+  const [avatar, setAvatar] = useState();
+  const [avatarCaption, setAvatarCaption] = useState();
   
   const urlParams = useParams();
 
@@ -44,7 +46,10 @@ const ProfilePage = (props) => {
 
   const userInfo = async () => {
     const data = await getUserInfo(urlParams.username);
-    setUserDate(data);
+    setUserDate(data.date);
+    setAvatar(data.avatar.link);
+    setAvatarCaption(data.avatar.caption);
+    console.log(data.avatar);
   }
 
   useEffect(() => {
@@ -55,15 +60,20 @@ const ProfilePage = (props) => {
       getUserReviews();
       userInfo();
     }
-    console.log(lastReview);
   }, [])
 
   return (
     <div className="content-page">
     <div className="content-wrapper">
-      <div className="profile-header">
-        member since {userDate} <span className="profile-username">{urlParams.username}</span>
+      <div className="pofile_user-info">
+        <div className="profile-header">
+          member since {userDate} <span className="profile-username">{urlParams.username}</span>
+        </div>
+        <Link to="/profile/avatar">
+          <div className="profile_avatar"><img src={avatar} alt='avatar' title={avatarCaption} /></div>
+        </Link>
       </div>
+      
           <div>{artistsList.map((el) => {
         return (
           <Link to={`/artist/${el}`} key={el}>

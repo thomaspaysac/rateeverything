@@ -13,6 +13,10 @@ const userFirestoreSetup = async (username) => {
     reviews: [],
     lists: [],
     date: format(new Date(), 'dd MMM yy'),
+    avatar: {
+      link: "",
+      caption: "",
+    },
   });
 }
 
@@ -27,7 +31,7 @@ const getUserInfo = async (userID) => {
   const userRef = doc(db, 'users', userID);
   const docSnap = await getDoc(userRef);
   const accountDate = docSnap.data().date;
-  return accountDate;
+  return docSnap.data();
 }
 
 const getRatingsCounter = async () => {

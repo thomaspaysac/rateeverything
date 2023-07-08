@@ -928,6 +928,14 @@ footer {
   margin-left: 18px;
 }
 
+.profile_avatar {
+  max-width: 33%;
+
+  img {
+    max-width: 100%;
+  }
+}
+
 .recent-rating_container {
   display: grid;
   grid-template-rows: 100px;
