@@ -498,10 +498,20 @@ footer {
 
 .release-ratings_info {
   display: flex;
+  align-items: center;
   width: 100%;
-  padding: 4px 32px 4px 4px;
+  padding-right: 32px;
   border-radius: 5px;
   background-color: #292D39; }
+
+#personal-rating {
+  background-color: #334A33; }
+
+.release-ratings_avatar {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #dddddd;
+  margin-right: 4px; }
 
 .release-ratings_username {
   flex-grow: 1; }

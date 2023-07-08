@@ -77,7 +77,8 @@ const App = () => {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/release/:artist/:releaseID" 
           element={<ReleasePage 
-            userStatus={isSignedIn} />} />
+            userStatus={isSignedIn}
+            username={username} />} />
         <Route exact path="/artist/:artist" 
           element={<ArtistPage
             userStatus={isSignedIn} />} />

@@ -27,6 +27,7 @@ const ReleasePage = (props) => {
   const [release, setRelease] = useState([]);
   const [genres, setGenres] = useState([]);
   const [releaseID, setReleaseID] = useState(undefined);
+  const [personalRating, setPersonalRating] = useState();
   const [ratings, setRatings] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewUI, setReviewUI] = useState(false);
@@ -54,26 +55,13 @@ const ReleasePage = (props) => {
 
   }
 
-  const fetchData = async (artist, releaseName) => {
-    const data = await getUniqueRelease(artist, releaseName);
-    const sortedRatings = data.ratings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
-    setImagePath(data.imagePath);
-    setGenres(data.genres.join(', '));
-    setRelease(data);
-    setRatings(sortedRatings);
-    setReleaseID(data.albumID);
-    setReviews(data.reviews);
-    setTracklist(data.tracks)
-    calculateTotalTime(data);
-  };
-
   const fetchDataByID = async (albumID) => {
     const data = await getReleaseByID(albumID);
     const sortedRatings = data.ratings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    setRatings(sortedRatings);
     setImagePath(data.imagePath);
     setGenres(data.genres.join(', '));
     setRelease(data);
-    setRatings(sortedRatings);
     setReleaseID(data.albumID);
     setReviews(data.reviews);
     setTracklist(data.tracks)
@@ -88,8 +76,20 @@ const ReleasePage = (props) => {
     }
   }
 
+  /*const organizeRatings = () => {
+    const copy = props.ratings;
+    let index;
+    copy.map((el, i) => {
+      if (el.username === props.username) {
+        index = i;
+      }
+    })
+    const personal = copy.splice(index, 1);
+    setPersonalRating(personal);
+    setOthersRatings(copy);
+  }*/
+
   useEffect(() => {
-    //fetchData(urlParams.artist, urlParams.release);
     fetchDataByID(+urlParams.releaseID);
   }, []);
 
@@ -143,7 +143,8 @@ const ReleasePage = (props) => {
           ratings={ratings}
         />  
         <UserRatingsPage
-          ratings={ratings} />
+          ratings={ratings}
+          username={props.username} />
       </div>
 
       <div className='release-page_contributions'>

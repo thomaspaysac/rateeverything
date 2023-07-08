@@ -392,7 +392,6 @@ const linkRatingToUser = async (username, release, rating, date) => {
   const data = docSnap.data();
   const localCopy = data;
   const localRatings = data.ratings;
-  console.log(localRatings, release);
   const existingRating = localRatings.find((obj) => obj.release.releaseID === release.albumID);
   if (existingRating === undefined && +rating !== 0) {
     localRatings.push({
