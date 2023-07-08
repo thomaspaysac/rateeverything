@@ -6,8 +6,8 @@ import format from "date-fns/format";
 
 
 // Firestore
-const userFirestoreSetup = async (userID, username) => {  
-  await setDoc(doc(db, 'users', userID), {
+const userFirestoreSetup = async (username) => {  
+  await setDoc(doc(db, 'users', username), {
     username: username,
     ratings: [],
     reviews: [],
@@ -494,7 +494,6 @@ const linkReviewToUser = async (username, release, review, date) => {
   const data = docSnap.data();
   const localCopy = data;
   const localReviews = data.reviews;
-  console.log(release);
   const existingReview = localReviews.find((obj) => obj.release.albumID === release.albumID);
   if (!existingReview) {
     localReviews.push({
