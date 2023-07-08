@@ -519,6 +519,7 @@ const getPersonalReviews = async (username) => {
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
   const reviews = data.reviews;
+  console.log(reviews);
   return reviews;
 }
 

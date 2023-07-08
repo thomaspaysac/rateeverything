@@ -709,6 +709,12 @@ footer {
     display: flex;
     gap: 16px;
     flex-grow: 1;
+    align-items: center;
+
+    .review_date {
+      color: #84C5FB;
+      font-size: 0.85rem;
+    }
   }
   
   .review-actions {

@@ -526,7 +526,11 @@ footer {
   .review-info .review_data {
     display: flex;
     gap: 16px;
-    flex-grow: 1; }
+    flex-grow: 1;
+    align-items: center; }
+    .review-info .review_data .review_date {
+      color: #84C5FB;
+      font-size: 0.85rem; }
   .review-info .review-actions {
     display: flex;
     margin-right: 20px;

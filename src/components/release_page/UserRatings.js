@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import { getRatingsByRelease } from '../../functions';
 
 const UserRatingsPage = (props) => {
@@ -18,7 +19,7 @@ const UserRatingsPage = (props) => {
             <div key={`${el.username}-rating`} className='release_user-ratings'>
               <div className='release-ratings_date'>{el.date}</div>
               <div className='release-ratings_info'>
-                <div className='release-ratings_username'>{el.username}</div>
+                <div className='release-ratings_username'><Link to={`/profile/${el.username}`}>{el.username}</Link></div>
                 <div className='release-rating_ratings'>{el.rating}</div>
               </div>
             </div>

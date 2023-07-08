@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Reviews = (props) => {
   return (
@@ -21,7 +22,7 @@ const Reviews = (props) => {
             <div className='review-info'>
               <div className='review_user-avatar'></div>
               <div className='review_data'>
-                <div className='review_username'>{el.username}</div>
+                <div className='review_username bolded'><Link to={`/profile/${el.username}`}>{el.username}</Link></div>
                 <div className='review_date'>{el.date}</div>
               </div>
               <div className='review-actions'>

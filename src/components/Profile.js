@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { getUserInfo, getArtistsList, getAllReleases, getRatingsCounter, getPersonalRatings, getPersonalReviews } from "../functions";
+import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPersonalReviews } from "../functions";
 import { Link, useParams } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 
@@ -25,48 +25,45 @@ const ProfilePage = (props) => {
   }
 
   const getUserRatings = async () => {
-    const data = await getPersonalRatings(props.username);
+    const data = await getPersonalRatings(urlParams.username);
     const recent = data.slice(0,1);
     setUserRatings(data);
     setLastRatings(recent);
   }
 
   const getUserReviews = async () => {
-    const data = await getPersonalReviews(props.username);
-    const lastReview = data.slice(-1);
-    setUserReviews(data);
-    setLastReview(lastReview);
+    const data = await getPersonalReviews(urlParams.username);
+    if (!data) {
+      return null;
+    } else {
+      const lastReview = data.slice(-1);
+      setUserReviews(data);
+      setLastReview(lastReview);
+    }
   }
 
   const userInfo = async () => {
-    const data = await getUserInfo(props.username);
+    const data = await getUserInfo(urlParams.username);
     setUserDate(data);
   }
 
   useEffect(() => {
     getReleases();
     getList();
-    if (props.userID) {
+    if (urlParams.username) {
       getUserRatings();
       getUserReviews();
       userInfo();
     }
-    console.log(urlParams);
+    console.log(lastReview);
   }, [])
 
   return (
     <div className="content-page">
     <div className="content-wrapper">
       <div className="profile-header">
-        member since {userDate} <span className="profile-username">{props.username}</span>
+        member since {userDate} <span className="profile-username">{urlParams.username}</span>
       </div>
-        <button onClick={() => {console.log(lastReview)}}>
-          Send Data
-        </button>
-          <button onClick={() => getRatingsCounter()}>
-          Log
-          </button>
-
           <div>{artistsList.map((el) => {
         return (
           <Link to={`/artist/${el}`} key={el}>

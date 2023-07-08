@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PersonalReviews = ({lastReview}) => {
-  const test = 'bla';
-
-  if (!lastReview) {
+  if (!lastReview || lastReview.length === 0) {
     return null;
   } else {
     return (
