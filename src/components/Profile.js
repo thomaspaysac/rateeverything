@@ -62,6 +62,18 @@ const ProfilePage = (props) => {
     }
   }, [])
 
+  const avatarDisplay = () => {
+    if (!avatar || avatar === '') {
+      return (
+        <div>Upload a profile picture</div>
+      )
+    } else {
+      return (
+        <img src={avatar} alt='avatar' title={avatarCaption} />
+      )
+    }
+  }
+
   return (
     <div className="content-page">
     <div className="content-wrapper">
@@ -69,9 +81,9 @@ const ProfilePage = (props) => {
         <div className="profile-header">
           member since {userDate} <span className="profile-username">{urlParams.username}</span>
         </div>
-        <Link to="/profile/avatar">
-          <div className="profile_avatar"><img src={avatar} alt='avatar' title={avatarCaption} /></div>
-        </Link>
+        
+          <div className="profile_avatar"><Link to="/profile/avatar">{avatarDisplay()}</Link></div>
+        
       </div>
       
           <div>{artistsList.map((el) => {
