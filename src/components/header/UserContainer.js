@@ -54,7 +54,7 @@ const UserContainer = (props) => {
   } else {
     return (
       <div className="header_user-container">
-        <Link className='bolded header_user-info' to="/profile">
+        <Link className='bolded header_user-info' to={`/profile/${props.user}`}>
           <div className="header_avatar"></div>
           {props.user}
         </Link>
@@ -65,7 +65,7 @@ const UserContainer = (props) => {
           onClick={toggleMenu}
            />
         <div className="menu-opened">
-          <Link to="/profile"><div>Profile</div></Link>
+          <Link to={`/profile/${props.user}`}><div>Profile</div></Link>
           <div>Music collection</div>
           <div>Lists</div>
           <div>Messaging</div>

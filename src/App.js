@@ -30,7 +30,7 @@ import './App.css';
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
-  const [userName, setUserName] = useState(undefined);
+  const [username, setUsername] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
 
 
@@ -44,7 +44,7 @@ const App = () => {
   function authStateObserver(user) {
     if (user) { // User is signed in!
       setIsSignedIn(true);
-      setUserName(getAuth().currentUser.displayName)
+      setUsername(getAuth().currentUser.displayName)
       setUserID(getAuth().currentUser.uid)
     } else {
       setIsSignedIn(false);
@@ -65,15 +65,13 @@ const App = () => {
 
   const Backdrop = () => {
     return (
-      <div id='backdrop'>
-
-      </div>
+      <div id='backdrop'></div>
     )
   }
   
   return (
     <BrowserRouter>
-      <Header userStatus={isSignedIn} user={userName} />
+      <Header userStatus={isSignedIn} user={username} />
       <Backdrop />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
@@ -85,9 +83,9 @@ const App = () => {
             userStatus={isSignedIn} />} />
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />
-        <Route exact path="/profile" 
+        <Route exact path="/profile/:username" 
           element={<ProfilePage 
-            username={userName} 
+            username={username} 
             userID={userID}
             sendData={() => sendPrivateData()}
             />}
@@ -95,15 +93,15 @@ const App = () => {
         <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
         <Route exact path="/artist/:artist/add_release" 
           element={<NewReleasePage
-            username={userName} />} />
+            username={username} />} />
         <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
         <Route exact path="/releases/edit/:id" 
           element={<EditRelease
-            username={userName} />} />
+            username={username} />} />
         <Route exact path="/releases/history/:id" element={<EditHistory />} />
         <Route exact path="/artist/edit/:id" 
           element={<EditArtist
-            username={userName} />} />
+            username={username} />} />
         <Route exact path="/artist/history/:id" element={<EditHistoryArtist />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/submitted" element={<ThanksPage />} />

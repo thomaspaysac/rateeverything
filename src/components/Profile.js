@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { getUserInfo, getArtistsList, getAllReleases, getRatingsCounter, getPersonalRatings, getPersonalReviews } from "../functions";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 
 const ProfilePage = (props) => {
@@ -12,7 +12,7 @@ const ProfilePage = (props) => {
   const [lastReview, setLastReview] = useState();
   const [userDate, setUserDate] = useState();
   
-  
+  const urlParams = useParams();
 
   const getReleases = async () => {
     const data = await getAllReleases();
@@ -51,6 +51,7 @@ const ProfilePage = (props) => {
       getUserReviews();
       userInfo();
     }
+    console.log(urlParams);
   }, [])
 
   return (
