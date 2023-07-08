@@ -6,8 +6,8 @@ import format from "date-fns/format";
 
 
 // Firestore
-const userFirestoreSetup = async (userID, username) => {  
-  await setDoc(doc(db, 'users', userID), {
+const userFirestoreSetup = async (username) => {  
+  await setDoc(doc(db, 'users', username), {
     username: username,
     ratings: [],
     reviews: [],
@@ -383,11 +383,11 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
   const averageRating = +(ratingsSum / localRatings.length).toFixed(2);
   localCopy.releases[targetIndex].average = averageRating;
   await updateDoc(artistRef, localCopy);
-  linkRatingToUser(userID, releaseID, rating, ratingDate);
+  linkRatingToUser(username, releaseID, rating, ratingDate);
 }
 
-const linkRatingToUser = async (userID, release, rating, date) => {
-  const userRef = doc(db, 'users', userID);
+const linkRatingToUser = async (username, release, rating, date) => {
+  const userRef = doc(db, 'users', username);
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
   const localCopy = data;
@@ -446,8 +446,8 @@ const getRatingsByRelease = async (release) => {
   return userRatingsData;
 }
 
-const getPersonalRatings = async (userID) => {
-  const userRef = doc(db, 'users', userID);
+const getPersonalRatings = async (username) => {
+  const userRef = doc(db, 'users', username);
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
   const ratings = data.ratings;
@@ -485,16 +485,15 @@ const sendReview = async (releaseID, username, userID, review) => {
     userReviewObject.date = reviewDate;
   }
   await updateDoc(artistRef, localCopy);
-  linkReviewToUser(userID, username, releaseID, review, reviewDate);
+  linkReviewToUser(username, releaseID, review, reviewDate);
 }
 
-const linkReviewToUser = async (userID, username, release, review, date) => {
-  const userRef = doc(db, 'users', userID);
+const linkReviewToUser = async (username, release, review, date) => {
+  const userRef = doc(db, 'users', username);
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
   const localCopy = data;
   const localReviews = data.reviews;
-  console.log(release);
   const existingReview = localReviews.find((obj) => obj.release.albumID === release.albumID);
   if (!existingReview) {
     localReviews.push({

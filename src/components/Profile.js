@@ -25,21 +25,21 @@ const ProfilePage = (props) => {
   }
 
   const getUserRatings = async () => {
-    const data = await getPersonalRatings(props.userID);
+    const data = await getPersonalRatings(props.username);
     const recent = data.slice(0,1);
     setUserRatings(data);
     setLastRatings(recent);
   }
 
   const getUserReviews = async () => {
-    const data = await getPersonalReviews(props.userID);
+    const data = await getPersonalReviews(props.username);
     const lastReview = data.slice(-1);
     setUserReviews(data);
     setLastReview(lastReview);
   }
 
   const userInfo = async () => {
-    const data = await getUserInfo(props.userID);
+    const data = await getUserInfo(props.username);
     setUserDate(data);
   }
 
