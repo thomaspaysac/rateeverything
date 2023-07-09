@@ -92,7 +92,7 @@ const App = () => {
             sendData={() => sendPrivateData()}
             />}
         />
-        <Route exact path="/profile/avatar" element={<Avatar />} />
+        <Route exact path="/profile/avatar" element={<Avatar username={username} />} />
         <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
         <Route exact path="/artist/:artist/add_release" 
           element={<NewReleasePage

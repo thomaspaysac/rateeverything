@@ -948,6 +948,34 @@ footer {
   }
 }
 
+#avatar-form {
+  .input-group {
+    display: flex;
+    background-color: #1B1E2A;
+    margin: 8px 0;
+    width: 500px;
+  }
+
+  label {
+    width: 200px;
+  }
+
+  input[type="file"] {
+    color: map-get($dark-theme, font-light);
+  }
+
+  input[type="submit"] {
+    background-color: #283A58;
+    color: map-get($dark-theme, font-light);
+    border: 1px solid #656C80;
+    border-radius: 4px;
+    width: 300px;
+    padding: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}
+
 .recent-rating_container {
   display: grid;
   grid-template-rows: 100px;

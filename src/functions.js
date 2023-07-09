@@ -34,6 +34,16 @@ const getUserInfo = async (userID) => {
   return docSnap.data();
 }
 
+const updateUserAvatar = async (username, imagePath, caption) => {
+  const userRef = doc(db, 'users', username);
+  await updateDoc(userRef, {
+    avatar: {
+      link: imagePath,
+      caption: caption,
+    }
+  })
+}
+
 const getRatingsCounter = async () => {
   const querySnapshot = await getDocs(collection(db, "users"));
   let counter = 0;
@@ -581,6 +591,7 @@ export {
   userFirestoreSetup,
   getAllUsernames,
   getUserInfo,
+  updateUserAvatar,
   getRatingsCounter,
   getReviewsCounter,
   getListsCounter,
