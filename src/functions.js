@@ -30,7 +30,6 @@ const getAllUsernames = async () => {
 const getUserInfo = async (userID) => {
   const userRef = doc(db, 'users', userID);
   const docSnap = await getDoc(userRef);
-  const accountDate = docSnap.data().date;
   return docSnap.data();
 }
 
@@ -532,7 +531,6 @@ const getPersonalReviews = async (username) => {
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
   const reviews = data.reviews;
-  console.log(reviews);
   return reviews;
 }
 

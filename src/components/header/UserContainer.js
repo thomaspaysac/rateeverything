@@ -1,13 +1,15 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
 import mailIcon from '../../img/mail-white.png';
 import stickyNoteImage from '../../img/sticky-note.png';
 import menuIcon from '../../img/menu.png';
+import { getUserInfo } from "../../functions";
 
 const UserContainer = (props) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [userAvatar, setUserAvatar] = useState();
 
   const navigateTo = useNavigate();
 
@@ -21,7 +23,6 @@ const UserContainer = (props) => {
   const toggleMenu = () => {
     const backdrop = document.getElementById('backdrop');
     const menu = document.querySelector('.menu-opened');
-    const menuButton = document.getElementById('hamburger-menu');
     const backdropClick = () => {
       backdrop.style.display = 'none';
       menu.style.display = 'none';
@@ -46,6 +47,27 @@ const UserContainer = (props) => {
     }
   }
 
+  const fetchAvatar = async () => {
+    const data = await getUserInfo(props.user);
+    setUserAvatar(data.avatar.link);
+  }
+
+  useEffect(() => {
+    if (props.user) {
+      fetchAvatar();
+    }
+  }, [props.user])
+
+  const AvatarBox = () => {
+    if (!userAvatar) {
+      return null;
+    } else {
+      return (
+        <img src={userAvatar} alt='user avatar'/>
+      )
+    }
+  }
+
 
   if (props.userStatus === false) {
     return (
@@ -55,7 +77,7 @@ const UserContainer = (props) => {
     return (
       <div className="header_user-container">
         <Link className='bolded header_user-info' to={`/profile/${props.user}`}>
-          <div className="header_avatar"></div>
+          <div className="header_avatar"><AvatarBox /></div>
           {props.user}
         </Link>
         <img src={mailIcon} alt='messages' />

@@ -1,7 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import {React, useState, useEffect} from 'react';
+import { Link, useAsyncError } from 'react-router-dom';
+import { getUserInfo } from '../../functions';
 
 const Reviews = (props) => {
+  
+
+  const Avatar = ({user}) => {
+    const [avatar, setAvatar] = useState();    
+
+    const fetchAvatar = async (user) => {
+      const data = await getUserInfo(user);
+      setAvatar(data.avatar.link);
+    }
+
+    useEffect(() => {
+      fetchAvatar(user)
+    }, [])
+
+    if (!avatar) {
+      return <img src={avatar} alt='user avatar' onClick={() => console.log(user)} />;
+    } else {
+      return (
+        <img src={avatar} alt='user avatar' onClick={() => console.log(user)}/>
+      )
+    }
+  }
+
   return (
     <div className='release-page_reviews-component'>
       <div className="reviews-component_title">{props.reviews.length} Reviews</div>
@@ -20,7 +44,7 @@ const Reviews = (props) => {
         return (
           <div key={`review-${i}`} className='review-container'>
             <div className='review-info'>
-              <div className='review_user-avatar'></div>
+              <div className='review_user-avatar'><Avatar user={el.username}/></div>
               <div className='review_data'>
                 <div className='review_username bolded'><Link to={`/profile/${el.username}`}>{el.username}</Link></div>
                 <div className='review_date'>{el.date}</div>
@@ -44,6 +68,3 @@ const Reviews = (props) => {
 }
 
 export default Reviews;
-
-
-// Review : content, auteur, date, rating, vote (= reviewScore)

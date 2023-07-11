@@ -8,8 +8,7 @@
 
 ### Core Fonctionnalités
 X Ajouter images albums et profil
-O Ajouter image de profil dans les header et sur les pages albums
-O RESTRUCTURER BASE DE DONNEES: stocker les infos albums sous leur ID, pour pouvoir y faire référence et obtenir directement des infos à jour (les albums mentionnés dans les listes, ratings, reviews... le seraient sous la forme d'array d'IDs, puis les infos seraient récoltées en effectuant une boucle sur ces IDs).
+O Ajouter image de profil dans les header et sur les pages albums (reviews et ratings)
 X Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
 X Ajouter redirection automatique après submit
 O Page profil

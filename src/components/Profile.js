@@ -49,7 +49,6 @@ const ProfilePage = (props) => {
     setUserDate(data.date);
     setAvatar(data.avatar.link);
     setAvatarCaption(data.avatar.caption);
-    console.log(data.avatar);
   }
 
   useEffect(() => {

@@ -191,9 +191,16 @@ header {
 }
 
 .header_avatar {
-  border: 1px solid #ffffff;
-  width: 24px;
-  height: 24px;
+  background-color: #202C3F;
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+
+  img {
+    object-fit: cover;
+    min-height: 100%;
+    min-width: 100%;
+  }
 }
 
 .header_user-container {
@@ -714,7 +721,14 @@ footer {
     height: 35px;
     width: 35px;
     margin-right: 10px;
-    border:1px solid #ffffff;
+    border-radius: 4px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      border-radius: 4px;
+    }
   }
 
   .review_data {

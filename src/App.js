@@ -34,7 +34,6 @@ const App = () => {
   const [username, setUsername] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
 
-
   // Firebase authentication
   initFirebaseAuth();
 
@@ -49,18 +48,6 @@ const App = () => {
       setUserID(getAuth().currentUser.uid)
     } else {
       setIsSignedIn(false);
-    }
-  }
-
-  // Send data to firestore
-  const sendPrivateData = async () => {
-    try {
-      await setDoc(doc(getFirestore(), getAuth().currentUser.uid, 'ratings'), {
-        displayName: getAuth().currentUser.displayName,
-      });    
-    }
-    catch(error) {
-      console.error('Error writing new task to Firebase Database', error);
     }
   }
 
@@ -89,7 +76,6 @@ const App = () => {
           element={<ProfilePage 
             username={username} 
             userID={userID}
-            sendData={() => sendPrivateData()}
             />}
         />
         <Route exact path="/profile/avatar" element={<Avatar username={username} />} />
