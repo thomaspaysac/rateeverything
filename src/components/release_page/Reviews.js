@@ -3,8 +3,6 @@ import { Link, useAsyncError } from 'react-router-dom';
 import { getUserInfo } from '../../functions';
 
 const Reviews = (props) => {
-  
-
   const Avatar = ({user}) => {
     const [avatar, setAvatar] = useState();    
 
@@ -17,8 +15,8 @@ const Reviews = (props) => {
       fetchAvatar(user)
     }, [])
 
-    if (!avatar) {
-      return <img src={avatar} alt='user avatar' onClick={() => console.log(user)} />;
+    if (!avatar || avatar === '') {
+      return null;
     } else {
       return (
         <img src={avatar} alt='user avatar' onClick={() => console.log(user)}/>

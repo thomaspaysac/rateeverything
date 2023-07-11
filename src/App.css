@@ -515,8 +515,14 @@ footer {
 .release-ratings_avatar {
   width: 25px;
   height: 25px;
-  border: 1px solid #dddddd;
-  margin-right: 4px; }
+  border-radius: 4px;
+  margin-right: 4px;
+  background-color: #202C3F; }
+  .release-ratings_avatar img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px; }
 
 .release-ratings_username {
   flex-grow: 1; }
@@ -537,7 +543,8 @@ footer {
     height: 35px;
     width: 35px;
     margin-right: 10px;
-    border-radius: 4px; }
+    border-radius: 4px;
+    background-color: #202C3F; }
     .review-info .review_user-avatar img {
       object-fit: cover;
       height: 100%;

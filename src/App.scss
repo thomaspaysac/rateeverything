@@ -693,8 +693,16 @@ footer {
 .release-ratings_avatar {
   width: 25px;
   height: 25px;
-  border: 1px solid #dddddd;
+  border-radius: 4px;
   margin-right: 4px;
+  background-color: #202C3F;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+  }
 }
 
 .release-ratings_username {
@@ -722,6 +730,7 @@ footer {
     width: 35px;
     margin-right: 10px;
     border-radius: 4px;
+    background-color: #202C3F;
 
     img {
       object-fit: cover;
