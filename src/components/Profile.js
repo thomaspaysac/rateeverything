@@ -76,24 +76,13 @@ const ProfilePage = (props) => {
   return (
     <div className="content-page">
     <div className="content-wrapper">
-      <div className="pofile_user-info">
+      <div>
         <div className="profile-header">
           member since {userDate} <span className="profile-username">{urlParams.username}</span>
         </div>
-        
+        <div className="profile_user-info">
           <div className="profile_avatar"><Link to="/profile/avatar">{avatarDisplay()}</Link></div>
-        
-      </div>
-      
-          <div>{artistsList.map((el) => {
-        return (
-          <Link to={`/artist/${el}`} key={el}>
-              {el}
-          </Link>
-        );
-      })}</div>
-      <div>
-        <Link to='/artist/add_artist'>Add new artist</Link>
+        </div>
       </div>
 
       <ContentContainer

@@ -8,7 +8,7 @@
 
 ### Core Fonctionnalités
 X Ajouter images albums et profil
-O Ajouter image de profil dans les header et sur les pages albums (reviews et ratings)
+X Ajouter image de profil dans les header et sur les pages albums (reviews et ratings)
 X Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
 X Ajouter redirection automatique après submit
 O Page profil
