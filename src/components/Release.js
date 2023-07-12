@@ -6,6 +6,7 @@ import UserRatingsPage from "./release_page/UserRatings";
 import Reviews from "./release_page/Reviews";
 import AddReview from "./release_page/AddReview";
 import Tracklist from "./release_page/Tracklist";
+import StarRating from "./release_page/StarRating";
 
 import { getReleaseByID, getUniqueRelease } from "../functions";
 
@@ -134,6 +135,7 @@ const ReleasePage = (props) => {
           releaseID={releaseID}
           onClick={toggleReviewUI}
         />
+        <StarRating />
         <ReviewWritingUI 
           reviewUI={reviewUI}
           releaseID={releaseID}

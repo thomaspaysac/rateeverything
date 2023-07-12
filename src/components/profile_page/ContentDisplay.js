@@ -37,9 +37,15 @@ const ContentContainer = (props) => {
 
   return (
     <div>
-      <button onClick={() => changeDisplay('recent')}>recent</button>
-      <button onClick={() => changeDisplay('ratings')}>ratings</button>
-      <button onClick={() => changeDisplay('reviews')}>reviews</button>
+      <button className='profile_music_display-button bolded' 
+        id={contentDisplayed === 'recent' ? 'active-button' : ''} 
+        onClick={() => changeDisplay('recent')}>recent</button>
+      <button className='profile_music_display-button bolded' 
+        id={contentDisplayed === 'ratings' ? 'active-button' : ''} 
+        onClick={() => changeDisplay('ratings')}>ratings</button>
+      <button className='profile_music_display-button bolded' 
+        id={contentDisplayed === 'reviews' ? 'active-button' : ''} 
+        onClick={() => changeDisplay('reviews')}>reviews</button>
       <div>
         <ContentDisplay 
           contentDisplayed={contentDisplayed}

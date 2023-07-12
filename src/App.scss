@@ -113,6 +113,35 @@ button, input {
   display: none;
 }
 
+input[type="radio"]{
+  display:none;
+}
+
+#rating-form {
+  g {
+    &:hover,
+    &:active {
+      fill: #C69C4F;
+    }
+  }
+
+  .selected {
+    g {
+        fill: #C69C4F;
+      }
+    }
+
+  svg {
+    height: 30px;
+  }
+}
+
+
+
+.star-icon {
+  height: 30px;
+}
+
 // Components styling
 // HEADER
 header {
@@ -1003,10 +1032,66 @@ footer {
   }
 }
 
+.profile_music_display-button {
+  background-color: #122D62;
+  color: map-get($dark-theme, font-light);
+  font-size: 0.94rem;
+  padding: 3px 6px;
+  border: none;
+  border-radius: 2px;
+  margin-right: 6px;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: #A7C2E3;
+  }
+}
+
+#active-button {
+  background-color: #215098;
+}
+
 .recent-rating_container {
   display: grid;
-  grid-template-rows: 100px;
-  grid-template-columns: 50px 29px 112px 1fr 163px;
+  grid-template-rows: 55px;
+  grid-template-columns: 65px 40px 112px 1fr 163px;
+
+  div {
+    border-left: 1px solid #2B2F3C;
+    border-right: 1px solid #2B2F3C;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  &:nth-of-type(odd) {
+    background-color: #1B1E2A;
+  }
+
+  &:nth-of-type(even) {
+    background-color: #0B0E19;
+  }
+
+  .recent-rating_thumbnail {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+    }
+  }
+
+  .recent-rating_date {
+    background-color: #4E5465;
+    color: #B4B9C5;
+    font-size: 0.8rem;
+    margin: 4px;
+    text-align: center;
+    vertical-align: middle;
+  }
 }
 
 // Personal reviews display
