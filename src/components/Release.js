@@ -28,7 +28,7 @@ const ReleasePage = (props) => {
   const [release, setRelease] = useState([]);
   const [genres, setGenres] = useState([]);
   const [releaseID, setReleaseID] = useState(undefined);
-  const [personalRating, setPersonalRating] = useState();
+  const [personalRating, setPersonalRating] = useState(undefined);
   const [ratings, setRatings] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewUI, setReviewUI] = useState(false);
@@ -67,6 +67,14 @@ const ReleasePage = (props) => {
     setReviews(data.reviews);
     setTracklist(data.tracks)
     calculateTotalTime(data);
+    /*let index;
+    data.ratings.forEach((el, i) => {
+      if (el.username === props.username) {
+        index = i;
+      }
+    })
+    const personal = data.ratings[index];
+    setPersonalRating(personal);*/
   }
 
   const toggleReviewUI = () => {
@@ -77,22 +85,10 @@ const ReleasePage = (props) => {
     }
   }
 
-  /*const organizeRatings = () => {
-    const copy = props.ratings;
-    let index;
-    copy.map((el, i) => {
-      if (el.username === props.username) {
-        index = i;
-      }
-    })
-    const personal = copy.splice(index, 1);
-    setPersonalRating(personal);
-    setOthersRatings(copy);
-  }*/
-
   useEffect(() => {
     fetchDataByID(+urlParams.releaseID);
   }, []);
+
 
   const ContributionsContainer = (props) => {
     if (!props.userStatus) {
@@ -135,7 +131,9 @@ const ReleasePage = (props) => {
           releaseID={releaseID}
           onClick={toggleReviewUI}
         />
-        <StarRating />
+        <StarRating
+          ratings={ratings}
+          username={props.username} />
         <ReviewWritingUI 
           reviewUI={reviewUI}
           releaseID={releaseID}
@@ -150,7 +148,7 @@ const ReleasePage = (props) => {
       </div>
 
       <div className='release-page_contributions'>
-        <h2 onClick={() => {console.log(release)}}>Contributions</h2>
+        <h2 onClick={() => {console.log(personalRating)}}>Contributions</h2>
         <ContributionsContainer userStatus={props.userStatus} />
       </div>
     </div>

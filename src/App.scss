@@ -113,34 +113,6 @@ button, input {
   display: none;
 }
 
-input[type="radio"]{
-  display:none;
-}
-
-#rating-form {
-  g {
-    &:hover,
-    &:active {
-      fill: #C69C4F;
-    }
-  }
-
-  .selected {
-    g {
-        fill: #C69C4F;
-      }
-    }
-
-  svg {
-    height: 30px;
-  }
-}
-
-
-
-.star-icon {
-  height: 30px;
-}
 
 // Components styling
 // HEADER
@@ -559,6 +531,37 @@ footer {
   padding: 25px 30px;
   border-top: 1px solid #272A37;
   border-bottom: 1px solid #272A37;
+}
+
+.stars-rating-component {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  input[type="radio"]{
+    display:none;
+  }
+  
+  #rating-form {
+    g {
+      &:hover,
+      &:active {
+        fill: #C69C4F;
+      }
+    }
+  
+    .selected,
+    .active-star {
+      g {
+          fill: #C69C4F;
+        }
+      }
+  
+    svg {
+      height: 20px;
+    }
+  
+  }
 }
 
 .rating-component_title,

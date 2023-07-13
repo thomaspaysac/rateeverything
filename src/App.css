@@ -76,19 +76,6 @@ button, input {
 [data-lastpass-icon-root] {
   display: none; }
 
-input[type="radio"] {
-  display: none; }
-
-#rating-form g:hover, #rating-form g:active {
-  fill: #C69C4F; }
-#rating-form .selected g {
-  fill: #C69C4F; }
-#rating-form svg {
-  height: 30px; }
-
-.star-icon {
-  height: 30px; }
-
 header {
   position: fixed;
   width: 100vw;
@@ -405,6 +392,20 @@ footer {
   padding: 25px 30px;
   border-top: 1px solid #272A37;
   border-bottom: 1px solid #272A37; }
+
+.stars-rating-component {
+  display: flex;
+  align-items: center;
+  gap: 12px; }
+  .stars-rating-component input[type="radio"] {
+    display: none; }
+  .stars-rating-component #rating-form g:hover, .stars-rating-component #rating-form g:active {
+    fill: #C69C4F; }
+  .stars-rating-component #rating-form .selected g,
+  .stars-rating-component #rating-form .active-star g {
+    fill: #C69C4F; }
+  .stars-rating-component #rating-form svg {
+    height: 20px; }
 
 .rating-component_title,
 .reviews-component_title,
