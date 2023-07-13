@@ -32,17 +32,16 @@ O Implémenter listes
 X Ajouter historique d'édition
 
 ### UI
-O Ajouter liens vers profils des autres utilisateurs (cliquer sur les reviews et les ratings)
+X Ajouter liens vers profils des autres utilisateurs (cliquer sur les reviews et les ratings)
 O Reviews de la page perso : ne prennent pas en compte les sauts de lignes
 O Favicon et nom de page dynamique
 O Afficher notes et reviews par page de 10 à la fois
 O Afficher notes sous forme d'étoiles/demi-étoiles
-O Ajouter notes en cliquant sur étoiles
+X Ajouter notes en cliquant sur étoiles
 O Ajouter tri des albums selon critères sur page de groupe
 O Ajouter liste de toutes les notes, triées par note
 O Faire UI d'écriture de review
 O Affiner données artistes on submit
-O Page profil
 X Corriger calcul de l'average (recalculer à partir de la valeur rating de chaque object Rating)
 
 

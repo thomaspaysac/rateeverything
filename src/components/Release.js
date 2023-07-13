@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReleaseInfo from "./release_page/ReleaseInfo";
-import Rating from "./release_page/Rating";
 import UserRatingsPage from "./release_page/UserRatings";
 import Reviews from "./release_page/Reviews";
 import AddReview from "./release_page/AddReview";
@@ -158,7 +157,7 @@ const ReleasePage = (props) => {
       </div>
 
       <div className='release-page_contributions'>
-        <h2 onClick={() => {console.log(personalRating)}}>Contributions</h2>
+        <h2>Contributions</h2>
         <ContributionsContainer userStatus={props.userStatus} />
       </div>
     </div>
