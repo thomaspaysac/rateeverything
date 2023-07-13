@@ -394,18 +394,28 @@ footer {
   border-bottom: 1px solid #272A37; }
 
 .stars-rating-component {
+  background-color: #141823;
+  border: 1px solid #404656;
+  border-radius: 3px;
+  padding: 5px;
   display: flex;
   align-items: center;
-  gap: 12px; }
+  gap: 8px; }
   .stars-rating-component input[type="radio"] {
     display: none; }
+  .stars-rating-component #rating-form label {
+    cursor: pointer; }
   .stars-rating-component #rating-form g:hover, .stars-rating-component #rating-form g:active {
     fill: #C69C4F; }
   .stars-rating-component #rating-form .selected g,
   .stars-rating-component #rating-form .active-star g {
     fill: #C69C4F; }
   .stars-rating-component #rating-form svg {
-    height: 20px; }
+    height: 16px; }
+
+.displayed-rating {
+  font-size: 1rem;
+  color: #B1B6BF; }
 
 .rating-component_title,
 .reviews-component_title,

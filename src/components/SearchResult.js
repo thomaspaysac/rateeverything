@@ -42,7 +42,7 @@ const Results = (props) => {
                 <div className='search-result_card-image'><img src={el.imagePath} alt='cover art' /></div>
                 <div>
                   <div>
-                    <Link to={`/artist/${el.artist}`} className='bolded'>{el.artist}</Link> - <Link to={`/release/${el.artist}/${el.release}`} className='bolded search_release-title'>{el.release}</Link> <span className="search_release-date">({el.year})</span>
+                    <Link to={`/artist/${el.artist}`} className='bolded'>{el.artist}</Link> - <Link to={`/release/${el.artist}/${el.albumID}`} className='bolded search_release-title'>{el.release}</Link> <span className="search_release-date">({el.year})</span>
                   </div>
                   <div className='search-result_tracklist'>
                     <span className="bolded">Tracks:</span> {

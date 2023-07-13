@@ -127,13 +127,23 @@ const ReleasePage = (props) => {
           ratingsNumber={ratings.length}
           genres={genres}
         />
-        <Rating
-          releaseID={releaseID}
-          onClick={toggleReviewUI}
-        />
-        <StarRating
-          ratings={ratings}
-          username={props.username} />
+        <div className="rating-component">
+          <div className="rating-component_title">Rate/Catalog</div>
+            <div className="rating-actions">
+              <div className="rating-container">
+                <StarRating
+                    releaseID={releaseID}
+                    ratings={ratings}
+                    username={props.username} />
+                </div>
+              <div className="catalog-container">
+                Catalog
+              </div>
+              <button className="catalog-review" onClick={toggleReviewUI}>
+                Review
+              </button>
+            </div>
+        </div>
         <ReviewWritingUI 
           reviewUI={reviewUI}
           releaseID={releaseID}

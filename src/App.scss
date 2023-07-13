@@ -534,15 +534,23 @@ footer {
 }
 
 .stars-rating-component {
+  background-color: #141823;
+  border: 1px solid #404656;
+  border-radius: 3px;
+  padding: 5px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 
   input[type="radio"]{
     display:none;
   }
   
   #rating-form {
+    label {
+      cursor: pointer;
+    }
+
     g {
       &:hover,
       &:active {
@@ -558,10 +566,15 @@ footer {
       }
   
     svg {
-      height: 20px;
+      height: 16px;
     }
   
   }
+}
+
+.displayed-rating {
+  font-size: 1rem;
+  color: #B1B6BF;
 }
 
 .rating-component_title,

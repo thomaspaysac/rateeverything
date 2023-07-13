@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from "react";
 import { getReleaseByID, updateReleaseRating } from "../../functions";
 import { getAuth } from "firebase/auth";
+import StarRating from "./StarRating";
 import "C:/Users/paysa/Documents/GitHub/rateeverything/src/App.css";
 
 const Rating = (props) => {
