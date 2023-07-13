@@ -9,7 +9,8 @@ import StarRating from "./release_page/StarRating";
 
 import { getReleaseByID, getUniqueRelease } from "../functions";
 
-import "../App.css"
+import discIcon from '../../src/img/vinyl.png';
+import reviewIcon from '../../src/img/write-review.png';
 
 const ReviewWritingUI = ({reviewUI, releaseID}) => {
   if (reviewUI) {
@@ -27,7 +28,6 @@ const ReleasePage = (props) => {
   const [release, setRelease] = useState([]);
   const [genres, setGenres] = useState([]);
   const [releaseID, setReleaseID] = useState(undefined);
-  const [personalRating, setPersonalRating] = useState(undefined);
   const [ratings, setRatings] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewUI, setReviewUI] = useState(false);
@@ -66,14 +66,6 @@ const ReleasePage = (props) => {
     setReviews(data.reviews);
     setTracklist(data.tracks)
     calculateTotalTime(data);
-    /*let index;
-    data.ratings.forEach((el, i) => {
-      if (el.username === props.username) {
-        index = i;
-      }
-    })
-    const personal = data.ratings[index];
-    setPersonalRating(personal);*/
   }
 
   const toggleReviewUI = () => {
@@ -136,10 +128,10 @@ const ReleasePage = (props) => {
                     username={props.username} />
                 </div>
               <div className="catalog-container">
-                Catalog
+                <img src={discIcon} alt='' /> Catalog
               </div>
               <button className="catalog-review" onClick={toggleReviewUI}>
-                Review
+                <img src={reviewIcon} alt='' /> Review
               </button>
             </div>
         </div>

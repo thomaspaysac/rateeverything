@@ -12,6 +12,7 @@ X Ajouter image de profil dans les header et sur les pages albums (reviews et ra
 X Ajouter édition de pages (artistes et releases) avec le nom d'utilisateur
 X Ajouter redirection automatique après submit
 O Page profil
+O Catalogue : collection, wishlist, not cataloged
 X Page album : charger les données à partir de l'ID plutôt qu'à partir du nom de l'album
 X Rechercher dans la base de données
 X ajouter les genres et un id aux albums, corriger affichage du genre

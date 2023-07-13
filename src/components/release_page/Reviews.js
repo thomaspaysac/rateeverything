@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { Link, useAsyncError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getUserInfo } from '../../functions';
 
 const Reviews = (props) => {
@@ -29,15 +29,14 @@ const Reviews = (props) => {
       <div className="reviews-component_title">{props.reviews.length} Reviews</div>
     {
       props.reviews.map((el, i) => {
-        // Obtenir l'ID de la release et de l'auteur de la review, pour retrouver le rating
-        const userID = el.userID;
-        let userRating;
-        const ratingObject = props.ratings.find((obj) => obj.userID === userID);
-        if (ratingObject) {
-          userRating = ratingObject.rating;
-        } else {
-          userRating = '';
-        }
+        const user = el.username;
+        let userRating = '';
+        props.ratings.forEach(el => {
+          if (el.username === user) {
+            console.log(el);
+            userRating = el.rating.toFixed(1);
+          }
+        })
 
         return (
           <div key={`review-${i}`} className='review-container'>
@@ -53,7 +52,8 @@ const Reviews = (props) => {
                 <div>⇧</div>
                 <div>{el.reviewScore}</div>
               </div>
-              <div className='review_rating'>{userRating}</div>
+              <div className='review_rating'>{userRating}
+              </div>
             </div>
             <div className='review-content'>{el.review}</div>
           </div>
