@@ -459,6 +459,11 @@ footer {
   width: 100%;
   aspect-ratio: 1 / 1; }
 
+.release-rating_ratings {
+  display: flex; }
+  .release-rating_ratings svg {
+    height: 16px; }
+
 .release-page_contributions,
 .artist-page_contributions {
   width: 100%;
