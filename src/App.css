@@ -614,6 +614,11 @@ footer {
   color: #A8AEBA;
   white-space: pre-wrap; }
 
+.review_rating {
+  display: flex; }
+  .review_rating svg {
+    height: 16px; }
+
 .add-release_page h2,
 .edit-release_page h2,
 .edit-artist_page h2 {

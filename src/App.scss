@@ -835,6 +835,14 @@ footer {
   white-space: pre-wrap;
 }
 
+.review_rating {
+  display: flex;
+  
+  svg {
+    height: 16px;
+  }
+}
+
 // Add & Edit release page
 .add-release_page,
 .edit-release_page,

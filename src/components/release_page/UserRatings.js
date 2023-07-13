@@ -35,7 +35,7 @@ const UserRatingsPage = (props) => {
               <div className='release-ratings_info' id={`${el.username === props.username ? 'personal-rating' : ''}`}>
                 <div className='release-ratings_avatar'><Avatar user={el.username} /></div>
                 <div className='release-ratings_username bolded'><Link to={`/profile/${el.username}`}>{el.username}</Link></div>
-                <div className='release-rating_ratings'>{el.rating}</div>
+                <div className='release-rating_ratings'>{el.rating.toFixed(1)}</div>
               </div>
             </div>
           )
