@@ -1,9 +1,50 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import { getAuth } from 'firebase/auth';
-import { updateCollection } from '../../functions';
+import { updateCollection, getUserInfo } from '../../functions';
 import discIcon from '../../../src/img/vinyl.png';
 
-const CatalogPopup = ({releaseID}) => {
+const CatalogPopup = ({releaseID, username}) => {
+  const [catalogStatus, setCatalogStatus] = useState();
+  const [userCollection, setUserCollection] = useState();
+  const [userWishlist, setUserWishlist] = useState();
+
+  const loadUserCatalog = async () => {
+    if (!username) {
+      return null;
+    } else {
+      const data = await getUserInfo(username);
+      setCatalogStatus(data);
+      setUserCollection(data.collection);
+      setUserWishlist(data.wishlist);
+    }
+  }
+
+  const findInCollection = () => {
+    if (!userCollection || !releaseID) {
+      return null;
+    } else {
+      const existingData = userCollection.find((obj) => obj.release.releaseID === releaseID);
+      if (existingData) {
+        console.log('found in collection');
+      } else {
+        console.log('not found in collection')
+      }
+    }
+  }
+
+  const findInWishlist = () => {
+    if (!userWishlist || !releaseID) {
+      return null;
+    } else {
+      const existingData = userWishlist.find((obj) => obj.release.releaseID === releaseID);
+      if (existingData) {
+        console.log('found in wishlist');
+      } else {
+        console.log('not found in wishlist')
+      }
+    }
+  }
+  
   const popup = document.querySelector('.catalog-popup');
 
   const openPopup = () => {
@@ -13,6 +54,15 @@ const CatalogPopup = ({releaseID}) => {
   const closePopup = () => {
     popup.style.display = 'none';
   }
+
+  useEffect(() => {
+    loadUserCatalog();
+  }, [username])
+
+  useEffect(() => {
+    findInCollection();
+    findInWishlist();
+  }, [userCollection, userWishlist, releaseID])
 
   return (
     <div onMouseEnter={openPopup} onMouseLeave={closePopup}>

@@ -664,7 +664,7 @@ const updateCollection = async (username, releaseID, status) => {
         }
       }
       localCopy.wishlist.splice(targetIndex, 1);
-    } else {
+    } else if (existingOwn) {
       for (const item of localCopy.collection) {
         if (item.release.releaseID !== releaseID) {
           index++;

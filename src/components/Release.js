@@ -130,6 +130,7 @@ const ReleasePage = (props) => {
                 </div>
               <CatalogPopup 
                 releaseID={releaseID}
+                username={props.username}
               />
               <button className="catalog-review" onClick={toggleReviewUI}>
                 <img src={reviewIcon} alt='' /> Review
