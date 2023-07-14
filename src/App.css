@@ -57,7 +57,7 @@ button, input {
   z-index: 2;
   width: 100vw;
   height: 100vh;
-  background-color: #0000004f; }
+  background-color: #00000086; }
 
 .art_thumbnail {
   width: 44px;
@@ -75,6 +75,11 @@ button, input {
 
 [data-lastpass-icon-root] {
   display: none; }
+
+.rating_stars-display {
+  display: flex; }
+  .rating_stars-display svg {
+    height: 16px; }
 
 header {
   position: fixed;
@@ -459,11 +464,6 @@ footer {
   width: 100%;
   aspect-ratio: 1 / 1; }
 
-.release-rating_ratings {
-  display: flex; }
-  .release-rating_ratings svg {
-    height: 16px; }
-
 .release-page_contributions,
 .artist-page_contributions {
   width: 100%;
@@ -495,6 +495,24 @@ footer {
   cursor: pointer; }
   .contribution-button:hover, .contribution-button:active {
     background-color: #005DBF; }
+
+.catalog-popup {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  background-color: #161A25;
+  border: 1px solid #4E5465;
+  font-size: 0.8rem; }
+  .catalog-popup div {
+    color: #9DA3AF;
+    width: 100%;
+    text-align: center;
+    padding: 8px 12px; }
+    .catalog-popup div:hover, .catalog-popup div:active {
+      background-color: #303441;
+      cursor: pointer; }
 
 .release_tracklist {
   width: 100%;
@@ -618,11 +636,6 @@ footer {
   padding: 12px 38px;
   color: #A8AEBA;
   white-space: pre-wrap; }
-
-.review_rating {
-  display: flex; }
-  .review_rating svg {
-    height: 16px; }
 
 .add-release_page h2,
 .edit-release_page h2,

@@ -88,7 +88,7 @@ button, input {
   z-index: 2;
   width: 100vw;
   height: 100vh;
-  background-color: #0000004f;
+  background-color: #00000086;
 }
 
 .art_thumbnail {
@@ -113,6 +113,13 @@ button, input {
   display: none;
 }
 
+.rating_stars-display {
+  display: flex;
+  
+  svg {
+    height: 16px;
+  }
+}
 
 // Components styling
 // HEADER
@@ -626,14 +633,6 @@ footer {
   aspect-ratio: 1 / 1;
 }
 
-.release-rating_ratings {
-  display: flex;
-
-  svg {
-    height: 16px;
-  }
-}
-
 .release-page_contributions,
 .artist-page_contributions {
   width: 100%;
@@ -671,6 +670,30 @@ footer {
   &:hover,
   &:active {
     background-color: #005DBF;
+  }
+}
+
+.catalog-popup {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  background-color: #161A25;
+  border: 1px solid #4E5465;
+  font-size: 0.8rem;
+
+  div {
+    color: #9DA3AF;
+    width: 100%;
+    text-align: center;
+    padding: 8px 12px;
+
+    &:hover,
+    &:active {
+      background-color: #303441;
+      cursor: pointer;
+    }
   }
 }
 
@@ -841,14 +864,6 @@ footer {
   padding: 12px 38px;
   color: #A8AEBA;
   white-space: pre-wrap;
-}
-
-.review_rating {
-  display: flex;
-  
-  svg {
-    height: 16px;
-  }
 }
 
 // Add & Edit release page

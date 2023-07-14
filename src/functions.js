@@ -12,6 +12,8 @@ const userFirestoreSetup = async (username) => {
     ratings: [],
     reviews: [],
     lists: [],
+    collection: [],
+    wishlist: [],
     date: format(new Date(), 'dd MMM yy'),
     avatar: {
       link: "",
@@ -400,6 +402,7 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
 }
 
 const linkRatingToUser = async (username, release, rating, date) => {
+  console.log(release);
   const userRef = doc(db, 'users', username);
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
@@ -585,6 +588,126 @@ const searchRelease = async (prompt) => {
   return searchResult;
 }
 
+const updateCollection = async (username, releaseID, status) => {
+  const release = await getReleaseByID(releaseID);
+  const userRef = doc(db, 'users', username);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const localCopy = data;
+  // Add to collection
+  if (status === 'collection') {
+    const existingData = localCopy.collection.find((obj) => obj.release.releaseID === release.albumID);
+    if (!existingData) {
+      localCopy.collection.push({
+        release: {
+          releaseID: release.albumID,
+          artist: release.artist,
+          title: release.release,
+          imagePath: release.imagePath,
+        },
+        status: 'In collection',
+      })
+    }
+    // Remove from wishlist
+    const existingItem = localCopy.wishlist.find((obj) => obj.release.releaseID === release.albumID);
+    if (existingItem) {
+      let index = 0;
+      let targetIndex = undefined;
+      for (const item of localCopy.wishlist) {
+        if (item.release.releaseID !== releaseID) {
+          index++;
+        } else {
+          targetIndex = index;
+        }
+      }
+      localCopy.wishlist.splice(targetIndex, 1);
+    }
+    // Add to wishlist
+  } else if (status === 'wishlist') {
+    const existingData = localCopy.wishlist.find((obj) => obj.release.releaseID === release.albumID);
+    if (!existingData) {
+      localCopy.wishlist.push({
+        release: {
+          releaseID: release.albumID,
+          artist: release.artist,
+          title: release.release,
+          imagePath: release.imagePath,
+        },
+        status: 'Wishlist',
+      })
+    }
+    // Remove from collection
+    const existingItem = localCopy.collection.find((obj) => obj.release.releaseID === release.albumID);
+    if (existingItem) {
+      let index = 0;
+      let targetIndex = undefined;
+      for (const item of localCopy.collection) {
+        if (item.release.releaseID !== releaseID) {
+          index++;
+        } else {
+          targetIndex = index;
+        }
+      }
+      localCopy.collection.splice(targetIndex, 1);
+    }
+  } else if (status === 'remove') {
+    const existingWish = localCopy.wishlist.find((obj) => obj.release.releaseID === release.albumID);
+    const existingOwn = localCopy.collection.find((obj) => obj.release.releaseID === release.albumID);
+    let index = 0;
+    let targetIndex = undefined;
+    if (existingWish) {
+      for (const item of localCopy.wishlist) {
+        if (item.release.releaseID !== releaseID) {
+          index++;
+        } else {
+          targetIndex = index;
+        }
+      }
+      localCopy.wishlist.splice(targetIndex, 1);
+    } else {
+      for (const item of localCopy.collection) {
+        if (item.release.releaseID !== releaseID) {
+          index++;
+        } else {
+          targetIndex = index;
+        }
+      }
+      localCopy.collection.splice(targetIndex, 1);
+    }
+  }
+  await updateDoc(userRef, localCopy);
+
+  /*const localRatings = data.ratings;
+  const existingRating = localRatings.find((obj) => obj.release.releaseID === release.albumID);
+  if (existingRating === undefined && +rating !== 0) {
+    localRatings.push({
+      release: {
+        releaseID: release.albumID,
+        artist: release.artist,
+        title: release.release,
+        imagePath: release.imagePath,
+      },
+      rating: rating,
+      date: date,
+    })
+  } else if (+rating === 0) {
+    let index = 0;
+    let targetIndex = undefined;
+    for (const rating of localRatings) {
+      if (rating.release !== release) {
+        index++;
+      } else {
+        targetIndex = index;
+      }
+    }
+    localRatings.splice(targetIndex, 1);
+  } else {
+    existingRating.rating = rating;
+    existingRating.date = date;
+  }
+  await updateDoc(userRef, localCopy);*/
+}
+
 export { 
   userFirestoreSetup,
   getAllUsernames,
@@ -617,4 +740,5 @@ export {
   getPersonalReviews,
   searchArtistByName,
   searchRelease,
+  updateCollection,
 };

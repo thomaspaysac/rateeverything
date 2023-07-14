@@ -6,6 +6,7 @@ import Reviews from "./release_page/Reviews";
 import AddReview from "./release_page/AddReview";
 import Tracklist from "./release_page/Tracklist";
 import StarRating from "./release_page/StarRating";
+import CatalogPopup from "./release_page/CatalogPopup";
 
 import { getReleaseByID, getUniqueRelease } from "../functions";
 
@@ -127,9 +128,9 @@ const ReleasePage = (props) => {
                     ratings={ratings}
                     username={props.username} />
                 </div>
-              <div className="catalog-container">
-                <img src={discIcon} alt='' /> Catalog
-              </div>
+              <CatalogPopup 
+                releaseID={releaseID}
+              />
               <button className="catalog-review" onClick={toggleReviewUI}>
                 <img src={reviewIcon} alt='' /> Review
               </button>
