@@ -13,7 +13,7 @@ const CatalogPopup = ({releaseID, username}) => {
       return null;
     } else {
       const data = await getUserInfo(username);
-      setCatalogStatus(data);
+      //setCatalogStatus(data);
       setUserCollection(data.collection);
       setUserWishlist(data.wishlist);
     }
@@ -25,9 +25,9 @@ const CatalogPopup = ({releaseID, username}) => {
     } else {
       const existingData = userCollection.find((obj) => obj.release.releaseID === releaseID);
       if (existingData) {
-        console.log('found in collection');
+        return true;
       } else {
-        console.log('not found in collection')
+        return false;
       }
     }
   }
@@ -38,9 +38,9 @@ const CatalogPopup = ({releaseID, username}) => {
     } else {
       const existingData = userWishlist.find((obj) => obj.release.releaseID === releaseID);
       if (existingData) {
-        console.log('found in wishlist');
+        return true;
       } else {
-        console.log('not found in wishlist')
+        return false;
       }
     }
   }
@@ -60,15 +60,40 @@ const CatalogPopup = ({releaseID, username}) => {
   }, [username])
 
   useEffect(() => {
-    findInCollection();
-    findInWishlist();
-  }, [userCollection, userWishlist, releaseID])
+    if (findInCollection()) {
+      setCatalogStatus('collection');
+    } else if (findInWishlist()) {
+      setCatalogStatus('wishlist');
+    } else {
+      setCatalogStatus(undefined);
+    }
+  }, [userCollection, userWishlist, releaseID, catalogStatus])
+
+  const catalogButton = () => {
+    if (catalogStatus === 'collection') {
+        return (
+          <div className="catalog-container cataloged">
+            <img src={discIcon} alt='' /> In collection
+          </div>
+        )
+    } else if (catalogStatus === 'wishlist') {
+      return (
+        <div className="catalog-container cataloged">
+          <img src={discIcon} alt='' /> On wishlist
+        </div>
+      )
+    } else {
+      return (
+        <div className="catalog-container">
+          <img src={discIcon} alt='' /> Catalog
+        </div>
+      )
+    }
+  }
 
   return (
     <div onMouseEnter={openPopup} onMouseLeave={closePopup}>
-      <div className="catalog-container" >
-        <img src={discIcon} alt='' /> Catalog
-      </div>
+      {catalogButton()}
       <div className='catalog-popup'>
         <div onClick={() => updateCollection(getAuth().currentUser.displayName, releaseID, 'collection')}>In collection</div>
         <div onClick={() => updateCollection(getAuth().currentUser.displayName, releaseID, 'wishlist')}>On wishlist</div>

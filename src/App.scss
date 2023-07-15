@@ -621,6 +621,11 @@ footer {
   }
 }
 
+.cataloged {
+  background-color: #334A33;
+  color: map-get($dark-theme, font-light);
+}
+
 .release-page_image-frame {
   width: 100%;
   height: fit-content;
