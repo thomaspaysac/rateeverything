@@ -840,6 +840,20 @@ footer {
   font-size: 1rem;
   font-weight: 700; }
 
+.profile_section-header {
+  background-color: #242834;
+  text-align: right;
+  font-size: 1.2rem;
+  color: #84C5FB;
+  padding: 10px; }
+
+.profile_music-section {
+  background-color: #161A25; }
+
+.profile_display-buttons,
+.profile_content-container {
+  padding: 10px; }
+
 .profile_music_display-button {
   background-color: #122D62;
   color: #DBE0E9;

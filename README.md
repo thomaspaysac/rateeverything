@@ -11,7 +11,7 @@ O Page profil
 
 ## Second temps
 ### Fonctionnalités
-O Implémenter listes
+O Shoutbox
 
 ### UI
 O Reviews de la page perso : ne prennent pas en compte les sauts de lignes
