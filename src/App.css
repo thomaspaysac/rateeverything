@@ -77,7 +77,8 @@ button, input {
   display: none; }
 
 .rating_stars-display {
-  display: flex; }
+  display: flex;
+  justify-content: center; }
   .rating_stars-display svg {
     height: 16px; }
 
@@ -869,28 +870,31 @@ footer {
 #active-button {
   background-color: #215098; }
 
-.recent-rating_container {
+.recent-ratings {
+  margin-bottom: 12px; }
+
+.recent-rating_item {
   display: grid;
   grid-template-rows: 55px;
   grid-template-columns: 65px 40px 112px 1fr 163px; }
-  .recent-rating_container div {
+  .recent-rating_item div {
     border-left: 1px solid #2B2F3C;
     border-right: 1px solid #2B2F3C;
     padding: 5px;
     display: flex;
     align-items: center; }
-  .recent-rating_container:nth-of-type(odd) {
+  .recent-rating_item:nth-of-type(odd) {
     background-color: #1B1E2A; }
-  .recent-rating_container:nth-of-type(even) {
+  .recent-rating_item:nth-of-type(even) {
     background-color: #0B0E19; }
-  .recent-rating_container .recent-rating_thumbnail {
+  .recent-rating_item .recent-rating_thumbnail {
     display: flex;
     justify-content: center; }
-    .recent-rating_container .recent-rating_thumbnail img {
+    .recent-rating_item .recent-rating_thumbnail img {
       width: 50px;
       height: 50px;
       border-radius: 4px; }
-  .recent-rating_container .recent-rating_date {
+  .recent-rating_item .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
     font-size: 0.8rem;

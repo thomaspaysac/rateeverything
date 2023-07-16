@@ -4,7 +4,6 @@ import PersonalReviews from './PersonalReviews';
 import PersonalRatings from './PersonalRatings';
 import Collection from './Collection';
 import Wishlist from './Wishlist';
-import { getByDisplayValue } from '@testing-library/react';
 
 const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview}) => {
   switch (contentDisplayed) {
@@ -50,8 +49,8 @@ const ContentContainer = (props) => {
   return (
     <div>
       <div className='profile_section-header bolded'>music</div>
-      <div class="profile_music-section">
-        <div class="profile_display-buttons">
+      <div className="profile_music-section">
+        <div className="profile_display-buttons">
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'recent' ? 'active-button' : ''}
             onClick={() => changeDisplay('recent')}>recent</button>

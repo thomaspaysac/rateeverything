@@ -402,7 +402,6 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
 }
 
 const linkRatingToUser = async (username, release, rating, date) => {
-  console.log(release);
   const userRef = doc(db, 'users', username);
   const docSnap = await getDoc(userRef);
   const data = docSnap.data();
@@ -501,6 +500,7 @@ const sendReview = async (releaseID, username, userID, review) => {
   }
   await updateDoc(artistRef, localCopy);
   linkReviewToUser(username, releaseID, review, reviewDate);
+  window.location.reload();
 }
 
 const linkReviewToUser = async (username, release, review, date) => {
@@ -676,36 +676,6 @@ const updateCollection = async (username, releaseID, status) => {
     }
   }
   await updateDoc(userRef, localCopy);
-
-  /*const localRatings = data.ratings;
-  const existingRating = localRatings.find((obj) => obj.release.releaseID === release.albumID);
-  if (existingRating === undefined && +rating !== 0) {
-    localRatings.push({
-      release: {
-        releaseID: release.albumID,
-        artist: release.artist,
-        title: release.release,
-        imagePath: release.imagePath,
-      },
-      rating: rating,
-      date: date,
-    })
-  } else if (+rating === 0) {
-    let index = 0;
-    let targetIndex = undefined;
-    for (const rating of localRatings) {
-      if (rating.release !== release) {
-        index++;
-      } else {
-        targetIndex = index;
-      }
-    }
-    localRatings.splice(targetIndex, 1);
-  } else {
-    existingRating.rating = rating;
-    existingRating.date = date;
-  }
-  await updateDoc(userRef, localCopy);*/
 }
 
 export { 

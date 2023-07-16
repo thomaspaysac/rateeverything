@@ -115,6 +115,7 @@ button, input {
 
 .rating_stars-display {
   display: flex;
+  justify-content: center;
   
   svg {
     height: 16px;
@@ -1144,7 +1145,11 @@ footer {
   background-color: #215098;
 }
 
-.recent-rating_container {
+.recent-ratings {
+  margin-bottom: 12px;
+}
+
+.recent-rating_item {
   display: grid;
   grid-template-rows: 55px;
   grid-template-columns: 65px 40px 112px 1fr 163px;

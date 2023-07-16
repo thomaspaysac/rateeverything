@@ -13,6 +13,10 @@ O Page profil
 ### Fonctionnalités
 O Shoutbox
 
+
+### Bugs
+O Bug pour imagePath si l'artiste n'a pas de release
+
 ### UI
 O Reviews de la page perso : ne prennent pas en compte les sauts de lignes
 O Favicon et nom de page dynamique
