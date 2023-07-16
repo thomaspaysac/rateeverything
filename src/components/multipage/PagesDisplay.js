@@ -2,17 +2,20 @@ import React from 'react';
 
 const PagesDisplay = ({items, range}) => {
 
-  //
-
   if (items) {
-    const pagesNumber = items.length / range;
+    // Split ratings in n pages of 'range' items
+    let pagesNumber;
+    if (items.length % range === 0) {
+      pagesNumber = items.length / range;
+    } else {
+      // Takes care of odd numbers + smaller items than range
+      pagesNumber = Math.floor(items.length / range) + 1;
+    }
     const pagesArray = Array(pagesNumber).fill('');
-    // Consider odd numbers + smaller items than range
-
     return (
       pagesArray.map((el, i) => {
         return (
-          <div>
+          <div key={`page-${i+1}`} className='bolded'>
             {i + 1}
           </div>
         )

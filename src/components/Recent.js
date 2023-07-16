@@ -2,31 +2,73 @@ import {React, useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getPersonalRatings } from '../functions';
 import PagesDisplay from './multipage/PagesDisplay';
+import StarsDisplay from './multipage/StarsDisplay';
+
+const Ratings = ({userRatings}) => {
+  if (userRatings) {
+      return (
+        userRatings.map((el, i) => {
+          return (
+            <div key={`recent-${i}`} className="recent-page_item">
+              <div className='recent-rating_thumbnail'>
+                <img src={el.release.imagePath} alt="cover art" />
+              </div>
+              <div className='recent-rating_date bolded'>
+                <div>{el.date}</div>
+              </div>
+              <div className='rating_stars-display'><StarsDisplay key={`rating-${i}`} rating={el.rating} /></div>
+              <div className='recent_release-info'><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
+                &nbsp; - &nbsp;
+              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link></div>
+            </div>
+          )
+        })
+      )
+  }
+}
 
 const Recent = (props) => {
   const [userRatings, setUserRatings] = useState();
-  const [pagesNum, setPagesNum] = useState();
-  const [test, setTest] = useState([1,2,3]);
 
   const urlParams = useParams();
 
   const fetchRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
-    setUserRatings(data);
+    const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    setUserRatings(sortedData);
   }
 
   useEffect(() => {
     fetchRatings();
   }, [])
 
+  
+
   return (
-    <div className='content-page'>
+    <div className='content-page recent-page'>
       <div className='content-wrapper'>
         <div className='bolded'>{urlParams.username}'s recent ratings</div>
         <div className='recent_page-selector'>
           <div className='bolded'>Page</div>
           <PagesDisplay items={userRatings} range={2} />
         </div>
+
+        <div className='recent-page_ratings'>
+          <div className='recent_header'>
+            <div className='recent_header-item'>Art</div>
+            <div className='recent_header-item'>Date&nbsp;/&nbsp;</div>
+            <div className='recent_header-item'>Rating</div>
+            <div className='recent_header-item'>Artist / Release (Release date)</div>
+          </div>
+          
+          <Ratings userRatings={userRatings} />
+      </div>
+      <div className='recent_page-selector'>
+          <div className='bolded'>Page</div>
+          <PagesDisplay items={userRatings} range={2} />
+        </div>
+      
+
       </div>
     </div>
   );

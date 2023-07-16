@@ -1191,6 +1191,92 @@ footer {
   }
 }
 
+// 'Recent' page
+.recent-page {
+  .recent_page-selector {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+  
+    div {
+      &:first-of-type {
+        color: #9DA3AF;
+        cursor: auto;
+      }
+  
+      padding: 4px;
+      color: map-get($dark-theme, links);
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.recent-page_ratings {
+  border-bottom: 1px solid #4E5465;
+
+  .recent_header {
+    display: grid;
+    grid-template-columns: 150px 50px 150px 1fr;
+    background-color: #4E5465;
+    font-weight: 700;
+    font-size: 0.94rem;
+    
+    div {
+      padding: 5px;
+    }
+  }
+
+  .recent-page_item {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    display: grid;
+    grid-template-columns: 150px 50px 150px 1fr;
+
+    &:nth-of-type(odd) {
+      div {
+        background-color: #0B0E19;
+      }
+    }
+
+    &:nth-of-type(even) {
+      div {
+        background-color: #1B1E2A;
+      }
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      height: 100%;
+      border-left: 1px solid #4E5465;
+      border-right: 1px solid #4E5465;
+    }
+
+    .recent-rating_date {
+      color: #B4B9C5;
+      font-size: 0.8rem;
+      text-align: center;
+      vertical-align: middle;
+      width: 40px;
+      justify-self: center;
+      align-self: center;
+
+      div {
+        background-color: #4E5465;
+        height: fit-content;
+      }
+    }
+  }
+}
+
+
 // Personal reviews display
 .last-review_container {
   display: grid;
