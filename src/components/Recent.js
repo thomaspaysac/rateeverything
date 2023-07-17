@@ -27,10 +27,7 @@ const Ratings = ({userRatings}) => {
   }
 }
 
-
-
 const Recent = () => {
-  const [userCollection, setUserCollection] = useState();
   const [userRatings, setUserRatings] = useState();
   const [displayedRatings, setDisplayedRatings] = useState();
 
@@ -40,7 +37,7 @@ const Recent = () => {
     const data = await getPersonalRatings(urlParams.username);
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     setUserRatings(sortedData);
-    setDisplayedRatings(sortedData.slice(0, 2))
+    setDisplayedRatings(sortedData.slice(0, 25))
   }
 
   useEffect(() => {
@@ -58,7 +55,7 @@ const Recent = () => {
         <div className='bolded'>{urlParams.username}'s recent ratings</div>
         <div className='recent_page-selector'>
           <div className='bolded'>Page</div>
-          <PagesDisplay items={userRatings} range={3} loadPage={loadPage} />
+          <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
         </div>
 
         <div className='recent-page_ratings'>
@@ -68,8 +65,12 @@ const Recent = () => {
             <div className='recent_header-item'>Rating</div>
             <div className='recent_header-item'>Artist / Release (Release date)</div>
           </div>
-          
           <Ratings userRatings={displayedRatings} />
+      </div>
+
+      <div className='recent_page-selector'>
+        <div className='bolded'>Page</div>
+        <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
       </div>
 
       </div>

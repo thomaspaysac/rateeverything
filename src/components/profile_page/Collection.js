@@ -6,10 +6,10 @@ const Collection = (props) => {
 
   return (
     <div>
-      <div className='recent-ratings'>
+      <div className='profile_collection'>
         {props.collection.slice(-5).map((el, i) => {
           return (
-            <div key={`recent-${i}`} className="recent-rating_item">
+            <div key={`collection-${i}`} className="profile_collection-item">
               <div className='recent-rating_thumbnail'>
                 <img src={el.release.imagePath} alt="cover art" />
               </div>
@@ -21,7 +21,7 @@ const Collection = (props) => {
           )
         } )}
       </div>
-    <Link to={`/collection/${urlParams.username}/recent`} className='bolded'>more...</Link>
+    <Link to={`/collection/${urlParams.username}/collection`} className='bolded'>more...</Link>
     </div>
   );
 }

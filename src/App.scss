@@ -1191,6 +1191,52 @@ footer {
   }
 }
 
+.profile_collection {
+  margin-bottom: 12px;
+}
+
+.profile_collection-item {
+  display: grid;
+  grid-template-rows: 55px;
+  grid-template-columns: 65px 40px 1fr;
+  
+  div {
+    border-left: 1px solid #2B2F3C;
+    border-right: 1px solid #2B2F3C;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  &:nth-of-type(odd) {
+    background-color: #1B1E2A;
+  }
+  
+  &:nth-of-type(even) {
+    background-color: #0B0E19;
+  }
+  
+  .recent-rating_thumbnail {
+    display: flex;
+    justify-content: center;
+  
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+    }
+  }
+  
+  .recent-rating_date {
+    background-color: #4E5465;
+    color: #B4B9C5;
+    font-size: 0.8rem;
+    margin: 4px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
 // 'Recent' page
 .recent-page {
   .recent_page-selector {
@@ -1276,6 +1322,49 @@ footer {
   }
 }
 
+// Collection page
+.collection-item {
+  display: grid;
+  grid-template-rows: 150px;
+  grid-template-columns: 150px 40px 1fr;
+
+  div {
+    border-left: 1px solid #2B2F3C;
+    border-right: 1px solid #2B2F3C;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  &:nth-of-type(odd) {
+    background-color: #1B1E2A;
+  }
+  
+  &:nth-of-type(even) {
+    background-color: #0B0E19;
+  }
+  
+  .recent-rating_thumbnail {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+    }
+  }
+  
+  .recent-rating_date {
+    background-color: #4E5465;
+    color: #B4B9C5;
+    font-size: 0.8rem;
+    margin: 4px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
 
 // Personal reviews display
 .last-review_container {

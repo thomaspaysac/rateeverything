@@ -11,10 +11,11 @@ const PagesDisplay = ({items, range, loadPage}) => {
       pagesNumber = Math.floor(items.length / range) + 1;
     }
     const pagesArray = Array(pagesNumber).fill('');
+    
     return (
       pagesArray.map((el, i) => {
         return (
-          <div key={`page-${i+1}`} className='bolded' onClick={() => loadPage(i, range)} >
+          <div key={`page-${i+1}`} className='page-number bolded' onClick={() => loadPage(i, range)} >
             {i + 1}
           </div>
         )

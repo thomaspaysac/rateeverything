@@ -17,6 +17,7 @@ import SignUpPage from "./components/SignUp";
 import ProfilePage from "./components/Profile";
 import Avatar from "./components/profile_page/Avatar";
 import Recent from "./components/Recent";
+import Collection from "./components/Collection";
 import NewArtistPage from "./components/NewArtist";
 import NewReleasePage from "./components/NewRelease";
 import SearchResult from "./components/SearchResult";
@@ -81,6 +82,7 @@ const App = () => {
         />
         <Route exact path="/profile/avatar" element={<Avatar username={username} />} />
         <Route exact path="/collection/:username/recent" element={<Recent username={username} />} />
+        <Route exact path="/collection/:username/collection" element={<Collection username={username} />} />
         <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
         <Route exact path="/artist/:artist/add_release" 
           element={<NewReleasePage

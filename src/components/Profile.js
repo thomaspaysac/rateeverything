@@ -30,8 +30,9 @@ const ProfilePage = (props) => {
 
   const getUserRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
+    const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     const recent = data.slice(0,1);
-    setUserRatings(data);
+    setUserRatings(sortedData);
     setLastRatings(recent);
   }
 
@@ -55,8 +56,8 @@ const ProfilePage = (props) => {
 
   const getUserCollection = async () => {
     const data = await getCollection(urlParams.username);
-    console.log(data);
-    setUserCollection(data);
+    const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    setUserCollection(sortedData);
   }
 
   const getUserWishlist = async () => {

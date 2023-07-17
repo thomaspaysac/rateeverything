@@ -49,12 +49,12 @@ const ContentContainer = (props) => {
 
   return (
     <div>
-      <div className='profile_section-header bolded'>music</div>
+      <div className='profile_section-header bolded' onClick={() => console.log(props)}>music</div>
       <div className="profile_music-section">
         <div className="profile_display-buttons">
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'recent' ? 'active-button' : ''}
-            onClick={() => changeDisplay('recent')}>recent</button>
+            onClick={() => changeDisplay('recent')}>recent [{props.userRatings.length}]</button>
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'ratings' ? 'active-button' : ''}
             onClick={() => changeDisplay('ratings')}>ratings</button>
@@ -63,7 +63,7 @@ const ContentContainer = (props) => {
             onClick={() => changeDisplay('reviews')}>reviews</button>
             <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'collection' ? 'active-button' : ''}
-            onClick={() => changeDisplay('collection')}>collection</button>
+            onClick={() => changeDisplay('collection')}>collection [{props.collection.length}]</button>
             <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'wishlist' ? 'active-button' : ''}
             onClick={() => changeDisplay('wishlist')}>wishlist</button>

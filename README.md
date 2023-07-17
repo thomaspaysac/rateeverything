@@ -22,9 +22,8 @@ O Bug pour imagePath si l'artiste n'a pas de release
 O Reviews de la page perso : ne prennent pas en compte les sauts de lignes
 O Favicon et nom de page dynamique
 O Afficher notes et reviews par page de 10 à la fois
-O Afficher notes sous forme d'étoiles/demi-étoiles
+O Afficher indication de page active
 O Ajouter tri des albums selon critères sur page de groupe
-O Ajouter liste de toutes les notes, triées par note
 O Faire UI d'écriture de review
 O Affiner données artistes on submit
 
