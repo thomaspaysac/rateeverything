@@ -24,6 +24,7 @@ const ArtistPage = (props) => {
   };
 
   useEffect(() => {
+    document.title = `${urlParams} Albums - Evaluate Your Sounds`;
     fetchData(urlParams);
   }, []);
 

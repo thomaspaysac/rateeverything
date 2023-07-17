@@ -41,6 +41,7 @@ const Recent = () => {
   }
 
   useEffect(() => {
+    document.title = `${urlParams.username}'s music - Evaluate Your Sounds`
     fetchRatings();
   }, [])
 

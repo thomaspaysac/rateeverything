@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { submitRelease, uploadImage } from '../functions';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,10 @@ const NewReleasePage = (props) => {
   
   const urlParams = useParams();
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Release Editing - Evaluate Your Sounds'
+  }, [])
 
   const addTrack = () => {
     const temp = trackList.slice();

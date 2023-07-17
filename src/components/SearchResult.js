@@ -91,6 +91,7 @@ const SearchResult = (props) => {
 
   useEffect(() => {
     searchResult(urlParams.searchterm);
+    document.title = 'Search - Evaluate Your Sounds'
   }, [urlParams])
 
   return (

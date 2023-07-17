@@ -37,6 +37,7 @@ const Collection = () => {
   }
 
   useEffect(() => {
+    document.title = `${urlParams.username}'s music - Evaluate Your Sounds`
     fetchCollection();
   }, [])
 

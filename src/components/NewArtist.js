@@ -1,9 +1,13 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { submitArtist } from '../functions';
 import { useNavigate } from 'react-router-dom';
 
 const NewArtistPage = () => {
   const navigateTo = useNavigate()
+
+  useEffect(() => {
+    document.title = 'Artist Profile - Evaluate Your Sounds'
+  }, [])
 
   const sendForm = (e) => {
     e.preventDefault();

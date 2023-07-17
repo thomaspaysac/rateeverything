@@ -66,6 +66,7 @@ const ProfilePage = (props) => {
   }
 
   useEffect(() => {
+    document.title = `Profile: ${urlParams.username} - Evaluate Your Sounds`
     getReleases();
     getList();
     if (urlParams.username) {

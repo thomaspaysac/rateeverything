@@ -165,6 +165,7 @@ const EditRelease = (props) => {
   }
 
   useEffect(() => {
+    document.title = 'Release Editing - Evaluate Your Sounds'
     getReleaseInfo();
   }, [])
 

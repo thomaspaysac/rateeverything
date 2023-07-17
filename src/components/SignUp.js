@@ -18,6 +18,7 @@ const SignUpPage = () => {
   }
 
   useEffect(() => {
+    document.title = 'Sign Up! - Evaluate Your Sounds'
     loadUsersList();
   }, [])
 

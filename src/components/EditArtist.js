@@ -14,6 +14,7 @@ const EditArtist = (props) => {
   }
 
   useEffect(() => {
+    document.title = 'Artist Profile - Evaluate Your Sounds'
     getArtistInfo();
   }, [])
 

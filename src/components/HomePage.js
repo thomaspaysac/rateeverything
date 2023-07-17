@@ -10,8 +10,12 @@ import emailLogo from '../img/mail.png';
 
 
 const HomePage = () => {
+  useEffect(() => {
+    document.title = 'Welcome! - Evaluate Your Sounds'
+  })
+
   return (
-    <div className='content-page'>
+      <div className='content-page'>
       <div className='content-wrapper'>
         <div className='welcome_container'>
           <div className='logo-image'></div>
@@ -33,7 +37,7 @@ const HomePage = () => {
         </div>
         <DataCounter />
       </div>
-    </div>
+      </div>
   );
 }
 

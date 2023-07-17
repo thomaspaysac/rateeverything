@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import { firebaseConfig } from "../firebase";
@@ -16,6 +16,10 @@ const SignInPage = () => {
   firebase.initializeApp(firebaseConfig);
 
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Log In - Evaluate Your Sounds'
+  })
 
   const sendForm = (e) => {
     e.preventDefault();
@@ -48,18 +52,13 @@ const SignInPage = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, formJson.email, formJson.password)
     .then((userCredential) => {
-    const user = userCredential.user;
-    navigateTo('/');
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-
-  }
-
-  const testfunc = () => {
-    console.log(getAuth().currentUser);
+      const user = userCredential.user;
+      navigateTo('/');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
   }
 
 

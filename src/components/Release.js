@@ -81,6 +81,10 @@ const ReleasePage = (props) => {
     fetchDataByID(+urlParams.releaseID);
   }, []);
 
+  useEffect(() => {
+    document.title = `${release.release} by ${release.artist}`;
+  })
+
 
   const ContributionsContainer = (props) => {
     if (!props.userStatus) {

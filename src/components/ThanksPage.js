@@ -1,6 +1,10 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 
 const ThanksPage = () => {
+  useEffect(() => {
+    document.title = 'Thank you! - Evaluate Your Sounds'
+  })
+
   return (
     <div className='content-page'>
       <div className='content-wrapper'>
