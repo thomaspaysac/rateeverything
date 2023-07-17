@@ -1,7 +1,6 @@
 import React from 'react';
 
-const PagesDisplay = ({items, range}) => {
-
+const PagesDisplay = ({items, range, loadPage}) => {
   if (items) {
     // Split ratings in n pages of 'range' items
     let pagesNumber;
@@ -15,7 +14,7 @@ const PagesDisplay = ({items, range}) => {
     return (
       pagesArray.map((el, i) => {
         return (
-          <div key={`page-${i+1}`} className='bolded'>
+          <div key={`page-${i+1}`} className='bolded' onClick={() => loadPage(i, range)} >
             {i + 1}
           </div>
         )
