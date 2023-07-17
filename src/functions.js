@@ -606,6 +606,7 @@ const updateCollection = async (username, releaseID, status) => {
           imagePath: release.imagePath,
         },
         status: 'In collection',
+        date: format(new Date(), 'dd MMM yy'),
       })
     }
     // Remove from wishlist
@@ -634,6 +635,7 @@ const updateCollection = async (username, releaseID, status) => {
           imagePath: release.imagePath,
         },
         status: 'Wishlist',
+        date: format(new Date(), 'dd MMM yy'),
       })
     }
     // Remove from collection
@@ -678,6 +680,25 @@ const updateCollection = async (username, releaseID, status) => {
   await updateDoc(userRef, localCopy);
 }
 
+const getCollection = async (username) => {
+  const userRef = doc(db, 'users', username);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const localCopy = data;
+  const owned = localCopy.collection;
+  return owned;
+}
+
+const getWishlist = async (username) => {
+  const userRef = doc(db, 'users', username);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const localCopy = data;
+  const wishlist = localCopy.wishlist;
+  return wishlist;
+
+}
+
 export { 
   userFirestoreSetup,
   getAllUsernames,
@@ -711,4 +732,6 @@ export {
   searchArtistByName,
   searchRelease,
   updateCollection,
+  getCollection,
+  getWishlist,
 };

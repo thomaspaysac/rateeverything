@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPersonalReviews } from "../functions";
+import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPersonalReviews, getCollection, getWishlist } from "../functions";
 import { Link, useParams } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 
@@ -10,6 +10,8 @@ const ProfilePage = (props) => {
   const [lastRatings, setLastRatings] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [lastReview, setLastReview] = useState();
+  const [userCollection, setUserCollection] = useState([]);
+  const [userWishlist, setUserWishlist] = useState([]);
   const [userDate, setUserDate] = useState();
   const [avatar, setAvatar] = useState();
   const [avatarCaption, setAvatarCaption] = useState();
@@ -51,12 +53,25 @@ const ProfilePage = (props) => {
     setAvatarCaption(data.avatar.caption);
   }
 
+  const getUserCollection = async () => {
+    const data = await getCollection(urlParams.username);
+    console.log(data);
+    setUserCollection(data);
+  }
+
+  const getUserWishlist = async () => {
+    const data = await getWishlist(urlParams.username);
+    setUserWishlist(data);
+  }
+
   useEffect(() => {
     getReleases();
     getList();
     if (urlParams.username) {
       getUserRatings();
       getUserReviews();
+      getUserCollection();
+      getUserWishlist();
       userInfo();
     }
   }, [])
@@ -89,6 +104,7 @@ const ProfilePage = (props) => {
         userRatings={userRatings}
         lastRatings={lastRatings}
         lastReview={lastReview}
+        collection={userCollection}
       />
     </div>
     </div>

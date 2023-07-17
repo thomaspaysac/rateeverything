@@ -8,6 +8,7 @@
 
 ### Core Fonctionnalités
 O Page profil
+O Personal tags
 
 ## Second temps
 ### Fonctionnalités

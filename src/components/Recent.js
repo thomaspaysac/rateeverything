@@ -30,6 +30,7 @@ const Ratings = ({userRatings}) => {
 
 
 const Recent = () => {
+  const [userCollection, setUserCollection] = useState();
   const [userRatings, setUserRatings] = useState();
   const [displayedRatings, setDisplayedRatings] = useState();
 
