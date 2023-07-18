@@ -82,6 +82,19 @@ button, input {
   .rating_stars-display svg {
     height: 16px; }
 
+.page-selector {
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  justify-content: center; }
+  .page-selector div {
+    padding: 4px;
+    color: #84C5FB;
+    cursor: pointer; }
+    .page-selector div:first-of-type {
+      color: #9DA3AF;
+      cursor: auto; }
+
 header {
   position: fixed;
   width: 100vw;
@@ -1023,7 +1036,8 @@ footer {
   grid-template-columns: 1fr 3fr;
   background-color: #191C28;
   border: 1px solid #323643;
-  padding: 36px; }
+  padding: 36px;
+  margin-bottom: 12px; }
 
 .last-review_art img {
   max-width: 100%;
@@ -1044,6 +1058,45 @@ footer {
 
 .last-review_review {
   color: #9DA2AE; }
+
+.review-item .review_release-info {
+  display: grid;
+  grid-template-rows: 150px;
+  grid-template-columns: 150px 40px 1fr;
+  background-color: #0B0E19; }
+  .review-item .review_release-info div {
+    border-left: 1px solid #2B2F3C;
+    border-right: 1px solid #2B2F3C;
+    padding: 5px;
+    display: flex;
+    align-items: center; }
+  .review-item .review_release-info .recent-rating_thumbnail {
+    display: flex;
+    justify-content: center;
+    padding: 5px; }
+    .review-item .review_release-info .recent-rating_thumbnail img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px; }
+  .review-item .review_release-info .recent-rating_date {
+    background-color: #4E5465;
+    color: #B4B9C5;
+    font-size: 0.8rem;
+    margin: 4px;
+    text-align: center;
+    vertical-align: middle; }
+.review-item .review-page_content {
+  display: flex;
+  background-color: #1B1E2A;
+  border-left: 1px solid #2B2F3C;
+  border-right: 1px solid #2B2F3C;
+  align-items: stretch;
+  padding: 5px; }
+  .review-item .review-page_content .review_block {
+    width: 30px;
+    background-color: #4E5465; }
+  .review-item .review-page_content .review-page_review-text {
+    padding: 30px; }
 
 #searchbar-icon {
   height: 16px;

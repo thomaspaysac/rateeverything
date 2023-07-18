@@ -38,11 +38,13 @@ const ProfilePage = (props) => {
 
   const getUserReviews = async () => {
     const data = await getPersonalReviews(urlParams.username);
+    const sortedData = data.sort((a, b) => (a.reviewDate < b.reviewDate) ? 1 : (a.reviewDate > b.reviewDate) ? -1 : 0);
     if (!data) {
       return null;
     } else {
-      const lastReview = data.slice(-1);
-      setUserReviews(data);
+      const lastReview = sortedData.slice(0);
+      console.log(sortedData);
+      setUserReviews(sortedData);
       setLastReview(lastReview);
     }
   }
@@ -107,6 +109,8 @@ const ProfilePage = (props) => {
         lastRatings={lastRatings}
         lastReview={lastReview}
         collection={userCollection}
+        wishlist={userWishlist}
+        reviews={userReviews}
       />
     </div>
     </div>

@@ -414,6 +414,7 @@ const linkRatingToUser = async (username, release, rating, date) => {
         releaseID: release.albumID,
         artist: release.artist,
         title: release.release,
+        year: release.year,
         imagePath: release.imagePath,
       },
       rating: rating,
@@ -519,6 +520,7 @@ const linkReviewToUser = async (username, release, review, date) => {
         releaseID: release.albumID,
         artist: release.artist,
         title: release.release,
+        year: release.year,
         imagePath: release.imagePath,
       },
     })

@@ -48,7 +48,7 @@ const Collection = () => {
   return (
     <div className='content-page recent-page'>
       <div className='content-wrapper'>
-        <div className='bolded'>{urlParams.username}'s owned releases</div>
+        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span className="bolded">{urlParams.username}'s owned releases</span></div>
         <div className='recent_page-selector'>
           <div className='bolded'>Page</div>
           <PagesDisplay items={userCollection} range={25} loadPage={loadPage} />

@@ -7,6 +7,7 @@
 ## Priorités :
 
 ### Core Fonctionnalités
+O Ajouter année de sortie de la release sur toutes les pages profil
 O Page profil
 O Personal tags
 

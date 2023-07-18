@@ -1,23 +1,19 @@
 import {React, useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getPersonalRatings } from '../functions';
 import PagesDisplay from './multipage/PagesDisplay';
-import StarsDisplay from './multipage/StarsDisplay';
+import { getWishlist } from '../functions';
 
-const Ratings = ({userRatings}) => {
-  if (userRatings) {
+const DisplayWishlist = ({display}) => {
+  if (display) {
       return (
-        userRatings.map((el, i) => {
+        display.map((el, i) => {
           return (
-            <div key={`recent-${i}`} className="recent-page_item">
+            <div key={`collection-${i}`} className="collection-item">
               <div className='recent-rating_thumbnail'>
                 <img src={el.release.imagePath} alt="cover art" />
               </div>
-              <div className='recent-rating_date bolded'>
-                <div>{el.date}</div>
-              </div>
-              <div className='rating_stars-display'><StarsDisplay key={`rating-${i}`} rating={el.rating} /></div>
-              <div className='recent_release-info'><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
+              <div className='recent-rating_date bolded'>{el.date}</div>
+              <div><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                 &nbsp; - &nbsp;
               <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link></div>
             </div>
@@ -27,35 +23,35 @@ const Ratings = ({userRatings}) => {
   }
 }
 
-const Recent = () => {
-  const [userRatings, setUserRatings] = useState();
-  const [displayedRatings, setDisplayedRatings] = useState();
+const Wishlist = () => {
+  const [userWishlist, setUserWishlist] = useState();
+  const [displayedItems, setDisplayedItems] = useState();
 
   const urlParams = useParams();
 
-  const fetchRatings = async () => {
-    const data = await getPersonalRatings(urlParams.username);
+  const fetchCollection = async () => {
+    const data = await getWishlist(urlParams.username);
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
-    setUserRatings(sortedData);
-    setDisplayedRatings(sortedData.slice(0, 25))
+    setUserWishlist(sortedData);
+    setDisplayedItems(sortedData.slice(0, 25))
   }
 
   useEffect(() => {
     document.title = `${urlParams.username}'s music - Evaluate Your Sounds`
-    fetchRatings();
+    fetchCollection();
   }, [])
 
   const loadPage = (i, range) => {
-    setDisplayedRatings(userRatings.slice((i * range), (i * range + range)))
+    setDisplayedItems(userWishlist.slice((i * range), (i * range + range)))
   }
 
   return (
     <div className='content-page recent-page'>
       <div className='content-wrapper'>
-        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span class="bolded">{urlParams.username}'s recent ratings</span></div>
+        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span className="bolded">{urlParams.username}'s wishlist</span></div>
         <div className='recent_page-selector'>
           <div className='bolded'>Page</div>
-          <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
+          <PagesDisplay items={userWishlist} range={25} loadPage={loadPage} />
         </div>
 
         <div className='recent-page_ratings'>
@@ -65,12 +61,12 @@ const Recent = () => {
             <div className='recent_header-item'>Rating</div>
             <div className='recent_header-item'>Artist / Release (Release date)</div>
           </div>
-          <Ratings userRatings={displayedRatings} />
+          <DisplayWishlist display={displayedItems} />
       </div>
 
       <div className='recent_page-selector'>
         <div className='bolded'>Page</div>
-        <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
+        <PagesDisplay items={userWishlist} range={25} loadPage={loadPage} />
       </div>
 
       </div>
@@ -78,4 +74,4 @@ const Recent = () => {
   );
 }
 
-export default Recent;
+export default Wishlist;

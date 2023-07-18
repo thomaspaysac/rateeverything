@@ -5,7 +5,7 @@ import PersonalRatings from './PersonalRatings';
 import Collection from './Collection';
 import Wishlist from './Wishlist';
 
-const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview, collection}) => {
+const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview, reviews, collection, wishlist}) => {
   switch (contentDisplayed) {
     case 'recent':
       return (
@@ -22,6 +22,7 @@ const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview,
       return (
         <PersonalReviews
           lastReview={lastReview}
+          reviews={reviews}
         />
       );
     case 'collection':
@@ -33,6 +34,7 @@ const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview,
     case 'wishlist':
       return (
         <Wishlist
+          wishlist={wishlist}
         />
       );
     default:
@@ -60,13 +62,13 @@ const ContentContainer = (props) => {
             onClick={() => changeDisplay('ratings')}>ratings</button>
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'reviews' ? 'active-button' : ''}
-            onClick={() => changeDisplay('reviews')}>reviews</button>
+            onClick={() => changeDisplay('reviews')}>reviews [{props.reviews.length}]</button>
             <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'collection' ? 'active-button' : ''}
             onClick={() => changeDisplay('collection')}>collection [{props.collection.length}]</button>
             <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'wishlist' ? 'active-button' : ''}
-            onClick={() => changeDisplay('wishlist')}>wishlist</button>
+            onClick={() => changeDisplay('wishlist')}>wishlist [{props.wishlist.length}]</button>
         </div>
         <div className='profile_content-container'>
           <ContentDisplay
@@ -74,6 +76,8 @@ const ContentContainer = (props) => {
             userRatings={props.userRatings}
             lastReview={props.lastReview}
             collection={props.collection}
+            wishlist={props.wishlist}
+            reviews={props.reviews}
           />
         </div>
       </div>
