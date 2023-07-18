@@ -19,6 +19,7 @@ import Avatar from "./components/profile_page/Avatar";
 import Recent from "./components/Recent";
 import Collection from "./components/Collection";
 import Wishlist from "./components/Wishlist";
+import PersonalRatings from "./components/PersonalRatings";
 import PersonalReviews from "./components/PersonalReviews";
 import NewArtistPage from "./components/NewArtist";
 import NewReleasePage from "./components/NewRelease";
@@ -84,6 +85,7 @@ const App = () => {
         />
         <Route exact path="/profile/avatar" element={<Avatar username={username} />} />
         <Route exact path="/collection/:username/recent" element={<Recent />} />
+        <Route exact path="/collection/:username/ratings/:rating" element={<PersonalRatings />} />
         <Route exact path="/collection/:username/collection" element={<Collection />} />
         <Route exact path="/collection/:username/wishlist" element={<Wishlist />} />
         <Route exact path="/collection/:username/reviews" element={<PersonalReviews />} />

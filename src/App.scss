@@ -1210,17 +1210,63 @@ footer {
   }
 }
 
-.personalRatings-component {
-  background-color: #161A25;
+.personal-ratings-component {
+  background-color: #1B1E2A;
   border: 1px solid #2B2F3C;
 
-  .ratings-listing {
-    div {
-      &:nth-of-type(odd) {
-        background-color: #0B0E19;
-      }
+  .personal-ratings-component_title {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+}
+
+.ratings-listing_item {
+    border: 1px solid #2B2F3C;
+
+    &:nth-of-type(odd) {
+      background-color: #0B0E19;
+    }
+    
+    &:nth-of-type(even) {
+      background-color: #1B1E2A;
+    }
+}
+
+.individual-rating_row {
+  display: grid;
+  grid-template-rows: 50px;
+  grid-template-columns: 150px 75px 1fr;
+  align-items: center;
+  
+  > div {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    border-left: 1px solid #2B2F3C;
+    border-right: 1px solid #2B2F3C;
+    display: flex;
+  }
+
+  .ratings-number {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ratings_percentage {
+    align-items: center;
+
+    .ratings_percentage-block {
+      height: 20px;
+      background-color: #AABB88;
+      border: 2px solid #7B818F;
     }
   }
+}
+
+.individual-rating_score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile_collection {

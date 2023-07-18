@@ -5,7 +5,7 @@ import PersonalRatings from './PersonalRatings';
 import Collection from './Collection';
 import Wishlist from './Wishlist';
 
-const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview, reviews, collection, wishlist}) => {
+const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, ratingsByScore, lastReview, reviews, collection, wishlist}) => {
   switch (contentDisplayed) {
     case 'recent':
       return (
@@ -17,6 +17,7 @@ const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview,
       return (
         <PersonalRatings
           userRatings={userRatings}
+          ratingsByScore={ratingsByScore}
         />
       );
     case 'reviews':
@@ -79,6 +80,7 @@ const ContentContainer = (props) => {
             collection={props.collection}
             wishlist={props.wishlist}
             reviews={props.reviews}
+            ratingsByScore={props.ratingsByScore}
           />
         </div>
       </div>

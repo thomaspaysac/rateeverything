@@ -1,72 +1,65 @@
 import {React, useState, useEffect} from 'react';
+import StarsDisplay from '../multipage/StarsDisplay';
+import { Link, useParams } from 'react-router-dom';
 
-const individualRating = (rating, array) => {
+const individualRating = (rating, array, totalLength, username) => {
   if (array) {
+    const blockWidth = (array.length / totalLength) * 100;
     return (
-      <div>
-        <div>{rating} {array.length}</div>
+      <div className='individual-rating_row'>
+        <div className='individual-rating_score'>
+          <div className='bolded'><Link to={`/collection/${username}/ratings/${rating}`}>{rating}</Link></div>
+          <div className='rating_stars-display'><StarsDisplay rating={rating} /></div>
+        </div>
+        <div className='ratings-number bolded'>{array.length}</div>
+        <div className='ratings_percentage'>
+          <div className='ratings_percentage-block' style={{width: `${blockWidth}%`,}}></div>
+        </div>
       </div>
     )
   }
 }
 
 const PersonalRatings = (props) => {
-  const [ratingsArray, setRatingsArray] = useState([]);
-
-  const getReleasesByRating = () => {
-    const data = props.userRatings;
-    const rating9 = data.find(({ rating }) => rating === "5.0");
-    const rating8 = data.find(({ rating }) => rating === "4.5");
-    const rating7 = data.find(({ rating }) => rating === "4.0");
-    const rating6 = data.find(({ rating }) => rating === "3.5");
-    const rating5 = data.find(({ rating }) => rating === "3.0");
-    const rating4 = data.find(({ rating }) => rating === "2.5");
-    const rating3 = data.find(({ rating }) => rating === "2.0");
-    const rating2 = data.find(({ rating }) => rating === "1.5");
-    const rating1 = data.find(({ rating }) => rating === "1.0");
-    const rating0 = data.find(({ rating }) => rating === "0.5");
-    const allRatings = [rating0, rating1, rating2, rating3, rating4, rating5, rating6, rating7, rating8, rating9];
-    setRatingsArray(allRatings); 
-  }
+  const urlParams = useParams();
 
   useEffect(() => {
-    getReleasesByRating();
-    console.log(ratingsArray);
+    document.title = `${urlParams.username}'s music - Evaluate Your Sounds`
   }, [])
 
   return (
-    <div className='personalRatings-component'>
-      <div className='bolded'>Ratings: {props.userRatings.length}</div>
+    <div className='personal-ratings-component'>
+      <div className='bolded personal-ratings-component_title'>Ratings: <Link to={`/collection/${urlParams.username}/ratings/all`}>{props.userRatings.length}</Link></div>
       <div className='ratings-listing'>
-        <div className='ratings-listing_score'>
-          {individualRating('5', ratingsArray)}
+        <div className='ratings-listing_item'>
+          {individualRating('5.0', props.ratingsByScore[9], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          4.5
+        <div className='ratings-listing_item'>
+          {individualRating('4.5', props.ratingsByScore[8], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          4.0
+        <div className='ratings-listing_item'>
+          {individualRating('4.0', props.ratingsByScore[7], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          3.5
+        <div className='ratings-listing_item'>
+          {individualRating('3.5', props.ratingsByScore[6], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          3.0
+        <div className='ratings-listing_item'>
+          {individualRating('3.0', props.ratingsByScore[5], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          2.5
+        <div className='ratings-listing_item'>
+          {individualRating('2.5', props.ratingsByScore[4], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          2.0
+        <div className='ratings-listing_item'>
+          {individualRating('2.0', props.ratingsByScore[3], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          1.5
+        <div className='ratings-listing_item'>
+          {individualRating('1.5', props.ratingsByScore[2], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          1.0
+        <div className='ratings-listing_item'>
+          {individualRating('1.0', props.ratingsByScore[1], props.userRatings.length, urlParams.username)}
         </div>
-        <div className='ratings-listing_score'>
-          0.5
+        <div className='ratings-listing_item'>
+          {individualRating('0.5', props.ratingsByScore[0], props.userRatings.length, urlParams.username)}
         </div>
       </div>
     </div>

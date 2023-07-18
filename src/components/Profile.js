@@ -8,6 +8,7 @@ const ProfilePage = (props) => {
   const [releasesList, setReleasesList] = useState([]);
   const [userRatings, setUserRatings] = useState([]);
   const [lastRatings, setLastRatings] = useState([]);
+  const [ratingsByScore, setRatingsByScore] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [lastReview, setLastReview] = useState();
   const [userCollection, setUserCollection] = useState([]);
@@ -30,10 +31,48 @@ const ProfilePage = (props) => {
 
   const getUserRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
-    const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    const sortedDataByDate = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    const sortedRatingsByScore = Array(10).fill([]);
+    sortedDataByDate.forEach(el => {
+      switch (el.rating) {
+        case '0.5':
+          sortedRatingsByScore[0] = [...sortedRatingsByScore[0], el];
+          break;
+        case '1.0':
+          sortedRatingsByScore[1] = [...sortedRatingsByScore[1], el];
+          break;
+        case '1.5':
+          sortedRatingsByScore[2] = [...sortedRatingsByScore[2], el];
+          break;
+        case '2.0':
+          sortedRatingsByScore[3] = [...sortedRatingsByScore[3], el];
+          break;
+        case '2.5':
+          sortedRatingsByScore[4] = [...sortedRatingsByScore[4], el];
+          break;
+        case '3.0':
+          sortedRatingsByScore[5] = [...sortedRatingsByScore[5], el];
+          break;
+        case '3.5':
+          sortedRatingsByScore[6] = [...sortedRatingsByScore[6], el];
+          break;
+        case '4.0':
+          sortedRatingsByScore[7] = [...sortedRatingsByScore[7], el];
+          break;
+        case '4.5':
+          sortedRatingsByScore[8] = [...sortedRatingsByScore[8], el];
+          break;
+        case '5.0':
+          sortedRatingsByScore[9] = [...sortedRatingsByScore[9], el];
+          break;
+        default : 
+          throw new Error('Wrong paramater');
+      }
+    });
     const recent = data.slice(0,1);
-    setUserRatings(sortedData);
+    setUserRatings(sortedDataByDate);
     setLastRatings(recent);
+    setRatingsByScore([...sortedRatingsByScore]);
   }
 
   const getUserReviews = async () => {
@@ -110,6 +149,7 @@ const ProfilePage = (props) => {
         collection={userCollection}
         wishlist={userWishlist}
         reviews={userReviews}
+        ratingsByScore={ratingsByScore}
       />
     </div>
     </div>
