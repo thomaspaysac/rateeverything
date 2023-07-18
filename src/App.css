@@ -884,7 +884,8 @@ footer {
   background-color: #215098; }
 
 .recent-ratings {
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  border: 1px solid #2B2F3C; }
 
 .recent-rating_item {
   display: grid;
@@ -915,8 +916,15 @@ footer {
     text-align: center;
     vertical-align: middle; }
 
+.personalRatings-component {
+  background-color: #161A25;
+  border: 1px solid #2B2F3C; }
+  .personalRatings-component .ratings-listing div:nth-of-type(odd) {
+    background-color: #0B0E19; }
+
 .profile_collection {
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  border: 1px solid #2B2F3C; }
 
 .profile_collection-item {
   display: grid;

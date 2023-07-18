@@ -16,6 +16,7 @@ const ContentDisplay = ({contentDisplayed, lastRatings, userRatings, lastReview,
     case 'ratings':
       return (
         <PersonalRatings
+          userRatings={userRatings}
         />
       );
     case 'reviews':
@@ -56,10 +57,10 @@ const ContentContainer = (props) => {
         <div className="profile_display-buttons">
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'recent' ? 'active-button' : ''}
-            onClick={() => changeDisplay('recent')}>recent [{props.userRatings.length}]</button>
+            onClick={() => changeDisplay('recent')}>recent</button>
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'ratings' ? 'active-button' : ''}
-            onClick={() => changeDisplay('ratings')}>ratings</button>
+            onClick={() => changeDisplay('ratings')}>ratings [{props.userRatings.length}]</button>
           <button className='profile_music_display-button bolded'
             id={contentDisplayed === 'reviews' ? 'active-button' : ''}
             onClick={() => changeDisplay('reviews')}>reviews [{props.reviews.length}]</button>
