@@ -26,3 +26,7 @@ O Affiner données artistes on submit
 O Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link
 O Après création de compte, le nom d'utilisateur n'apparait pas dans le header (il faut se reconnecter)
 O Vérification validité / disponibilité infos avant création de compte
+
+### Cleanup
+O Supprimer tous les console.log()
+O Retirer functions et variables inutilisées
