@@ -89,7 +89,7 @@ const App = () => {
         <Route exact path="/collection/:username/collection" element={<Collection />} />
         <Route exact path="/collection/:username/wishlist" element={<Wishlist />} />
         <Route exact path="/collection/:username/reviews" element={<PersonalReviews />} />
-        <Route exact path="/artist/add_artist" element={<NewArtistPage />} />
+        <Route exact path="/artist/add_artist" element={<NewArtistPage username={username} />} />
         <Route exact path="/artist/:artist/add_release" 
           element={<NewReleasePage
             username={username} />} />

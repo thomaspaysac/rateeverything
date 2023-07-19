@@ -2,7 +2,7 @@ import { React, useEffect } from 'react';
 import { submitArtist } from '../functions';
 import { useNavigate } from 'react-router-dom';
 
-const NewArtistPage = () => {
+const NewArtistPage = (props) => {
   const navigateTo = useNavigate()
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const NewArtistPage = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');
-    submitArtist(data.name, data.formed, data.country, genres);
+    submitArtist(data.name, data.formed, data.country, genres, props.username);
     navigateTo(`/submitted`);
   }
 
@@ -53,7 +53,7 @@ const NewArtistPage = () => {
             </div>
             <input id='edit-artist_submit-button' className='bolded' type='submit' value='Submit' required/>
           </form>
-                </div>
+          </div>
         </div>
 
     </div>

@@ -103,9 +103,14 @@ const getCollLength = async () => {
   return snapshot.data().count;
 }
 
-const submitArtist = async (artist, formed, country, genres) => {
+const submitArtist = async (artist, formed, country, genres, username) => {
   const artistID = await getCollLength();
   const docRef = doc(db, 'artists', artist);
+  const originalHistory = {
+    author: username,
+    date: format(new Date(), 'dd/LL/yyyy at HH:mm'),
+    changes: ['Original submission']
+  }
   try {
     const docSnap = await getDoc(docRef);
     if(docSnap.exists()) {
@@ -118,6 +123,7 @@ const submitArtist = async (artist, formed, country, genres) => {
       country: country,
       genres: genres,
       releases: [],
+      editHistory: [originalHistory],
     })
   }
   } catch(error) {
