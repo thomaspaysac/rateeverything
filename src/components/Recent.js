@@ -19,7 +19,7 @@ const Ratings = ({userRatings}) => {
               <div className='rating_stars-display'><StarsDisplay key={`rating-${i}`} rating={el.rating} /></div>
               <div className='recent_release-info'><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                 &nbsp; - &nbsp;
-              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link></div>
+              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> <span className='lists_date'>&nbsp;({el.release.year})</span></div>
             </div>
           )
         })

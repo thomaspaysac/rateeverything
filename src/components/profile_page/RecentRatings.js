@@ -18,7 +18,7 @@ const RecentRatings = (props) => {
               <div className='rating_stars-display'><StarsDisplay key={`rating-${i}`} rating={el.rating} /></div>
               <div><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                 &nbsp; - &nbsp;
-              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link></div>
+              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> <span className='lists_date'>&nbsp;({el.release.year})</span></div>
               <div>(personal tags)</div>
             </div>
           )

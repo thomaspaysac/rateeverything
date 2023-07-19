@@ -70,7 +70,7 @@ const SignUpPage = () => {
       // Signed in 
       const user = userCredential.user;
       updateProfile(auth.currentUser, { displayName: displayName })
-      .then(userFirestoreSetup(displayName))
+      .then(userFirestoreSetup(displayName, email))
       .catch((error) => console.log(error));
     })
     .catch((error) => {

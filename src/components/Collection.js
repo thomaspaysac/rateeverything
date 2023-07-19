@@ -15,7 +15,7 @@ const DisplayCollection = ({display}) => {
               <div className='recent-rating_date bolded'>{el.date}</div>
               <div><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                 &nbsp; - &nbsp;
-              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link></div>
+              <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> <span className='lists_date'>&nbsp;({el.release.year})</span></div>
             </div>
           )
         })

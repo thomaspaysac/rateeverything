@@ -95,6 +95,10 @@ button, input {
       color: #9DA3AF;
       cursor: auto; }
 
+.lists_date {
+  font-size: 0.85rem;
+  color: #A8AEBA; }
+
 header {
   position: fixed;
   width: 100vw;
@@ -852,7 +856,11 @@ footer {
   width: 300px;
   padding: 8px;
   font-size: 1rem;
-  font-weight: 700; }
+  font-weight: 700;
+  margin-top: 24px; }
+  #avatar-form input[type="submit"]:hover, #avatar-form input[type="submit"]:active {
+    background-color: #4E5465;
+    cursor: pointer; }
 
 .profile_section-header {
   background-color: #242834;
@@ -1021,9 +1029,9 @@ footer {
     grid-column-end: span 3;
     display: grid;
     grid-template-columns: 150px 50px 150px 1fr; }
-    .recent-page_ratings .recent-page_item:nth-of-type(odd) div {
-      background-color: #0B0E19; }
     .recent-page_ratings .recent-page_item:nth-of-type(even) div {
+      background-color: #0B0E19; }
+    .recent-page_ratings .recent-page_item:nth-of-type(odd) div {
       background-color: #1B1E2A; }
     .recent-page_ratings .recent-page_item div {
       display: flex;
@@ -1090,7 +1098,11 @@ footer {
   padding-left: 32px; }
 
 .last-review_release-title {
-  font-size: 1.85rem; }
+  font-size: 1.85rem;
+  margin-bottom: 6px; }
+  .last-review_release-title .last-review_date {
+    font-size: 1.3rem;
+    color: #A8AEBA; }
 
 .last-review_release-artist {
   font-size: 1.55rem; }

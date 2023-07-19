@@ -16,7 +16,7 @@ const ReviewsList = ({reviews}) => {
                 <div className='recent-rating_date bolded'>{el.reviewDate}</div>
                 <div><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                   &nbsp; - &nbsp;
-                <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> ({el.release.year})</div>
+                <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> <span className='lists_date'>&nbsp;({el.release.year})</span></div>
               </div>
               <div className='review-page_content'>
                 <div className='review_block'></div>
@@ -55,7 +55,7 @@ const PersonalReviews = () => {
     <div className='content-page personal-reviews_page'>
       <div className='content-wrapper'>
 
-      <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span class="bolded">{urlParams.username}'s reviews</span></div>
+      <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span className="bolded">{urlParams.username}'s reviews</span></div>
 
 
         <div className='page-selector'>

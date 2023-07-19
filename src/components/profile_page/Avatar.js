@@ -1,13 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { uploadImage, updateUserAvatar } from '../../functions';
 
 const Avatar = (props) => {
+  const navigateTo = useNavigate();
+
   const sendForm = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     if (data.file.size === 0) {
       updateUserAvatar(props.username, '', '');
+      navigateTo(`/profile/${props.username}`);
     } else if (data.file.type !== 'image/jpeg' && data.file.type !== 'image/png') {
       document.getElementById('upload-error_filetype').style.display = 'block';
       document.getElementById('upload-error_size').style.display = 'none';
@@ -17,6 +21,7 @@ const Avatar = (props) => {
     } else {
       const imagePath = await uploadImage(`users/avatars/${props.username}`, data.file);
       updateUserAvatar(props.username, imagePath, data.caption);
+      navigateTo(`/profile/${props.username}`);
     }
   }
 

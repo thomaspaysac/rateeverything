@@ -9,11 +9,13 @@
 ### Core Fonctionnalités
 O Ajouter année de sortie de la release sur toutes les pages profil
 O Page profil
-O Personal tags
 
 ## Second temps
 ### Fonctionnalités
+O Amis -> afficher ratings en premier sur page release (extraire de l'array pour en créer un nouveau ?)
 O Shoutbox
+O Personal tags
+
 
 
 ### Bugs

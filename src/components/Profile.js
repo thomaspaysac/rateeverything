@@ -81,7 +81,7 @@ const ProfilePage = (props) => {
     if (!data) {
       return null;
     } else {
-      const lastReview = sortedData.slice(0);
+      const lastReview = sortedData[0];
       setUserReviews(sortedData);
       setLastReview(lastReview);
     }

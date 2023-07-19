@@ -6,9 +6,10 @@ import format from "date-fns/format";
 
 
 // Firestore
-const userFirestoreSetup = async (username) => {  
+const userFirestoreSetup = async (username, email) => {  
   await setDoc(doc(db, 'users', username), {
     username: username,
+    email: email,
     ratings: [],
     reviews: [],
     lists: [],
@@ -434,6 +435,11 @@ const linkRatingToUser = async (username, release, rating, date) => {
   } else {
     existingRating.rating = rating;
     existingRating.date = date;
+    existingRating.release = {
+      title: release.release,
+      year: release.year,
+      imagePath: release.imagePath,
+    };
   }
   await updateDoc(userRef, localCopy);
 }
@@ -510,7 +516,7 @@ const linkReviewToUser = async (username, release, review, date) => {
   const data = docSnap.data();
   const localCopy = data;
   const localReviews = data.reviews;
-  const existingReview = localReviews.find((obj) => obj.release.albumID === release.albumID);
+  const existingReview = localReviews.find((obj) => obj.release.releaseID === release.albumID);
   if (!existingReview) {
     localReviews.push({
       reviewDate: date,
@@ -527,6 +533,13 @@ const linkReviewToUser = async (username, release, review, date) => {
   } else {
     existingReview.review = review;
     existingReview.date = date;
+    existingReview.release = {
+      releaseID: release.albumID,
+      artist: release.artist,
+      title: release.release,
+      year: release.year,
+      imagePath: release.imagePath,
+    }
   }
   await updateDoc(userRef, localCopy);
 }
@@ -605,6 +618,7 @@ const updateCollection = async (username, releaseID, status) => {
           releaseID: release.albumID,
           artist: release.artist,
           title: release.release,
+          year: release.year,
           imagePath: release.imagePath,
         },
         status: 'In collection',
@@ -634,6 +648,7 @@ const updateCollection = async (username, releaseID, status) => {
           releaseID: release.albumID,
           artist: release.artist,
           title: release.release,
+          year: release.year,
           imagePath: release.imagePath,
         },
         status: 'Wishlist',

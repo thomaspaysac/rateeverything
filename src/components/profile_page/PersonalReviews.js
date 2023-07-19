@@ -12,28 +12,28 @@ const PersonalReviews = ({lastReview}) => {
         <div className="last-review_container">
           <div className='last-review_left-col'>
             <div className='last-review_art'>
-              <img src={lastReview[0].release.imagePath} alt="cover art" />
+              <img src={lastReview.release.imagePath} alt="cover art" />
             </div>
           </div>
           <div className='last-review_right-col'>
             <div className='last-review_release-info'>
               <div className='last-review_release-title'>
-                <Link to={`/release/${lastReview[0].release.artist}/${lastReview[0].release.releaseID}`}>{lastReview[0].release.title}</Link>
+                <Link to={`/release/${lastReview.release.artist}/${lastReview.release.releaseID}`}>{lastReview.release.title}</Link> <span className='last-review_date'>({lastReview.release.year})</span>
               </div>
               <div className='last-review_release-artist bolded'>
-                <Link to={`/artist/${lastReview[0].release.artist}`}>{lastReview[0].release.artist}</Link>
+                <Link to={`/artist/${lastReview.release.artist}`}>{lastReview.release.artist}</Link>
               </div>
             </div>
             <div className='last-review_user-info'>
-              <div className='greyed-text'>Review by {lastReview[0].author}</div>
-              <div>{lastReview[0].rating}</div>
+              <div className='greyed-text'>Review by {lastReview.author}</div>
+              <div>{lastReview.rating}</div>
             </div>
             <div className='last-review_review'>
-              {lastReview[0].review}
+              {lastReview.review}
             </div>
           </div>
         </div>
-        <Link to={`/collection/${urlParams.username}/reviews`} className='bolded'>all reviews...</Link>
+        <Link to={`/collection/${urlParams.username}/reviews`} className='bolded'>more...</Link>
       </div>
     )
   }
