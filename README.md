@@ -5,7 +5,6 @@
 - Ajout au catalogue
 
 ## Priorités :
-O Faire UI d'écriture de review
 
 ## Second temps
 ### Fonctionnalités
