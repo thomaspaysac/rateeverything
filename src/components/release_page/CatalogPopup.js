@@ -48,11 +48,15 @@ const CatalogPopup = ({releaseID, username}) => {
   const popup = document.querySelector('.catalog-popup');
 
   const openPopup = () => {
-    popup.style.display = 'flex';
+    if (popup) {
+      popup.style.display = 'flex';
+    }
   }
 
   const closePopup = () => {
-    popup.style.display = 'none';
+    if (popup) {
+      popup.style.display = 'none';
+    }
   }
 
   useEffect(() => {

@@ -68,20 +68,21 @@ const EditArtist = (props) => {
   return (
     <div className='content-page edit-artist_page'>
       <div className='content-wrapper'>
-        <h2 className='section-header'>Update profile for {displayArtistName()}</h2>
-        <div className='warning'>
-          <div className="bolded">Attention:</div>
-          <ol>
-            <li>Read the Artist profile wiki page for the rules/standards that must be followed when entering an artist profile.</li>
-            <li>It is not necessary to complete every field on this page. However, in the fields which you do complete, please try to be as comprehensive and correct as possible.</li>
-            <li>Do not place any links to other websites in this form, except in the Meta-Comments (as sources/references).</li>
-          </ol>
+        <div className='global-container'>
+          <h2 className='section-header'>Update profile for {displayArtistName()}</h2>
+          <div className='warning'>
+            <div className="bolded">Attention:</div>
+            <ol>
+              <li>Read the Artist profile wiki page for the rules/standards that must be followed when entering an artist profile.</li>
+              <li>It is not necessary to complete every field on this page. However, in the fields which you do complete, please try to be as comprehensive and correct as possible.</li>
+              <li>Do not place any links to other websites in this form, except in the Meta-Comments (as sources/references).</li>
+            </ol>
+          </div>
+          <form method='post' id='edit-artist-form' onSubmit={sendForm}>
+            {formContainer()}
+            <input id='edit-artist_submit-button' className='bolded' type='submit' value='Submit update' />
+          </form>
         </div>
-
-        <form method='post' id='edit-artist-form' onSubmit={sendForm}>
-          {formContainer()}
-          <input id='edit-artist_submit-button' className='bolded' type='submit' value='Submit update' />
-        </form>
       </div>
     </div>
   );

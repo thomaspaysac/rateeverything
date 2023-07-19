@@ -899,6 +899,13 @@ footer {
 .add-release_page,
 .edit-release_page,
 .edit-artist_page {
+
+  .global-container {
+    background-color: #20232F;
+    border: 1px solid #323643;
+    padding: 10px;
+  }
+
   h2 {
     margin-bottom: 20px;
   }

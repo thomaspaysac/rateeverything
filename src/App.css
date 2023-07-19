@@ -659,6 +659,12 @@ footer {
   color: #A8AEBA;
   white-space: pre-wrap; }
 
+.add-release_page .global-container,
+.edit-release_page .global-container,
+.edit-artist_page .global-container {
+  background-color: #20232F;
+  border: 1px solid #323643;
+  padding: 10px; }
 .add-release_page h2,
 .edit-release_page h2,
 .edit-artist_page h2 {
