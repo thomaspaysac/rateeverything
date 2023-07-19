@@ -13,10 +13,19 @@ const AddReview = (props) => {
   }
 
   return (
-    <div>
+    <div className='review-form'>
+      <h3>Review</h3>
+      <div className='disclaimer greyed-text'>
+        All reviews must meet the following standards:
+        <ul>
+          <li className='greyed-text'>adherent to the <span className='fake-link'>terms of service</span></li>
+          <li className='greyed-text'>adherent to the <span className='fake-link'>community rules</span>, and not condoning any sort of violence or hatred toward the artist</li>
+          <li className='greyed-text'>written in <span className='bolded'>your own words</span> (copying text from another site will lead to permanent suspension of your account).</li>
+        </ul>
+      </div>
       <form onSubmit={addNewReview}>
         <textarea name="reviewText"></textarea>
-        <input type='submit' value='Submit' />
+        <input type='submit' value='Send review' />
       </form>
     </div>
   );

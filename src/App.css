@@ -37,7 +37,11 @@ button, input {
   color: #9DA3AF; }
 
 .bolded {
+  color: inherit;
   font-weight: 700; }
+
+.fake-link {
+  color: #84C5FB; }
 
 .warning {
   background-color: #463C07;
@@ -534,6 +538,40 @@ footer {
     padding: 8px 12px; }
     .catalog-popup div:hover, .catalog-popup div:active {
       background-color: #303441;
+      cursor: pointer; }
+
+.review-form {
+  background-color: #20232F;
+  border: 1px solid #323643;
+  margin: 0 30px;
+  padding: 20px;
+  width: 80%; }
+  .review-form h3 {
+    font-size: 1.125rem; }
+  .review-form .disclaimer {
+    font-size: 0.89rem;
+    margin: 12px 0; }
+  .review-form li {
+    margin-left: 24px;
+    list-style-type: circle; }
+  .review-form textarea {
+    background-color: #0B0E19;
+    width: 500px;
+    min-width: 200px;
+    max-width: 770px;
+    padding: 5px;
+    font-size: 1rem; }
+  .review-form input[type="submit"] {
+    background-color: #283A58;
+    border: 1px solid #5CB4E3;
+    border-radius: 4px;
+    padding: 4px 35px;
+    margin-top: 12px;
+    font-size: 1rem;
+    color: #DBE0E9;
+    font-weight: 700; }
+    .review-form input[type="submit"]:hover, .review-form input[type="submit"]:active {
+      background-color: #2C4062;
       cursor: pointer; }
 
 .release_tracklist {

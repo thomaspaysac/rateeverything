@@ -63,7 +63,12 @@ button, input {
 }
 
 .bolded {
+  color: inherit;
   font-weight: 700;
+}
+
+.fake-link {
+  color: map-get($dark-theme, links);
 }
 
 .warning {
@@ -721,6 +726,54 @@ footer {
     &:hover,
     &:active {
       background-color: #303441;
+      cursor: pointer;
+    }
+  }
+}
+
+.review-form {
+  background-color: #20232F;
+  border: 1px solid #323643;
+  margin: 0 30px;
+  padding: 20px;
+  width: 80%;
+
+  h3 {
+    font-size: 1.125rem;
+  }
+
+  .disclaimer {
+    font-size: 0.89rem;
+    margin: 12px 0;
+  }
+
+  li {
+    margin-left: 24px;
+    list-style-type: circle;
+  }
+
+  textarea {
+    background-color: #0B0E19;
+    width: 500px;
+    min-width: 200px;
+    max-width: 770px;
+    padding: 5px;
+    font-size: 1rem;
+  }
+
+  input[type="submit"] {
+    background-color: #283A58;
+    border: 1px solid #5CB4E3;
+    border-radius: 4px;
+    padding: 4px 35px;
+    margin-top: 12px;
+    font-size: 1rem;
+    color: map-get($dark-theme, font-light);
+    font-weight: 700;
+
+    &:hover,
+    &:active {
+      background-color: #2C4062;
       cursor: pointer;
     }
   }

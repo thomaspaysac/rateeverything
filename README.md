@@ -5,8 +5,7 @@
 - Ajout au catalogue
 
 ## Priorités :
-
-### Core Fonctionnalités
+O Faire UI d'écriture de review
 
 ## Second temps
 ### Fonctionnalités
@@ -17,12 +16,10 @@ O Personal tags
 
 
 ### Bugs
-O Bug pour imagePath si l'artiste n'a pas de release
 
 ### UI
 O Afficher indication de page active
 O Ajouter tri des albums selon critères sur page de groupe
-O Faire UI d'écriture de review
 O Affiner données artistes on submit
 
 
