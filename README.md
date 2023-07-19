@@ -7,8 +7,6 @@
 ## Priorités :
 
 ### Core Fonctionnalités
-O Ajouter année de sortie de la release sur toutes les pages profil
-O Page profil
 
 ## Second temps
 ### Fonctionnalités
@@ -22,9 +20,6 @@ O Personal tags
 O Bug pour imagePath si l'artiste n'a pas de release
 
 ### UI
-O Reviews de la page perso : ne prennent pas en compte les sauts de lignes
-O Favicon et nom de page dynamique
-O Afficher notes et reviews par page de 10 à la fois
 O Afficher indication de page active
 O Ajouter tri des albums selon critères sur page de groupe
 O Faire UI d'écriture de review

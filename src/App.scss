@@ -1499,6 +1499,7 @@ footer {
 
 .last-review_review {
   color: #9DA2AE;
+  white-space: pre-wrap;
 }
 
 .review-item {
@@ -1553,6 +1554,7 @@ footer {
 
     .review-page_review-text {
       padding: 30px;
+      white-space: pre-wrap;
     }
   }
 }

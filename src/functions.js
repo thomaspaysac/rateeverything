@@ -436,12 +436,15 @@ const linkRatingToUser = async (username, release, rating, date) => {
     existingRating.rating = rating;
     existingRating.date = date;
     existingRating.release = {
+      releaseID: release.albumID,
+      artist: release.artist,
       title: release.release,
       year: release.year,
       imagePath: release.imagePath,
     };
   }
   await updateDoc(userRef, localCopy);
+  window.location.reload();
 }
 
 const getRatingsByRelease = async (release) => {
@@ -507,7 +510,6 @@ const sendReview = async (releaseID, username, userID, review) => {
   }
   await updateDoc(artistRef, localCopy);
   linkReviewToUser(username, releaseID, review, reviewDate);
-  window.location.reload();
 }
 
 const linkReviewToUser = async (username, release, review, date) => {
@@ -542,6 +544,7 @@ const linkReviewToUser = async (username, release, review, date) => {
     }
   }
   await updateDoc(userRef, localCopy);
+  window.location.reload();
 }
 
 const getPersonalReviews = async (username) => {
@@ -695,6 +698,7 @@ const updateCollection = async (username, releaseID, status) => {
     }
   }
   await updateDoc(userRef, localCopy);
+  window.location.reload();
 }
 
 const getCollection = async (username) => {

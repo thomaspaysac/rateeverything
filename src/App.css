@@ -1112,7 +1112,8 @@ footer {
   font-size: 0.85rem; }
 
 .last-review_review {
-  color: #9DA2AE; }
+  color: #9DA2AE;
+  white-space: pre-wrap; }
 
 .review-item .review_release-info {
   display: grid;
@@ -1151,7 +1152,8 @@ footer {
     width: 30px;
     background-color: #4E5465; }
   .review-item .review-page_content .review-page_review-text {
-    padding: 30px; }
+    padding: 30px;
+    white-space: pre-wrap; }
 
 #searchbar-icon {
   height: 16px;
