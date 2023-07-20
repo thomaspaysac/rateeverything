@@ -1,32 +1,32 @@
 ### Core :
-- Page album
-- Ajout d'albums
-- Profil personnel
-- Ajout au catalogue
+- [X] Page album
+- [x] Ajout d'albums
+- [X] Profil personnel
+- [X] Ajout au catalogue
 
 ## Priorités :
 
 ## Second temps
 ### Fonctionnalités
-O Amis -> afficher ratings en premier sur page release (extraire de l'array pour en créer un nouveau ?)
-O Shoutbox
-O Personal tags
+- [] Amis -> afficher ratings en premier sur page release (extraire de l'array pour en créer un nouveau ?)
+- [] Shoutbox
+- [] Personal tags
 
 
 
 ### Bugs
 
 ### UI
-O Afficher indication de page active
-O Ajouter tri des albums selon critères sur page de groupe
-O Affiner données artistes on submit
+- [] Afficher indication de page active
+- [] Ajouter tri des albums selon critères sur page de groupe
+- [] Affiner données artistes on submit
 
 
 ### Comptes
-O Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link
-O Après création de compte, le nom d'utilisateur n'apparait pas dans le header (il faut se reconnecter)
-O Vérification validité / disponibilité infos avant création de compte
+- [] Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link
+- [] Après création de compte, le nom d'utilisateur n'apparait pas dans le header (il faut se reconnecter)
+- [] Vérification validité / disponibilité infos avant création de compte
 
 ### Cleanup
-O Supprimer tous les console.log()
-O Retirer functions et variables inutilisées
+- [] Supprimer tous les console.log()
+- [] Retirer functions et variables inutilisées
