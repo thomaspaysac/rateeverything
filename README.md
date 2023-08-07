@@ -17,6 +17,7 @@
 ### Bugs
 
 ### UI
+- [ ] Homepage : ajouter 5 dernières reviews et 5 derniers albums
 - [ ] Afficher indication de page active
 - [ ] Ajouter tri des albums selon critères sur page de groupe
 - [ ] Affiner données artistes on submit
