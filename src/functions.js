@@ -189,6 +189,14 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
       editHistory: [originalHistory],
     })
   })
+  pushLatestRelease({
+    artist: artist,
+    release: release,
+    year: year,
+    albumID: albumID,
+    imagePath: imagePath,
+    genres: genres,
+  })
 }
 
 const updateRelease = async (artist, albumID, release, year, tracks, genres, username, imagePath) => {
@@ -739,10 +747,22 @@ const pushLatestReview = async (content) => {
   const dataRef = doc(db, 'website', 'homepage');
   const docSnap = await getDoc(dataRef);
   const localCopy = docSnap.data();
-  const latestReviews = localCopy.reviews
+  const latestReviews = localCopy.reviews;
   latestReviews.push(content);
   if (latestReviews.length > 5) {
     latestReviews.shift();
+  }
+  await updateDoc(dataRef, localCopy);
+}
+
+const pushLatestRelease = async (release) => {
+  const dataRef = doc(db, 'website', 'homepage');
+  const docSnap = await getDoc(dataRef);
+  const localCopy = docSnap.data();
+  const latestReleases = localCopy.releases;
+  latestReleases.push(release);
+  if (latestReleases.length > 5) {
+    latestReleases.shift();
   }
   await updateDoc(dataRef, localCopy);
 }

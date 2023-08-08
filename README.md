@@ -11,7 +11,7 @@
 - [ ] Amis -> afficher ratings en premier sur page release (extraire de l'array pour en créer un nouveau ?)
 - [ ] Shoutbox
 - [ ] Personal tags
-
+- [ ] Homepage -> trier reviews et releases par ordre récent > ancien
 
 
 ### Bugs

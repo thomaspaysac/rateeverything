@@ -15,10 +15,12 @@ import emailLogo from '../img/mail.png';
 
 const HomePage = () => {
   const [reviews, setReviews] = useState([]);
+  const [releases, setReleases] = useState([]);
 
   const fetchInfo = async () => {
     const data = await fetchHomepageInfo();
     setReviews(data[0]);
+    setReleases(data[1]);
   }
 
   useEffect(() => {
@@ -43,14 +45,16 @@ const HomePage = () => {
             <img src={githubLogo} alt='github' />
           </a>
             <img src={twitterLogo} alt='twitter' />
+          <a href='https://open.spotify.com/user/ifcjdts9k6j1721gmgpjkt1my?si=bc9c86da815e491c'>
             <img src={spotifyLogo} alt='spotify' />
+          </a> 
             <img src={emailLogo} alt='email' />
           </div>
         </div>
         <DataCounter />
         <div className='homepage_users-content'>
           <FeaturedReviews reviews={reviews} />
-          <LatestReleases />
+          <LatestReleases releases={releases} />
         </div>
       </div>
       </div>
