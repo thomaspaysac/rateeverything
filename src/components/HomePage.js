@@ -1,5 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import DataCounter from './homepage/DataCounter';
+import FeaturedReviews from './homepage/FeaturedReviews';
+import LatestReleases from './homepage/LatestReleases';
+
+import { fetchHomepageInfo } from '../functions';
 
 import linkedinLogo from '../img/linkedin.png';
 import githubLogo from '../img/github.png';
@@ -10,9 +14,17 @@ import emailLogo from '../img/mail.png';
 
 
 const HomePage = () => {
+  const [reviews, setReviews] = useState([]);
+
+  const fetchInfo = async () => {
+    const data = await fetchHomepageInfo();
+    setReviews(data[0]);
+  }
+
   useEffect(() => {
     document.title = 'Welcome! - Evaluate Your Sounds'
-  })
+    fetchInfo();
+  }, [])
 
   return (
       <div className='content-page'>
@@ -36,6 +48,10 @@ const HomePage = () => {
           </div>
         </div>
         <DataCounter />
+        <div className='homepage_users-content'>
+          <FeaturedReviews reviews={reviews} />
+          <LatestReleases />
+        </div>
       </div>
       </div>
   );

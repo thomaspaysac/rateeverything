@@ -25,7 +25,7 @@ const PersonalReviews = ({lastReview}) => {
               </div>
             </div>
             <div className='last-review_user-info'>
-              <div className='greyed-text'>Review by {lastReview.author}</div>
+              <div className='greyed-text'>Review by <Link to={`/profile/${lastReview.author}`}>{lastReview.author}</Link></div>
               <div>{lastReview.rating}</div>
             </div>
             <div className='last-review_review'>

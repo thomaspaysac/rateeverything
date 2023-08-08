@@ -515,6 +515,16 @@ const sendReview = async (releaseID, username, userID, review) => {
     userReviewObject.date = reviewDate;
   }
   await updateDoc(artistRef, localCopy);
+  pushLatestReview({
+    username: username,
+    review: review,
+    date: reviewDate,
+    artist: releaseID.artist,
+    release: releaseID.release,
+    releaseDate: releaseID.year,
+    imagePath: releaseID.imagePath,
+    albumID: releaseID.albumID,
+  });
   linkReviewToUser(username, releaseID, review, reviewDate);
 }
 
@@ -723,7 +733,25 @@ const getWishlist = async (username) => {
   const localCopy = data;
   const wishlist = localCopy.wishlist;
   return wishlist;
+}
 
+const pushLatestReview = async (content) => {
+  const dataRef = doc(db, 'website', 'homepage');
+  const docSnap = await getDoc(dataRef);
+  const localCopy = docSnap.data();
+  const latestReviews = localCopy.reviews
+  latestReviews.push(content);
+  if (latestReviews.length > 5) {
+    latestReviews.shift();
+  }
+  await updateDoc(dataRef, localCopy);
+}
+
+const fetchHomepageInfo = async () => {
+  const dataRef = doc(db, 'website', 'homepage');
+  const docSnap = await getDoc(dataRef);
+  const infoArray = [docSnap.data().reviews, docSnap.data().releases];
+  return infoArray;
 }
 
 export { 
@@ -761,4 +789,5 @@ export {
   updateCollection,
   getCollection,
   getWishlist,
+  fetchHomepageInfo,
 };
