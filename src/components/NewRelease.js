@@ -118,7 +118,7 @@ const NewReleasePage = (props) => {
             <label htmlFor='title' className='bolded add-release_step-label'>1.1 Title</label>
             <div className='separator'></div>
             <div className='add-release_input-group'>
-              <input type='text' name='title' placeholder='Release title' />
+              <input type='text' name='title' placeholder='Release title' required />
               <div className='note'><span className='bolded'>Note:</span> The release title must follow RYS's Capitalization rules for titles.</div>
             </div>
             <label htmlFor='year' className='bolded add-release_step-label'>1.2 Release date</label>
