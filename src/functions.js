@@ -19,6 +19,7 @@ const userFirestoreSetup = async (username, email) => {
       link: "",
       caption: "",
     },
+    follow: [],
   });
 }
 
@@ -748,7 +749,7 @@ const pushLatestReview = async (content) => {
   const localCopy = docSnap.data();
   const latestReviews = localCopy.reviews;
   latestReviews.push(content);
-  if (latestReviews.length > 5) {
+  if (latestReviews.length > 10) {
     latestReviews.shift();
   }
   await updateDoc(dataRef, localCopy);

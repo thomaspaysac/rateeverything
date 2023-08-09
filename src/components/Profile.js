@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPersonalReviews, getCollection, getWishlist } from "../functions";
 import { Link, useParams } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
+import SocialContainer from "./profile_page/SocialContainer";
 
 const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
@@ -16,6 +17,7 @@ const ProfilePage = (props) => {
   const [userDate, setUserDate] = useState();
   const [avatar, setAvatar] = useState();
   const [avatarCaption, setAvatarCaption] = useState();
+  const [following, setFollowing] = useState([]);
   
   const urlParams = useParams();
 
@@ -92,6 +94,7 @@ const ProfilePage = (props) => {
     setUserDate(data.date);
     setAvatar(data.avatar.link);
     setAvatarCaption(data.avatar.caption);
+    setFollowing(data.follow);
   }
 
   const getUserCollection = async () => {
@@ -151,6 +154,11 @@ const ProfilePage = (props) => {
         reviews={userReviews}
         ratingsByScore={ratingsByScore}
       />
+
+      <SocialContainer 
+        follow={following}
+      />
+
     </div>
     </div>
   )

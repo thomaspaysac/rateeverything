@@ -53,7 +53,7 @@ const ContentContainer = (props) => {
 
   return (
     <div>
-      <div className='profile_section-header bolded' onClick={() => console.log(props)}>music</div>
+      <div className='profile_section-header bolded'>music</div>
       <div className="profile_music-section">
         <div className="profile_display-buttons">
           <button className='profile_music_display-button bolded'

@@ -1265,6 +1265,7 @@ footer {
   font-size: 1.2rem;
   color: map-get($dark-theme, links);
   padding: 10px;
+  margin-top: 45px;
 }
 
 .profile_music-section {
@@ -1304,7 +1305,7 @@ footer {
 .recent-rating_item {
   display: grid;
   grid-template-rows: 55px;
-  grid-template-columns: 65px 40px 112px 1fr 163px;
+  grid-template-columns: 65px 40px 112px 1fr;
 
   div {
     border-left: 1px solid #2B2F3C;
@@ -1447,6 +1448,12 @@ footer {
     text-align: center;
     vertical-align: middle;
   }
+}
+
+// PROFILE : social section
+.social-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 
 // 'Recent' page

@@ -958,7 +958,8 @@ footer {
   text-align: right;
   font-size: 1.2rem;
   color: #84C5FB;
-  padding: 10px; }
+  padding: 10px;
+  margin-top: 45px; }
 
 .profile_music-section {
   background-color: #161A25; }
@@ -989,7 +990,7 @@ footer {
 .recent-rating_item {
   display: grid;
   grid-template-rows: 55px;
-  grid-template-columns: 65px 40px 112px 1fr 163px; }
+  grid-template-columns: 65px 40px 112px 1fr; }
   .recent-rating_item div {
     border-left: 1px solid #2B2F3C;
     border-right: 1px solid #2B2F3C;
@@ -1088,6 +1089,10 @@ footer {
     margin: 4px;
     text-align: center;
     vertical-align: middle; }
+
+.social-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; }
 
 .recent-page .recent_page-selector {
   width: 100%;

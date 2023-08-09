@@ -19,7 +19,6 @@ const RecentRatings = (props) => {
               <div><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                 &nbsp; - &nbsp;
               <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> <span className='lists_date'>&nbsp;({el.release.year})</span></div>
-              <div>(personal tags)</div>
             </div>
           )
         } )}
