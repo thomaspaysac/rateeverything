@@ -19,6 +19,10 @@
 
 
 ### Bugs
+
+### Fonctions
+- [ ] Release submit : fonctionne quand même si le nom de l'album est vide
+
 ### UI
 - [ ] Review : bug d'affichage selon la taille du viewport (le bouton 'send review' se balade)
 

@@ -8,11 +8,18 @@ const List = ({item}) => {
     return (
       <div className='new-release_container'>
         <div className='new-release_image'>
+          <img src={item.imagePath} alt='' />
         </div>
         <div className='new-release_info'>
-          <Link to={`/release/${item.artist}/${item.albumID}`}>{item.release} {item.year}</Link>
-          <Link to={`/artist/${item.artist}`}>{item.artist}</Link>
-          <div>{item.genres}</div>
+          <div>
+            <Link to={`/release/${item.artist}/${item.albumID}`}>{item.release} <span className='lists_date'>({item.year})</span></Link>
+          </div>
+          <div>
+            <Link to={`/artist/${item.artist}`} className='bolded'>{item.artist}</Link>
+          </div>
+          <div className='greyed-info'>
+            {item.genres.join(', ')}
+          </div>
         </div>
       </div>
     )

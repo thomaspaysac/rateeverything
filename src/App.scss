@@ -410,6 +410,27 @@ footer {
 .new-release_container {
   padding: 16px 0;
   border-top: 1px solid #9da3af3f;
+  display: flex;
+  gap: 16px;
+
+  .new-release_image {
+    border-radius: 7px;
+    height: 44px;
+    width: 44px;
+    overflow: hidden;
+
+  img {
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    }
+  }
+
+  .new-release_info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 }
 
 // Artist et Release page

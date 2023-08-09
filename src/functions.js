@@ -760,7 +760,7 @@ const pushLatestRelease = async (release) => {
   const localCopy = docSnap.data();
   const latestReleases = localCopy.releases;
   latestReleases.push(release);
-  if (latestReleases.length > 5) {
+  if (latestReleases.length > 10) {
     latestReleases.shift();
   }
   await updateDoc(dataRef, localCopy);
