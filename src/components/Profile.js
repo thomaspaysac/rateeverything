@@ -4,7 +4,7 @@ import { Link, useParams, useRouteLoaderData } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 import SocialContainer from "./profile_page/SocialContainer";
 
-import { followUser } from "../functions";
+import { followUser, unfollowUser } from "../functions";
 
 const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
@@ -20,12 +20,19 @@ const ProfilePage = (props) => {
   const [avatar, setAvatar] = useState();
   const [avatarCaption, setAvatarCaption] = useState();
   const [following, setFollowing] = useState([]);
+  const [personalFollow, setPersonalFollow] = useState([]);
   
   const urlParams = useParams();
 
   const SocialActions = () => {
     if (!props.userStatus || props.username === urlParams.username) {
       return null;
+    } else if (personalFollow.includes(urlParams.username)) {
+      return (
+        <button className="follow-user_button" onClick={() => unfollowUser(props.username, urlParams.username)}>
+          - unfollow user
+        </button>
+      )
     } else {
       return (
         <div className="profile_social-actions">
@@ -107,10 +114,12 @@ const ProfilePage = (props) => {
 
   const userInfo = async () => {
     const data = await getUserInfo(urlParams.username);
+    const personalInfo = await getUserInfo(props.username);
     setUserDate(data.date);
     setAvatar(data.avatar.link);
     setAvatarCaption(data.avatar.caption);
     setFollowing(data.follow);
+    setPersonalFollow(personalInfo.follow);
   }
 
   const getUserCollection = async () => {
@@ -126,17 +135,17 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     document.title = `Profile: ${urlParams.username} - Evaluate Your Sounds`
-    console.log(props, urlParams);
+    console.log(personalFollow);
     getReleases();
     getList();
-    if (urlParams.username) {
+    if (urlParams.username && props.username) {
       getUserRatings();
       getUserReviews();
       getUserCollection();
       getUserWishlist();
       userInfo();
     }
-  }, [])
+  }, [props.username])
 
   const avatarDisplay = () => {
     if (!avatar || avatar === '') {

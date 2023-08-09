@@ -781,6 +781,20 @@ const followUser = async (currUser, followedUser) => {
   const following = localCopy.follow;
   following.push(followedUser);
   await updateDoc(userRef, localCopy);
+  window.location.reload();
+}
+
+const unfollowUser = async (currUser, followedUser) => {
+  const userRef = doc(db, 'users', currUser);
+  const docSnap = await getDoc(userRef);
+  const localCopy = docSnap.data();
+  const following = localCopy.follow;
+  const targetIndex = following.indexOf(followedUser);
+  if (targetIndex !== -1) {
+    following.splice(targetIndex, 1);
+  }
+  await updateDoc(userRef, localCopy);
+  window.location.reload();
 }
 
 export { 
@@ -820,4 +834,5 @@ export {
   getWishlist,
   fetchHomepageInfo,
   followUser,
+  unfollowUser,
 };
