@@ -37,13 +37,13 @@ const List = ({item}) => {
 
 const FeaturedReviews = ({reviews}) => {
   return (
-    <div>
+    <div className='homepage_reviews'>
       <h2 className='homepage_section-header'>Latest reviews</h2>
       <div>
         {
-          reviews.map((el) => {
+          reviews.map((el, i) => {
           return (
-            <List item={el}   />
+            <List key={`new-review_${i}`} item={el} />
           )
         })
         }

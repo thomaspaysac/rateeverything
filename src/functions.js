@@ -1,6 +1,5 @@
 import { doc, collection, getCountFromServer, getDoc, getDocs, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { query, where } from "firebase/firestore";
 import { db } from "./firebase";
 import format from "date-fns/format";
 

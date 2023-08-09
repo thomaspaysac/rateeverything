@@ -12,16 +12,15 @@
 - [ ] Shoutbox
 - [ ] Personal tags
 - [ ] Homepage -> trier reviews et releases par ordre récent > ancien
-
-
-### Bugs
-
-### UI
-- [ ] Homepage : ajouter 5 dernières reviews et 5 derniers albums
 - [ ] Afficher indication de page active
 - [ ] Ajouter tri des albums selon critères sur page de groupe
 - [ ] Affiner données artistes on submit
 
+
+
+### Bugs
+### UI
+- [ ] Review : bug d'affichage selon la taille du viewport (le bouton 'send review' se balade)
 
 ### Comptes
 - [ ] Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link

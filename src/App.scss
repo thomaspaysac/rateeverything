@@ -380,6 +380,16 @@ footer {
 
 .homepage_users-content {
   display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.homepage_reviews {
+  width: clamp(450px, 100%, 2000px);
+}
+
+.homepage_releases {
+  width: clamp(200px, 400px, 1500px)
 }
 
 .homepage_section-header {
@@ -391,11 +401,15 @@ footer {
 .latest-reviews_container {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  width: clamp(400px, 70%, 900px);
   background-color: #191C28;
   border: 1px solid #323643;
   padding: 16px;
   margin-bottom: 12px;
+}
+
+.new-release_container {
+  padding: 16px 0;
+  border-top: 1px solid #9da3af3f;
 }
 
 // Artist et Release page
