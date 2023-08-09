@@ -81,6 +81,7 @@ const App = () => {
           element={<ProfilePage 
             username={username} 
             userID={userID}
+            userStatus={isSignedIn}
             />}
         />
         <Route exact path="/profile/avatar" element={<Avatar username={username} />} />

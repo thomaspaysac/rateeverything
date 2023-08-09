@@ -150,6 +150,11 @@ button, input {
   color: #A8AEBA;
 }
 
+.artificial-link {
+  color: map-get($dark-theme, links);
+  font-weight: 700;
+}
+
 // Components styling
 // HEADER
 header {
@@ -1221,6 +1226,7 @@ footer {
   img {
     max-width: 100%;
     max-height: 300px;
+    border-radius: 16px;
   }
 }
 
@@ -1451,6 +1457,26 @@ footer {
 }
 
 // PROFILE : social section
+.follow-user_button {
+  color: map-get($dark-theme, font-light);
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #283A58;
+  padding: 16px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: none;
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+    background-color: #2C4062;
+  }
+}
+
 .social-container {
   display: grid;
   grid-template-columns: 2fr 1fr;

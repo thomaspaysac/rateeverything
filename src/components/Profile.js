@@ -1,8 +1,10 @@
 import { React, useState, useEffect } from "react";
 import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPersonalReviews, getCollection, getWishlist } from "../functions";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useRouteLoaderData } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 import SocialContainer from "./profile_page/SocialContainer";
+
+import { followUser } from "../functions";
 
 const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
@@ -20,6 +22,20 @@ const ProfilePage = (props) => {
   const [following, setFollowing] = useState([]);
   
   const urlParams = useParams();
+
+  const SocialActions = () => {
+    if (!props.userStatus || props.username === urlParams.username) {
+      return null;
+    } else {
+      return (
+        <div className="profile_social-actions">
+          <button className="follow-user_button" onClick={() => followUser(props.username, urlParams.username)}>
+            + follow user
+          </button>
+        </div>
+      )
+    }
+  }
 
   const getReleases = async () => {
     const data = await getAllReleases();
@@ -110,6 +126,7 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     document.title = `Profile: ${urlParams.username} - Evaluate Your Sounds`
+    console.log(props, urlParams);
     getReleases();
     getList();
     if (urlParams.username) {
@@ -142,6 +159,7 @@ const ProfilePage = (props) => {
         </div>
         <div className="profile_user-info">
           <div className="profile_avatar"><Link to="/profile/avatar">{avatarDisplay()}</Link></div>
+          <SocialActions />
         </div>
       </div>
 

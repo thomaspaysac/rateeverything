@@ -1,6 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SocialContainer = ({follow}) => {
+  const navigateTo = useNavigate()
+
+  const loadNewProfile = (user) => {
+    navigateTo(`/profile/${user}`);
+    window.location.reload();
+  }
+
   return (
     <div>
       <div className='profile_section-header bolded'>social</div>
@@ -10,7 +19,9 @@ const SocialContainer = ({follow}) => {
           {
             follow.map((user) => {
               return (
-                <div>{user}</div>
+                <a href="">
+                  <div className='artificial-link' onClick={() => loadNewProfile(user)}>{user}</div>
+                </a>
               )
             })
           }

@@ -774,6 +774,15 @@ const fetchHomepageInfo = async () => {
   return infoArray;
 }
 
+const followUser = async (currUser, followedUser) => {
+  const userRef = doc(db, 'users', currUser);
+  const docSnap = await getDoc(userRef);
+  const localCopy = docSnap.data();
+  const following = localCopy.follow;
+  following.push(followedUser);
+  await updateDoc(userRef, localCopy);
+}
+
 export { 
   userFirestoreSetup,
   getAllUsernames,
@@ -810,4 +819,5 @@ export {
   getCollection,
   getWishlist,
   fetchHomepageInfo,
+  followUser,
 };
