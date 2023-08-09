@@ -53,7 +53,7 @@ const Reviews = (props) => {
                 <div>{el.reviewScore}</div>
               </div>
               <div className='rating_stars-display'>
-                <StarsDisplay rating={userRating} />
+                <StarsDisplay key='user-rating' rating={userRating} />
               </div>
             </div>
             <div className='review-content'>{el.review}</div>

@@ -8,13 +8,16 @@ const Ratings = ({userRatings}) => {
   if (userRatings) {
       return (
         userRatings.map((el, i) => {
+          const separatedDate = el.date.split(' ');
           return (
             <div key={`recent-${i}`} className="recent-page_item">
               <div className='recent-rating_thumbnail'>
                 <img src={el.release.imagePath} alt="cover art" />
               </div>
-              <div className='recent-rating_date bolded'>
-                <div>{el.date}</div>
+              <div className='recent-rating_date'>
+                <div>{separatedDate[0]}</div> 
+                <div>{separatedDate[1]}</div> 
+                <div>{separatedDate[2]}</div>
               </div>
               <div className='rating_stars-display'><StarsDisplay key={`rating-${i}`} rating={el.rating} /></div>
               <div className='recent_release-info'><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>

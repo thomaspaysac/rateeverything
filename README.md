@@ -19,8 +19,11 @@
 ### Bugs
 
 ### Fonctions
+- [ ] Trie par date : modifier les dates car pour le moment trie dans l'ordre alphabétique des strings
 
 ### UI
+- [ ] dates pages reviews, collection, wishlist
+- [ ] Titre de page buggé sur les albums ('undefined by undefined')
 - [ ] Erreur d'affichage de l'avatar en header lors de la création d'un nouveau compte + lien vers user 'null'
 
 ### Comptes

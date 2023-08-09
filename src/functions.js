@@ -382,7 +382,7 @@ const updateReleaseRating = async (releaseID, username, userID, rating) => {
   // Use local copy before sending the data back to modify nested ratings array
   const localCopy = data;
   const localRatings = localCopy.releases[targetIndex].ratings;
-  const ratingDate = format(new Date(), 'dd MMM yy');
+  const ratingDate = format(new Date(), 'dd MMM yyyy');
   // if user has already rated the release, replace the rating
   const userRatingObject = localRatings.find((obj) => obj.userID === userID);
   if (!userRatingObject && +rating !== 0) {
@@ -507,7 +507,7 @@ const sendReview = async (releaseID, username, userID, review) => {
   }
   const localCopy = data;
   const localReviews = localCopy.releases[targetIndex].reviews;
-  const reviewDate = format(new Date(), 'dd MMM yy');
+  const reviewDate = format(new Date(), 'dd MMM yyyy');
   // if user has already rated the release, replace the rating
   const userReviewObject = localReviews.find((obj) => obj.userID === userID);
   if (!userReviewObject) {
@@ -558,7 +558,7 @@ const linkReviewToUser = async (username, release, review, date) => {
     })
   } else {
     existingReview.review = review;
-    existingReview.date = date;
+    existingReview.reviewDate = date;
     existingReview.release = {
       releaseID: release.albumID,
       artist: release.artist,

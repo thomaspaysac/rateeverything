@@ -669,15 +669,19 @@ footer {
 
 .release_user-ratings {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin: 4px 0;
-  background-color: #161A25; }
+  background-color: #161A25;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; }
 
 .release-ratings_date {
   color: #A8AEBA;
   text-align: center;
-  width: 100px; }
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .release-ratings_info {
   display: flex;
@@ -687,7 +691,13 @@ footer {
   border-radius: 5px;
   background-color: #292D39; }
 
-#personal-rating {
+.personal-rating {
+  background-color: #292D39;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #4E5465; }
+
+.friend-rating {
   background-color: #334A33; }
 
 .release-ratings_avatar {
@@ -1016,10 +1026,16 @@ footer {
   .recent-rating_item .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     margin: 4px;
-    text-align: center;
-    vertical-align: middle; }
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .recent-rating_item .recent-rating_date div {
+      padding: 0;
+      border: none; }
 
 .personal-ratings-component {
   background-color: #1B1E2A;
@@ -1090,10 +1106,16 @@ footer {
   .profile_collection-item .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     margin: 4px;
-    text-align: center;
-    vertical-align: middle; }
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .profile_collection-item .recent-rating_date div {
+      padding: 0;
+      border: none; }
 
 .follow-user_button {
   color: #DBE0E9;
@@ -1163,11 +1185,16 @@ footer {
       text-align: center;
       vertical-align: middle;
       width: 40px;
-      justify-self: center;
-      align-self: center; }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4px; }
       .recent-page_ratings .recent-page_item .recent-rating_date div {
         background-color: #4E5465;
-        height: fit-content; }
+        height: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center; }
 
 .collection-item {
   display: grid;
@@ -1194,10 +1221,16 @@ footer {
   .collection-item .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     margin: 4px;
-    text-align: center;
-    vertical-align: middle; }
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .collection-item .recent-rating_date div {
+      padding: 0;
+      border: none; }
 
 .last-review_container {
   display: grid;

@@ -8,7 +8,7 @@ import Tracklist from "./release_page/Tracklist";
 import StarRating from "./release_page/StarRating";
 import CatalogPopup from "./release_page/CatalogPopup";
 
-import { getReleaseByID, getUniqueRelease } from "../functions";
+import { getReleaseByID, getUniqueRelease, getUserInfo } from "../functions";
 
 import discIcon from '../../src/img/vinyl.png';
 import reviewIcon from '../../src/img/write-review.png';
@@ -35,6 +35,7 @@ const ReleasePage = (props) => {
   const [trackList, setTracklist] = useState([]);
   const [totalTime, setTotalTime] = useState();
   const [imagePath, setImagePath] = useState();
+  const [friends, setFriends] = useState([]);
 
   const urlParams = useParams();
 
@@ -53,7 +54,6 @@ const ReleasePage = (props) => {
     } else {
       setTotalTime(`${minutes}:${seconds}`);
     }
-
   }
 
   const fetchDataByID = async (albumID) => {
@@ -77,13 +77,21 @@ const ReleasePage = (props) => {
     }
   }
 
+  const getFriends = async () => {
+    if (props.username) {
+      const data = await getUserInfo(props.username);
+      setFriends(data.follow);
+    }
+  }
+
   useEffect(() => {
     fetchDataByID(+urlParams.releaseID);
   }, []);
 
   useEffect(() => {
     document.title = `${release.release} by ${release.artist}`;
-  })
+    getFriends();
+  }, [props.username])
 
 
   const ContributionsContainer = (props) => {
@@ -151,7 +159,8 @@ const ReleasePage = (props) => {
         />  
         <UserRatingsPage
           ratings={ratings}
-          username={props.username} />
+          username={props.username}
+          friends={friends} />
       </div>
 
       <div className='release-page_contributions'>

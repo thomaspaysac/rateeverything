@@ -912,16 +912,20 @@ footer {
 
 .release_user-ratings {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin: 4px 0;
   background-color: #161A25;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .release-ratings_date {
   color: #A8AEBA;
   text-align: center;
   width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .release-ratings_info {
@@ -933,7 +937,14 @@ footer {
   background-color: #292D39;
 }
 
-#personal-rating {
+.personal-rating {
+  background-color: #292D39;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #4E5465;
+}
+
+.friend-rating {
   background-color: #334A33;
 }
 
@@ -1343,10 +1354,18 @@ footer {
   .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     margin: 4px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+      padding: 0;
+      border: none;
+    }
   }
 }
 
@@ -1449,10 +1468,18 @@ footer {
   .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     margin: 4px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+      padding: 0;
+      border: none;
+    }
   }
 }
 
@@ -1556,12 +1583,17 @@ footer {
       text-align: center;
       vertical-align: middle;
       width: 40px;
-      justify-self: center;
-      align-self: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4px;
 
       div {
         background-color: #4E5465;
-        height: fit-content;
+        height: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
     }
   }
@@ -1604,10 +1636,18 @@ footer {
   .recent-rating_date {
     background-color: #4E5465;
     color: #B4B9C5;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 400;
     margin: 4px;
-    text-align: center;
-    vertical-align: middle;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+      padding: 0;
+      border: none;
+    }
   }
 }
 
