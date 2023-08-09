@@ -19,8 +19,8 @@ const HomePage = () => {
 
   const fetchInfo = async () => {
     const data = await fetchHomepageInfo();
-    setReviews(data[0]);
-    setReleases(data[1]);
+    setReviews(data[0].reverse());
+    setReleases(data[1].reverse());
   }
 
   useEffect(() => {
