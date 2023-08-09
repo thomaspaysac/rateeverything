@@ -11,7 +11,6 @@
 - [ ] Amis -> afficher ratings en premier sur page release (extraire de l'array pour en créer un nouveau ?)
 - [ ] Shoutbox
 - [ ] Personal tags
-- [ ] Homepage -> trier reviews et releases par ordre récent > ancien
 - [ ] Afficher indication de page active
 - [ ] Ajouter tri des albums selon critères sur page de groupe
 - [ ] Affiner données artistes on submit
@@ -24,7 +23,6 @@
 - [ ] Release submit : fonctionne quand même si le nom de l'album est vide
 
 ### UI
-- [ ] Review : bug d'affichage selon la taille du viewport (le bouton 'send review' se balade)
 
 ### Comptes
 - [ ] Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link

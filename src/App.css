@@ -597,6 +597,9 @@ footer {
   .review-form li {
     margin-left: 24px;
     list-style-type: circle; }
+  .review-form form {
+    display: flex;
+    flex-direction: column; }
   .review-form textarea {
     background-color: #0B0E19;
     width: 500px;
@@ -612,7 +615,8 @@ footer {
     margin-top: 12px;
     font-size: 1rem;
     color: #DBE0E9;
-    font-weight: 700; }
+    font-weight: 700;
+    max-width: 165px; }
     .review-form input[type="submit"]:hover, .review-form input[type="submit"]:active {
       background-color: #2C4062;
       cursor: pointer; }
