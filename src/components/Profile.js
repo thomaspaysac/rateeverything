@@ -184,6 +184,8 @@ const ProfilePage = (props) => {
 
       <SocialContainer 
         follow={following}
+        userStatus={props.userStatus}
+        currUser={props.username}
       />
 
     </div>

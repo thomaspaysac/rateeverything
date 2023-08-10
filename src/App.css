@@ -1152,8 +1152,21 @@ footer {
   .social-container .social_following > div {
     border: 1px solid #2B2F3C; }
 
+.shoutbox {
+  display: flex;
+  flex-direction: column; }
+  .shoutbox button {
+    color: #DBE0E9;
+    background-color: #283A58;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 0; }
+    .shoutbox button:hover, .shoutbox button:active {
+      cursor: pointer;
+      background-color: #2C4062; }
+
 .shoutbox_container {
-  min-height: 200px;
+  height: 300px;
   border: 1px solid #dbe0e99f; }
 
 .recent-page .recent_page-selector {
