@@ -14,7 +14,7 @@ const userFirestoreSetup = async (username, email) => {
     lists: [],
     collection: [],
     wishlist: [],
-    date: format(new Date(), 'dd MMM yy'),
+    date: format(new Date(), 'dd MMM yyyy'),
     avatar: {
       link: "",
       caption: "",

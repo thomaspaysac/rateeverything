@@ -1560,6 +1560,31 @@ footer {
   border: 1px solid #dbe0e99f;
 }
 
+.shoutbox-message {
+  display: flex;
+  flex-direction: column;
+
+  .shoutbox_user-info {
+    display: flex;
+    justify-content: space-between;
+  }  
+}
+
+.shoutbox_write-container {
+  display: none;
+  width: 100%;
+
+  textarea {
+    width: 100%;
+    resize: vertical;
+    background-color: #152238;
+  }
+
+  button {
+    width: 50px;
+  }
+}
+
 // 'Recent' page
 .recent-page {
   .recent_page-selector {

@@ -17,6 +17,7 @@ const ProfilePage = (props) => {
   const [userCollection, setUserCollection] = useState([]);
   const [userWishlist, setUserWishlist] = useState([]);
   const [userDate, setUserDate] = useState();
+  const [userShoutbox, setUserShoutbox] = useState([]);
   const [avatar, setAvatar] = useState();
   const [avatarCaption, setAvatarCaption] = useState();
   const [following, setFollowing] = useState([]);
@@ -116,6 +117,7 @@ const ProfilePage = (props) => {
     const data = await getUserInfo(urlParams.username);
     const personalInfo = await getUserInfo(props.username);
     setUserDate(data.date);
+    setUserShoutbox(data.shoutbox);
     setAvatar(data.avatar.link);
     setAvatarCaption(data.avatar.caption);
     setFollowing(data.follow);
@@ -135,7 +137,6 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     document.title = `Profile: ${urlParams.username} - Evaluate Your Sounds`
-    console.log(personalFollow);
     getReleases();
     getList();
     if (urlParams.username && props.username) {
@@ -186,6 +187,7 @@ const ProfilePage = (props) => {
         follow={following}
         userStatus={props.userStatus}
         currUser={props.username}
+        shoutbox={userShoutbox}
       />
 
     </div>

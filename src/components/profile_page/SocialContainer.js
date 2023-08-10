@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Shoutbox from './Shoutbox';
 
-const SocialContainer = ({follow, userStatus, currUser}) => {
+const SocialContainer = ({follow, userStatus, currUser, shoutbox}) => {
   const navigateTo = useNavigate()
 
   const loadNewProfile = (user) => {
@@ -36,6 +36,7 @@ const SocialContainer = ({follow, userStatus, currUser}) => {
           <h3>Shoutbox</h3>
           <Shoutbox 
             currUser={currUser}
+            shoutbox={shoutbox}
           />
         </div>
 
