@@ -797,6 +797,20 @@ const unfollowUser = async (currUser, followedUser) => {
   window.location.reload();
 }
 
+const sendShout = async (currUser, targetUser, message) => {
+  const userRef = doc(db, 'users', targetUser);
+  const docSnap = await getDoc(userRef);
+  const data = docSnap.data();
+  const localCopy = data;
+  const localShoutbox = data.shoutbox;
+  localShoutbox.push({
+    from: currUser,
+    date: format(new Date(), 'dd/LL/yy HH:mm'),
+    message: message,
+  })
+  await updateDoc(userRef, localCopy);
+}
+
 export { 
   userFirestoreSetup,
   getAllUsernames,
@@ -835,4 +849,5 @@ export {
   fetchHomepageInfo,
   followUser,
   unfollowUser,
+  sendShout,
 };

@@ -1578,10 +1578,20 @@ footer {
     width: 100%;
     resize: vertical;
     background-color: #152238;
+    font-size: 1rem;
   }
 
-  button {
+  input[type="submit"] {
     width: 50px;
+    background-color: #283A58;
+    color: map-get($dark-theme, font-light);
+    font-size: 1.2rem;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+      background-color: #2C4062;
+    }
   }
 }
 

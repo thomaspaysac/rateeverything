@@ -1,15 +1,18 @@
 import React from 'react';
-import format from 'date-fns/toDate';
+import { useParams } from 'react-router-dom';
+import { sendShout } from '../../functions';
 
 const Shoutbox = (props) => {
+  const urlParams = useParams();
+
   const Comment = ({data}) => {
-    const cleanDate = new Date((data.date.seconds)*1000).toISOString();
+    //const cleanDate = new Date((data.date.seconds)*1000).toISOString();
 
     return (
       <div className='shoutbox-message'>
         <div className='shoutbox_user-info'>
-          <div className='shout_author'>{data.user}</div>
-          <div className='shout_date'>{}</div>
+          <div className='shout_author'>{data.from}</div>
+          <div className='shout_date'>{data.date}</div>
         </div>
         <div className='shout_message'>{data.message}</div>
       </div>
@@ -21,6 +24,15 @@ const Shoutbox = (props) => {
     const writer = document.querySelector('.shoutbox_write-container');
     button.style.display = 'none';
     writer.style.display = 'flex';
+  }
+
+  const submitShout = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    if (data !== '') {
+      sendShout(props.currUser, urlParams.username, data.comment)
+    }
   }
 
   return (
@@ -35,10 +47,10 @@ const Shoutbox = (props) => {
           }
         </div>
         <button onClick={writeComment} className='shoutbox_write-button'>Write a comment</button>
-        <div className='shoutbox_write-container'>
-          <textarea maxLength={500}></textarea>
-          <button> > </button>
-        </div>
+          <form className='shoutbox_write-container' onSubmit={submitShout}>
+            <textarea name="comment" maxLength="500" rows="3"></textarea>
+            <input type='submit' value='>' />
+          </form>
       </div>
   );
 }
