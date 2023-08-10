@@ -56,7 +56,7 @@ const UserContainer = (props) => {
     if (props.user) {
       fetchAvatar();
     }
-  }, [props.user])
+  }, [props.user, props.userStatus])
 
   const AvatarBox = () => {
     if (!userAvatar) {

@@ -71,6 +71,7 @@ const SignUpPage = () => {
       const user = userCredential.user;
       updateProfile(auth.currentUser, { displayName: displayName })
       .then(userFirestoreSetup(displayName, email))
+      .then(window.location.reload())
       .catch((error) => console.log(error));
     })
     .catch((error) => {

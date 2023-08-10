@@ -15,19 +15,26 @@ const SocialContainer = ({follow}) => {
       <div className='profile_section-header bolded'>social</div>
       <div className='social-container'>
         <div className='social_following' onClick={() => console.log(follow)}>
-          Following:
+          <h3>Following:</h3>
+          <div>
           {
             follow.map((user) => {
               return (
-                <a href="">
-                  <div className='artificial-link' onClick={() => loadNewProfile(user)}>{user}</div>
-                </a>
+                <div className='artificial-link' onClick={() => loadNewProfile(user)}>
+                  <a href="">
+                    {user}
+                  </a>
+                </div>
               )
             })
           }
+          </div>
         </div>
         <div className='social_shoutbox'>
           <h3>Shoutbox</h3>
+          <div className='shoutbox_container'>
+
+          </div>
         </div>
 
       </div>

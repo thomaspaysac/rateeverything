@@ -1135,7 +1135,26 @@ footer {
 
 .social-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; }
+  grid-template-columns: 2fr 1fr;
+  background-color: #161A25; }
+  .social-container h3 {
+    font-weight: 500;
+    margin-bottom: 8px; }
+  .social-container .artificial-link {
+    padding: 4px; }
+    .social-container .artificial-link:nth-of-type(odd) {
+      background-color: #1B1E2A; }
+    .social-container .artificial-link:nth-of-type(even) {
+      background-color: #0B0E19; }
+  .social-container .social_following,
+  .social-container .social_shoutbox {
+    padding: 16px; }
+  .social-container .social_following > div {
+    border: 1px solid #2B2F3C; }
+
+.shoutbox_container {
+  min-height: 200px;
+  border: 1px solid #dbe0e99f; }
 
 .recent-page .recent_page-selector {
   width: 100%;

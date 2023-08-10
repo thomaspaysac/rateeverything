@@ -8,11 +8,11 @@
 
 ## Second temps
 ### Fonctionnalités
-- [ ] Amis -> afficher ratings en premier sur page release (extraire de l'array pour en créer un nouveau ?)
 - [ ] Shoutbox
 - [ ] Afficher indication de page active
 - [ ] Ajouter tri des albums selon critères sur page de groupe
 - [ ] Messagerie
+- [ ] Pages pour notes et reviews sur les pages release
 
 
 
@@ -22,7 +22,6 @@
 - [ ] Trie par date : modifier les dates car pour le moment trie dans l'ordre alphabétique des strings
 
 ### UI
-- [ ] Erreur d'affichage de l'avatar en header lors de la création d'un nouveau compte + lien vers user 'null'
 
 ### Comptes
 - [ ] Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link

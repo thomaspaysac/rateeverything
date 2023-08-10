@@ -1507,6 +1507,38 @@ footer {
 .social-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  background-color: #161A25;
+
+  h3 {
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .artificial-link {
+    padding: 4px;
+
+    &:nth-of-type(odd) {
+      background-color: #1B1E2A;
+    }
+
+    &:nth-of-type(even) {
+      background-color: #0B0E19;
+    }
+  }
+
+  .social_following,
+  .social_shoutbox {
+    padding: 16px;
+  }
+
+  .social_following > div {
+    border: 1px solid #2B2F3C;
+  }
+}
+
+.shoutbox_container {
+  min-height: 200px;
+  border: 1px solid #dbe0e99f;
 }
 
 // 'Recent' page

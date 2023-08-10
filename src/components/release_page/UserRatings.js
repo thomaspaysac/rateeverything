@@ -2,24 +2,32 @@ import {React, useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../../functions';
 import StarsDisplay from '../multipage/StarsDisplay';
+import PagesDisplay from '../multipage/PagesDisplay';
 import { StrictMode } from 'react';
 
 const UserRatingsPage = (props) => {
   const [personalRating, setPersonalRating] = useState();
   const [friendsRatings, setFriendsRatings] = useState([]);
   const [othersRatings, setOthersRatings] = useState([]);
+  const [displayedItems, setDisplayedItems] = useState();
+
+  const loadPage = (i, range) => {
+    setDisplayedItems(othersRatings.slice((i * range), (i * range + range)))
+  }
 
   const Avatar = ({user}) => {
     const [avatar, setAvatar] = useState();    
 
     const fetchAvatar = async (user) => {
-      const data = await getUserInfo(user);
-      setAvatar(data.avatar.link);
+      if (user) {
+        const data = await getUserInfo(user);
+        setAvatar(data.avatar.link);
+      }
     }
 
     useEffect(() => {
       fetchAvatar(user);
-    }, [])
+    }, [user])
 
     if (!avatar || avatar === '') {
       return null;
@@ -45,7 +53,6 @@ const UserRatingsPage = (props) => {
           leftoverRatings.push(el);
         }
       })
-      console.log(leftoverRatings);
       const sortedFriendsRatings = followedRatings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
       const sortedOthersRatings = leftoverRatings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
       setPersonalRating(userRating);
