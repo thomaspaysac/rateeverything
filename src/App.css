@@ -177,7 +177,8 @@ header {
   .header_avatar img {
     object-fit: cover;
     min-height: 100%;
-    min-width: 100%; }
+    min-width: 100%;
+    border-radius: 4px; }
 
 .header_user-container {
   display: flex;
@@ -1180,6 +1181,9 @@ footer {
   .shoutbox-message .shoutbox_user-info {
     display: flex;
     justify-content: space-between; }
+    .shoutbox-message .shoutbox_user-info .artificial-link {
+      padding: 0;
+      background-color: transparent; }
   .shoutbox-message .shout_delete-button {
     font-style: italic;
     background-color: transparent;

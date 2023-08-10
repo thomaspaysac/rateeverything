@@ -1,24 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { sendShout } from '../../functions';
+import { sendShout, removeShout } from '../../functions';
 
 const Shoutbox = (props) => {
   const urlParams = useParams();
-
-  const Comment = ({data}) => {
-    //const cleanDate = new Date((data.date.seconds)*1000).toISOString();
-
-    return (
-      <div className='shoutbox-message'>
-        <div className='shoutbox_user-info'>
-          <div className='shout_author bolded'><Link to={`/profile/${data.from}`}>{data.from}</Link></div>
-          <div className='shout_date greyed-info'>{data.date}</div>
-        </div>
-        <div className='shout_message'>{data.message}</div>
-        <button className='shout_delete-button'>delete</button>
-      </div>
-    )
-  }
 
   const writeComment = () => {
     const button = document.querySelector('.shoutbox_write-button');
@@ -31,15 +16,52 @@ const Shoutbox = (props) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     if (data !== '') {
-      sendShout(props.currUser, urlParams.username, data.comment)
+      sendShout(props.currUser, urlParams.username, data.comment);
     }
+  }
+
+  const deleteShout = (e) => {
+    if (e.target.className === 'shout_delete-button') {
+      const message = e.currentTarget;
+      const messageDate = message.querySelector('.shout_date').innerHTML;
+      const messageAuthor = message.querySelector('.shout_author').innerHTML;
+      const messageContent = message.querySelector('.shout_message').innerHTML;
+      props.shoutbox.forEach((el, i) => {
+        if (el.date === messageDate && el.from === messageAuthor && el.message === messageContent) {
+          removeShout(props.currUser, i);
+        }
+      })
+    }
+  }
+
+  const Comment = ({data}) => {
+    const deleteButton = () => {
+      if (props.currUser !== urlParams.username) {
+        return null;
+      } else {
+        return (
+          <button className='shout_delete-button'>delete</button>
+        )
+      }
+    }
+
+    return (
+      <div className='shoutbox-message' onClick={(e) => deleteShout(e)}>
+        <div className='shoutbox_user-info'>
+          <Link className='shout_author bolded' to={`/profile/${data.from}`}>{data.from}</Link>
+          <div className='shout_date greyed-info'>{data.date}</div>
+        </div>
+        <div className='shout_message'>{data.message}</div>
+        {deleteButton()}
+      </div>
+    )
   }
 
   return (
       <div className='shoutbox'>
         <div className='shoutbox_container'>
           {
-            props.shoutbox.map((el, i) => {
+            props.shoutbox.toReversed().map((el, i) => {
               return (
                 <Comment key={`shout-${i}`} data={el} />
               )

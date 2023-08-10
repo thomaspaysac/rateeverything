@@ -146,7 +146,7 @@ const ProfilePage = (props) => {
       getUserWishlist();
       userInfo();
     }
-  }, [props.username])
+  }, [props.username, urlParams.username])
 
   const avatarDisplay = () => {
     if (!avatar || avatar === '') {
