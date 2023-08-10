@@ -20,6 +20,7 @@ const userFirestoreSetup = async (username, email) => {
       caption: "",
     },
     follow: [],
+    shoutbox: [],
   });
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { sendShout } from '../../functions';
 
 const Shoutbox = (props) => {
@@ -11,10 +11,11 @@ const Shoutbox = (props) => {
     return (
       <div className='shoutbox-message'>
         <div className='shoutbox_user-info'>
-          <div className='shout_author'>{data.from}</div>
-          <div className='shout_date'>{data.date}</div>
+          <div className='shout_author bolded'><Link to={`/profile/${data.from}`}>{data.from}</Link></div>
+          <div className='shout_date greyed-info'>{data.date}</div>
         </div>
         <div className='shout_message'>{data.message}</div>
+        <button className='shout_delete-button'>delete</button>
       </div>
     )
   }
@@ -27,7 +28,6 @@ const Shoutbox = (props) => {
   }
 
   const submitShout = async (e) => {
-    e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     if (data !== '') {

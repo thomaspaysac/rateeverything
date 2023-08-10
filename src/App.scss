@@ -1558,16 +1558,39 @@ footer {
 .shoutbox_container {
   height: 300px;
   border: 1px solid #dbe0e99f;
+  overflow-y: scroll;
 }
 
 .shoutbox-message {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #dbe0e99f;
+  font-size: 0.9rem;
+  padding: 8px;
+  gap: 4px;
 
   .shoutbox_user-info {
     display: flex;
     justify-content: space-between;
-  }  
+  }
+
+  .shout_delete-button {
+    font-style: italic;
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    padding: 0;
+    font-weight: 400;
+    color: #9DA3AF;
+    font-size: 0.8rem;
+    align-self: end;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+      color: map-get($dark-theme, font-light);
+    }
+  }
 }
 
 .shoutbox_write-container {
