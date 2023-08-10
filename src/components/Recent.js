@@ -14,7 +14,7 @@ const Ratings = ({userRatings}) => {
               <div className='recent-rating_thumbnail'>
                 <img src={el.release.imagePath} alt="cover art" />
               </div>
-              <div className='recent-rating_date'>
+              <div className='recent-rating_date bolded'>
                 <div>{separatedDate[0]}</div> 
                 <div>{separatedDate[1]}</div> 
                 <div>{separatedDate[2]}</div>

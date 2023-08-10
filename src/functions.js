@@ -649,7 +649,7 @@ const updateCollection = async (username, releaseID, status) => {
           imagePath: release.imagePath,
         },
         status: 'In collection',
-        date: format(new Date(), 'dd MMM yy'),
+        date: format(new Date(), 'dd MMM yyyy'),
       })
     }
     // Remove from wishlist
@@ -679,7 +679,7 @@ const updateCollection = async (username, releaseID, status) => {
           imagePath: release.imagePath,
         },
         status: 'Wishlist',
-        date: format(new Date(), 'dd MMM yy'),
+        date: format(new Date(), 'dd MMM yyyy'),
       })
     }
     // Remove from collection

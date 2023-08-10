@@ -14,7 +14,7 @@ const Ratings = ({userRatings}) => {
               <div className='recent-rating_thumbnail'>
                 <img src={el.release.imagePath} alt="cover art" />
               </div>
-              <div className='recent-rating_date'>
+              <div className='recent-rating_date bolded'>
                 <div>{separatedDate[0]}</div> 
                 <div>{separatedDate[1]}</div> 
                 <div>{separatedDate[2]}</div>
@@ -65,7 +65,7 @@ const PersonalRatings = () => {
   return (
     <div className='content-page recent-page'>
       <div className='content-wrapper'>
-        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span class="bolded">{urlParams.username}'s recent ratings</span></div>
+        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span class="bolded">{urlParams.username}'s ratings</span></div>
         <div className='recent_page-selector'>
           <div className='bolded'>Page</div>
           <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />

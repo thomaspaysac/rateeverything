@@ -91,7 +91,7 @@ const ReleasePage = (props) => {
   useEffect(() => {
     document.title = `${release.release} by ${release.artist}`;
     getFriends();
-  }, [props.username])
+  }, [props.username, release])
 
 
   const ContributionsContainer = (props) => {

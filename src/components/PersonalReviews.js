@@ -7,13 +7,18 @@ const ReviewsList = ({reviews}) => {
   if (reviews) {
     return (
       reviews.map((el, i) => {
+        const separatedDate = el.reviewDate.split(' ');
         return (
           <div key={`review-${i}`} className="review-item">
               <div className='review_release-info'>
                 <div className='recent-rating_thumbnail'>
                   <img src={el.release.imagePath} alt="cover art" />
                 </div>
-                <div className='recent-rating_date bolded'>{el.reviewDate}</div>
+                <div className='recent-rating_date bolded'>
+                  <div>{separatedDate[0]}</div> 
+                  <div>{separatedDate[1]}</div> 
+                  <div>{separatedDate[2]}</div>
+                </div>
                 <div><Link to={`/artist/${el.release.artist}`} className='bolded'>{el.release.artist}</Link>
                   &nbsp; - &nbsp;
                 <Link to={`/release/${el.release.artist}/${el.release.releaseID}`}>{el.release.title}</Link> <span className='lists_date'>&nbsp;({el.release.year})</span></div>

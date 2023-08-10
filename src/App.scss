@@ -1579,7 +1579,7 @@ footer {
 
     .recent-rating_date {
       color: #B4B9C5;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       text-align: center;
       vertical-align: middle;
       width: 40px;
@@ -1637,7 +1637,6 @@ footer {
     background-color: #4E5465;
     color: #B4B9C5;
     font-size: 0.7rem;
-    font-weight: 400;
     margin: 4px;
     padding: 0;
     display: flex;
@@ -1726,10 +1725,17 @@ footer {
     .recent-rating_date {
       background-color: #4E5465;
       color: #B4B9C5;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       margin: 4px;
-      text-align: center;
-      vertical-align: middle;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  
+      div {
+        padding: 0;
+        border: none;
+      }
     }
   }
   
