@@ -16,7 +16,6 @@
 ## Roadmap:
 ### Features
 - [ ] Liens dans le header
-- [ ] Afficher indication de page active
 
 ### Bugs
 - [ ] Trie par date : modifier les dates car pour le moment trie dans l'ordre alphabétique des strings

@@ -1,14 +1,15 @@
 import {React, useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getPersonalRatings } from '../functions';
+import { getPersonalRatings, parseDate } from '../functions';
 import PagesDisplay from './multipage/PagesDisplay';
 import StarsDisplay from './multipage/StarsDisplay';
+import format from 'date-fns/format';
 
 const Ratings = ({userRatings}) => {
   if (userRatings) {
       return (
         userRatings.map((el, i) => {
-          const separatedDate = el.date.split(' ');
+          const separatedDate = format(el.date, 'dd MMM yyyy').split(' ');
           return (
             <div key={`recent-${i}`} className="recent-page_item">
               <div className='recent-rating_thumbnail'>
@@ -38,6 +39,10 @@ const Recent = () => {
 
   const fetchRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
+    const dataCopy = data.map(x => x);
+    data.forEach(el => {
+      el.date = parseDate(el.date);
+    })
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     setUserRatings(sortedData);
     setDisplayedRatings(sortedData.slice(0, 25))
@@ -55,7 +60,7 @@ const Recent = () => {
   return (
     <div className='content-page recent-page'>
       <div className='content-wrapper'>
-        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span class="bolded">{urlParams.username}'s recent ratings</span></div>
+        <div><Link to={`/profile/${urlParams.username}`}>{urlParams.username}</Link> {'>'} <span className="bolded">{urlParams.username}'s recent ratings</span></div>
         <div className='recent_page-selector'>
           <div className='bolded'>Page</div>
           <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
