@@ -628,7 +628,8 @@ footer {
 
 .release_tracklist {
   width: 100%;
-  padding: 24px; }
+  padding: 24px;
+  border-top: 1px solid #a8aeba65; }
   .release_tracklist table {
     width: 100%; }
   .release_tracklist table, .release_tracklist th, .release_tracklist td {
@@ -717,7 +718,8 @@ footer {
   flex-grow: 1; }
 
 .release-page_reviews-component {
-  padding: 25px 30px 15px 30px; }
+  padding: 25px 30px 15px 30px;
+  border-bottom: 1px solid #272A37; }
 
 .review-container {
   border-bottom: 1px solid #242834;
@@ -759,7 +761,8 @@ footer {
   color: #A8AEBA;
   white-space: pre-wrap; }
 
-.reviews_page-selector {
+.reviews_page-selector,
+.ratings_page-selector {
   display: flex;
   gap: 8px;
   justify-content: end;
@@ -767,9 +770,12 @@ footer {
   margin: 8px 0;
   padding: 8px;
   font-size: 0.9rem; }
-  .reviews_page-selector .page-number {
+  .reviews_page-selector .page-number,
+  .ratings_page-selector .page-number {
     color: #84C5FB; }
-    .reviews_page-selector .page-number:hover, .reviews_page-selector .page-number:active {
+    .reviews_page-selector .page-number:hover, .reviews_page-selector .page-number:active,
+    .ratings_page-selector .page-number:hover,
+    .ratings_page-selector .page-number:active {
       cursor: pointer; }
 
 .add-release_page .global-container,

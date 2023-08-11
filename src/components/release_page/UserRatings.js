@@ -11,10 +11,6 @@ const UserRatingsPage = (props) => {
   const [othersRatings, setOthersRatings] = useState([]);
   const [displayedItems, setDisplayedItems] = useState();
 
-  const loadPage = (i, range) => {
-    setDisplayedItems(othersRatings.slice((i * range), (i * range + range)))
-  }
-
   const Avatar = ({user}) => {
     const [avatar, setAvatar] = useState();    
 
@@ -58,6 +54,7 @@ const UserRatingsPage = (props) => {
       setPersonalRating(userRating);
       setFriendsRatings(sortedFriendsRatings);
       setOthersRatings(sortedOthersRatings);
+      setDisplayedItems(sortedOthersRatings.slice(0,15));
     }    
   }
 
@@ -103,12 +100,12 @@ const UserRatingsPage = (props) => {
     }
   }
 
-  const DisplayOthersRatings = () => {
-    if (!othersRatings) {
+  const DisplayOthersRatings = ({display}) => {
+    if (!display) {
       return null;
     } else {
       return (
-        othersRatings.map(el => {
+        display.map(el => {
           return (
             <div key={`${el.username}-rating`} className='release_user-ratings'>
               <div className='release-ratings_date'>{el.date}</div>
@@ -148,16 +145,24 @@ const UserRatingsPage = (props) => {
     } 
   }*/
 
+  const loadPage = (i, range) => {
+    setDisplayedItems(othersRatings.slice((i * range), (i * range + range)))
+  }
+
   useEffect(() => {
     sortRatings();
   }, [props.ratings, props.friends, props.username])
 
   return (
     <div className='release_user-ratings-list'>
-      <div className="rating-component_title" onClick={() => console.log(personalRating.date)}>{props.ratings.length} Ratings</div>
+      <div className="rating-component_title">{props.ratings.length} Ratings</div>  
+      <div className='ratings_page-selector'>
+        <div className='greyed-text'>Page</div>
+        <PagesDisplay items={othersRatings} range={15} loadPage={loadPage} />
+      </div>
       <DisplayPersonalRating />
       <DisplayFriendsRatings />
-      <DisplayOthersRatings />
+      <DisplayOthersRatings display={displayedItems} />
     </div>
   )
 }

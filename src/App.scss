@@ -850,6 +850,7 @@ footer {
 .release_tracklist {
   width: 100%;
   padding: 24px;
+  border-top: 1px solid #a8aeba65;
 
   table {
     width: 100%;
@@ -971,6 +972,7 @@ footer {
 // Release page: reviews component
 .release-page_reviews-component {
   padding: 25px 30px 15px 30px;
+  border-bottom: 1px solid #272A37;
 }
 
 .review-container {
@@ -1026,7 +1028,8 @@ footer {
   white-space: pre-wrap;
 }
 
-.reviews_page-selector {
+.reviews_page-selector,
+.ratings_page-selector {
   display: flex;
   gap: 8px;
   justify-content: end;
