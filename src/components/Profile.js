@@ -3,8 +3,7 @@ import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPer
 import { Link, useParams, useRouteLoaderData } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 import SocialContainer from "./profile_page/SocialContainer";
-
-import { followUser, unfollowUser } from "../functions";
+import { followUser, unfollowUser, parseDate } from "../functions";
 
 const ProfilePage = (props) => {
   const [artistsList, setArtistsList] = useState([]);
@@ -57,6 +56,9 @@ const ProfilePage = (props) => {
 
   const getUserRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
+    data.forEach(el => {
+      el.date = parseDate(el.date);
+    });
     const sortedDataByDate = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     const sortedRatingsByScore = Array(10).fill([]);
     sortedDataByDate.forEach(el => {
@@ -103,6 +105,9 @@ const ProfilePage = (props) => {
 
   const getUserReviews = async () => {
     const data = await getPersonalReviews(urlParams.username);
+    data.forEach(el => {
+      el.reviewDate = parseDate(el.reviewDate);
+    });
     const sortedData = data.sort((a, b) => (a.reviewDate < b.reviewDate) ? 1 : (a.reviewDate > b.reviewDate) ? -1 : 0);
     if (!data) {
       return null;
@@ -126,13 +131,20 @@ const ProfilePage = (props) => {
 
   const getUserCollection = async () => {
     const data = await getCollection(urlParams.username);
+    data.forEach(el => {
+      el.date = parseDate(el.date);
+    });
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     setUserCollection(sortedData);
   }
 
   const getUserWishlist = async () => {
     const data = await getWishlist(urlParams.username);
-    setUserWishlist(data);
+    data.forEach(el => {
+      el.date = parseDate(el.date);
+    });
+    const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    setUserWishlist(sortedData);
   }
 
   useEffect(() => {

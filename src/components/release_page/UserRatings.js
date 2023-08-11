@@ -1,9 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { getUserInfo } from '../../functions';
+import { getUserInfo, parseDate } from '../../functions';
 import StarsDisplay from '../multipage/StarsDisplay';
 import PagesDisplay from '../multipage/PagesDisplay';
-import { StrictMode } from 'react';
+import format from 'date-fns/format';
 
 const UserRatingsPage = (props) => {
   const [personalRating, setPersonalRating] = useState();
@@ -44,13 +44,21 @@ const UserRatingsPage = (props) => {
         if (el.username === props.username) {
           userRating = el;
         } else if ((props.friends).includes(el.username)) {
+          el.date = parseDate(el.date);
           followedRatings.push(el);
         } else {
+          el.date = parseDate(el.date);
           leftoverRatings.push(el);
         }
       })
       const sortedFriendsRatings = followedRatings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+      sortedFriendsRatings.forEach(el => {
+        el.date = format(el.date, 'dd MMM yyyy');
+      })
       const sortedOthersRatings = leftoverRatings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+      sortedOthersRatings.forEach(el => {
+        el.date = format(el.date, 'dd MMM yyyy');
+      })
       setPersonalRating(userRating);
       setFriendsRatings(sortedFriendsRatings);
       setOthersRatings(sortedOthersRatings);

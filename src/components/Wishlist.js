@@ -1,13 +1,14 @@
 import {React, useState, useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PagesDisplay from './multipage/PagesDisplay';
-import { getWishlist } from '../functions';
+import { getWishlist, parseDate } from '../functions';
+import format from 'date-fns/format';
 
 const DisplayWishlist = ({display}) => {
   if (display) {
       return (
         display.map((el, i) => {
-          const separatedDate = el.date.split(' ');
+          const separatedDate = format(el.date, 'dd MMM yyyy').split(' ');
           return (
             <div key={`collection-${i}`} className="collection-item">
               <div className='recent-rating_thumbnail'>
@@ -36,6 +37,9 @@ const Wishlist = () => {
 
   const fetchCollection = async () => {
     const data = await getWishlist(urlParams.username);
+    data.forEach(el => {
+      el.date = parseDate(el.date);
+    });
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     setUserWishlist(sortedData);
     setDisplayedItems(sortedData.slice(0, 25))

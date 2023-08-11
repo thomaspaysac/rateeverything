@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import StarsDisplay from '../multipage/StarsDisplay';
+import format from 'date-fns/format';
 
 const RecentRatings = (props) => {
   const urlParams = useParams();
 
+  console.log(props.userRatings.slice(0, 5));
 
   return (
     <div>
       <div className='recent-ratings'>
-        {props.userRatings.slice(-5).map((el, i) => {
-          const separatedDate = el.date.split(' ');
+        {props.userRatings.slice(0, 5).map((el, i) => {
+          const separatedDate = format(el.date, 'dd MMM yyyy').split(' ');
           return (
             <div key={`recent-${i}`} className="recent-rating_item">
               <div className='recent-rating_thumbnail'>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import format from 'date-fns/format';
 
 const Collection = (props) => {
   const urlParams = useParams();
@@ -8,7 +9,7 @@ const Collection = (props) => {
     <div>
       <div className='profile_collection'>
         {props.collection.slice(-5).map((el, i) => {
-          const separatedDate = el.date.split(' ');
+          const separatedDate = format(el.date, 'dd MMM yyyy').split(' ');
           return (
             <div key={`collection-${i}`} className="profile_collection-item">
               <div className='recent-rating_thumbnail'>

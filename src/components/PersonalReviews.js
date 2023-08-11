@@ -1,13 +1,14 @@
 import {React, useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PagesDisplay from './multipage/PagesDisplay';
-import { getPersonalReviews } from '../functions';
+import { getPersonalReviews, parseDate } from '../functions';
+import format from 'date-fns/format';
 
 const ReviewsList = ({reviews}) => {
   if (reviews) {
     return (
       reviews.map((el, i) => {
-        const separatedDate = el.reviewDate.split(' ');
+        const separatedDate = format(el.reviewDate, 'dd MMM yyyy').split(' ');
         return (
           <div key={`review-${i}`} className="review-item">
               <div className='review_release-info'>
@@ -42,6 +43,9 @@ const PersonalReviews = () => {
 
   const fetchCollection = async () => {
     const data = await getPersonalReviews(urlParams.username);
+    data.forEach(el => {
+      el.reviewDate = parseDate(el.reviewDate);
+    })
     const sortedData = data.sort((a, b) => (a.reviewDate < b.reviewDate) ? 1 : (a.reviewDate > b.reviewDate) ? -1 : 0);
     setUserReviews(sortedData);
     console.log(data);

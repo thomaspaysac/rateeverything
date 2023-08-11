@@ -39,10 +39,9 @@ const Recent = () => {
 
   const fetchRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
-    const dataCopy = data.map(x => x);
     data.forEach(el => {
       el.date = parseDate(el.date);
-    })
+    });
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     setUserRatings(sortedData);
     setDisplayedRatings(sortedData.slice(0, 25))

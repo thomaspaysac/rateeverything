@@ -2,13 +2,14 @@ import {React, useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import StarsDisplay from './multipage/StarsDisplay';
 import PagesDisplay from './multipage/PagesDisplay';
-import { getPersonalRatings } from '../functions';
+import { getPersonalRatings, parseDate } from '../functions';
+import format from 'date-fns/format';
 
 const Ratings = ({userRatings}) => {
   if (userRatings) {
       return (
         userRatings.map((el, i) => {
-          const separatedDate = el.date.split(' ');
+          const separatedDate = format(el.date, 'dd MMM yyyy').split(' ');
           return (
             <div key={`recent-${i}`} className="recent-page_item">
               <div className='recent-rating_thumbnail'>
@@ -38,6 +39,9 @@ const PersonalRatings = () => {
 
   const fetchRatings = async () => {
     const data = await getPersonalRatings(urlParams.username);
+    data.forEach(el => {
+      el.date = parseDate(el.date);
+    });
     const sortedData = data.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
     let targetRating = [];
     if(urlParams.rating !== 'all') {
