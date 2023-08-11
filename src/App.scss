@@ -139,10 +139,17 @@ button, input {
         cursor: auto;
       }
   
-      padding: 4px;
+      padding: 4px 8px;
+      margin: 4px 0;
       color: map-get($dark-theme, links);
       cursor: pointer;
     }
+}
+
+.page-number.active {
+  font-weight: 700;
+  color: map-get($dark-theme, font-light);
+  border: 1px solid map-get($dark-theme, links);
 }
 
 .lists_date {
@@ -154,6 +161,8 @@ button, input {
   color: map-get($dark-theme, links);
   font-weight: 700;
 }
+
+
 
 // Components styling
 // HEADER
@@ -1033,6 +1042,7 @@ footer {
   display: flex;
   gap: 8px;
   justify-content: end;
+  align-items: center;
   background-color: #1D212D;
   margin: 8px 0;
   padding: 8px;
@@ -1040,11 +1050,18 @@ footer {
 
   .page-number {
     color: map-get($dark-theme, links);
+    padding: 2px 4px;
 
     &:hover,
     &:active {
       cursor: pointer;
     }
+  }
+
+  .page-number.active {
+    font-weight: 700;
+    color: map-get($dark-theme, font-light);
+    border: 1px solid map-get($dark-theme, links);
   }
 }
 
@@ -1653,6 +1670,7 @@ footer {
     display: flex;
     gap: 4px;
     justify-content: center;
+    margin: 4px 0;
   
     div {
       &:first-of-type {
@@ -1660,9 +1678,15 @@ footer {
         cursor: auto;
       }
   
-      padding: 4px;
+      padding: 4px 8px;
       color: map-get($dark-theme, links);
       cursor: pointer;
+    }
+
+    .active {
+      font-weight: 700;
+      color: map-get($dark-theme, font-light);
+      border: 1px solid map-get($dark-theme, links);
     }
   }
 

@@ -17,8 +17,6 @@
 ### Features
 - [ ] Liens dans le header
 - [ ] Afficher indication de page active
-- [ ] Ajouter tri des albums selon critères sur page de groupe
-- [ ] Pages pour notes et reviews sur les pages release
 
 ### Bugs
 - [ ] Trie par date : modifier les dates car pour le moment trie dans l'ordre alphabétique des strings

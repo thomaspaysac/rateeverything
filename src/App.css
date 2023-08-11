@@ -92,12 +92,18 @@ button, input {
   gap: 4px;
   justify-content: center; }
   .page-selector div {
-    padding: 4px;
+    padding: 4px 8px;
+    margin: 4px 0;
     color: #84C5FB;
     cursor: pointer; }
     .page-selector div:first-of-type {
       color: #9DA3AF;
       cursor: auto; }
+
+.page-number.active {
+  font-weight: 700;
+  color: #DBE0E9;
+  border: 1px solid #84C5FB; }
 
 .lists_date {
   font-size: 0.85rem;
@@ -766,17 +772,24 @@ footer {
   display: flex;
   gap: 8px;
   justify-content: end;
+  align-items: center;
   background-color: #1D212D;
   margin: 8px 0;
   padding: 8px;
   font-size: 0.9rem; }
   .reviews_page-selector .page-number,
   .ratings_page-selector .page-number {
-    color: #84C5FB; }
+    color: #84C5FB;
+    padding: 2px 4px; }
     .reviews_page-selector .page-number:hover, .reviews_page-selector .page-number:active,
     .ratings_page-selector .page-number:hover,
     .ratings_page-selector .page-number:active {
       cursor: pointer; }
+  .reviews_page-selector .page-number.active,
+  .ratings_page-selector .page-number.active {
+    font-weight: 700;
+    color: #DBE0E9;
+    border: 1px solid #84C5FB; }
 
 .add-release_page .global-container,
 .edit-release_page .global-container,
@@ -1238,14 +1251,19 @@ footer {
   width: 100%;
   display: flex;
   gap: 4px;
-  justify-content: center; }
+  justify-content: center;
+  margin: 4px 0; }
   .recent-page .recent_page-selector div {
-    padding: 4px;
+    padding: 4px 8px;
     color: #84C5FB;
     cursor: pointer; }
     .recent-page .recent_page-selector div:first-of-type {
       color: #9DA3AF;
       cursor: auto; }
+  .recent-page .recent_page-selector .active {
+    font-weight: 700;
+    color: #DBE0E9;
+    border: 1px solid #84C5FB; }
 .recent-page img {
   height: 100%;
   width: 100%; }

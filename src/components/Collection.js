@@ -68,12 +68,6 @@ const Collection = () => {
           </div>
           <DisplayCollection display={displayedItems} />
       </div>
-
-      <div className='recent_page-selector'>
-        <div className='bolded'>Page</div>
-        <PagesDisplay items={userCollection} range={25} loadPage={loadPage} />
-      </div>
-
       </div>
     </div>
   );

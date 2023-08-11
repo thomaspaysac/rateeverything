@@ -45,7 +45,7 @@ const PersonalReviews = () => {
     const sortedData = data.sort((a, b) => (a.reviewDate < b.reviewDate) ? 1 : (a.reviewDate > b.reviewDate) ? -1 : 0);
     setUserReviews(sortedData);
     console.log(data);
-    setDisplayedItems(sortedData.slice(0, 25))
+    setDisplayedItems(sortedData.slice(0, 10))
   }
 
   useEffect(() => {
@@ -66,9 +66,8 @@ const PersonalReviews = () => {
 
         <div className='page-selector'>
           <div className='bolded'>Page</div>
-          <PagesDisplay items={userReviews} range={25} loadPage={loadPage} />
+          <PagesDisplay items={userReviews} range={10} loadPage={loadPage} />
         </div>
-
         <div className='recent-page_ratings'>
           <div className='recent_header'>
             <div className='recent_header-item'>Art</div>
@@ -78,12 +77,6 @@ const PersonalReviews = () => {
           </div>
           <ReviewsList reviews={displayedItems} />
         </div>
-
-        <div className='page-selector'>
-          <div className='bolded'>Page</div>
-          <PagesDisplay items={userReviews} range={25} loadPage={loadPage} />
-        </div>
-
       </div>
     </div>
   );

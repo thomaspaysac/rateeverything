@@ -70,7 +70,6 @@ const PersonalRatings = () => {
           <div className='bolded'>Page</div>
           <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
         </div>
-
         <div className='recent-page_ratings'>
           <div className='recent_header'>
             <div className='recent_header-item'>Art</div>
@@ -80,12 +79,6 @@ const PersonalRatings = () => {
           </div>
           <Ratings userRatings={displayedRatings} />
       </div>
-
-      <div className='recent_page-selector'>
-        <div className='bolded'>Page</div>
-        <PagesDisplay items={userRatings} range={25} loadPage={loadPage} />
-      </div>
-
       </div>
     </div>
   );

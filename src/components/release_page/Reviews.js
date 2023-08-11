@@ -89,12 +89,7 @@ const Reviews = (props) => {
         <PagesDisplay items={sortedReviews} range={8} loadPage={loadPage} />
       </div>
       <DisplayReviews display={displayedItems} />
-      <div className='reviews_page-selector'>
-        <div className='greyed-text'>Page</div>
-        <PagesDisplay items={sortedReviews} range={8} loadPage={loadPage} />
-      </div>
     </div>
-    
   );
 }
 

@@ -68,12 +68,6 @@ const Wishlist = () => {
           </div>
           <DisplayWishlist display={displayedItems} />
       </div>
-
-      <div className='recent_page-selector'>
-        <div className='bolded'>Page</div>
-        <PagesDisplay items={userWishlist} range={25} loadPage={loadPage} />
-      </div>
-
       </div>
     </div>
   );

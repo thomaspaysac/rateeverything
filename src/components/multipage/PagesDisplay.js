@@ -1,6 +1,14 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const PagesDisplay = ({items, range, loadPage}) => {
+  const [activePage, setActivePage] = useState(0);
+
+  useEffect(() => {
+
+  }, [activePage]);
+
   if (items) {
     // Split ratings in n pages of 'range' items
     let pagesNumber;
@@ -15,7 +23,11 @@ const PagesDisplay = ({items, range, loadPage}) => {
     return (
       pagesArray.map((el, i) => {
         return (
-          <div key={`page-${i+1}`} className='page-number' onClick={() => loadPage(i, range)} >
+          <div key={`page-${i+1}`} className={`page-number ${activePage === i ? 'active' : ''}`} onClick={() => {
+            setActivePage(i);
+            console.log(activePage, i);
+            loadPage(i, range);
+            }} >
             {i + 1}
           </div>
         )
