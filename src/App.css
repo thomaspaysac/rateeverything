@@ -759,6 +759,19 @@ footer {
   color: #A8AEBA;
   white-space: pre-wrap; }
 
+.reviews_page-selector {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+  background-color: #1D212D;
+  margin: 8px 0;
+  padding: 8px;
+  font-size: 0.9rem; }
+  .reviews_page-selector .page-number {
+    color: #84C5FB; }
+    .reviews_page-selector .page-number:hover, .reviews_page-selector .page-number:active {
+      cursor: pointer; }
+
 .add-release_page .global-container,
 .edit-release_page .global-container,
 .edit-artist_page .global-container {

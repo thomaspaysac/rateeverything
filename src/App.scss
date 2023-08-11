@@ -1026,6 +1026,25 @@ footer {
   white-space: pre-wrap;
 }
 
+.reviews_page-selector {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+  background-color: #1D212D;
+  margin: 8px 0;
+  padding: 8px;
+  font-size: 0.9rem;
+
+  .page-number {
+    color: map-get($dark-theme, links);
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
+  }
+}
+
 // Add & Edit release page
 .add-release_page,
 .edit-release_page,
