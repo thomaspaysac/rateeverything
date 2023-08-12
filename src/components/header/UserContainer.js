@@ -69,7 +69,7 @@ const UserContainer = (props) => {
   }
 
 
-  if (props.userStatus === false) {
+  if (!props.userStatus) {
     return (
       <Link to="/account/signin">sign in</Link>
     )

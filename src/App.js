@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import {
@@ -47,13 +47,16 @@ const App = () => {
   }
 
   function authStateObserver(user) {
-    if (user) { // User is signed in!
-      setIsSignedIn(true);
-      setUsername(getAuth().currentUser.displayName)
-      setUserID(getAuth().currentUser.uid)
-    } else {
-      setIsSignedIn(false);
-    }
+    setTimeout(() => {
+      if (user) { // User is signed in!
+        setIsSignedIn(true);
+        setUsername(getAuth().currentUser.displayName)
+        setUserID(getAuth().currentUser.uid)
+      } else {
+        setIsSignedIn(false);
+      }
+    }, 200)
+    
   }
 
   const Backdrop = () => {

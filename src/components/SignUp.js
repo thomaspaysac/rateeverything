@@ -6,6 +6,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { userFirestoreSetup, getAllUsernames } from "../functions";
 
@@ -60,7 +61,6 @@ const SignUpPage = () => {
 
   const sendForm = (data) => {
     createUser(data.email, data.password, data.username);
-    navigateTo('/');
   }
 
   const createUser = (email, password, displayName) => {
@@ -71,9 +71,12 @@ const SignUpPage = () => {
       const user = userCredential.user;
       updateProfile(auth.currentUser, { displayName: displayName })
       .then(userFirestoreSetup(displayName, email))
+      .then(navigateTo('/'))
       .catch((error) => console.log(error));
     })
     .catch((error) => {
+      const warningEmail = document.getElementById('email-taken');
+      warningEmail.style.display = 'block';
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -89,13 +92,14 @@ const SignUpPage = () => {
           <div className='signup-warning' id='password-falsematch'>⚠ The passwords you typed don't match. Please type them again.</div>
           <div className='signup-warning' id='email-invalid'>⚠ Your e-mail is not in a valid format. It should be in the format "user@domain.com".</div>
           <div className='signup-warning' id='tos-unchecked'>⚠ Please accept the terms of service.</div>
+          <div className='signup-warning' id='email-taken'>⚠ This e-mail is already in use.</div>
 
           
 
           <form method="post" id="signup-form" onSubmit={validateInput}>
             <div className="input-group">
               <label htmlFor="username">Username:</label>
-              <input type="text" id='username' name="username" aria-required="true" />
+              <input type="text" id='username' name="username" maxLength='20' aria-required="true" />
             </div>
             <div className="input-group">
               <label htmlFor="password">Enter a password:</label>

@@ -5,9 +5,7 @@ import format from 'date-fns/format';
 
 const RecentRatings = (props) => {
   const urlParams = useParams();
-
-  console.log(props.userRatings.slice(0, 5));
-
+  
   return (
     <div>
       <div className='recent-ratings'>
