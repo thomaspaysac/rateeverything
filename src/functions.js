@@ -591,9 +591,9 @@ const getPersonalReviews = async (username) => {
 const searchArtistByName = async (prompt) => {
   // Set up prompt and artist list for search
   const list = await getArtistsList();
-  const cleanPrompt = prompt.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/the/g, '');
+  const cleanPrompt = prompt.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
   const cleanList = list.map(el => {
-    return el.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/the/g, '');
+    return el.trim().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
   })
   // When a match is found, retrieve the artist from the list by index
   let index = 0;
@@ -601,8 +601,9 @@ const searchArtistByName = async (prompt) => {
   cleanList.forEach(el => {
     if (el.includes(cleanPrompt)) {
       targetIndexes.push(index);
+      index++;
     } else {
-      index++
+      index++;
     }
   })
   const searchResult = [];

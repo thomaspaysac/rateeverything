@@ -18,7 +18,6 @@
 - [ ] Liens dans le header
 
 ### Bugs
-- [ ] Trie par date : modifier les dates car pour le moment trie dans l'ordre alphabétique des strings
 
 ### UI
 
