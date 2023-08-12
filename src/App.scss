@@ -2275,7 +2275,8 @@ footer {
   }
 }
 
-.signup-warning {
+.signup-warning,
+.signin-warning {
   display: none;
   background-color: #1C2B45;
   border-left: 15px solid #FF6B6B;

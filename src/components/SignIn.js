@@ -21,30 +21,6 @@ const SignInPage = () => {
     document.title = 'Log In - Evaluate Your Sounds'
   })
 
-  const sendForm = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const formJson = Object.fromEntries(formData.entries());
-    createUser(formJson.email, formJson.password, formJson.username);
-    navigateTo('/');
-  }
-
-  const createUser = (email, password, displayName) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      updateProfile(auth.currentUser, { displayName: displayName })
-      .then(userFirestoreSetup(auth.currentUser.uid, displayName))
-      .catch((error) => console.log(error));
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
-  }
-
   const signIn = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -56,6 +32,8 @@ const SignInPage = () => {
       navigateTo('/');
     })
     .catch((error) => {
+      const warning = document.querySelector('.signin-warning');
+      warning.style.display = 'block';
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -79,6 +57,7 @@ const SignInPage = () => {
                 <input type="password" name="password"/>
               </div>
             </form>
+            <div className='signin-warning'>Invalid username or password.</div>
           </div>
           <input type="submit" form="signin-form" value="Log in >>" />
         </div>
