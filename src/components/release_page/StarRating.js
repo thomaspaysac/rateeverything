@@ -9,7 +9,8 @@ const StarRating = (props) => {
 
   const getPersonalRating = () => {
     if (!props.ratings) {
-      return null
+      setCurrRating(null);
+      return;
     } else {
       let personalRating;
       props.ratings.forEach(el => {

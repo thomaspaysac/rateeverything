@@ -84,7 +84,6 @@ const SignUpPage = () => {
         console.log(error);
       }
     }
-
   }
 
   /*const createUser = (email, password, displayName) => {
@@ -122,7 +121,7 @@ const SignUpPage = () => {
 
           <form method="post" id="signup-form" onSubmit={validateInput}>
             <div className="input-group">
-              <label htmlFor="username" onClick={() => console.log(getAuth().currentUser.emailVerified)}>Username:</label>
+              <label htmlFor="username">Username:</label>
               <input type="text" id='username' name="username" maxLength='20' aria-required="true" />
             </div>
             <div className="input-group">

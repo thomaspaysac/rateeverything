@@ -74,7 +74,6 @@ const SearchResult = (props) => {
       const result = await searchArtistByName(prompt);
       if (result.length === 0) {
         setArtists([]);
-        console.log('No artist with this name.')
       } else {
         setArtists(result);
       }
@@ -82,10 +81,25 @@ const SearchResult = (props) => {
       const result = await searchRelease(prompt);
       if (result.length === 0) {
         setReleases([]);
-        console.log('No release with this title.')
       } else {
         setReleases(result);
       }
+    }
+  }
+
+  const SubmissionPrompt = (props) => {
+    if (!props.userStatus || !props.isVerified) {
+      return (
+        <div>
+          If the artist you're looking for isn't listed, <Link to='/account/signin'>log in</Link> or verify your email to add it.
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          If the artist you're looking for isn't listed, go here: <Link to='/artist/add_artist'>Add artist</Link>
+        </div>
+      )
     }
   }
 
@@ -102,9 +116,7 @@ const SearchResult = (props) => {
           artists={artists} 
           releases={releases} 
         />
-        <div>
-          If the artist you're looking for isn't listed, go here: <Link to='/artist/add_artist'>Add artist</Link>
-        </div>
+        <SubmissionPrompt userStatus={props.userStatus} isVerified={props.isVerified} />
       </div>
     </div>
   );

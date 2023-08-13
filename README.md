@@ -23,8 +23,10 @@
 - [ ] Pages de collections: bad grid
 
 ### Accounts
-- [ ] Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link
+- [ ] Empêcher write dans les fonctions si pas connecté / pas vérifié (pop-up d'erreur ?)
+- [ ] Not logged in : pas de notes sur les pages releases, pas d'accès aux profiles des autres
+- [ ] La shoutbox ne fonctionne plus
 
 ### Cleanup
-- [ ] Supprimer tous les console.log()
+- [ ] Supprimer tous les console.log() / commentaires
 - [ ] Retirer functions et variables inutilisées

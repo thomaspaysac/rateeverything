@@ -36,6 +36,7 @@ import './App.css';
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
+  const [isVerified, setIsVerified] = useState(undefined);
   const [username, setUsername] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
 
@@ -54,8 +55,9 @@ const App = () => {
     setTimeout(() => {
       if (user) { // User is signed in!
         setIsSignedIn(true);
-        setUsername(getAuth().currentUser.displayName)
-        setUserID(getAuth().currentUser.uid)
+        setIsVerified(getAuth().currentUser.emailVerified);
+        setUsername(getAuth().currentUser.displayName);
+        setUserID(getAuth().currentUser.uid);
       } else {
         setIsSignedIn(false);
       }
@@ -78,10 +80,12 @@ const App = () => {
         <Route exact path="/release/:artist/:releaseID" 
           element={<ReleasePage 
             userStatus={isSignedIn}
-            username={username} />} />
+            username={username}
+            isVerified={isVerified} />} />
         <Route exact path="/artist/:artist" 
           element={<ArtistPage
-            userStatus={isSignedIn} />} />
+            userStatus={isSignedIn}
+            isVerified={isVerified} />} />
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />
         <Route exact path="/profile/:username" 
@@ -89,6 +93,7 @@ const App = () => {
             username={username} 
             userID={userID}
             userStatus={isSignedIn}
+            isVerified={isVerified}
             />}
         />
         <Route exact path="/profile/avatar" element={<Avatar username={username} />} />
@@ -101,7 +106,7 @@ const App = () => {
         <Route exact path="/artist/:artist/add_release" 
           element={<NewReleasePage
             username={username} />} />
-        <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult />} />
+        <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult userStatus={isSignedIn} isVerified={isVerified} />} />
         <Route exact path="/releases/edit/:id" 
           element={<EditRelease
             username={username} />} />

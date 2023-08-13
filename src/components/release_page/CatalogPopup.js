@@ -10,7 +10,8 @@ const CatalogPopup = ({releaseID, username}) => {
 
   const loadUserCatalog = async () => {
     if (!username) {
-      return null;
+      setUserCollection(null);
+      setUserWishlist(null);
     } else {
       const data = await getUserInfo(username);
       //setCatalogStatus(data);

@@ -25,7 +25,7 @@ const ProfilePage = (props) => {
   const urlParams = useParams();
 
   const SocialActions = () => {
-    if (!props.userStatus || props.username === urlParams.username) {
+    if (!props.userStatus || !props.isVerified || props.username === urlParams.username) {
       return null;
     } else if (personalFollow.includes(urlParams.username)) {
       return (
@@ -200,6 +200,7 @@ const ProfilePage = (props) => {
         userStatus={props.userStatus}
         currUser={props.username}
         shoutbox={userShoutbox}
+        isVerified={props.isVerified}
       />
 
     </div>

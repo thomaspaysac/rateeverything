@@ -93,20 +93,60 @@ const ReleasePage = (props) => {
     getFriends();
   }, [props.username, release])
 
+  const CatalogContainer = ({userStatus, isVerified}) => {
+    if (!userStatus) {
+      return (
+        <div className="rating-actions">
+          <div><Link to='/account/signin'>Log in</Link> to rate/catalog this release</div>
+        </div>
+      )
+    } else if (!isVerified) {
+      return (
+        <div className="rating-actions">
+          <div>Verify your email to rate/catalog this release</div>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="rating-actions">
+          <div className="rating-container">
+            <StarRating
+              releaseID={releaseID}
+              ratings={ratings}
+              username={props.username} />
+          </div>
+          <CatalogPopup 
+            releaseID={releaseID}
+            username={props.username}
+          />
+          <button className="catalog-review" onClick={toggleReviewUI}>
+            <img src={reviewIcon} alt='' /> Review
+          </button>
+        </div>
+      )
+    }
+  }
 
-  const ContributionsContainer = (props) => {
-    if (!props.userStatus) {
+  const ContributionsContainer = ({userStatus, isVerified}) => {
+    if (!userStatus) {
       return (
         <div><Link to='/account/signin'>Log in</Link> to submit a correction or upload art for this release</div>
       )
-    } else return (
-      <div className='contribution'>
-        <div className='contribution-group'>
-          <Link to={`/releases/edit/${releaseID}`}><button className='contribution-button'>Correct entry</button></Link>
-          <Link to={`/releases/history/${releaseID}`}><button className='contribution-button'>History</button></Link>
+    } else if (!isVerified) {
+      return (
+        <div>Verify your email to submit a correction or upload art for this release</div>
+      )
+    } else {
+      return (
+        <div className='contribution'>
+          <div className='contribution-group'>
+            <Link to={`/releases/edit/${releaseID}`}><button className='contribution-button'>Correct entry</button></Link>
+            <Link to={`/releases/history/${releaseID}`}><button className='contribution-button'>History</button></Link>
+          </div>
         </div>
-      </div>
-    );
+      );
+      }
   }
 
   return (
@@ -133,21 +173,7 @@ const ReleasePage = (props) => {
         />
         <div className="rating-component">
           <div className="rating-component_title">Rate/Catalog</div>
-            <div className="rating-actions">
-              <div className="rating-container">
-                <StarRating
-                    releaseID={releaseID}
-                    ratings={ratings}
-                    username={props.username} />
-                </div>
-              <CatalogPopup 
-                releaseID={releaseID}
-                username={props.username}
-              />
-              <button className="catalog-review" onClick={toggleReviewUI}>
-                <img src={reviewIcon} alt='' /> Review
-              </button>
-            </div>
+            <CatalogContainer userStatus={props.userStatus} isVerified={props.isVerified} />
         </div>
         <ReviewWritingUI 
           reviewUI={reviewUI}
@@ -165,7 +191,7 @@ const ReleasePage = (props) => {
 
       <div className='release-page_contributions'>
         <h2>Contributions</h2>
-        <ContributionsContainer userStatus={props.userStatus} />
+        <ContributionsContainer userStatus={props.userStatus} isVerified={props.isVerified} />
       </div>
     </div>
   )

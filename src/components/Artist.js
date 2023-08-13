@@ -33,8 +33,15 @@ const ArtistPage = (props) => {
   const ContributionsContainer = (props) => {
     if (!props.userStatus) {
       return (
-        <div><Link to='/account/signin'>Log in</Link> to submit a correction or upload art for this release</div>
+        <div><Link to='/account/signin'>Log in</Link> to submit a correction for this artist</div>
       )
+    } else if (!props.isVerified) {
+      return (
+        <div>
+          Verify your email to submit a correction for this artist
+        </div>
+      )
+    
     } else return (
       <div className='contribution'>
         <div className='contribution-group'>

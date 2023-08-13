@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Shoutbox from './Shoutbox';
 
-const SocialContainer = ({follow, userStatus, currUser, shoutbox}) => {
+const SocialContainer = ({follow, userStatus, currUser, shoutbox, isVerified}) => {
   const navigateTo = useNavigate()
 
   const loadNewProfile = (user) => {
@@ -12,9 +12,18 @@ const SocialContainer = ({follow, userStatus, currUser, shoutbox}) => {
     window.location.reload();
   }
 
-  return (
+  if (!isVerified) {
+    return (
+      <div>
+      <div className='profile_section-header bolded'>social</div>
+      <div className='social-container'>
+        <h3>Verify your email to see this section</h3>
+      </div>
+    </div>
+    )
+  } else return (
     <div>
-      <div className='profile_section-header bolded' onClick={() => console.log(userStatus, currUser)}>social</div>
+      <div className='profile_section-header bolded'>social</div>
       <div className='social-container'>
         <div className='social_following'>
           <h3>Following:</h3>
