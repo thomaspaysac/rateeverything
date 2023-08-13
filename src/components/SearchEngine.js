@@ -25,7 +25,11 @@ const SearchEngine = () => {
     const searchcategory = data.searchcategory;
     backdrop.style.display = 'none';
     choices.style.display = 'none';
-    navigateTo(`/search/${searchcategory}/${searchterm}`);
+    if (searchterm.trim().length !== 0) {
+      navigateTo(`/search/${searchcategory}/${searchterm}`);
+    } else {
+      return;
+    }
   }
 
   return (

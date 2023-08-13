@@ -158,6 +158,7 @@ const UserRatingsPage = (props) => {
   }
 
   useEffect(() => {
+    console.log(props.ratings)
     sortRatings();
   }, [props.ratings, props.friends, props.username])
 

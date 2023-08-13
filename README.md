@@ -23,7 +23,6 @@
 - [ ] Pages de collections: bad grid
 
 ### Accounts
-- [ ] Empêcher write dans les fonctions si pas connecté / pas vérifié (pop-up d'erreur ?)
 - [ ] Not logged in : pas de notes sur les pages releases, pas d'accès aux profiles des autres
 - [ ] La shoutbox ne fonctionne plus
 

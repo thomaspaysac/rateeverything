@@ -1355,8 +1355,8 @@ footer {
   margin-bottom: 12px; }
 
 .last-review_art img {
-  max-width: 100%;
-  min-width: 44px; }
+  height: 100%;
+  width: 100%; }
 
 .last-review_right-col {
   padding-left: 32px; }

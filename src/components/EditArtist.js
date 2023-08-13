@@ -57,6 +57,10 @@ const EditArtist = (props) => {
 
   const sendForm = (e) => {
     e.preventDefault();
+    if (!props.userStatus || !props.isVerified) {
+      navigateTo('/error/insufficient-permission');
+      return;
+    }
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.artistGenres.split(',');

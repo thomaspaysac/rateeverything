@@ -136,7 +136,7 @@ const submitArtist = async (artist, formed, country, genres, username) => {
     })
   }
   } catch(error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -183,29 +183,34 @@ const submitRelease = async (artist, release, year, tracks, genres, ratings, rev
     date: format(new Date(), 'dd/LL/yyyy at HH:mm'),
     changes: ['Original submission']
   }
-  await updateDoc(artistRef, {
-    releases: arrayUnion({
-      artist: artist, 
+  try {
+    await updateDoc(artistRef, {
+      releases: arrayUnion({
+        artist: artist, 
+        release: release,
+        year: year,
+        tracks: tracks,
+        ratings: ratings,
+        reviews: reviews,
+        genres: genres,
+        albumID: albumID,
+        average: '',
+        imagePath: imagePath,
+        editHistory: [originalHistory],
+      })
+    })
+    pushLatestRelease({
+      artist: artist,
       release: release,
       year: year,
-      tracks: tracks,
-      ratings: ratings,
-      reviews: reviews,
-      genres: genres,
       albumID: albumID,
-      average: '',
       imagePath: imagePath,
-      editHistory: [originalHistory],
+      genres: genres,
     })
-  })
-  pushLatestRelease({
-    artist: artist,
-    release: release,
-    year: year,
-    albumID: albumID,
-    imagePath: imagePath,
-    genres: genres,
-  })
+  } catch (error) {
+    console.log(error)
+  }
+    
 }
 
 const updateRelease = async (artist, albumID, release, year, tracks, genres, username, imagePath) => {

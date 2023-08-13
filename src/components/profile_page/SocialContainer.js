@@ -11,15 +11,24 @@ const SocialContainer = ({follow, userStatus, currUser, shoutbox, isVerified}) =
     navigateTo(`/profile/${user}`);
     window.location.reload();
   }
-
+  if (!userStatus) {
+    return (
+      <div>
+        <div className='profile_section-header bolded'>social</div>
+          <div className='social-container'>
+            <h3><Link to='/account/signin'>Log in</Link> to see this section</h3>
+          </div>
+      </div>
+    )
+  }
   if (!isVerified) {
     return (
       <div>
-      <div className='profile_section-header bolded'>social</div>
-      <div className='social-container'>
-        <h3>Verify your email to see this section</h3>
+        <div className='profile_section-header bolded'>social</div>
+          <div className='social-container'>
+            <h3>Verify your email to see this section</h3>
+           </div>
       </div>
-    </div>
     )
   } else return (
     <div>

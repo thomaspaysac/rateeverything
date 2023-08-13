@@ -28,29 +28,34 @@ const ArtistPage = (props) => {
   useEffect(() => {
     document.title = `${urlParams} Albums - Evaluate Your Sounds`;
     fetchData(urlParams);
-  }, []);
+  }, [props.username]);
 
-  const ContributionsContainer = (props) => {
-    if (!props.userStatus) {
+  useEffect(()  => {
+    console.log(props.userStatus, props.isVerified);
+  }, [props.userStatus, props.isVerified])
+
+  const ContributionsContainer = ({userStatus, isVerified}) => {   
+    if (!userStatus) {
       return (
         <div><Link to='/account/signin'>Log in</Link> to submit a correction for this artist</div>
       )
-    } else if (!props.isVerified) {
+    } else if (!isVerified) {
       return (
         <div>
           Verify your email to submit a correction for this artist
         </div>
       )
-    
-    } else return (
-      <div className='contribution'>
-        <div className='contribution-group'>
-          <Link to={`/artist/edit/${artist.artistID}`}><button className='contribution-button'>Update profile</button></Link>
-          <Link to={`/artist/history/${artist.artistID}`}><button className='contribution-button'>History</button></Link>
-          <Link to={`/artist/${urlParams}/add_release`}><button className="contribution-button">Add release</button></Link>
+    } else {
+      return (
+        <div className='contribution'>
+          <div className='contribution-group'>
+            <Link to={`/artist/edit/${artist.artistID}`}><button className='contribution-button'>Update profile</button></Link>
+            <Link to={`/artist/history/${artist.artistID}`}><button className='contribution-button'>History</button></Link>
+            <Link to={`/artist/${urlParams}/add_release`}><button className="contribution-button">Add release</button></Link>
+          </div>
         </div>
-      </div>
-    );
+      );  
+    } 
   }
 
   return (
@@ -75,7 +80,7 @@ const ArtistPage = (props) => {
       </div>
       <div className='artist-page_contributions'>
           <h2>Contributions</h2>
-          <ContributionsContainer userStatus={props.userStatus} />
+          <ContributionsContainer userStatus={props.userStatus} isVerified={props.isVerified} />
         </div>
     </div>
   )

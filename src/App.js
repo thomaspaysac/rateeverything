@@ -30,6 +30,7 @@ import EditHistory from "./components/release_page/EditHistory";
 import EditArtist from "./components/EditArtist";
 import EditHistoryArtist from "./components/artist_page/EditHistory";
 import ThanksPage from "./components/ThanksPage";
+import ErrorPage from "./components/ErrorPage";
 
 import './App.css';
 
@@ -84,6 +85,7 @@ const App = () => {
             isVerified={isVerified} />} />
         <Route exact path="/artist/:artist" 
           element={<ArtistPage
+            username={username}
             userStatus={isSignedIn}
             isVerified={isVerified} />} />
         <Route exact path="/account/signin" element={<SignInPage />} />
@@ -102,21 +104,20 @@ const App = () => {
         <Route exact path="/collection/:username/collection" element={<Collection />} />
         <Route exact path="/collection/:username/wishlist" element={<Wishlist />} />
         <Route exact path="/collection/:username/reviews" element={<PersonalReviews />} />
-        <Route exact path="/artist/add_artist" element={<NewArtistPage username={username} />} />
-        <Route exact path="/artist/:artist/add_release" 
-          element={<NewReleasePage
-            username={username} />} />
+        <Route exact path="/artist/add_artist" element={<NewArtistPage username={username} userStatus={isSignedIn} isVerified={isVerified} />} />
+        <Route exact path="/artist/:artist/add_release" element={<NewReleasePage username={username} userStatus={isSignedIn} isVerified={isVerified} />} />
         <Route exact path="/search/:searchcategory/:searchterm" element={<SearchResult userStatus={isSignedIn} isVerified={isVerified} />} />
         <Route exact path="/releases/edit/:id" 
           element={<EditRelease
-            username={username} />} />
+            username={username} userStatus={isSignedIn} isVerified={isVerified} />} />
         <Route exact path="/releases/history/:id" element={<EditHistory />} />
         <Route exact path="/artist/edit/:id" 
           element={<EditArtist
-            username={username} />} />
+            username={username} userStatus={isSignedIn} isVerified={isVerified} />} />
         <Route exact path="/artist/history/:id" element={<EditHistoryArtist />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/submitted" element={<ThanksPage />} />
+        <Route exact path="/error/:code" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

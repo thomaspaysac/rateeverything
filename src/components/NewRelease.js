@@ -9,7 +9,7 @@ const NewReleasePage = (props) => {
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    document.title = 'Release Editing - Evaluate Your Sounds'
+    document.title = 'Release Editing - Evaluate Your Sounds';
   }, [])
 
   const addTrack = () => {
@@ -76,8 +76,12 @@ const NewReleasePage = (props) => {
     )
   }
 
-  const sendForm = async (e) => {
+  const sendForm = async (e) => {    
     e.preventDefault();
+    if (!props.userStatus || !props.isVerified) {
+      navigateTo('/error/insufficient-permission');
+      return;
+    }
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');

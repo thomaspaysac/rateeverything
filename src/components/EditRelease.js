@@ -75,6 +75,10 @@ const EditRelease = (props) => {
 
   const sendForm = async (e) => {
     e.preventDefault();
+    if (!props.userStatus || !props.isVerified) {
+      navigateTo('/error/insufficient-permission');
+      return;
+    }
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const genres = data.genres.split(',');
@@ -168,7 +172,7 @@ const EditRelease = (props) => {
     document.title = 'Release Editing - Evaluate Your Sounds'
     getReleaseInfo();
   }, [])
-
+  
   return (
     <div className='content-page edit-release_page'>
       <div className='content-wrapper'>
