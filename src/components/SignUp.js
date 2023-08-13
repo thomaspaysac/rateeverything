@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
+  sendEmailVerification,
 } from 'firebase/auth';
 import { userFirestoreSetup, getAllUsernames } from "../functions";
 
@@ -46,14 +47,18 @@ const SignUpPage = () => {
     // Check data and display warnings as needed
     if (!usernameRegex.test(formJson.username)) {
       warningUsernameInvalid.style.display = 'block';
+      return;
     } else if (usernamesList.includes(formJson.username)) {
       warningUsernameTaken.style.display = 'block';
+      return;
     } 
     if (formJson.password !== formJson.passwordCheck) {
       warningPasswordMatchFailed.style.display = 'block';
+      return;
     }
     if (!formJson.signupCheckbox) {
       warningTOS.style.display = 'block';
+      return;
     } else {
       sendForm(formJson)
     }
@@ -63,7 +68,26 @@ const SignUpPage = () => {
     createUser(data.email, data.password, data.username);
   }
 
-  const createUser = (email, password, displayName) => {
+  const createUser = async (email, password, displayName) => {
+    const auth = getAuth();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    sendEmailVerification(auth.currentUser);
+    updateProfile(auth.currentUser, { displayName: displayName })
+    userFirestoreSetup(displayName, email)
+    navigateTo('/')
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        const warningEmail = document.getElementById('email-taken');
+        warningEmail.style.display = 'block';
+      } else {
+        console.log(error);
+      }
+    }
+
+  }
+
+  /*const createUser = (email, password, displayName) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -80,7 +104,7 @@ const SignUpPage = () => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
-  }
+  }*/
 
   return (
     <div className='content-page'>
@@ -98,7 +122,7 @@ const SignUpPage = () => {
 
           <form method="post" id="signup-form" onSubmit={validateInput}>
             <div className="input-group">
-              <label htmlFor="username">Username:</label>
+              <label htmlFor="username" onClick={() => console.log(getAuth().currentUser.emailVerified)}>Username:</label>
               <input type="text" id='username' name="username" maxLength='20' aria-required="true" />
             </div>
             <div className="input-group">

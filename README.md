@@ -23,9 +23,7 @@
 - [ ] Pages de collections: bad grid
 
 ### Accounts
-- [ ] Les messages d'erreur n'empêchent pas de créer le compte (nom d'utilisateur déjà pris)
 - [ ] Vérifier email https://firebase.google.com/docs/auth/admin/email-action-links?hl=en#generate_password_reset_email_link
-- [ ] Vérification validité / disponibilité infos avant création de compte
 
 ### Cleanup
 - [ ] Supprimer tous les console.log()

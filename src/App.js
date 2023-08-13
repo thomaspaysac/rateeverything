@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useInsertionEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import {
@@ -38,6 +38,10 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(undefined);
   const [username, setUsername] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
+
+  useEffect(() => {
+    window.ResizeObserver = null;
+  }, []);
 
   // Firebase authentication
   initFirebaseAuth();

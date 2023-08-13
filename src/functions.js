@@ -628,8 +628,9 @@ const searchRelease = async (prompt) => {
   cleanList.forEach(el => {
     if (el.includes(cleanPrompt)) {
       targetIndexes.push(index);
+      index++;
     } else {
-      index++
+      index++;
     }
   })
   const searchResult = []
