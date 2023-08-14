@@ -88,11 +88,8 @@ const UserContainer = (props) => {
            />
         <div className="menu-opened">
           <Link to={`/profile/${props.user}`}><div>Profile</div></Link>
-          <div>Music collection</div>
-          <div>Lists</div>
-          <div>Messaging</div>
-          <div>Settings</div>
-          <div>Submissions</div>
+          <Link to ={`/collection/${props.user}/ratings/all`}><div>Music collection</div></Link>
+          <Link to='/account/settings'><div>Settings</div></Link>
           <button className="header_logout-button" onClick={() => logOutPrompt()}>Log out</button>
         </div>
       </div>

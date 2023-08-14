@@ -199,7 +199,7 @@ header {
 .menu-opened {
   display: none;
   position: absolute;
-  transform: translateY(155px);
+  transform: translateY(99px);
   background-color: #152238;
   border-top: 2px solid #45474C;
   width: 220px;
@@ -1728,5 +1728,42 @@ footer {
   margin-top: 12px; }
   .forgot-password_page input[type="submit"]:hover, .forgot-password_page input[type="submit"]:active {
     background-color: #005DBF; }
+
+.settings-page {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+  .settings-page .content-wrapper {
+    width: clamp(300px, 50%, 900px); }
+    .settings-page .content-wrapper .user-actions {
+      display: flex;
+      flex-direction: column; }
+  .settings-page h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #8A919E;
+    width: 100%;
+    border-bottom: 1px solid #8A919E;
+    margin-bottom: 12px; }
+  .settings-page button {
+    width: fit-content;
+    margin: 24px 0;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #005DBF;
+    cursor: pointer; }
+    .settings-page button:hover, .settings-page button:active {
+      background-color: #3f93d4; }
+    .settings-page button:first-of-type {
+      background-color: #b53c3e; }
+      .settings-page button:first-of-type:hover, .settings-page button:first-of-type:active {
+        background-color: #cc6c7c; }
+  .settings-page .email-notification {
+    display: none;
+    margin-top: 12px;
+    font-size: 1.1rem; }
 
 /*# sourceMappingURL=App.css.map */

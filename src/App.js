@@ -32,6 +32,7 @@ import EditHistoryArtist from "./components/artist_page/EditHistory";
 import ThanksPage from "./components/ThanksPage";
 import ErrorPage from "./components/ErrorPage";
 import PWForgot from "./components/PWForgot";
+import UserSettings from "./components/UserSettings";
 
 import './App.css';
 
@@ -41,6 +42,7 @@ const App = () => {
   const [isVerified, setIsVerified] = useState(undefined);
   const [username, setUsername] = useState(undefined);
   const [userID, setUserID] = useState(undefined);
+  const [email, setEmail] = useState(undefined);
 
   useEffect(() => {
     window.ResizeObserver = null;
@@ -60,6 +62,7 @@ const App = () => {
         setIsVerified(getAuth().currentUser.emailVerified);
         setUsername(getAuth().currentUser.displayName);
         setUserID(getAuth().currentUser.uid);
+        setEmail(getAuth().currentUser.email);
       } else {
         setIsSignedIn(false);
       }
@@ -92,6 +95,7 @@ const App = () => {
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />
         <Route exact path='/account/forgot_password' element={<PWForgot />} />
+        <Route exact path='/account/settings' element={<UserSettings email={email} isVerified={isVerified} />} />
         <Route exact path="/profile/:username" 
           element={<ProfilePage 
             username={username} 
