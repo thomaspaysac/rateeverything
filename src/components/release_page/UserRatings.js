@@ -35,7 +35,6 @@ const UserRatingsPage = (props) => {
   }
 
   const sortRatings = () => {
-    if (props.ratings && props.friends && props.username) {
       const allRatings = props.ratings;
       let userRating;
       const followedRatings = [];
@@ -63,7 +62,6 @@ const UserRatingsPage = (props) => {
       setFriendsRatings(sortedFriendsRatings);
       setOthersRatings(sortedOthersRatings);
       setDisplayedItems(sortedOthersRatings.slice(0,15));
-    }    
   }
 
   const DisplayPersonalRating = () => {
@@ -158,7 +156,6 @@ const UserRatingsPage = (props) => {
   }
 
   useEffect(() => {
-    console.log(props.ratings)
     sortRatings();
   }, [props.ratings, props.friends, props.username])
 

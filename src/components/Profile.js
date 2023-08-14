@@ -119,14 +119,17 @@ const ProfilePage = (props) => {
   }
 
   const userInfo = async () => {
+    console.log(urlParams);
     const data = await getUserInfo(urlParams.username);
-    const personalInfo = await getUserInfo(props.username);
     setUserDate(data.date);
     setUserShoutbox(data.shoutbox);
     setAvatar(data.avatar.link);
     setAvatarCaption(data.avatar.caption);
     setFollowing(data.follow);
-    setPersonalFollow(personalInfo.follow);
+    if (props.username) {
+      const personalInfo = await getUserInfo(props.username);
+      setPersonalFollow(personalInfo.follow);
+    }
   }
 
   const getUserCollection = async () => {
@@ -149,9 +152,10 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     document.title = `Profile: ${urlParams.username} - Evaluate Your Sounds`
+    console.log(urlParams);
     getReleases();
     getList();
-    if (urlParams.username && props.username) {
+    if (urlParams.username) {
       getUserRatings();
       getUserReviews();
       getUserCollection();

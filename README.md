@@ -23,8 +23,7 @@
 - [ ] Pages de collections: bad grid
 
 ### Accounts
-- [ ] Not logged in : pas de notes sur les pages releases, pas d'accès aux profiles des autres
-- [ ] La shoutbox ne fonctionne plus
+- [ ] Ajouter récupération du mot de passe + renvoyer lien de confirmation
 
 ### Cleanup
 - [ ] Supprimer tous les console.log() / commentaires
