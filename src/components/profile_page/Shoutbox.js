@@ -1,7 +1,6 @@
-import {React, useEffect} from 'react';
+import {React } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { sendShout, removeShout } from '../../functions';
-import userEvent from '@testing-library/user-event';
 
 const Shoutbox = (props) => {
   const urlParams = useParams();

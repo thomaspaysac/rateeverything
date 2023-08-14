@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import RecentRatings from './RecentRatings';
 import PersonalReviews from './PersonalReviews';
 import PersonalRatings from './PersonalRatings';

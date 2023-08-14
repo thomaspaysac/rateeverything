@@ -1,12 +1,9 @@
-import {React, useState, useEffect} from "react";
+import {React, useState} from "react";
 import { getReleaseByID, updateReleaseRating } from "../../functions";
 import { getAuth } from "firebase/auth";
-import StarRating from "./StarRating";
 import "C:/Users/paysa/Documents/GitHub/rateeverything/src/App.css";
 
 const Rating = (props) => {
-  const [targetRelease, setTargetRelease] = useState();
-
   const updateRating = async (e) => {
     e.preventDefault();
     const release = await getReleaseByID(props.releaseID);

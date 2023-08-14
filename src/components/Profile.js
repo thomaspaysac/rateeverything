@@ -1,13 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { getUserInfo, getArtistsList, getAllReleases, getPersonalRatings, getPersonalReviews, getCollection, getWishlist } from "../functions";
-import { Link, useParams, useRouteLoaderData } from "react-router-dom";
+import { getUserInfo, getPersonalRatings, getPersonalReviews, getCollection, getWishlist } from "../functions";
+import { Link, useParams } from "react-router-dom";
 import ContentContainer from "./profile_page/ContentDisplay";
 import SocialContainer from "./profile_page/SocialContainer";
 import { followUser, unfollowUser, parseDate } from "../functions";
 
 const ProfilePage = (props) => {
-  const [artistsList, setArtistsList] = useState([]);
-  const [releasesList, setReleasesList] = useState([]);
   const [userRatings, setUserRatings] = useState([]);
   const [lastRatings, setLastRatings] = useState([]);
   const [ratingsByScore, setRatingsByScore] = useState([]);
@@ -42,16 +40,6 @@ const ProfilePage = (props) => {
         </div>
       )
     }
-  }
-
-  const getReleases = async () => {
-    const data = await getAllReleases();
-    setReleasesList(data);
-  }
-
-  const getList = async () => {
-    const data = await getArtistsList();
-    setArtistsList(data);
   }
 
   const getUserRatings = async () => {
@@ -119,7 +107,6 @@ const ProfilePage = (props) => {
   }
 
   const userInfo = async () => {
-    console.log(urlParams);
     const data = await getUserInfo(urlParams.username);
     setUserDate(data.date);
     setUserShoutbox(data.shoutbox);
@@ -152,9 +139,6 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     document.title = `Profile: ${urlParams.username} - Evaluate Your Sounds`
-    console.log(urlParams);
-    getReleases();
-    getList();
     if (urlParams.username) {
       getUserRatings();
       getUserReviews();

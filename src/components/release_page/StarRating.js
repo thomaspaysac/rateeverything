@@ -1,7 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import { getAuth } from 'firebase/auth';
 import { getReleaseByID, updateReleaseRating } from '../../functions';
-import { all } from 'axios';
 
 const StarRating = (props) => {
   const [currRating, setCurrRating] = useState();

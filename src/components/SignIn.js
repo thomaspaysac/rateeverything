@@ -4,11 +4,8 @@ import firebase from "firebase/compat/app";
 import { firebaseConfig } from "../firebase";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
 } from 'firebase/auth';
-import { userFirestoreSetup } from "../functions";
 
 import "../App.css"
 
@@ -28,14 +25,11 @@ const SignInPage = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, formJson.email, formJson.password)
     .then((userCredential) => {
-      const user = userCredential.user;
       navigateTo('/');
     })
     .catch((error) => {
       const warning = document.querySelector('.signin-warning');
       warning.style.display = 'block';
-      const errorCode = error.code;
-      const errorMessage = error.message;
     });
   }
 

@@ -176,7 +176,7 @@ const EditRelease = (props) => {
   return (
     <div className='content-page edit-release_page'>
       <div className='content-wrapper'>
-        <div className="section-header bolded" onClick={() => console.log(releaseInfo)}>Edit release</div>
+        <div className="section-header bolded">Edit release</div>
         <div className='warning'>
           <div className="bolded">Please Note:</div>
           <ol>

@@ -276,7 +276,6 @@ const updateRelease = async (artist, albumID, release, year, tracks, genres, use
     editHistory: history,
   }
   copyReleases[targetIndex] = newObject;
-  console.log(targetRelease, tracks);
   // Update doc with new data
   await updateDoc(artistRef, 
     {
@@ -494,7 +493,6 @@ const getRatingsByRelease = async (release) => {
   const userRatingsData = []
   ratings.map((el) => userRatingsData.push([el.username, el.rating]))
   // Trier les notes par date
-  console.log(userRatingsData);
   return userRatingsData;
 }
 

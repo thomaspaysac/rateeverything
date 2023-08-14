@@ -48,7 +48,6 @@ const PersonalReviews = () => {
     })
     const sortedData = data.sort((a, b) => (a.reviewDate < b.reviewDate) ? 1 : (a.reviewDate > b.reviewDate) ? -1 : 0);
     setUserReviews(sortedData);
-    console.log(data);
     setDisplayedItems(sortedData.slice(0, 10))
   }
 

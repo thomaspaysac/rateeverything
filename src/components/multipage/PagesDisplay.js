@@ -25,7 +25,6 @@ const PagesDisplay = ({items, range, loadPage}) => {
         return (
           <div key={`page-${i+1}`} className={`page-number ${activePage === i ? 'active' : ''}`} onClick={() => {
             setActivePage(i);
-            console.log(activePage, i);
             loadPage(i, range);
             }} >
             {i + 1}

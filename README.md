@@ -25,5 +25,3 @@
 ### Accounts
 
 ### Cleanup
-- [ ] Supprimer tous les console.log() / commentaires
-- [ ] Retirer functions et variables inutilisées

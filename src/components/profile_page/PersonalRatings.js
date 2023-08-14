@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useEffect} from 'react';
 import StarsDisplay from '../multipage/StarsDisplay';
 import { Link, useParams } from 'react-router-dom';
 

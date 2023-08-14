@@ -1,10 +1,14 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { getAuth, sendPasswordResetEmail, sendEmailVerification } from 'firebase/auth';
 
 
 const UserSettings = ({ email, isVerified }) => {
   const auth =  getAuth();
   const notification = document.querySelector('.email-notification');
+
+  useEffect(() => {
+    document.title = `Settings - Evaluate Your Sounds`
+  }, [])
 
   const resetPassword = () => {
     if(window.confirm('Are you sure you want to reset your password?')) {

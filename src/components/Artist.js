@@ -30,10 +30,6 @@ const ArtistPage = (props) => {
     fetchData(urlParams);
   }, [props.username]);
 
-  useEffect(()  => {
-    console.log(props.userStatus, props.isVerified);
-  }, [props.userStatus, props.isVerified])
-
   const ContributionsContainer = ({userStatus, isVerified}) => {   
     if (!userStatus) {
       return (

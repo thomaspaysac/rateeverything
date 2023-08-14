@@ -8,9 +8,8 @@ import Tracklist from "./release_page/Tracklist";
 import StarRating from "./release_page/StarRating";
 import CatalogPopup from "./release_page/CatalogPopup";
 
-import { getReleaseByID, getUniqueRelease, getUserInfo } from "../functions";
+import { getReleaseByID, getUserInfo } from "../functions";
 
-import discIcon from '../../src/img/vinyl.png';
 import reviewIcon from '../../src/img/write-review.png';
 
 const ReviewWritingUI = ({reviewUI, releaseID}) => {

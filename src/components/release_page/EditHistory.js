@@ -50,7 +50,7 @@ const EditHistory = () => {
   return (
     <div className='content-page'>
       <div className='content-wrapper'>
-        <div className="section-header bolded" onClick={() => console.log(releaseHistory)}>Release edit history</div>
+        <div className="section-header bolded">Release edit history</div>
         {displayHistory()}
       </div>
     </div>

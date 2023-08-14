@@ -26,7 +26,7 @@ const Reviews = (props) => {
       return null;
     } else {
       return (
-        <img src={avatar} alt='user avatar' onClick={() => console.log(user)}/>
+        <img src={avatar} alt='user avatar' />
       )
     }
   }

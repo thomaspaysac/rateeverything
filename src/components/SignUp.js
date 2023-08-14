@@ -6,7 +6,6 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
-  signInWithEmailAndPassword,
   sendEmailVerification,
 } from 'firebase/auth';
 import { userFirestoreSetup, getAllUsernames } from "../functions";
@@ -86,25 +85,6 @@ const SignUpPage = () => {
     }
   }
 
-  /*const createUser = (email, password, displayName) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      updateProfile(auth.currentUser, { displayName: displayName })
-      .then(userFirestoreSetup(displayName, email))
-      .then(navigateTo('/'))
-      .catch((error) => console.log(error));
-    })
-    .catch((error) => {
-      const warningEmail = document.getElementById('email-taken');
-      warningEmail.style.display = 'block';
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
-  }*/
-
   return (
     <div className='content-page'>
       <div className="signup-page">      
@@ -116,8 +96,6 @@ const SignUpPage = () => {
           <div className='signup-warning' id='email-invalid'>⚠ Your e-mail is not in a valid format. It should be in the format "user@domain.com".</div>
           <div className='signup-warning' id='tos-unchecked'>⚠ Please accept the terms of service.</div>
           <div className='signup-warning' id='email-taken'>⚠ This e-mail is already in use.</div>
-
-          
 
           <form method="post" id="signup-form" onSubmit={validateInput}>
             <div className="input-group">

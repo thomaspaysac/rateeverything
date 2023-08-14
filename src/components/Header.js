@@ -1,9 +1,7 @@
-import {React, useState, useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import {React} from "react";
+import { Link } from "react-router-dom";
 import SearchEngine from "./SearchEngine";
 import UserContainer from "./header/UserContainer";
-import { getUserInfo } from "../functions";
 
 const Header = (props) => {
   return (
