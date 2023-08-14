@@ -1564,10 +1564,13 @@ footer {
     text-align: center;
     color: #9DA3AF;
     background-color: #323643;
+    font-size: 0.9rem;
     font-weight: 700;
     padding: 7px;
+    border: none;
     border-radius: 3px; }
     .login-section .forgot-password-button:hover, .login-section .forgot-password-button:active {
+      cursor: pointer;
       background-color: #e5e5f4; }
 
 .login-page_title {

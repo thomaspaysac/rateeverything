@@ -60,6 +60,8 @@ const SignInPage = () => {
             <div className='signin-warning'>Invalid username or password.</div>
           </div>
           <input type="submit" form="signin-form" value="Log in >>" />
+          <div className="separator"></div>
+          <button className="forgot-password-button">Forgot your password?</button>
         </div>
         
 
