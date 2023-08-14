@@ -31,6 +31,7 @@ import EditArtist from "./components/EditArtist";
 import EditHistoryArtist from "./components/artist_page/EditHistory";
 import ThanksPage from "./components/ThanksPage";
 import ErrorPage from "./components/ErrorPage";
+import PWForgot from "./components/PWForgot";
 
 import './App.css';
 
@@ -90,6 +91,7 @@ const App = () => {
             isVerified={isVerified} />} />
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />
+        <Route exact path='/account/forgot_password' element={<PWForgot />} />
         <Route exact path="/profile/:username" 
           element={<ProfilePage 
             username={username} 

@@ -23,7 +23,7 @@
 - [ ] Pages de collections: bad grid
 
 ### Accounts
-- [ ] Ajouter récupération du mot de passe + renvoyer lien de confirmation
+- [ ] Changement de mot de passe + renvoyer lien de confirmation dans paramètres profil
 
 ### Cleanup
 - [ ] Supprimer tous les console.log() / commentaires

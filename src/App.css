@@ -1695,4 +1695,38 @@ footer {
   box-shadow: 1px 1px 3px #ffffff3e;
   color: #959CAF; }
 
+.forgot-password_page h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 24px; }
+.forgot-password_page .input-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px; }
+  .forgot-password_page .input-group label {
+    font-weight: 700;
+    font-size: 0.95rem; }
+  .forgot-password_page .input-group input {
+    width: 256px;
+    background-color: #152238;
+    border: 1px solid #656C80;
+    border-radius: 3px;
+    padding: 2px;
+    color: #DBE0E9;
+    font-size: 1rem; }
+.forgot-password_page input[type="submit"] {
+  cursor: pointer;
+  background-color: #006ED1;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #DBE0E9;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 12px; }
+  .forgot-password_page input[type="submit"]:hover, .forgot-password_page input[type="submit"]:active {
+    background-color: #005DBF; }
+
 /*# sourceMappingURL=App.css.map */

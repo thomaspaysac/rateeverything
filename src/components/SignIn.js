@@ -61,7 +61,7 @@ const SignInPage = () => {
           </div>
           <input type="submit" form="signin-form" value="Log in >>" />
           <div className="separator"></div>
-          <button className="forgot-password-button">Forgot your password?</button>
+          <Link to='/account/forgot_password'><button className="forgot-password-button">Forgot your password?</button></Link>
         </div>
         
 
