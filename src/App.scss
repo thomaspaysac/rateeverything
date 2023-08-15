@@ -1736,6 +1736,10 @@ footer {
       height: 100%;
       border-left: 1px solid #4E5465;
       border-right: 1px solid #4E5465;
+
+      &:nth-of-type(2) {
+        width: 100%;
+      }
     }
 
     .recent-rating_date {
