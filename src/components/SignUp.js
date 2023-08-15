@@ -73,8 +73,8 @@ const SignUpPage = () => {
       await createUserWithEmailAndPassword(auth, email, password);
     sendEmailVerification(auth.currentUser);
     updateProfile(auth.currentUser, { displayName: displayName })
-    userFirestoreSetup(displayName, email)
-    navigateTo('/')
+    userFirestoreSetup(displayName, email);
+    navigateTo('/account/signup_confirm');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         const warningEmail = document.getElementById('email-taken');

@@ -1,11 +1,6 @@
-import { React, useState, useEffect, useInsertionEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import {
-  getFirestore,
-  setDoc,
-  doc,
-} from 'firebase/firestore';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -33,6 +28,7 @@ import ThanksPage from "./components/ThanksPage";
 import ErrorPage from "./components/ErrorPage";
 import PWForgot from "./components/PWForgot";
 import UserSettings from "./components/UserSettings";
+import VerifyEmail from "./components/VerifyEmail";
 
 import './App.css';
 
@@ -95,6 +91,7 @@ const App = () => {
         <Route exact path="/account/signin" element={<SignInPage />} />
         <Route exact path='/account/signup' element={<SignUpPage />} />
         <Route exact path='/account/forgot_password' element={<PWForgot />} />
+        <Route exact path='/account/signup_confirm' element={<VerifyEmail />} />
         <Route exact path='/account/settings' element={<UserSettings email={email} isVerified={isVerified} />} />
         <Route exact path="/profile/:username" 
           element={<ProfilePage 
