@@ -51,7 +51,6 @@ const HomePage = () => {
             <img src={emailLogo} alt='email' />
           </div>
         </div>
-        <DataCounter />
         <div className='homepage_users-content'>
           <FeaturedReviews reviews={reviews} />
           <LatestReleases releases={releases} />

@@ -290,6 +290,9 @@ footer {
   margin: 32px 50px 50px 50px; }
 
 .homepage_users-content {
+  border-top: 1px solid #9da3af3f;
+  padding-top: 16px;
+  margin-top: 45px;
   display: flex;
   justify-content: space-between;
   gap: 32px; }
