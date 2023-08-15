@@ -12,16 +12,6 @@
 - [ ] Private messaging system
 - [ ] Lists
 
-
-## Roadmap:
-### Features
-- [ ] Liens dans le header
-
-### Bugs
-
+## To fix
 ### UI
 - [ ] Pages de collections: bad grid
-
-### Accounts
-
-### Cleanup

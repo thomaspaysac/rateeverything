@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='footer-section'>
         <div className='footer-title bolded'>EVALUATE YOUR SOUNDS</div>
           <div>&copy; 2023</div>
-          <div>This website is meant to be a copy of <a href='https://rateyourmusic.com/'>RateYourMusic</a>. More info in the FAQ.</div>
+          <div>This website is meant to be a copy of <a href='https://rateyourmusic.com/'>RateYourMusic</a>. More info in the <Link to='/about'>FAQ</Link>.</div>
         </div>
         <div className='footer-section'>
           <div className='footer-title'>EYS NETWORK</div>

@@ -12,11 +12,11 @@ const Header = (props) => {
 
       <div className="header_shortcuts">
         <div className="header_divider"></div>
-        <Link>new music</Link>
-        <Link>genres</Link>
-        <Link>charts</Link>
-        <Link>lists</Link>
-        <Link>community</Link>
+        <Link to='/about'>new music</Link>
+        <Link to='/about'>genres</Link>
+        <Link to='/about'>charts</Link>
+        <Link to='/about'>lists</Link>
+        <Link to='/about'>community</Link>
         <div className="header_divider"></div>
       </div>
 

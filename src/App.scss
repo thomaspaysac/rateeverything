@@ -2395,3 +2395,27 @@ footer {
     font-size: 1.1rem;
   }
 }
+
+// About page
+.about-page {
+  h2 {
+    margin-bottom: 24px;
+    border-bottom: 1px solid #dbe0e97b;
+  }
+
+  h3 {
+    margin-top:24px;
+  }
+
+  h4 {
+    margin-top: 12px;
+  }
+  
+  div {
+    margin: 12px 0;
+  }
+
+  ul {
+    margin-left: 16px;
+  }
+}
