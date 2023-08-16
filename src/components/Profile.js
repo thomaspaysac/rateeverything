@@ -149,13 +149,31 @@ const ProfilePage = (props) => {
   }, [props.username, urlParams.username])
 
   const avatarDisplay = () => {
+    if ((props.username !== urlParams.username) && (!avatar || avatar === '')) {
+      return (
+        <div></div>
+      )
+    }
     if (!avatar || avatar === '') {
       return (
         <div>Upload a profile picture</div>
       )
+    
     } else {
       return (
         <img src={avatar} alt='avatar' title={avatarCaption} />
+      )
+    }
+  }
+
+  const AvatarBox = () => {
+    if (props.username !== urlParams.username) {
+      return (
+        <div className="profile_avatar">{avatarDisplay()}</div>
+      )
+    } else {
+      return (
+        <div className="profile_avatar"><Link to="/profile/avatar">{avatarDisplay()}</Link></div>
       )
     }
   }
@@ -168,7 +186,7 @@ const ProfilePage = (props) => {
           member since {userDate} <span className="profile-username">{urlParams.username}</span>
         </div>
         <div className="profile_user-info">
-          <div className="profile_avatar"><Link to="/profile/avatar">{avatarDisplay()}</Link></div>
+        <AvatarBox />
           <SocialActions />
         </div>
       </div>

@@ -104,7 +104,7 @@ const SignUpPage = () => {
             </div>
             <div className="input-group">
               <label htmlFor="password">Enter a password:</label>
-              <input type="password" id='password' name="password" minLength='4' aria-required="true"/>
+              <input type="password" id='password' name="password" minLength='6' aria-required="true"/>
             </div>
             <div className="input-group">
               <label htmlFor="passwordCheck">Type it again:</label>
