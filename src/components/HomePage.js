@@ -41,7 +41,7 @@ const HomePage = () => {
           <a href='https://www.linkedin.com/in/thomas-paysac-5a2713254/'>
             <img src={linkedinLogo} alt='linkedIn' />
           </a>
-          <a href='https://github.com/stagnant-sys'>
+          <a href='https://github.com/thomaspaysac'>
             <img src={githubLogo} alt='github' />
           </a>
             <img src={twitterLogo} alt='twitter' />
